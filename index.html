@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Need to get a proper redirect hooked up. Blech. -->
+        <meta name="robots" content="noindex, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Awarded Returns</title>
+        <link rel="stylesheet"  href="css/jquery.mobile-1.3.2.min.css">
+        <link rel="stylesheet"  href="css/style.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+     
+    <!-- / Start loign page -->
+        <div data-role="page" id="loign">
+	   <div data-role="header" data-position="fixed" id="headpartmain">
+	   	 <div class="hedtoppart">
+                    <div class="wrapper">
+                        
+                    </div>
+                </div>
+           	</div>
+		
+		  <div data-role="content">
+		  <h1 class="logo"><a href="index.html"><img src="images/logo.png" alt="" width="28%"></a></h1>
+                <div id="main_box">
+			 <div class="reportsbox">
+			  <div class="reportsmain">
+			  <div class="loigninput"><input type="text" id="username" placeholder="Sales Rep ID"  class="inputloignbox"></div>
+			   <div class="loigninput"><input name="" id="password" type="password" placeholder="Password"  class="inputloignbox1"></div>
+			    <div class="remember_img">
+			    <select name="flip-1" id="flip-1" data-role="slider">
+      <option value="off">Off</option>
+      <option value="on">On</option>
+    </select>
+			    : Remember me</div>
+			     <div class="login_img"><a href="#" onclick="Login()"><img src="images/login_img.png" width="100%"></a></div>
+				<div class="tryout_img"><a href="#"><img src="images/tryout_img.png" width="100%"></a></div>
+			  
+			  </div>
+			  </div>
+			 </div>
+               </div> 
+
+	 </div>
+        <!-- / End loign page   -->
+        <!-- / Start homePage page -->
+        <div data-role="page" id="homePage">
+	   <div data-role="header" data-position="fixed">
+           <div class="hedtoppart">
+             <div class="wrapper">
+               </div>
+                </div>
+                 </div>
+           
+		  <div data-role="content">
+                <div id="main_box">
+			  <div class="reportsbox1">
+			   <div class="reportsmain">
+			    <a href="#Customers"><div class="reportstextleft">
+			     <div class="reports_img"><img src="images/reports_img.png" width="40%"></div>
+			     <div class="reports_text">Reports</div>
+			  </div></a>
+			 <a href="#" onclick="getCustomer()"> <div class="reportstextright">
+			   <div class="reports_img"><img src="images/customers_img.png" width="40%"></div>
+			    <div class="reports_text">Customers</div>
+			  </div></a>
+			  </div>
+			  
+			  <div class="reportsmain">
+			  <div class="reportstextleft">
+			   <div class="reports_img"><img src="images/settings_img.png" width="40%"></div>
+			    <div class="reports_text">Settings</div>
+			  </div>
+			  <div class="reportstextright">
+			   <div class="reports_img"><img src="images/log_off_img.png" width="40%"></div>
+			    <div class="reports_text">log Off</div>
+			  </div>
+			  </div>
+			 </div>
+			 </div>
+                </div>
+          
+        </div>
+	 <!-- / End homePage page   -->
+	   	 
+	 <!-- / page Customers start   -->
+	 
+ <div data-role="page" id="Customers">
+	  <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#homePage">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+  </div><!-- /header -->
+		  <div data-role="content">
+		   	<div id="main_box">
+			 <div class="customersbox">
+			   <div class="reportsmain">
+			    <div class="ui-grid-a" id="dynamic_customer">
+<div class="ui-block-a"><a href="#Create_returns"><span>10001</span></a><strong>Norblom Plumbing</strong><div class="Garfield_text"> 2905 Garfield Ave<br /> Minneapolis, US 612-827-4033</div></div>
+	<div class="ui-block-a"><a href="#"><span>10002</span></a><strong>Castle Master Mechanical</strong> <div class="Garfield_text">5833 Vincent Avenue South <br /> Minneapolis, US 612-237-1107</div></div>
+	<div class="ui-block-a"><a href="#"><span>10003</span></a><strong>Soderlin Plumbing, Heating & Air </strong> <div class="Garfield_text">3612 Cedar Avenue South  <br /> Minneapolis, US 612-721-4080</div></div>
+	<div class="ui-block-a"><a href="#"><span>10004</span></a><strong>Erik Nelson Plumbing LLC</strong> <div class="Garfield_text">2617 37th Avenue South<br /> Minneapolis, US 612-242-6483</div></div>
+	<div class="ui-block-a"><a href="#"><span>10005</span></a><strong>Randy Lane & Sons Plumbing</strong> <div class="Garfield_text">1501 West Broadway Avenue <br /> Minneapolis, US 612-521-8835</div></div>
+	<div class="ui-block-a"><a href="#"><span>10006</span></a><strong>Barnes Plumbing Co</strong> <div class="Garfield_text">3923 Washington Avenue North <br /> Minneapolis, US 612-529-1172</div></div>
+	<div class="ui-block-a" style="border:none;"><a href="#"><span>10007</span></a><strong>Erik Nelson Plumbing LLC</strong> <div class="Garfield_text">2365 Louisiana Avenue North <br /> Minneapolis, US 763-354-2800</div></div>
+</div><!-- /grid-a -->
+			   
+			    
+			    </div>
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+		   
+	 <!-- / End Customers page   -->
+	 
+	  <!-- /Create_returns page start   -->
+	 
+	 <div data-role="page" id="Create_returns">
+	 
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#Customers">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+  </div><!-- /header -->
+		  <div data-role="content">
+		   <div id="main_box">
+			<div class="custo_text" id="invo_cusId">Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10042</div>
+			<div class="custo_text1" id="invo_cusName" >Customer name &nbsp;&nbsp;&nbsp;&nbsp;Barnes Plumbing Co</div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a" id="Cus_invo_details">
+	<div class="ui-block-a"><div class="Createtop"><span>2</span><h1>MAY/2013</h1></div><strong>5478</strong><div class="Garfield_text"><h1>90000090</h1><h2>15 items</h2></div></div>
+	<div class="ui-block-a"><div class="Createtop"><span>12</span><h1>MAY/2013</h1></div><strong>7654</strong> <div class="Garfield_text"><h1>90000093</h1><h2>20 items</h2></div></div>
+	<div class="ui-block-a"><div class="Createtop"><span>14</span><h1>JUNE/2013</h1></div><strong>2234</strong> <div class="Garfield_text"><h1>90000096</h1><h2>11 items</h2></div></div>
+	<div class="ui-block-a"><div class="Createtop"><span>21</span><h1>JUNE/2013</h1></div><strong>1875</strong> <div class="Garfield_text"><h1>90000097</h1><h2>9 items</h2></div></div>
+	<div class="ui-block-a"><div class="Createtop"><span>11</span><h1>JULY/2013</h1></div><strong>2356</strong> <div class="Garfield_text"><h1>90000099</h1><h2>13 items</h2></div></div>
+	
+	
+</div><!-- /grid-a -->
+			   <div class="justret_button"><a href="#In_ref_invoice"><img src="images/justret_button.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- / Create_returns page   -->
+	 
+	 <!-- /In_ref_invoice page start   -->
+	 
+	 <div data-role="page" id="In_ref_invoice">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#Create_returns">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3">
+      </div>
+  </div><!-- /header -->
+		
+  <div data-role="content">
+	<div id="main_box">
+		<div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1> 42</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a">
+	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+	<div class="ui-block-a"><div class="Createtop"><span>20</span></div><strong>Water Heaters</strong> <div class="Garfield_text"><h1>P500043</h1><h2>4 items</h2></div><div class="poor_quality_text"><span>2</span></div></div>
+	<div class="ui-block-a" style="border-bottom: none;"><div class="Createtop"><span>30</span></div><strong>Access Doors</strong> <div class="Garfield_text"><h1>P500081</h1><h2>8 items</h2></div><div class="poor_quality_text"><span>4</span></div></div>
+	
+</div>
+ <div class="justret_button"><a href="#returns_creen"><img src="images/review_button.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /In_ref_invoice End page   -->
+	 
+	 <!-- /returns_creen page start   -->
+	 
+	 <div data-role="page" id="returns_creen">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#In_ref_invoice">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+  </div><!-- /header -->
+  <div data-role="content">
+	<div id="main_box">
+	<div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1>10042</div><div class="invoice_text"><h1>Returns order #</h1>6000058</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Date </h1>7/16/2013</div></div>
+			<div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a">
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong><strong>Drop-down</strong><strong>Drop-down</strong></div>
+	
+</div>
+ <div class="justret_button"><a href="#Returns_confirmation_screen2"><img src="images/Return_button.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /returns_creen End page   -->
+	 
+  <!-- /Returns_confirmation_screen2 page start   -->
+	 
+	 <div data-role="page" id="Returns_confirmation_screen2">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#returns_creen">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+  </div><!-- /header -->
+		
+  <div data-role="content">
+	<div id="main_box">
+		<div class="custo_text"><div class="Barnes_text"><h1>Return Order</h1>124657</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a">
+	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+	
+</div>
+ <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#Credit_memo"><div class="yes_text">Yes</div></a><div class="Cancel_text">Cancel</div></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /Returns_confirmation_screen2 End page   -->
+	 
+	 <!-- /Returns_confirmation_screen page start   -->
+	 
+	 <div data-role="page" id="Returns_confirmation_screen">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton">Back</div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+  </div><!-- /header -->
+  <div data-role="content">
+	<div id="main_box">
+		<div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1> 42</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a">
+	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+	
+</div>
+  <div class="justret_button"><a href="#"><img src="images/Confirm_button.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /Returns_confirmation_screen End page   -->
+	 
+	  <!-- /Credit_memo page start   -->
+	 
+	 <div data-role="page" id="Credit_memo">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#Returns_confirmation_screen2">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+      </div><!-- /header -->
+  <div data-role="content">
+	<div id="main_box">
+		<div class="custo_text"><div class="Barnes_text"><h1>Return Order</h1> 124657</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Credit Memo#</h1>100000007</div></div>
+			<div class="return_qty"></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a">
+	<div class="Credit_memo">
+	<div class="customer_credit"><h1>Customer Credit Memo</h1><div class="customer_right">
+	<div class="referencebox"><span>Reference #</span><span>0000011</span><span>Ship Via</span><span>FedEx- Federal EX</span></div>
+	<div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span>02/16/2003</span></div>
+	</div></div>
+	<div class="Credit_memo_img"><img src="images/Credit_memo_img.png" width="100%"></div>
+	</div>
+	
+</div>
+  <div class="justret_button"><a href="#"><img src="images/email_button.png" width="100%"></a></div>
+  <div class="justret_buttonright"><a href="#"><img src="images/done_button.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /Credit_memo End page   -->
+	 
+    </body>
+    <script type="text/javascript">
+    app.initialize();
+  </script>
+</html>

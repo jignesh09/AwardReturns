@@ -1,0 +1,493 @@
+*{ padding:0; margin:0; border:0;}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+@font-face {
+    font-family: 'helveticanltcnhelveticanltcn';
+    src: url('../fonts/helveticanltcn-webfont.eot');
+    src: url('../fonts/helveticanltcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticanltcn-webfont.woff') format('woff'),
+         url('../fonts/helveticanltcn-webfont.ttf') format('truetype'),
+         url('../fonts/helveticanltcn-webfont.svg#helveticanltcnhelveticanltcn') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'helveticanmdcnhelveticanmdcn';
+    src: url('../fonts/helveticanmdcn-webfont.eot');
+    src: url('../fonts/helveticanmdcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticanmdcn-webfont.woff') format('woff'),
+         url('../fonts/helveticanmdcn-webfont.ttf') format('truetype'),
+         url('../fonts/helveticanmdcn-webfont.svg#helveticanmdcnhelveticanmdcn') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'helveticanthcnhelveticanthcn';
+    src: url('../fonts/helveticanthcn-webfont.eot');
+    src: url('../fonts/helveticanthcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticanthcn-webfont.woff') format('woff'),
+         url('../fonts/helveticanthcn-webfont.ttf') format('truetype'),
+         url('../fonts/helveticanthcn-webfont.svg#helveticanthcnhelveticanthcn') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{ font-family: 'helveticanltcnhelveticanltcn'; font-size:0.875em;}
+.wrapper{ width:98%; margin:0 auto;}
+#headpartmain{ float:left; width:100%;}
+.hedtoppart{ float:left; width:100%; background:url(../images/top_bg.png) no-repeat center top; background-size:100% 100%;}
+ul.topinfocon{ float:right; width:100%; list-style:none;}
+ul.topinfocon li{ float:right; font-family: 'droid_sansregular'; font-size:1.000em; color:#FFF; text-shadow: none; padding:0 1% 0 1%; border-right:1px solid #FFF;}
+ul.topinfocon li:first-child{ border-right:none; padding:0 0 0 1%;}
+ul.topinfocon li span{ float:left; padding:0 0 0 0; margin:0 5px 0 0;}
+ul.topinfocon li strong{ font-weight:bold;}
+ul.topinfocon li a{ text-decoration:none; color:#FFF !important; font-weight:normal !important;}
+.bannermain{ float:left; width:100%; }
+.Backbutton { float:left; width:10%; font-size:1.5em; text-align:center; padding:.4em 0 .4em 0; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 2px #9c8a9a; background-size:26% 90%; cursor:pointer;}
+.Backbutton a { text-decoration:none; color:#fff;}
+.rightserchbox {float:left; width:15%;}
+h1.returenstext {float:left; width:14%;}
+.inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 6px !important; padding:3% 0 2% 12% !important; width:88% !important;}
+.ui-header .ui-title {min-height: 1.1em !important;
+font-size: 16px !important;
+display: block !important;
+margin: .6em 18% .8em;
+padding: 0 !important;
+text-overflow: ellipsis !important;
+white-space: nowrap !important; overflow:none !important;
+outline: 0 !important;}
+.ui-bar-a a.ui-link:visited { color:#fff !important;}
+
+
+@media all and (max-width: 320px) and (min-width: 120px) {
+.loigninput {margin:0 auto; width:100% !important; padding-bottom:.2em;}
+.login_img {margin:0 auto; width:100% !important; padding-top:4%;}
+.tryout_img {margin:0 auto; width:100% !important; padding-top:1%;}
+.remember_img {margin:0 auto; width:92% !important; font-size:1em !important; color:#b09b95; padding:5% 0 5% 0 !important;}
+.logo img { float:left !important; width:70% !important; padding:0 0 0 12% !important;}
+.reports_text {float:left; font-size:1em !important; padding:2% 0 4% 10%; color:#fff; text-shadow:none !important; font-family: 'droid_sansregular';}
+.reportsbox1 {margin:0 auto; width:100% !important; padding-top:4%;}
+div.ui-slider-switch { float:left !important; width:5em !important; margin:-6% 1% 0 0 !important;}
+#main_box {margin:0 auto; width:100% !important; margin-top:2%;}
+#Customers .customersbox {float: left; width: 100%;background: url(../images/customers_bg.png) repeat center bottom; margin-top: 80px; height: 345px !important;}
+.ui-header .ui-title {min-height: 1.1em !important; font-size: 12px !important; display: block !important; margin: .6em 18% .8em; padding: 0 !important;
+text-overflow: ellipsis !important; white-space: nowrap !important; overflow:none !important; outline: 0 !important;}
+h1.returenstext {float: left; width: 27% !important;}
+.Backbutton { float:left; width:10%; font-size:.9em !important; padding:.7em .5em .8em 2em !important; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 2px #9c8a9a; background-size:32% 87% !important; cursor:pointer;}
+.Backbutton a { text-decoration:none; color:#fff;}
+#Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em !important; border-top: solid 1px #fff; padding-top:1%;}
+#Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em !important; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
+#Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.6em !important; padding:12% 0 0 0; margin:0;}
+#Create_returns .Garfield_text h1 {float:left; width:90%; font-size:1em !important; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#Create_returns .Garfield_text h2 {float:left; width:90%; font-size:.9em !important; text-align:center; padding:2% 0 0 0; margin:0;}
+#Create_returns .Garfield_text { float:right; width:40% !important; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 17px !important; background-size:9% 31% !important; padding-bottom:1%; margin-right:6% !important;}
+#Create_returns .Createtop {float: left; width: 8% !important; margin: 0 15% 1% 0 !important;}
+#Create_returns .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:35px !important; height:385px !important;}
+#In_ref_invoice .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#In_ref_invoice .Barnes_text h1 {padding:0; margin:0; float:left; width:62% !important;}
+#In_ref_invoice .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#In_ref_invoice .invoice_text h1  {float:left; width:62% !important; padding:0; margin:0;}
+#In_ref_invoice .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0 !important; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1em !important; border-right: solid 1px #766463;}
+#In_ref_invoice .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:35px !important;}
+#In_ref_invoice .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
+#In_ref_invoice .Garfield_text h1 {float:left; width:100%; font-size:.9em !important; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#In_ref_invoice .Garfield_text h2 {float:left; width:100%; font-size:.8em !important; text-align:center; padding:2% 0 0 0; margin:0;}
+#In_ref_invoice .poor_quality_text {float: left; width: 34% !important; margin-top:5% !important;}
+#In_ref_invoice .poor_quality_text h1 {padding:.5em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.7em !important;} 
+#In_ref_invoice .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:2% 2% 1% 0 !important;}
+#In_ref_invoice .poor_quality_text span {float: left; width: 30% !important; color: rgb(255, 255, 255); font-size: .9em !important; padding: 3px 10px 2px 0 !important; text-align: right; border: solid 1px rgb(255, 255, 255);}
+#In_ref_invoice .justret_button { margin:1% 22% 0 0 !important; width: 60% !important; float:right !important;}
+#returns_creen .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:62% !important;}
+#returns_creen .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .invoice_text h1  {float:left; width:62% !important; padding:0; margin:0;}
+#returns_creen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1em !important; border-right: solid 1px #766463;}
+#returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1em !important; padding:19px 0 15px 0; text-align:center;}
+#returns_creen .ui-block-a  strong { font-size:11px !important;}
+#returns_creen .justret_button {margin: 0 auto !important; width: 70% !important; margin-top: 6% !important;}
+#returns_creen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:30px !important;}
+
+#Returns_confirmation_screen2 .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; }
+#Returns_confirmation_screen2 .invoice_text h1  {float:left; width:53% !important; padding:0; margin:0;}
+#Returns_confirmation_screen2 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1em !important; border-right: solid 1px #766463;}
+#Returns_confirmation_screen2 .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:35px !important;}
+#Returns_confirmation_screen2 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1em !important; padding:19px 0 15px 0; text-align:center;}
+#Returns_confirmation_screen2 .ui-block-a strong {float: left; width: 20%; font-family: 'helveticanmdcnhelveticanmdcn'; color: rgb(255, 255, 255);
+text-align: left; font-size: 1em !important; padding: 1em 0 .8em .6em !important;}
+#Returns_confirmation_screen2 .Garfield_text h1 {float:left; width:100%; font-size:.9em !important; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#Returns_confirmation_screen2 .Garfield_text h2 {float:left; width:100%; font-size:.8em !important; text-align:center; padding:2% 0 0 0; margin:0;}
+#Returns_confirmation_screen2 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.8em !important;}
+#Returns_confirmation_screen2 .poor_quality_text span {float: left; width: 30%; color: rgb(255, 255, 255); font-size: .8em !important; padding: 3px 10px 3px 0 !important; text-align: right; border: solid 1px rgb(255, 255, 255);}
+#Returns_confirmation_screen2 .poor_quality_text {float: left !important; width: 35% !important; margin-top: 1.3% !important;} 
+#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 2% 1% 0 !important;}
+#Returns_confirmation_screen2 .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.5em !important; color:#fff; text-align:center; text-transform:uppercase;}
+#Returns_confirmation_screen2 .yes_text { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#8bc300; text-align:center;cursor:pointer;text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
+#Returns_confirmation_screen2 .yes_text:hover { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#f31600; cursor:pointer;text-transform:uppercase; text-align:center; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
+#Returns_confirmation_screen2 .Cancel_text { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#8bc300; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+#Returns_confirmation_screen2 .Cancel_text:hover { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#f31600; cursor:pointer; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+
+#Credit_memo .customer_credit h1 {padding:2%; margin:0; float:left; width:99% !important; text-align:center !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1em !important;}
+#Credit_memo .customer_right {float: right !important; width: 100% !important; margin-top: 9px !important;}
+#Credit_memo .referencebox span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.7em !important; color:#231f20; text-align:center; background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
+#Credit_memo .referencebox1 span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.7em !important; color:#231f20; text-align:center;
+background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
+#Credit_memo .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Credit_memo .Barnes_text h1 {padding: 0; margin: 0; float: left !important; width: 55% !important;}
+#Customers .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:10px !important; height:600px;}
+.inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 2px !important; padding:3% 0 2% 12% !important; width:88% !important;}
+}
+
+@media all and (max-width: 900px) and (min-width: 320px) {
+.reports_text {float:left; font-size:1.5em !important; font-weight:normal; padding:2% 0 4% 10%; color:#fff; text-shadow:none !important; font-family: 'droid_sansregular';}
+.reportsbox1 {margin:0 auto; width:95% !important; padding-top:4%;}
+.remember_img {margin:0 auto; width:42%; text-align:right !important; font-size:1.4em; color:#b09b95; padding:.8% 0 1% 0;}
+#Customers .ui-block-a { float:left; width:100%; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#Customers .ui-block-a span { float:left; width:19% !important; color:#fff; text-align:right; font-size:.8em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#Customers .ui-block-a strong { float:left; width:34% !important; color:#fff; text-align:left; font-size:.8em !important; border-right:solid 2px #442c27; padding-top:.3em;}
+#Customers .Garfield_text { float:right; width:40% !important; font-size:.6em !important; text-align:left; padding-bottom:1%;}
+#Create_returns .Createtop  span { float:left !important; width:100% !important; text-align:center !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.3em; padding:7px 10px 7px 9px !important; border:solid 1px #fff; border-radius: 81px;}
+#In_ref_invoice .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.9em !important;  padding:1.3em 0 .8em .5em !important;}
+#In_ref_invoice .return_qty {float:right; width:70% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#returns_creen .ui-block-a  strong { float:left; width:18% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.3em;  padding:2em 0 .8em .5em !important;}
+#returns_creen .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#Returns_confirmation_screen2 .return_qty {float:right; width:70% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#Returns_confirmation_screen2 .justret_button {margin:0 auto; width:90% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 140px !important;}
+#Returns_confirmation_screen2 .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .Barnes_text h1 {padding:0; margin:0; float:left; width:48% !important;}
+#Returns_confirmation_screen2 .invoice_text h1  {float:left; width:width:48% !important; padding:0; margin:0;}
+#Returns_confirmation_screen2 .invoice_text { float:left; width:90% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Create_returns .ui-block-a  strong { float:left; width:13% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:3.5% !important; font-size:1em !important;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:40% 70% !important;}
+#Create_returns .justret_button {margin: 0 auto; width:75% !important; padding-top: 3%;}
+}
+
+@media all and (max-width: 800px) and (min-width: 480px) {
+#main_box {margin: 0 auto; width: 100% !important; margin-top: 2%;}
+#Customers .ui-block-a span { float:left; width:17% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#loign .loigninput {margin:0 auto; width:85% !important; padding-bottom:.2em;}
+#loign .remember_img {margin:0 auto; width:85% !important; font-size:1.4em;font-family: 'helveticanmdcnhelveticanmdcn'; color:#b09b95; padding:3% 0 4% 1% !important;}
+#loign .login_img {margin:0 auto; width:75% !important; padding-top:4%;}
+#loign .tryout_img {margin:0 auto; width:75% !important; padding-top:1%;}
+#loign .reports_text {float:left; font-size:1.8em !important; font-weight:normal; padding:2% 0 4% 10%; color:#fff; text-shadow:none !important; font-family: 'helveticanmdcnhelveticanmdcn';}
+#Create_returns .Garfield_text { float:right; width:38% !important; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 10px; background-size:7% 75%; padding-bottom:1%; margin-right:10%;}
+#Create_returns .Createtop {float: left; width: 8% !important; margin: 0 12% 1% 0;}
+#Create_returns .ui-block-a  strong { float:left; width:18%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:31% 75% !important; margin-top:4% !important;}
+#Create_returns .justret_button { margin:0 auto; width:65% !important; padding-top:3%;}
+.logo {float:left; width:100% !important; text-align:center; padding:2% 0 3% 0;}
+.logo img { float:left; width:65% !important; padding:0 0 0 20% !important;}
+.reports_text a { text-decoration:none !important; color:#fff !important;}
+#Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.4em !important; padding:12% 0 0 37% !important; margin:0;}
+#In_ref_invoice .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#In_ref_invoice .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.8em !important; padding:1.3em 0 .8em .5em !important;}
+#In_ref_invoice .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
+#In_ref_invoice .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
+#In_ref_invoice .poor_quality_text h1 {padding:.5em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
+#In_ref_invoice .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#In_ref_invoice .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#In_ref_invoice .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+#returns_creen .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+#returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
+#returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.5em !important; padding:19px 0 15px 0; text-align:center;}
+#returns_creen .justret_button {margin: 0 auto; width: 60% !important; margin-top: 5%;}
+#Returns_confirmation_screen2 .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+#Returns_confirmation_screen2 .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#Returns_confirmation_screen2 .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#Returns_confirmation_screen2 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.8em !important; padding:1.3em 0 .8em .5em !important;}
+#Returns_confirmation_screen2 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
+#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
+#Returns_confirmation_screen2 .poor_quality_text h1 {padding:.5em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
+#Returns_confirmation_screen2 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+#Returns_confirmation_screen2 .justret_button {margin:0 auto; width:75% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 150px !important;}
+.Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
+.Backbutton a { text-decoration:none !important; color:#fff !important;}
+h1.returenstext {float: left; width:30% !important;}
+.inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 3px !important; padding:3% 0 2% 12% !important; width:88% !important;}
+
+#Credit_memo .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Credit_memo .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Credit_memo .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+#Credit_memo .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
+#Credit_memo .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.5em !important; padding:19px 0 15px 0; text-align:center;}
+#Credit_memo .customer_credit h1 {padding:6% 0 6% 2% !important; margin:0; float:left !important; width:30% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:.9em !important;}
+#Credit_memo .customer_right {float: right; width: 65% !important; margin-top: 9px;}
+#Credit_memo .referencebox span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; color:#231f20; text-align:center; background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
+#Credit_memo .referencebox1 span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; color:#231f20; text-align:center; background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0 ;}
+#Credit_memo .customer_credit {float: left; width: 100%; background: rgb(203, 203, 203); height: 45px !important;}
+#Create_returns .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px; height:538px !important;}
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+
+}
+
+
+@media all and (max-width: 1200px) and (min-width: 900px) {
+.remember_img {margin:0 auto; width:42%; text-align:right !important; font-size:1.4em; color:#b09b95; padding:.8% 0 1% 0;}	
+#Customers .ui-block-a span { float:left; width:15%; color:#fff; text-align:right; font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#Customers .ui-block-a strong { float:left; width:36%; color:#fff; text-align:left; font-size:1em !important; border-right:solid 2px #442c27; padding-top:.3em;}
+#Customers .Garfield_text { float:right; width:40% !important; font-size:.9em !important; text-align:left; padding-bottom:1%;}
+#Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 15px 15px 15px !important; text-align:center; border:solid 1px #fff; border-radius: 81px;}
+
+}
+.ui-mobile .ui-page {background:url(../images/body_bg.png) no-repeat center top !important; background-size:100% 100% !important;}
+#main_box {margin:0 auto; width:80%; margin-top:2%;}
+.reportsbox {margin:0 auto; width:75%;}
+.reportsbox1 {margin:0 auto; width:52%; padding-top:4%;}
+.reportsmain {float:left; width:100%; margin-bottom:8%;}
+.reportstextleft {float:left; width:46%; margin:0 0 0 2%; background:#8e8489; cursor:pointer;}
+.reportstextright {float:right; width:46%; margin:0 0 0 2%; background:#8e8489; cursor:pointer;}
+.reports_img {font:; width:100%; text-align:center; padding:10% 0 0 0;}
+.reports_text {float:left; font-size:2em; font-weight:normal; padding:2% 0 4% 10%; color:#fff; text-shadow:none !important; font-family: 'helveticanmdcnhelveticanmdcn';}
+.reports_text a { text-decoration:none; color:#fff;}
+.reports_text a { text-decoration:none; color:#fff !important;}
+.logo {float:left; width:100%; text-align:center; padding:2% 0 3% 0;}
+.logo img { float:left; width:35%; padding:0 0 0 32%;}
+.ui-shadow-inset {background: #998787 !important; /* Old browsers */
+background: -moz-linear-gradient(top, #998787 0%, #a89593 29%, #aa9591 50%, #ad9591 79%, #a68c89 100%) !important; /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#998787), color-stop(29%,#a89593), color-stop(50%,#aa9591), color-stop(79%,#ad9591), color-stop(100%,#a68c89)) !important; /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #998787 0%,#a89593 29%,#aa9591 50%,#ad9591 79%,#a68c89 100%) !important; /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #998787 0%,#a89593 29%,#aa9591 50%,#ad9591 79%,#a68c89 100%) !important; /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #998787 0%,#a89593 29%,#aa9591 50%,#ad9591 79%,#a68c89 100%) !important; /* IE10+ */
+background: linear-gradient(to bottom, #998787 0%,#a89593 29%,#aa9591 50%,#ad9591 79%,#a68c89 100%) !important; /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#998787', endColorstr='#a68c89',GradientType=0 ) !important; /* IE6-9 */}
+.loigninput {margin:0 auto; width:52%; padding-bottom:.2em;}
+.inputloignbox {color:#726065; padding:.6em 0 !important; font-size:1.5em !important; background:url(../images/salesrep_img.png) no-repeat right 6px !important;}
+.inputloignbox1 {color:#726065; padding:.6em 0 !important; font-size:1.5em !important; background:url(../images/password_img.png) no-repeat right 6px !important;}
+.ui-body-c, .ui-overlay-c { text-shadow:none !important;}
+.remember_img {margin:0 auto; width:61%; font-size:1.4em;font-family: 'helveticanmdcnhelveticanmdcn'; color:#b09b95; padding:3% 0 1% 10%;}
+.login_img {margin:0 auto; width:40%; padding-top:4%;}
+.tryout_img {margin:0 auto; width:40%; padding-top:1%;}
+div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1% 0 0;}
+.ui-btn-active { background:#eaeaea !important; color:rgb(47, 62, 70) !important;}
+/*Customers pages*/
+#Customers .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px; height:600px;}
+#Customers .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#Customers .ui-block-a span { float:left; width:15%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1.3em; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#Customers .ui-block-a span a { text-decoration:none; color:#fff;}
+#Customers .ui-block-a strong { float:left; width:36%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em; border-right:solid 2px #442c27; padding-top:.3em;}
+#Customers .Garfield_text { float:right; width:30%; text-align:left; padding-bottom:1%;}
+#Customers .ui-content { padding:15px 15px 0 15px !important;}
+#Customers .ui-shadow-inset {background:#a2a9bb !important;}
+
+/*Customers pages end*/
+
+/*Create_returns pages*/
+#Create_returns .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px; height:750px;}
+#Create_returns .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#Create_returns .ui-content { padding:15px 15px 0 15px !important;}
+#Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
+
+#Create_returns .Createtop { float:left; width:5%; margin:0 12% 1% 0;}
+#Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center; border:solid 1px #fff; border-radius: 81px;}
+#Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#Create_returns .ui-block-a  strong { float:left; width:18%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:14% 75%;}
+#Create_returns .Garfield_text { float:right; width:45%; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 10px; background-size:7% 75%; padding-bottom:1%; margin-right:10%;}
+#Create_returns .Garfield_text h1 {float:left; width:90%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#Create_returns .Garfield_text h2 {float:left; width:90%; text-align:center; padding:2% 0 0 0; margin:0;}
+#Create_returns .justret_button { margin:0 auto; width:30%; padding-top:3%;}
+#Create_returns .ui-shadow-inset {background:#a2a9bb !important;}
+/*Create_returns pages end*/
+
+
+/*In_ref_invoice pages*/
+#In_ref_invoice .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#In_ref_invoice .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#In_ref_invoice .ui-content { padding:15px 15px 0 15px !important;}
+#In_ref_invoice .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#In_ref_invoice .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; 
+border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
+#In_ref_invoice .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
+#In_ref_invoice .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
+#In_ref_invoice .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#In_ref_invoice .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
+#In_ref_invoice .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#In_ref_invoice .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#In_ref_invoice .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
+#In_ref_invoice .justret_button {float:right; width:36%; margin-right:2%;}
+#In_ref_invoice .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#In_ref_invoice .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
+#In_ref_invoice .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#In_ref_invoice .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#In_ref_invoice .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
+#In_ref_invoice .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#In_ref_invoice .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#In_ref_invoice .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#In_ref_invoice .invoice_text h1  {float:left; width:30%; padding:0; margin:0;}
+#In_ref_invoice .ui-shadow-inset {background:#a2a9bb !important;}
+/*In_ref_invoice pages end*/
+
+/*returns_creen pages*/
+#returns_creen .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#returns_creen .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#returns_creen .ui-content { padding:15px 15px 0 15px !important;}
+#returns_creen .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#returns_creen .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
+#returns_creen .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
+#returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
+#returns_creen .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#returns_creen .ui-block-a  strong { float:left; width:14%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.3em;  padding:1em 0 .8em 4em;}
+#returns_creen .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#returns_creen .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#returns_creen .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
+#returns_creen .justret_button { margin:0 auto; width:30%; margin-top:5%;}
+#returns_creen .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#returns_creen .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
+#returns_creen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#returns_creen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#returns_creen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
+#returns_creen .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#returns_creen .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#returns_creen .invoice_text h1  {float:left; width:40%; padding:0; margin:0;}
+#returns_creen .ui-shadow-inset {background:#a2a9bb !important;}
+/*returns_creen pages end*/
+
+/*Returns_confirmation_screen2 pages*/
+#Returns_confirmation_screen2 .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#Returns_confirmation_screen2 .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#Returns_confirmation_screen2 .ui-content { padding:15px 15px 0 15px !important;}
+#Returns_confirmation_screen2 .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#Returns_confirmation_screen2 .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
+#Returns_confirmation_screen2 .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
+#Returns_confirmation_screen2 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
+#Returns_confirmation_screen2 .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#Returns_confirmation_screen2 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
+#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#Returns_confirmation_screen2 .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#Returns_confirmation_screen2 .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
+#Returns_confirmation_screen2 .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#Returns_confirmation_screen2 .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
+#Returns_confirmation_screen2 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#Returns_confirmation_screen2 .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#Returns_confirmation_screen2 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
+#Returns_confirmation_screen2 .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#Returns_confirmation_screen2 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .invoice_text h1  {float:left; width:30%; padding:0; margin:0;}
+#Returns_confirmation_screen2 .justret_button {margin:0 auto; width:30%; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 124px;}
+#Returns_confirmation_screen2 .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
+#Returns_confirmation_screen2 .yes_text { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center;cursor:pointer;text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
+#Returns_confirmation_screen2 .yes_text:hover { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#f31600; cursor:pointer;text-transform:uppercase; text-align:center; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
+#Returns_confirmation_screen2 .Cancel_text { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+#Returns_confirmation_screen2 .Cancel_text:hover { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#f31600; cursor:pointer; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+#Returns_confirmation_screen2 .ui-shadow-inset {background:#a2a9bb !important;}
+/*Returns_confirmation_screen2 pages end*/
+
+/*Returns_confirmation_screen pages*/
+#Returns_confirmation_screen .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#Returns_confirmation_screen .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#Returns_confirmation_screen .ui-content { padding:15px 15px 0 15px !important;}
+#Returns_confirmation_screen .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#Returns_confirmation_screen .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
+#Returns_confirmation_screen .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
+#Returns_confirmation_screen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
+#Returns_confirmation_screen .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#Returns_confirmation_screen .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
+#Returns_confirmation_screen .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#Returns_confirmation_screen .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#Returns_confirmation_screen .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
+#Returns_confirmation_screen .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#Returns_confirmation_screen .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
+#Returns_confirmation_screen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#Returns_confirmation_screen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#Returns_confirmation_screen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
+#Returns_confirmation_screen .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#Returns_confirmation_screen .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen .invoice_text h1  {float:left; width:30%; padding:0; margin:0;}
+#Returns_confirmation_screen .justret_button {margin:0 auto; width:30%; margin-top:4%; border-radius:8px;}
+#Returns_confirmation_screen .ui-shadow-inset {background:#a2a9bb !important;}
+/*Returns_confirmation_screen pages end*/
+
+/*Credit_memo pages*/
+#Credit_memo .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#Credit_memo .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#Credit_memo .ui-content { padding:15px 15px 0 15px !important;}
+#Credit_memo .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#Credit_memo .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
+#Credit_memo .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
+#Credit_memo .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
+#Credit_memo .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#Credit_memo .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
+#Credit_memo .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#Credit_memo .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#Credit_memo .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
+#Credit_memo .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#Credit_memo .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
+#Credit_memo .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#Credit_memo .return_qty {float:right; width:25%;  margin-top:80px;}
+#Credit_memo .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
+#Credit_memo .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Credit_memo .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#Credit_memo .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Credit_memo .invoice_text h1  {float:left; width:30%; padding:0; margin:0;}
+#Credit_memo .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
+#Credit_memo .yes_text { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center;cursor:pointer;  border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
+#Credit_memo .yes_text:hover { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#f31600; cursor:pointer;text-transform:uppercase; text-align:center; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
+#Credit_memo .Cancel_text { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+#Credit_memo .Cancel_text:hover { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#f31600; cursor:pointer; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+#Credit_memo .ui-shadow-inset {background:#a2a9bb !important;}
+#Credit_memo .Credit_memo {float:left; width:92%; background:#fff; margin:2% 4% 0 4%;}
+#Credit_memo .customer_credit {float:left; width:100%; background:#cbcbcb; height:80px;}
+#Credit_memo .customer_credit h1 {padding:2%; margin:0; float:left; width:40%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.8em;}
+#Credit_memo .customer_right {float:right; width:45%; margin-top:9px;}
+#Credit_memo .referencebox { float:left; width:100%;}
+#Credit_memo .referencebox span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; color:#231f20; text-align:center;
+background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
+#Credit_memo .referencebox1 span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; color:#231f20; text-align:center;
+background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
+.Credit_memo_img { float:left; width:100%;}
+#Credit_memo .justret_button {float:left; width:30%; margin:2% 0 0 4%; border-radius:8px; min-height: 124px;}
+#Credit_memo .justret_buttonright {float:right; width:30%; margin:2% 4% 0 0; border-radius:8px; min-height: 124px;}
+
+/*Credit_memo pages end*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
