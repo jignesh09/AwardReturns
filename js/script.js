@@ -134,13 +134,19 @@ $.ajax({
              $.mobile.hidePageLoadingMsg();
              console.log(JSON.stringify(data))
              console.log(status)
-             
+            // if(data.length !=undefined){
              if(status=="success"){
+            // alert('sic')
                  $.mobile.changePage('#homePage')
                    window.localStorage.setItem("sale_repId",uname);
                    window.localStorage.setItem("password",pwd);
                    
               }
+             // }
+              /*else{
+               navigator.notification.alert('Invalid Sales Rep ID or Passwrod', alertDismissed, 'AwardReturns', 'ok' );   
+                                  
+              }*/
             },
  
     beforeSend: function(xhrObj,SignIn){
@@ -202,7 +208,7 @@ $.ajax({
              var data1=res.d.results[i]
              var c_id=data1.cust_num.toString();
              var c_id2=c_id.toString();
-             html+='<div class="ui-block-a"><a href="#" data-c_id='+c_id2+' onclick="testclick(this)"><span>'+data1.cust_num+'</span></a>'
+             html+='<div class="ui-block-a"><a href="#" data-c_id='+c_id2+' onclick="CutomerInvoice(this)"><span>'+data1.cust_num+'</span></a>'
              html+='<strong>'+res.d.results[i].cust_name+'</strong>'
              html+='<div class="Garfield_text">'+data1.street+'<br /> '+data1.city+', '+data1.country+'  '+data1.telephone+'</div>'
              html+='</div>'
@@ -237,7 +243,10 @@ $.ajax({
 
 
 }
-function testclick(ev){
+
+
+//------------------------------- getting customer invoice-----------------------------------------------------
+function CutomerInvoice(ev){
 //alert($(ev).data('c_id'))
 
 var uname= window.localStorage.getItem("sale_repId");
@@ -283,9 +292,9 @@ $.ajax({
                      var dt_yr=montheArray[mon]+a+yr;
                   var det1 = dt.getDate();
                  // alert(dt_yr)
-                  html+='<div class="ui-block-a"><div class="Createtop"><span>'+det1+'</span>'
-                  html+='<h1>'+dt_yr+'</h1></div><strong>'+data1.invoice_amt+'</strong>'
-                  html+='<div class="Garfield_text"><h1>'+data1.invoice_num+'</h1><h2>'+data1.item_count+' items</h2></div></div>'
+                  html+='<div class="ui-block-a" ><div class="Createtop"><span>'+det1+'</span>'
+                  html+='<h1>'+dt_yr+'</h1></div><strong>'+parseInt(data1.invoice_amt)+'</strong>'
+                  html+='<div class="Garfield_text" data-invo_id="'+data1.invoice_num+'" data-cid="'+res.d.results[0].cust_id+'" data-cname="'+res.d.results[0].cust_name+'" onclick="invoiceDetail(this)" ><h1>'+data1.invoice_num+'</h1><h2>'+data1.item_count+' items</h2></div></div>'
                   }
                  $('#invo_cusId').html(c_idthml).trigger('create');
                  $('#invo_cusName').html(c_namehtml).trigger('create');
@@ -319,3 +328,135 @@ $.ajax({
 
 
 }
+
+//--------------------getting envoice details-----------------------------------------------------------------
+
+function invoiceDetail(ev){
+
+//alert($(ev).data('invo_id'))
+var cname=$(ev).data('cname');
+var cid=$(ev).data('cid');
+
+var uname= window.localStorage.getItem("sale_repId");
+var pwd=window.localStorage.getItem("password");
+var uname1="'"+uname+"'";
+var pwd1="'"+pwd+"'";
+var id=$(ev).data('invo_id');
+var id1="'"+id+"'";
+
+
+var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection?$filter=invoice_num eq "+id1+" &$format=json"
+
+
+$.mobile.showPageLoadingMsg();
+$.ajax({
+      url:url,
+      dataType: 'json',
+      success: function(data, status) {
+             $.mobile.hidePageLoadingMsg();
+             console.log(JSON.stringify(data))
+             var res=eval(data);
+             
+                 var html='';
+                //alert(res.d.results.length)
+                 for(var i=0;i<res.d.results.length;i++){
+                   var data1=res.d.results[i]
+                  html+=' <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
+                  html+='<strong>'+data1.invoice_item+'</strong><strong>'+parseInt(data1.quantity)+' items</strong>'
+                  html+=' <strong>Drop-down</strong><strong>Drop-down</strong></div>'
+                 }
+           // alert(cid);
+           //alert(cname);
+             var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Returns order #</h1>6000058</div>'
+              var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>7/16/2013</div>'
+            $('#invoice_detaila').html(html)
+           $('#in_c_id').html(html6)
+           $('#in_c_name').html(html1)
+            $.mobile.changePage('#returns_creen')
+            },
+ 
+    beforeSend: function(xhrObj){
+                 xhrObj.setRequestHeader('Authorization', make_base_auth(uname,pwd));
+               
+             },
+    error:function(error){
+        console.log(error);
+        $.mobile.hidePageLoadingMsg();
+
+        navigator.notification.alert( 'some thing went wrong', alertDismissed,  'AwardReturns', 'ok');
+                               
+        console.log(JSON.stringify(error))
+     }
+  });
+
+
+
+}
+
+
+
+//--------------------getting envoice details-----------------------------------------------------------------
+
+function invoiceDetail_total(ev){
+
+//alert($(ev).data('invo_id'))
+var cname=$(ev).data('cname');
+var cid=$(ev).data('cid');
+
+var uname= window.localStorage.getItem("sale_repId");
+var pwd=window.localStorage.getItem("password");
+var uname1="'"+uname+"'";
+var pwd1="'"+pwd+"'";
+var id=$(ev).data('invo_id');
+var id1="'"+id+"'";
+
+
+var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection?$filter=invoice_num eq "+id1+" &$format=json"
+
+
+$.mobile.showPageLoadingMsg();
+$.ajax({
+      url:url,
+      dataType: 'json',
+      success: function(data, status) {
+             $.mobile.hidePageLoadingMsg();
+             console.log(JSON.stringify(data))
+             var res=eval(data);
+             
+                 var html='';
+                //alert(res.d.results.length)
+                 for(var i=0;i<res.d.results.length;i++){
+                   var data1=res.d.results[i]
+                  html+=' <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
+                  html+='<strong>'+data1.invoice_item+'</strong><strong>'+parseInt(data1.quantity)+' items</strong>'
+                  html+=' <strong>Drop-down</strong><strong>Drop-down</strong></div>'
+                 }
+           // alert(cid);
+           //alert(cname);
+             var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Returns order #</h1>6000058</div>'
+              var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>7/16/2013</div>'
+            $('#invoice_detaila').html(html)
+           $('#in_c_id').html(html6)
+           $('#in_c_name').html(html1)
+            $.mobile.changePage('#returns_creen')
+            },
+ 
+    beforeSend: function(xhrObj){
+                 xhrObj.setRequestHeader('Authorization', make_base_auth(uname,pwd));
+               
+             },
+    error:function(error){
+        console.log(error);
+        $.mobile.hidePageLoadingMsg();
+
+        navigator.notification.alert( 'some thing went wrong', alertDismissed,  'AwardReturns', 'ok');
+                               
+        console.log(JSON.stringify(error))
+     }
+  });
+
+
+
+}
+
+

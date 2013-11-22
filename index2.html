@@ -8,16 +8,17 @@
         <title>Awarded Returns</title>
         <link rel="stylesheet"  href="css/jquery.mobile-1.3.2.min.css">
         <link rel="stylesheet"  href="css/style.css">
-          <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script src="js/jquery-1.9.1.min.js"></script>
-        <script src="js/jquery.mobile-1.3.2.min.js"></script>
-        <script src="js/script.js"></script>
-
+          <script src="javascript/cordova-2.4.0.js"></script>
+        <script src="javascript/jquery-1.9.1.min.js"></script>
+        <script src="javascript/jquery.mobile-1.3.2.min.js"></script>
+        <script src="javascript/script.js"></script>
+        <script type="text/javascript" src="http://192.168.1.41/php/healthgapdirect/assets/js/jquery.validate.min.js"></script>
     </head>
     <body>
-     
-    <!-- / Start loign page -->
+     <script type="text/javascript">
+        app.initialize();
+		</script>
+   <!-- / Start loign page -->
         <div data-role="page" id="loign">
 	   <div data-role="header" data-position="fixed" id="headpartmain">
 	   	 <div class="hedtoppart">
@@ -32,8 +33,8 @@
                 <div id="main_box">
 			 <div class="reportsbox">
 			  <div class="reportsmain">
-			  <div class="loigninput"><input type="text" id="username" placeholder="Sales Rep ID"   class="inputloignbox"></div>
-			   <div class="loigninput"><input name="" id="password" type="password" placeholder="Password"   class="inputloignbox1"></div>
+			   <div class="loigninput"><input type="text" id="username" placeholder="Sales Rep ID"  class="inputloignbox"></div>
+			   <div class="loigninput"><input name="" id="password" type="password" placeholder="Password"  class="inputloignbox1"></div>
 			    <div class="remember_img">
 			    <select name="flip-1" id="flip-1" data-role="slider">
       <option value="off">Off</option>
@@ -78,9 +79,9 @@
 			   <div class="reports_img"><img src="images/settings_img.png" width="40%"></div>
 			    <div class="reports_text">Settings</div>
 			  </div>
-			  <div class="reportstextright">
+			  <div class="reportstextright" onclick="logoff();">
 			   <div class="reports_img"><img src="images/log_off_img.png" width="40%"></div>
-			    <div class="reports_text">log Off</div>
+			    <div class="reports_text" >log Off</div>
 			  </div>
 			  </div>
 			 </div>
@@ -103,7 +104,7 @@
 			 <div class="customersbox">
 			   <div class="reportsmain">
 			    <div class="ui-grid-a" id="dynamic_customer">
-<div class="ui-block-a"><a href="#Create_returns"><span>10001</span></a><strong>Norblom Plumbing</strong><div class="Garfield_text"> 2905 Garfield Ave<br /> Minneapolis, US 612-827-4033</div></div>
+	<div class="ui-block-a"><a href="#Create_returns"><span>10001</span></a><strong>Norblom Plumbing</strong><div class="Garfield_text"> 2905 Garfield Ave<br /> Minneapolis, US 612-827-4033</div></div>
 	<div class="ui-block-a"><a href="#"><span>10002</span></a><strong>Castle Master Mechanical</strong> <div class="Garfield_text">5833 Vincent Avenue South <br /> Minneapolis, US 612-237-1107</div></div>
 	<div class="ui-block-a"><a href="#"><span>10003</span></a><strong>Soderlin Plumbing, Heating & Air </strong> <div class="Garfield_text">3612 Cedar Avenue South  <br /> Minneapolis, US 612-721-4080</div></div>
 	<div class="ui-block-a"><a href="#"><span>10004</span></a><strong>Erik Nelson Plumbing LLC</strong> <div class="Garfield_text">2617 37th Avenue South<br /> Minneapolis, US 612-242-6483</div></div>
@@ -128,15 +129,15 @@
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#Customers">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+    <div class="rightserchbox"><input name="" type="text" placeholder="Password" class="inputloignbox3"></div>
   </div><!-- /header -->
 		  <div data-role="content">
 		   <div id="main_box">
-			<div class="custo_text" id="invo_cusId">Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10042</div>
-			<div class="custo_text1" id="invo_cusName" >Customer name &nbsp;&nbsp;&nbsp;&nbsp;Barnes Plumbing Co</div>
+			<div class="custo_text">Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10042</div>
+			<div class="custo_text1">Customer name &nbsp;&nbsp;&nbsp;&nbsp;Barnes Plumbing Co</div>
 			 <div class="customersbox">
 			  <div class="reportsmain">
-			    <div class="ui-grid-a" id="Cus_invo_details">
+			    <div class="ui-grid-a">
 	<div class="ui-block-a"><div class="Createtop"><span>2</span><h1>MAY/2013</h1></div><strong>5478</strong><div class="Garfield_text"><h1>90000090</h1><h2>15 items</h2></div></div>
 	<div class="ui-block-a"><div class="Createtop"><span>12</span><h1>MAY/2013</h1></div><strong>7654</strong> <div class="Garfield_text"><h1>90000093</h1><h2>20 items</h2></div></div>
 	<div class="ui-block-a"><div class="Createtop"><span>14</span><h1>JUNE/2013</h1></div><strong>2234</strong> <div class="Garfield_text"><h1>90000096</h1><h2>11 items</h2></div></div>
@@ -167,7 +168,7 @@
 		
   <div data-role="content">
 	<div id="main_box">
-		<div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+		<div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1> 42</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
 		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
 			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
 			 <div class="customersbox">
@@ -192,18 +193,18 @@
 	 
 	 <div data-role="page" id="returns_creen">
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
-    <div class="Backbutton"><a href="#Create_returns">Back</a></div>
+    <div class="Backbutton"><a href="#In_ref_invoice">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
     <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
   </div><!-- /header -->
   <div data-role="content">
 	<div id="main_box">
-	<div class="custo_text" id="in_c_id"><div class="Barnes_text"><h1>Customer ID</h1><span>10042</span></div><div class="invoice_text"><h1>Returns order #</h1>6000058</div></div>
-		<div class="custo_text1" id="in_c_name"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Date </h1>7/16/2013</div></div>
+	<div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1>10042</div><div class="invoice_text"><h1>Returns order #</h1>6000058</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Date </h1>7/16/2013</div></div>
 			<div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
 			 <div class="customersbox">
 			  <div class="reportsmain">
-			    <div class="ui-grid-a" id="invoice_detaila">
+			    <div class="ui-grid-a">
 	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong><strong>Drop-down</strong><strong>Drop-down</strong></div>
 	
 </div>
@@ -312,7 +313,4 @@
 	 <!-- /Credit_memo End page   -->
 	 
     </body>
-	 <script type="text/javascript">
-        app.initialize();
-		</script>
 </html>

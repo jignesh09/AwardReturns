@@ -172,7 +172,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .reportsbox1 {margin:0 auto; width:95% !important; padding-top:4%;}
 .remember_img {margin:0 auto; width:42%; text-align:right !important; font-size:1.4em; color:#b09b95; padding:.8% 0 1% 0;}
 #Customers .ui-block-a { float:left; width:100%; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
-#Customers .ui-block-a span { float:left; width:19% !important; color:#fff; text-align:right; font-size:.8em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#Customers .ui-block-a span { float:left; width:21% !important; color:#fff; text-align:right; font-size:.8em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
 #Customers .ui-block-a strong { float:left; width:34% !important; color:#fff; text-align:left; font-size:.8em !important; border-right:solid 2px #442c27; padding-top:.3em;}
 #Customers .Garfield_text { float:right; width:40% !important; font-size:.6em !important; text-align:left; padding-bottom:1%;}
 #Create_returns .Createtop  span { float:left !important; width:100% !important; text-align:center !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.3em; padding:7px 10px 7px 9px !important; border:solid 1px #fff; border-radius: 81px;}
@@ -193,7 +193,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 
 @media all and (max-width: 800px) and (min-width: 480px) {
 #main_box {margin: 0 auto; width: 100% !important; margin-top: 2%;}
-#Customers .ui-block-a span { float:left; width:17% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#Customers .ui-block-a span { float:left; width:19% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
 #loign .loigninput {margin:0 auto; width:85% !important; padding-bottom:.2em;}
 #loign .remember_img {margin:0 auto; width:85% !important; font-size:1.4em;font-family: 'helveticanmdcnhelveticanmdcn'; color:#b09b95; padding:3% 0 4% 1% !important;}
 #loign .login_img {margin:0 auto; width:75% !important; padding-top:4%;}
@@ -215,8 +215,8 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #In_ref_invoice .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #In_ref_invoice .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #In_ref_invoice .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
-#returns_creen .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#returns_creen .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.5em !important; padding:19px 0 15px 0; text-align:center;}
@@ -297,7 +297,7 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1
 /*Customers pages*/
 #Customers .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px; height:600px;}
 #Customers .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
-#Customers .ui-block-a span { float:left; width:15%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1.3em; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#Customers .ui-block-a span { float:left; width:17%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1.3em; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
 #Customers .ui-block-a span a { text-decoration:none; color:#fff;}
 #Customers .ui-block-a strong { float:left; width:36%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em; border-right:solid 2px #442c27; padding-top:.3em;}
 #Customers .Garfield_text { float:right; width:30%; text-align:left; padding-bottom:1%;}
@@ -371,9 +371,9 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #returns_creen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #returns_creen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
-#returns_creen .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#returns_creen .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 #returns_creen .invoice_text h1  {float:left; width:40%; padding:0; margin:0;}
 #returns_creen .ui-shadow-inset {background:#a2a9bb !important;}
 /*returns_creen pages end*/
