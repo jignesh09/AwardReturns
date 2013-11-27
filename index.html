@@ -16,7 +16,11 @@
 
     </head>
     <body>
+     <script type="text/javascript">
+        app.initialize();
+		</script>
      
+		   
     <!-- / Start loign page -->
         <div data-role="page" id="loign">
 	   <div data-role="header" data-position="fixed" id="headpartmain">
@@ -32,8 +36,8 @@
                 <div id="main_box">
 			 <div class="reportsbox">
 			  <div class="reportsmain">
-			  <div class="loigninput"><input type="text" id="username" placeholder="Sales Rep ID"   class="inputloignbox"></div>
-			   <div class="loigninput"><input name="" id="password" type="password" placeholder="Password"   class="inputloignbox1"></div>
+			  <div class="loigninput"><input type="text" id="username" placeholder="Sales Rep ID" value="demo"   class="inputloignbox"></div>
+			   <div class="loigninput"><input name="" value="demo123" id="password" type="password" placeholder="Password"   class="inputloignbox1"></div>
 			    <div class="remember_img">
 			    <select name="flip-1" id="flip-1" data-role="slider">
       <option value="off">Off</option>
@@ -41,7 +45,7 @@
     </select>
 			    : Remember me</div>
 			     <div class="login_img"><a href="#" onclick="Login()"><img src="images/login_img.png" width="100%"></a></div>
-				<div class="tryout_img"><a href="#"><img src="images/tryout_img.png" width="100%"></a></div>
+				<div class="tryout_img"><a href="#" onclick="customerInvoReturns()"><img src="images/tryout_img.png" width="100%"></a></div>
 			  
 			  </div>
 			  </div>
@@ -63,7 +67,7 @@
                 <div id="main_box">
 			  <div class="reportsbox1">
 			   <div class="reportsmain">
-			    <a href="#Customers"><div class="reportstextleft">
+			    <a href="#" onclick="getReports()"><div class="reportstextleft">
 			     <div class="reports_img"><img src="images/reports_img.png" width="40%"></div>
 			     <div class="reports_text">Reports</div>
 			  </div></a>
@@ -78,7 +82,7 @@
 			   <div class="reports_img"><img src="images/settings_img.png" width="40%"></div>
 			    <div class="reports_text">Settings</div>
 			  </div>
-			  <div class="reportstextright">
+			  <div class="reportstextright" onclick="logoff();">
 			   <div class="reports_img"><img src="images/log_off_img.png" width="40%"></div>
 			    <div class="reports_text">log Off</div>
 			  </div>
@@ -145,7 +149,7 @@
 	
 	
 </div><!-- /grid-a -->
-			   <div class="justret_button"><a href="#In_ref_invoice"><img src="images/justret_button.png" width="100%"></a></div>
+			   <div class="justret_button" ><a href="#" onclick="customerInvoReturns()"><img src="images/justret_button.png" width="100%"></a></div>
 			    
 			    </div>
 			    
@@ -204,17 +208,30 @@
 			 <div class="customersbox">
 			  <div class="reportsmain">
 			    <div class="ui-grid-a" id="invoice_detaila">
-	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong><strong>Drop-down</strong><strong>Drop-down</strong></div>
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong>
+	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
+	</div>
 	
 </div>
- <div class="justret_button"><a href="#Returns_confirmation_screen2"><img src="images/Return_button.png" width="100%"></a></div>
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong>
+	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
+	</div>
+	
+</div>
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong>
+	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
+	</div>
+	
+</div>
+ 
 			    
 			    </div>
-			    
+			    <div class="justret_button"><a href="#" onclick="gotoReturnconfrm()"><img src="images/Return_button.png" width="100%"></a></div>
 			  </div>
 			 </div>
                </div> 
 	        </div>
+	 </div>
 	 <!-- /returns_creen End page   -->
 	 
   <!-- /Returns_confirmation_screen2 page start   -->
@@ -228,16 +245,16 @@
 		
   <div data-role="content">
 	<div id="main_box">
-		<div class="custo_text"><div class="Barnes_text"><h1>Return Order</h1>124657</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
-		<div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+		<div class="custo_text" id="in_c_id_retun"><div class="Barnes_text"><h1>Return Order</h1>124657</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+		<div class="custo_text1" id="in_c_name_retun"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
 			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
 			 <div class="customersbox">
 			  <div class="reportsmain">
-			    <div class="ui-grid-a">
-	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
-	
+			    <div class="ui-grid-a" id="invoice_detaila_return">
+	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div id="poor_quality_text"><div id="textinput"><input type="text" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>
+	<!--<div class="ui-block-a"><select><option>ok</option></select></div>-->
 </div>
- <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#Credit_memo"><div class="yes_text">Yes</div></a><div class="Cancel_text">Cancel</div></div>
+ <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#" onclick="gotoCreditmemo()"><div class="yes_text">Yes</div></a><a href="#returns_creen"><div class="Cancel_text">Cancel</div></a></div>
 			    
 			    </div>
 			    
@@ -283,6 +300,43 @@
     <div class="Backbutton"><a href="#Returns_confirmation_screen2">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
       </div><!-- /header -->
+   <div data-role="content">
+	<div id="main_box">
+		<div class="custo_text"><div class="Barnes_text"><h1>Return Order</h1> 124657</div></div>
+		<div class="custo_text1"><div class="Barnes_text"><h1>Credit Memo#</h1>100000007</div></div>
+			<div class="return_qty"></div>
+			 <div class="customersbox">
+			
+			    <div class="ui-grid-a">
+	<div class="Credit_memo">
+	<div class="customer_credit"><h1>Customer Credit Memo</h1><div class="customer_right">
+	<div class="referencebox"><span>Reference #</span><span>0000011</span><span>Ship Via</span><span>FedEx- Federal EX</span></div>
+	<div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span>02/16/2003</span></div>
+	
+	</div></div>
+	
+	</div>
+	
+</div>
+ <!-- <div class="justret_button"><a href="#"><img src="images/email_button.png" width="100%"></a></div>
+  <div class="justret_buttonright"><a href="#"><img src="images/done_button.png" width="100%"></a></div>-->
+			    
+			    </div>
+			    
+		
+			 </div>
+               </div> 
+	        </div>
+	
+	  <!-- /Credit_memo End page   -->
+	   
+	  <!-- /Credit_memo page start   -->
+	 
+	 <div data-role="page" id="Credit_memo1">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#Returns_confirmation_screen2">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+      </div><!-- /header -->
   <div data-role="content">
 	<div id="main_box">
 		<div class="custo_text"><div class="Barnes_text"><h1>Return Order</h1> 124657</div></div>
@@ -311,8 +365,65 @@
 	        </div>
 	 <!-- /Credit_memo End page   -->
 	 
+	  <div data-role="page" id="ReportsPage">
+	  <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#homePage">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+  </div><!-- /header -->
+		  <div data-role="content">
+		   	<div id="main_box">
+			  
+			 <div class="customersbox">
+			      <div class="return_qty"><h1>Invoice #</h1><h1 style="border-right:none;">Return Order #</h1></div>
+			   <div class="reportsmain">
+			    <div class="ui-grid-a" id="Report_customer">
+<div class="ui-block-a"><a href="#Create_returns"><span>11</span></a><strong>Norblom Plumbing</strong><div class="poor_quality_text1"><div class="textinputtes1">text</div><div class="selecttextbox1">box</div>
+	</div></div>
+<div class="ui-block-a"><a href="#Create_returns"><span>10</span></a><strong>Norblom Plumbing</strong><div class="poor_quality_text1"><div class="textinputtes1">text</div><div class="selecttextbox1">box</div>
+	</div></div>
+	
+</div><!-- /grid-a -->
+			   
+			    
+			    </div>
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	  
+	  
+	  <div data-role="page" id="ReturnOrderDeatilpage">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#ReportsPage">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3">
+      </div>
+  </div><!-- /header -->
+		
+  <div data-role="content">
+	<div id="main_box">
+		<div class="custo_text" id="returnDetailHead"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+		<div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a" id="Return_Oid_detail">
+	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+	<div class="ui-block-a"><div class="Createtop"><span>20</span></div><strong>Water Heaters</strong> <div class="Garfield_text"><h1>P500043</h1></div><div class="poor_quality_text"><span>2</span></div></div>
+	<div class="ui-block-a" style="border-bottom: none;"><div class="Createtop"><span>30</span></div><strong>Access Doors</strong> <div class="Garfield_text"><h1>P500081</h1></div><div class="poor_quality_text"><span>4</span></div></div>
+	
+</div>
+ <div class="justret_button"><a href="#homePage"><img src="images/home.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /In_ref_invoice End page   -->
+	  
+	  
     </body>
-	 <script type="text/javascript">
-        app.initialize();
-		</script>
 </html>
