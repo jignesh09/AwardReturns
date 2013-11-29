@@ -2156,7 +2156,7 @@ transform:translateX(0) scale(1)
 	width: 49.95%
 }
 .ui-grid-a>:nth-child(n) {
-	width: 50%;
+	width: 100%;
 	margin-right: -.5px
 }
 .ui-grid-a .ui-block-a {
@@ -3089,7 +3089,7 @@ opacity:.0001
 	opacity: 0
 }
 .ui-select .ui-btn-icon-right .ui-btn-inner, .ui-select .ui-li-has-count .ui-btn-inner {
-	padding-right: 45px
+	padding-right: 33%
 }
 .ui-select .ui-mini.ui-btn-icon-right .ui-btn-inner {
 	padding-right: 32px

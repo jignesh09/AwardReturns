@@ -94,19 +94,20 @@
         </div>
 	 <!-- / End homePage page   -->
 	   	 
-	 <!-- / page Customers start   -->
+      <!-- / page Customers start   -->
 	 
  <div data-role="page" id="Customers">
 	  <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#homePage">Back</a></div>
-    <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+    <h1 class="returenstext">Customers</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" id="cu_list_search" onkeyup="SearchCuList(this)"></div>
   </div><!-- /header -->
 		  <div data-role="content">
 		   	<div id="main_box">
 			 <div class="customersbox">
 			   <div class="reportsmain">
-			    <div class="ui-grid-a" id="dynamic_customer">
+			    <div class="ui-grid-a" id="">
+				<ul id="dynamic_customer" style="list-style: none;">
 <div class="ui-block-a"><a href="#Create_returns"><span>10001</span></a><strong>Norblom Plumbing</strong><div class="Garfield_text"> 2905 Garfield Ave<br /> Minneapolis, US 612-827-4033</div></div>
 	<div class="ui-block-a"><a href="#"><span>10002</span></a><strong>Castle Master Mechanical</strong> <div class="Garfield_text">5833 Vincent Avenue South <br /> Minneapolis, US 612-237-1107</div></div>
 	<div class="ui-block-a"><a href="#"><span>10003</span></a><strong>Soderlin Plumbing, Heating & Air </strong> <div class="Garfield_text">3612 Cedar Avenue South  <br /> Minneapolis, US 612-721-4080</div></div>
@@ -115,7 +116,7 @@
 	<div class="ui-block-a"><a href="#"><span>10006</span></a><strong>Barnes Plumbing Co</strong> <div class="Garfield_text">3923 Washington Avenue North <br /> Minneapolis, US 612-529-1172</div></div>
 	<div class="ui-block-a" style="border:none;"><a href="#"><span>10007</span></a><strong>Erik Nelson Plumbing LLC</strong> <div class="Garfield_text">2365 Louisiana Avenue North <br /> Minneapolis, US 763-354-2800</div></div>
 </div><!-- /grid-a -->
-			   
+			   </ul>
 			    
 			    </div>
 			  </div>
@@ -131,8 +132,8 @@
 	 
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#Customers">Back</a></div>
-    <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+    <h1 class="returenstext">Create Returns</h1>
+  <!--  <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>-->
   </div><!-- /header -->
 		  <div data-role="content">
 		   <div id="main_box">
@@ -198,7 +199,7 @@
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#Create_returns">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
   </div><!-- /header -->
   <div data-role="content">
 	<div id="main_box">
@@ -207,7 +208,8 @@
 			<div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
 			 <div class="customersbox">
 			  <div class="reportsmain">
-			    <div class="ui-grid-a" id="invoice_detaila">
+			    <div class="ui-grid-a" id="weq">
+				<ul id="invoice_detaila" style="list-style: none;">
 	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong>
 	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
 	</div>
@@ -223,7 +225,7 @@
 	</div>
 	
 </div>
- 
+				</ul>
 			    
 			    </div>
 			    <div class="justret_button"><a href="#" onclick="gotoReturnconfrm()"><img src="images/Return_button.png" width="100%"></a></div>
@@ -240,7 +242,7 @@
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#returns_creen">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="returnconform(this)"></div>
   </div><!-- /header -->
 		
   <div data-role="content">
@@ -250,8 +252,10 @@
 			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
 			 <div class="customersbox">
 			  <div class="reportsmain">
-			    <div class="ui-grid-a" id="invoice_detaila_return">
+			    <div class="ui-grid-a" id="">
+				<ul id="invoice_detaila_return" style="list-style: none;">
 	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div id="poor_quality_text"><div id="textinput"><input type="text" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>
+				</ul>
 	<!--<div class="ui-block-a"><select><option>ok</option></select></div>-->
 </div>
  <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#" onclick="gotoCreditmemo()"><div class="yes_text">Yes</div></a><a href="#returns_creen"><div class="Cancel_text">Cancel</div></a></div>
@@ -295,39 +299,84 @@
 	 
 	  <!-- /Credit_memo page start   -->
 	 
+	  <!-- /Credit_memo page start   -->
+	 
 	 <div data-role="page" id="Credit_memo">
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#Returns_confirmation_screen2">Back</a></div>
+    
     <h1 class="returenstext">RETURNS REPORTS</h1>
+     <div class="Backbuttonhome"><a href="#homePage">Home</a></div>
       </div><!-- /header -->
-   <div data-role="content">
+  <div data-role="content">
 	<div id="main_box">
 		<div class="custo_text"><div class="Barnes_text"><h1>Return Order</h1> 124657</div></div>
 		<div class="custo_text1"><div class="Barnes_text"><h1>Credit Memo#</h1>100000007</div></div>
 			<div class="return_qty"></div>
 			 <div class="customersbox">
-			
+			  <div class="reportsmain">
 			    <div class="ui-grid-a">
 	<div class="Credit_memo">
 	<div class="customer_credit"><h1>Customer Credit Memo</h1><div class="customer_right">
 	<div class="referencebox"><span>Reference #</span><span>0000011</span><span>Ship Via</span><span>FedEx- Federal EX</span></div>
 	<div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span>02/16/2003</span></div>
-	
 	</div></div>
-	
+	<div class="Credit_memo_img">
+		<div class="documen_main_box">
+		
+		  <div class="document_text">Document Overview</div>
+		    <div class="documentdiv" id="cus_ship_add">
+		    <div class="Overview_text">Document Overview</div>
+		    <div class="text1">Bill to Customer Address</div>
+		    <div class="text2"><h1>COOOOO1-SAMPLE CUSTOMER</h1> <h2>78 Low Drive, Nowwheretown, Nj, 1933, United States</h2></div>
+		    <div class="text3">Ship to Address</div>
+		    <div class="text4">78 Low Drive, Nowwheretown, Nj, 1933, United States</div>
+		    </div>
+		    
+		    <div class="items_text">Items</div>
+		    <div class="documentdiv1">
+		    <div class="Overview_text">Document Overview</div>
+		    <div class="Over_text_box">
+		     <div class="text5" style="border-left:none;"><h1 style=" height:24px;" class="texth1"></h1> <h2 style=" height:20px; background:none; border-bottom:none" class="texth2"></h2></div>
+			<div class="text5"><h1>Item</h1> <h2>It 78-343</h2></div>
+			<div class="text5"><h1>Descrption</h1> <h2>Soft Paper t...</h2></div>
+			<div class="text5"><h1>Reason</h1> <h2 style="background:#fff;">do not need</h2></div>
+			<div class="text5"><h1>COOOOO1</h1> <h2>5</h2></div>
+			<div class="text5"><h1>Returning</h1> <h2>3</h2></div>
+			<div class="text5"><h1>Quantity</h1> <h2 style="background:#fff;">3</h2></div>
+			<div class="text5"><h1>UOM</h1> <h2>Each</h2></div>
+			<div class="text5"><h1>Price</h1> <h2 style="background:#fff;">$14,00</h2></div>
+			<div class="text5"><h1>Total</h1> <h2>$14,00</h2></div>
+			<div class="text6" style="border-right:none;"><h1>Tax</h1> <h2 style="background:#fff;">Non</h2></div>
+			<div class="total_text">Total: $42,00</div>
+		    </div>
+		    </div>
+		    
+		    
+			<div class="comments_box">
+			 <div class="comments_textarea"><h1>Comments</h1><textarea name="" cols="" rows="" class="textareabox"></textarea></div>
+			 <div class="comments_tselect"><select name="">
+			 <option value="Tax: SAMPLE TAX">Tax: SAMPLE TAX</option>
+			 </select><span style="float:right; width:12%; padding-top:6%;">0%</span></div>
+			 <div class="comments_box_right"><span>Total Tax: $0,00</span><span>Total:$42,00</span></div>
+			
+			</div>
+
+		</div>
+		<!--<div style="margin:7px auto;width:80%; border:1px solid #6b6c6c;padding:2% 0; border-radius:8px; background:#e4e6e7;">smm</div>-->
+	</div>
 	</div>
 	
 </div>
- <!-- <div class="justret_button"><a href="#"><img src="images/email_button.png" width="100%"></a></div>
-  <div class="justret_buttonright"><a href="#"><img src="images/done_button.png" width="100%"></a></div>-->
+  <div class="justret_button"><a href="#"><img src="images/email_button.png" width="100%"></a></div>
+  <div class="justret_buttonright"><a href="#"><img src="images/done_button.png" width="100%"></a></div>
 			    
 			    </div>
 			    
-		
+			  </div>
 			 </div>
                </div> 
 	        </div>
-	
 	  <!-- /Credit_memo End page   -->
 	   
 	  <!-- /Credit_memo page start   -->
@@ -369,7 +418,7 @@
 	  <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#homePage">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="serchReports(this)"></div>
   </div><!-- /header -->
 		  <div data-role="content">
 		   	<div id="main_box">
@@ -377,11 +426,12 @@
 			 <div class="customersbox">
 			      <div class="return_qty"><h1>Invoice #</h1><h1 style="border-right:none;">Return Order #</h1></div>
 			   <div class="reportsmain">
-			    <div class="ui-grid-a" id="Report_customer">
-<div class="ui-block-a"><a href="#Create_returns"><span>11</span></a><strong>Norblom Plumbing</strong><div class="poor_quality_text1"><div class="textinputtes1">text</div><div class="selecttextbox1">box</div>
+			    <div class="ui-grid-a" id="ds">
+				<ul id="Report_customer" style="list-style: none;"></ul>
+<!-- <div class="ui-block-a"><a href="#Create_returns"><span>11</span></a><strong>Norblom Plumbing</strong><div class="poor_quality_text1"><div class="textinputtes1">text</div><div class="selecttextbox1">box</div>
 	</div></div>
 <div class="ui-block-a"><a href="#Create_returns"><span>10</span></a><strong>Norblom Plumbing</strong><div class="poor_quality_text1"><div class="textinputtes1">text</div><div class="selecttextbox1">box</div>
-	</div></div>
+	</div></div>-->
 	
 </div><!-- /grid-a -->
 			   
@@ -397,7 +447,7 @@
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
     <div class="Backbutton"><a href="#ReportsPage">Back</a></div>
     <h1 class="returenstext">RETURNS REPORTS</h1>
-    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3">
+    <div class="rightserchbox"><input name="" type="text" placeholder="" onkeyup="serchReDetails(this)" class="inputloignbox3">
       </div>
   </div><!-- /header -->
 		
@@ -408,10 +458,12 @@
 			<div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
 			 <div class="customersbox">
 			  <div class="reportsmain">
-			    <div class="ui-grid-a" id="Return_Oid_detail">
+			    <div class="ui-grid-a" id="ww">
+				<ul id="Return_Oid_detail" style="list-style: none;">
 	<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
 	<div class="ui-block-a"><div class="Createtop"><span>20</span></div><strong>Water Heaters</strong> <div class="Garfield_text"><h1>P500043</h1></div><div class="poor_quality_text"><span>2</span></div></div>
 	<div class="ui-block-a" style="border-bottom: none;"><div class="Createtop"><span>30</span></div><strong>Access Doors</strong> <div class="Garfield_text"><h1>P500081</h1></div><div class="poor_quality_text"><span>4</span></div></div>
+	                    </ul>
 	
 </div>
  <div class="justret_button"><a href="#homePage"><img src="images/home.png" width="100%"></a></div>

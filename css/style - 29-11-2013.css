@@ -98,12 +98,37 @@ outline: 0 !important;}
 div.ui-slider-switch { float:left !important; width:5em !important; margin:-6% 1% 0 0 !important;}
 #main_box {margin:0 auto; width:100% !important; margin-top:2%;}
 #Customers .customersbox {float: left; width: 100%;background: url(../images/customers_bg.png) repeat center bottom; margin-top: 80px; height: 345px !important;}
+
+/*Credit_memo Date=28-11-2013 start*/
+.documentdiv1 { margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #6b6c6c; height:1002px !important;}
+.Over_text_box {float:left; width:100%;}
+.text5 { float:left; width:255px !important; text-align:center; border-left: none !important;}
+.text5 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
+.text5 h2 { padding:6% 0 6% 3%; margin:0; float:left; background:#d4d1c9; width:97%; border-bottom:solid 1px #000; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.texth1 { height:20px !important;}
+.text6 { float:right; width:255px !important; text-align:center; border-left:solid 1px #000; border-right:solid 1px #000; }
+.text6 h1 {padding:2% 0 2% 3%; margin:0; float:left;width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
+.text6 h2 { padding:6% 0 6% 3%; margin:0; float:left; background:#d4d1c9; border-bottom:solid 1px #000;  width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.total_text { float:right; width:91%; text-align:right; padding:1% 1% 0 0; }
+#Credit_memo .document_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c;font-size:2em !important; padding:0 0 1% 1%;}
+#Credit_memo .items_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c; font-size:2em !important;
+ padding:1% 0 1% 2% !important;}
+ 
+/*Credit_memo Date=28-11-2013 end*/
+
+
+#ReportsPage .customersbox {float: left; width: 100%;background: url(../images/customers_bg.png) repeat center bottom; margin-top: 80px; height: 345px !important;}
+
 .ui-header .ui-title {min-height: 1.1em !important; font-size: 12px !important; display: block !important; margin: .6em 18% .8em; padding: 0 !important;
 text-overflow: ellipsis !important; white-space: nowrap !important; overflow:none !important; outline: 0 !important;}
 h1.returenstext {float: left; width: 27% !important;}
 .Backbutton { float:left; width:10%; font-size:.9em !important; padding:.7em .5em .8em 2em !important; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat left 2px #9c8a9a; background-size:32% 87% !important; cursor:pointer;}
 .Backbutton a { text-decoration:none; color:#fff;}
+
+.Backbutton1 { float:right; width:10%; font-size:.9em !important; padding:.7em .5em .8em 2em !important; border:solid 1px #7f6270;
+background:url(../images/backtohome.png) no-repeat left 2px #9c8a9a; background-size:32% 87% !important; cursor:pointer;}
+.Backbutton1 a { text-decoration:none; color:#fff;}
 #Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em !important; border-top: solid 1px #fff; padding-top:1%;}
 #Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em !important; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
 #Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.6em !important; padding:12% 0 0 0; margin:0;}
@@ -126,6 +151,30 @@ background:url(../images/back_icon.png) no-repeat left 2px #9c8a9a; background-s
 #In_ref_invoice .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:2% 2% 1% 0 !important;}
 #In_ref_invoice .poor_quality_text span {float: left; width: 30% !important; color: rgb(255, 255, 255); font-size: .9em !important; padding: 3px 10px 2px 0 !important; text-align: right; border: solid 1px rgb(255, 255, 255);}
 #In_ref_invoice .justret_button { margin:1% 22% 0 0 !important; width: 60% !important; float:right !important;}
+
+
+
+
+
+
+
+#ReturnOrderDeatilpage .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .Barnes_text h1 {padding:0; margin:0; float:left; width:62% !important;}
+#ReturnOrderDeatilpage .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .invoice_text h1  {float:left; width:62% !important; padding:0; margin:0;}
+#ReturnOrderDeatilpage .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0 !important; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1em !important; border-right: solid 1px #766463;}
+#ReturnOrderDeatilpage .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:35px !important;}
+#ReturnOrderDeatilpage .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
+#ReturnOrderDeatilpage .Garfield_text h1 {float:left; width:100%; font-size:.9em !important; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
+#ReturnOrderDeatilpage .Garfield_text h2 {float:left; width:100%; font-size:.8em !important; text-align:center; padding:2% 0 0 0; margin:0;}
+#ReturnOrderDeatilpage .poor_quality_text {float: left; width: 34% !important; margin-top:5% !important;}
+#ReturnOrderDeatilpage .poor_quality_text h1 {padding:.5em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.7em !important;} 
+#ReturnOrderDeatilpage .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:2% 2% 1% 0 !important;}
+#ReturnOrderDeatilpage .poor_quality_text span {float: left; width: 30% !important; color: rgb(255, 255, 255); font-size: .9em !important; padding: 3px 10px 2px 0 !important; text-align: right; border: solid 1px rgb(255, 255, 255);}
+#ReturnOrderDeatilpage .justret_button { margin:1% 22% 0 0 !important; width: 60% !important; float:right !important;}
+
+
+
 #returns_creen .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:62% !important;}
 #returns_creen .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
@@ -164,6 +213,11 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Credit_memo .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 #Credit_memo .Barnes_text h1 {padding: 0; margin: 0; float: left !important; width: 55% !important;}
 #Customers .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:10px !important; height:600px;}
+
+
+#ReportsPage .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:10px !important; height:600px;}
+
+
 .inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 2px !important; padding:3% 0 2% 12% !important; width:88% !important;}
 }
 
@@ -175,9 +229,27 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Customers .ui-block-a span { float:left; width:21% !important; color:#fff; text-align:right; font-size:.8em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
 #Customers .ui-block-a strong { float:left; width:34% !important; color:#fff; text-align:left; font-size:.8em !important; border-right:solid 2px #442c27; padding-top:.3em;}
 #Customers .Garfield_text { float:right; width:40% !important; font-size:.6em !important; text-align:left; padding-bottom:1%;}
+
+
+
+#ReportsPage .ui-block-a { float:left; width:100%; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#ReportsPage .ui-block-a span { float:left; width:21% !important; color:#fff; text-align:right; font-size:.8em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#ReportsPage .ui-block-a strong { float:left; width:34% !important; color:#fff; text-align:left; font-size:.8em !important; border-right:solid 2px #442c27; padding-top:.3em;}
+#ReportsPage .Garfield_text { float:right; width:40% !important; font-size:.6em !important; text-align:left; padding-bottom:1%;}
+
+
+
+
 #Create_returns .Createtop  span { float:left !important; width:100% !important; text-align:center !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.3em; padding:7px 10px 7px 9px !important; border:solid 1px #fff; border-radius: 81px;}
+#ReturnOrderDeatilpage .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.9em !important;  padding:1.3em 0 .8em .5em !important;}
+#ReturnOrderDeatilpage .return_qty {float:right; width:70% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+
+
+
 #In_ref_invoice .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.9em !important;  padding:1.3em 0 .8em .5em !important;}
 #In_ref_invoice .return_qty {float:right; width:70% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+
+
 #returns_creen .ui-block-a  strong { float:left; width:18% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.3em;  padding:2em 0 .8em .5em !important;}
 #returns_creen .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #Returns_confirmation_screen2 .return_qty {float:right; width:70% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
@@ -194,6 +266,10 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 @media all and (max-width: 800px) and (min-width: 480px) {
 #main_box {margin: 0 auto; width: 100% !important; margin-top: 2%;}
 #Customers .ui-block-a span { float:left; width:19% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+
+
+#ReportsPage .ui-block-a span { float:left; width:19% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+
 #loign .loigninput {margin:0 auto; width:85% !important; padding-bottom:.2em;}
 #loign .remember_img {margin:0 auto; width:85% !important; font-size:1.4em;font-family: 'helveticanmdcnhelveticanmdcn'; color:#b09b95; padding:3% 0 4% 1% !important;}
 #loign .login_img {margin:0 auto; width:75% !important; padding-top:4%;}
@@ -207,6 +283,63 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .logo img { float:left; width:65% !important; padding:0 0 0 20% !important;}
 .reports_text a { text-decoration:none !important; color:#fff !important;}
 #Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.4em !important; padding:12% 0 0 37% !important; margin:0;}
+
+/*Credit_memo Date=28-11-2013 start*/
+.documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:228px !important;}
+.Overview_text { float:left; width:388px !important; background:#6b6c6c;padding:10px 0 10px 10px !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.5em !important; color:#e4e6e7; }
+.text1 { float:left !important; width:98% !important; padding:1% 0 1.5% 2% !important; margin-right:2%; text-align:left !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
+.text2 { float:left; width:100% !important; text-align:left; background:#fff; border-left: none !important; border-right:none !important; }
+.text2 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-bottom:solid 1px #000;}
+.text2 h2 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.text3 { float:left; width:100% !important; padding:1.5% 0 1.5% 2% !important; text-align:left !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-right:solid 1px #000;}
+.text4 {float:left; width:98% !important; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+
+
+.documentdiv1 { margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #6b6c6c; height:450px !important;}
+.Over_text_box {float:left; width:100%;}
+.text5 { float:left; width:131px !important; text-align:center; border-left:solid 1px #000;}
+.text5 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
+.text5 h2 { padding:6% 0 6% 3%; margin:0; float:left; background:#d4d1c9; width:97%; border-bottom:solid 1px #000; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.texth1 { height:276px !important;}
+.text6 { float:right; width:132px !important; text-align:center; border-left:solid 1px #000; border-right:solid 1px #000; }
+.text6 h1 {padding:2% 0 2% 3%; margin:0; float:left;width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
+.text6 h2 { padding:6% 0 6% 3%; margin:0; float:left; background:#d4d1c9; border-bottom:solid 1px #000;  width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.total_text { float:right; width:91%; text-align:right; padding:1% 1% 0 0; }
+#Credit_memo .document_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c;font-size:2em !important; padding:0 0 1% 1%;}
+#Credit_memo .items_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c; font-size:2em !important;
+ padding:1% 0 1% 2% !important;}
+
+
+
+
+
+
+
+#Credit_memo .documen_main_box {margin:0 auto;width:98%; border:1px solid #6b6c6c; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:460px !important; margin-bottom: 2%;}
+#Credit_memo .tblcustmor_credit{ margin:5px !important; width:98%;}
+#Credit_memo .tblcustmor_credit th{border:1px solid #6b6c6c; vertical-align:middle;}
+#Credit_memo .tblcustmor_credit td{ border:1px solid #6b6c6c; border-left: 0; border-top: 0; vertical-align:middle;}
+#Credit_memo .txt_center{text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:.9em !important;}
+#Credit_memo .txt_left{ text-align:left; padding:5px 0 2px 5px !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important;}
+#Credit_memo .txt_right{text-align:right; padding-right:10px !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:.9em !important;}
+#Credit_memo .bg_white{background:#ffffff; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important;}
+#Credit_memo .backgtop {background:#6b6c6c; color:#e4e6e7;}
+#Credit_memo .txt2_center{text-align:center; padding:10px 0; width:5%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:.9em !important;}
+#Credit_memo .txt3_center{text-align:center;padding:5px 0 !important; width:5%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; background:#d4d1c9; font-size:.8em !important;}
+#Credit_memo .txt2_right{text-align:right; padding:10px 25px 10px 0; width:5%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.2em;}
+#Credit_memo .bg_white1 {background:#fff;}
+
+#Credit_memo .comments_box {float:left; width:100%;}
+#Credit_memo .comments_textarea {float:left; width:20%; margin:2% 0 0 1%;}
+#Credit_memo .comments_textarea h1 {float:left; width:20%; padding:0; margin:0; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.4em;}
+#Credit_memo .textareabox { float:left; width:100%; height:78px !important;}
+#Credit_memo .comments_tselect {float:left; width:41% !important; margin:10% 0 0 1% !important;}
+#Credit_memo .ui-select {display: block; position: relative; width: 85% !important; float: left !important;}
+#Credit_memo .comments_box_right {float:right; width:25% !important; background:#d4d1c9; border:#6b6c6c 1px solid; margin:13% 1.3% 0 0 !important;}
+#Credit_memo .comments_box_right span { float:left; width:90% !important; text-align:right; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:.9em !important; padding:2% 0 2% 0;}
+/*Credit_memo Date=28-11-2013 end*/
+
+
 #In_ref_invoice .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #In_ref_invoice .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.8em !important; padding:1.3em 0 .8em .5em !important;}
 #In_ref_invoice .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
@@ -215,6 +348,26 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #In_ref_invoice .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #In_ref_invoice .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #In_ref_invoice .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+
+
+
+
+
+
+#ReturnOrderDeatilpage .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#ReturnOrderDeatilpage .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.8em !important; padding:1.3em 0 .8em .5em !important;}
+#ReturnOrderDeatilpage .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
+#ReturnOrderDeatilpage .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
+#ReturnOrderDeatilpage .poor_quality_text h1 {padding:.5em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
+#ReturnOrderDeatilpage .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
+
+
+
+
+
+
 #returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
@@ -235,6 +388,11 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
 .Backbutton a { text-decoration:none !important; color:#fff !important;}
+
+.Backbutton1 { float:right; width:10%  !important; font-size:1em !important;  padding:1em 0 1em 6% !important; border:solid 1px #7f6270;
+background:url(../images/backtohome.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
+.Backbutton1 a { text-decoration:none !important; color:#fff !important;}
+
 h1.returenstext {float: left; width:30% !important;}
 .inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 3px !important; padding:3% 0 2% 12% !important; width:88% !important;}
 
@@ -261,6 +419,15 @@ h1.returenstext {float: left; width:30% !important;}
 #Customers .ui-block-a span { float:left; width:15%; color:#fff; text-align:right; font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
 #Customers .ui-block-a strong { float:left; width:36%; color:#fff; text-align:left; font-size:1em !important; border-right:solid 2px #442c27; padding-top:.3em;}
 #Customers .Garfield_text { float:right; width:40% !important; font-size:.9em !important; text-align:left; padding-bottom:1%;}
+
+
+
+#ReportsPage .ui-block-a span { float:left; width:15%; color:#fff; text-align:right; font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#ReportsPage .ui-block-a strong { float:left; width:36%; color:#fff; text-align:left; font-size:1em !important; border-right:solid 2px #442c27; padding-top:.3em;}
+#ReportsPage .Garfield_text { float:right; width:40% !important; font-size:.9em !important; text-align:left; padding-bottom:1%;}
+
+
+
 #Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 15px 15px 15px !important; text-align:center; border:solid 1px #fff; border-radius: 81px;}
 
 }
@@ -303,6 +470,18 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1
 #Customers .Garfield_text { float:right; width:30% !important; text-align:left; padding-bottom:1%;}
 #Customers .ui-content { padding:15px 15px 0 15px !important;}
 #Customers .ui-shadow-inset {background:#a2a9bb !important;}
+
+
+
+
+#ReportsPage .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px; height:600px;}
+#ReportsPage .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#ReportsPage .ui-block-a span { float:left; width:9% !important; border-radius: 66px;font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1.3em; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
+#ReportsPage .ui-block-a span a { text-decoration:none; color:#fff;}
+#ReportsPage .ui-block-a strong { float:left; width:36%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em; border-right:solid 2px #442c27; padding-top:.3em;}
+#ReportsPage .Garfield_text { float:right; width:30% !important; text-align:left; padding-bottom:1%;}
+#ReportsPage .ui-content { padding:15px 15px 0 15px !important;}
+#ReportsPage .ui-shadow-inset {background:#a2a9bb !important;}
 
 /*Customers pages end*/
 
@@ -352,6 +531,31 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #In_ref_invoice .ui-shadow-inset {background:#a2a9bb !important;}
 /*In_ref_invoice pages end*/
 
+#ReturnOrderDeatilpage .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#ReturnOrderDeatilpage .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
+#ReturnOrderDeatilpage .ui-content { padding:15px 15px 0 15px !important;}
+#ReturnOrderDeatilpage .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
+#ReturnOrderDeatilpage .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; 
+border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
+#ReturnOrderDeatilpage .Createtop { float:left; width:26%; margin:0 2% 1% 0;}
+#ReturnOrderDeatilpage .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
+#ReturnOrderDeatilpage .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
+#ReturnOrderDeatilpage .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
+#ReturnOrderDeatilpage .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#ReturnOrderDeatilpage .Garfield_text h1 {float:left; width:100%; text-align:center;  padding:10% 0 2% 0; margin:0;}
+#ReturnOrderDeatilpage .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
+#ReturnOrderDeatilpage .justret_button {float:right; width:47%; margin-right:27%; margin-top: 3%;}
+#ReturnOrderDeatilpage .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#ReturnOrderDeatilpage .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
+#ReturnOrderDeatilpage .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#ReturnOrderDeatilpage .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+#ReturnOrderDeatilpage .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; /*font-size:1.5em; */ border-right: solid 1px #766463;}
+#ReturnOrderDeatilpage .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .invoice_text h1  {float:left; width:46%; padding:0; margin:0;}
+#ReturnOrderDeatilpage .ui-shadow-inset {background:#a2a9bb !important;}
+
 /*returns_creen pages*/
 #returns_creen .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
 #returns_creen .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27; margin-bottom:3%;}
@@ -370,7 +574,13 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
 #returns_creen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #returns_creen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+
+#ReportsPage .return_qty {float:right; width:51%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:-7%;}
+
 #returns_creen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
+
+#ReportsPage .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.2em; border-right: solid 1px #766463;}
+
 #returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
 #returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
@@ -439,7 +649,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 /*Returns_confirmation_screen pages end*/
 
 /*Credit_memo pages*/
-#Credit_memo .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
+#Credit_memo .customersbox { float:left; width:100%;/* background:url(../images/customers_bg.png) repeat center bottom; */ height: auto;}
 #Credit_memo .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
 #Credit_memo .ui-content { padding:15px 15px 0 15px !important;}
 #Credit_memo .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
@@ -477,10 +687,61 @@ background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d
 background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .Credit_memo_img { float:left; width:100%;}
 #Credit_memo .justret_button {float:left; width:30%; margin:2% 0 0 4%; border-radius:8px; min-height: 124px;}
+#Credit_memo .justret_button1 { width:30%; margin:2% 0 0 4%; border-radius:8px; padding-top: 2%; }
 #Credit_memo .justret_buttonright {float:right; width:30%; margin:2% 4% 0 0; border-radius:8px; min-height: 124px;}
 
 /*Credit_memo pages end*/
 
+/*Credit_memo Date=28-11-2013 start*/
+#Credit_memo .documen_main_box {margin:0 auto;width:98%; border:1px solid #6b6c6c; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;}
+#Credit_memo .tblcustmor_credit{ margin:10px; width:98%;}
+#Credit_memo .tblcustmor_credit th{border:1px solid #6b6c6c; vertical-align:middle;}
+#Credit_memo .tblcustmor_credit td{ border:1px solid #6b6c6c; border-left: 0; border-top: 0; vertical-align:middle;}
+#Credit_memo .txt_center{text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
+#Credit_memo .txt_left{ text-align:left; padding:10px 0 10px 30px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em;}
+#Credit_memo .txt_right{text-align:right; padding-right:30px; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
+#Credit_memo .bg_white{background:#ffffff; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.2em;}
+#Credit_memo .backgtop {background:#6b6c6c; color:#e4e6e7;}
+#Credit_memo .txt2_center{text-align:center; padding:10px 0; width:5%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
+#Credit_memo .txt3_center{text-align:center;padding:10px 0;width:5%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; background:#d4d1c9; font-size:1.2em;}
+#Credit_memo .txt2_right{text-align:right; padding:10px 25px 10px 0; width:5%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.2em;}
+#Credit_memo .bg_white1 {background:#fff;}
+#Credit_memo .document_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c; font-size:1.5em; padding:0 0 1% 1%;}
+#Credit_memo .items_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c; font-size:1.5em; padding:1% 0 1% 1%;}
+
+#Credit_memo .comments_box {float:left; width:100%;}
+#Credit_memo .comments_textarea {float:left; width:20%; margin:2% 0 0 1%;}
+#Credit_memo .comments_textarea h1 {float:left; width:20%; padding:0; margin:0; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.4em;}
+#Credit_memo .textareabox { float:left; width:100%; height:78px !important;}
+#Credit_memo .comments_tselect {float:left; width:20%; margin:5% 0 0 1%;}
+#Credit_memo .ui-select {display: block; position: relative; width: 85% !important; float: left !important;}
+#Credit_memo .comments_box_right {float:right; width:12%; background:#d4d1c9; border:#6b6c6c 1px solid; margin:6% 1.3% 0 0;}
+#Credit_memo .comments_box_right span { float:left; width:80%; text-align:right; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.1em; padding:2% 0 2% 0;}
+/*Credit_memo Date=28-11-2013 end*/
+
+/*Credit_memo Date=28-11-2013 start*/
+.documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:111px;}
+.Overview_text { float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em; color:#e4e6e7; }
+.text1 { float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
+.text2 { float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000; }
+.text2 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-bottom:solid 1px #000;}
+.text2 h2 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.text3 { float:left; width:16%; padding:1.5% 0 1.5% 0; text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-right:solid 1px #000;}
+.text4 {float:left; width:40%; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+
+
+.documentdiv1 { margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #6b6c6c; height:150px;}
+.Over_text_box {float:left; width:100%;}
+.text5 { float:left; width:9%; text-align:center; border-left:solid 1px #000;}
+.text5 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
+.text5 h2 { padding:6% 0 6% 3%; margin:0; float:left; background:#d4d1c9; width:97%; border-bottom:solid 1px #000; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+
+.text6 { float:right; width:9.1%; text-align:center; border-left:solid 1px #000; border-right:solid 1px #000; }
+.text6 h1 {padding:2% 0 2% 3%; margin:0; float:left;width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
+.text6 h2 { padding:6% 0 6% 3%; margin:0; float:left; background:#d4d1c9; border-bottom:solid 1px #000;  width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.total_text { float:right; width:91%; text-align:right; padding:1% 1% 0 0; }
+
+/*Credit_memo Date=28-11-2013 end*/
 
 .style1 {
     border: 3px solid #FFAA00;
@@ -488,7 +749,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 }
 
 #poor_quality_text { float:right; width:40%;}
-.poor_quality_text { float:right; width:40%;}
+.poor_quality_text4 { float:right; width:40%;}
 #selecttextbox { float:right; width:50%;}
 .selecttextbox { float:right; width:50%;}
 #Returns_confirmation_screen2 .ui-btn-up-c { background:rgb(162, 169, 187) !important;}
@@ -496,9 +757,17 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .textinputtes {float: left; width: 50%;}
 
 
+.poor_quality_text1 { float:right; width:46%;}
+
+.selecttextbox1 { float:right; width:50%;text-align: center;}
+
+.textinputtes1{float: left; width: 50%;text-align: center;}
+
+
+.memoclass{ border: solid 1px #d1d3d4;}
 
 
 
-
-
-
+ui-grid-a>:nth-child(n){
+	width:100% !important;
+}
