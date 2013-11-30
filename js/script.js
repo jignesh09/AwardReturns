@@ -12,6 +12,8 @@ var priceArray=[];
 var QuantityArray=[];
 var materialArray=[];
 var itemNameArray=[];
+var invoiceArray=[];
+var itemcourntArray=[];
 //var base_url = "http://esurancexchange.com/healthgapdirect/webservice";
 
 // Check valid zipcode
@@ -219,6 +221,7 @@ function logoff(){
 
 var cus_name='';
 var cus_id='';
+
 //---------------getcustomer ---------------------
 function getCustomer(){
     //$.mobile.changePage('#Customers')
@@ -313,7 +316,8 @@ function CutomerInvoice(ev){
            $.mobile.hidePageLoadingMsg();
            console.log(JSON.stringify(data))
            var res=eval(data);
-           var res=eval(data);
+          invoiceArray=[];
+	  itemcourntArray=[];
            if(res.d.results.length>0){
            /*
             alert(res.d.results[0].cust_name)
@@ -344,6 +348,8 @@ function CutomerInvoice(ev){
            var dt_yr=montheArray[mon]+a+yr;
            var det1 = dt.getDate();
            // alert(dt_yr)
+	   invoiceArray.push(data1.invoice_num);
+	   itemcourntArray.push(data1.item_count);
            html+='<div class="ui-block-a" ><div class="Createtop"><span>'+det1+'</span>'
            html+='<h1>'+dt_yr+'</h1></div><strong>'+parseInt(data1.invoice_amt)+'</strong>'
            html+='<div class="Garfield_text" data-invo_id="'+data1.invoice_num+'" data-cid="'+res.d.results[0].cust_id+'" data-cname="'+res.d.results[0].cust_name+'" onclick="invoiceDetail(this)" ><h1>'+data1.invoice_num+'</h1><h2>'+data1.item_count+' items</h2></div></div>'
@@ -429,9 +435,10 @@ function invoiceDetail(ev){
            var mon=dt.getMonth();
            var det1 = dt.getDate();
            fuldate=det1+'/'+mon+'/'+yr;
-		   
-           html+='<li class="returnlist" add="'+data1.invoice_item+'"> <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
-           html+='<strong>'+data1.invoice_item+'</strong><strong>'+parseInt(data1.quantity)+' items</strong>'
+		   var sdata=data1.invoice_item+data1.item_name;
+           html+='<li class="returnlist" add="'+sdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
+           html+='<strong>'+data1.invoice_item+'</strong><strong>'+data1.item_name+'</strong>'
+	   // html+='<strong>'+data1.invoice_item+'</strong><strong>'+parseInt(data1.quantity)+' items</strong>'
            // html+='<div id="poor_quality_text"><div id="textinput"><input type="text" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>';
            html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext">'+ht1+'</select></div></div></div></li>';
            }
@@ -453,7 +460,7 @@ function invoiceDetail(ev){
            console.log(error);
            $.mobile.hidePageLoadingMsg();
            
-           navigator.notification.alert( 'some thing went wrong', alertDismissed,  'AwardReturns', 'ok');
+           navigator.notification.alert( 'something went wrong', alertDismissed,  'AwardReturns', 'ok');
            
            console.log(JSON.stringify(error))
            }
@@ -694,16 +701,38 @@ function onjustRetConfirm(b){
 }
 
 function customerInvoReturns(){
+	selectedInvoice=[];
+//	invoiceArray=[];
+//var itemcourntArray=[]
+        var thml='';
+	var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
 	
-	//alert('ok');
+	 
+      for(var i=0;i<invoiceArray.length;i++){
+	
+	 thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong data-invoid="'+invoiceArray[i]+'" onclick="selectinvoice(this)">'+invoiceArray[i]+'</strong><strong>'+itemcourntArray[i]+' items</strong>'
+	thml+='<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
+	
+	
+      }
+	$('#just_cid').html(cus_id);
+	$('#just_cname').html('<h1>Customer name</h1>'+cus_name);
+	$('#invoice_just_re_html').html(thml).trigger('create')
+	
+	/*var cus_name='';
+id="just_cname"><h1>Customer name</h1>Barnes Plumbing Co
     navigator.notification.confirm(
                                    'Are you sure Return?', // message
                                    onjustRetConfirm,            // callback to invoke with index of button pressed
                                    'AwardReturns',           // title
                                    ['Yes','No']         // buttonLabels
                                    );
+                                   
+                                   */
       
-    
+    $.mobile.changePage('#jsut_returns_creen');
+    //alert('ok1')
 }
 
 function customerInvoReturns11(){
@@ -810,7 +839,8 @@ function gotoReturnconfrm() {
 		   serdata=data1.material+data1.item_name;
            html+='<li class="returnconfmlist" add="'+serdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+parseInt(data1.invoice_item)+'</span></div>'
            html+='<strong>'+data1.item_name+'</strong>';
-           html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+parseInt(data1.quantity)+' items</h2></div>';
+        //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
+	    html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+parseInt(data1.quantity)+' items</h2></div>';
            html+='<div class="poor_quality_text5"><div id="textinput"><input type="text" /></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
            //  html+='<div class="poor_quality_text"><input type="text" vlaue="3"/><select><option>ok</option><option>ok</option></select></div></div>';
            /*
@@ -1047,6 +1077,7 @@ function getReports() {
            var res=eval(data);
            // alert(res.d.results[0].__metadata.uri)
            var html='';
+	    var montheArray=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var str = data1.ReturnDate
@@ -1063,7 +1094,7 @@ function getReports() {
            var c_date=data1.ReturnDate;
            // alert(c_re_order)
            var serReport=c_invoice_no+c_name+c_re_order;
-           html+='<li class="repostlist" add="'+serReport+'"><div class="ui-block-a" data-rid='+c_re_order+' data-date1='+deate+' data-cname="'+c_name+'"      onclick="getRetrunOrderDetails(this);"><a href="#"><span>'+det1+'</span></a>'
+           html+='<li class="repostlist" add="'+serReport+'"><div class="ui-block-a" data-rid='+c_re_order+' data-date1='+deate+' data-cname="'+c_name+'"      onclick="getRetrunOrderDetails(this);"><a href="#"><div class="Createtop1"><span style="width:100% !important;">'+det1+'</span><h1>'+montheArray[mon]+'/'+yr+'</h1></div></a>'
            html+='<strong>'+c_name+'</strong>'
            html+='<div class="poor_quality_text1"><div class="textinputtes1">'+c_invoice_no+'</div><div class="selecttextbox1">'+c_re_order+'</div></div></div></li>'
            // html+='</div><div>';
@@ -1282,8 +1313,6 @@ function searchRepoDetailsFiles(keyword){
                                 var n=nfname.indexOf(""+keyword+"");
                                 
                                 if(n >=0){
-                                
-                                
                                 $(this).show();
                                 }else{
                                 $(this).hide();
@@ -1378,6 +1407,22 @@ var caddress='';
     thml1+='<div class="text6" style="border-right:none;"><h1>Tax</h1> <h2 style="background:#fff;">Non</h2></div>'
     thml1+='<div class="total_text">Total: $42,00</div>'
 
+}
+var selectedInvoice=[];
+function selectinvoice(evnt) {
+	//alert($(evnt).data('invoid'))
+	var invoid=$(evnt).data('invoid');
+	if (selectedInvoice.indexOf(invoid) ==-1) {
+		selectedInvoice.push(invoid)
+		$(evnt).addClass('dyanamicl');
+		
+	}
+	else{
+		selectedInvoice.splice(selectedInvoice.indexOf(invoid), 1);
+		$(evnt).removeClass('dyanamicl');
+	}
+	console.log(selectedInvoice)
+	//code
 }
 
 function gotoHome() {
