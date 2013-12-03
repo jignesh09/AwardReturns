@@ -46,7 +46,7 @@
     </select>
 			    : Remember me</div>
 			     <div class="login_img"><a href="#" onclick="Login()"><img src="images/login_img.png" width="100%"></a></div>
-				<div class="tryout_img"><a href="#" onclick="customerInvoReturns()"><img src="images/tryout_img.png" width="100%"></a></div>
+				<div class="tryout_img"><a href="#" onclick="customerInvoReturns2()"><img src="images/tryout_img.png" width="100%"></a></div>
 			  
 			  </div>
 			  </div>
@@ -79,7 +79,7 @@
 			  </div>
 			  
 			  <div class="reportsmain">
-			  <div class="reportstextleft">
+			  <div class="reportstextleft" onclick="gotoSettingpage()">
 			   <div class="reports_img"><img src="images/settings_img.png" width="40%"></div>
 			    <div class="reports_text">Settings</div>
 			  </div>
@@ -303,7 +303,7 @@
 	 
 	 <div data-role="page" id="Credit_memo">
 	 <div data-role="header" data-position="fixed" class="hedtoppart">
-    <div class="Backbutton"><a href="#Returns_confirmation_screen2">Back</a></div>
+    <div class="Backbutton"><a href="#" onclick="history.back();">Back</a></div>
     
     <h1 class="returenstext">RETURNS REPORTS</h1>
      <div class="Backbuttonhome"><a href="#homePage">Home</a></div>
@@ -319,7 +319,7 @@
 	<div class="Credit_memo">
 	<div class="customer_credit"><h1>Customer Credit Memo</h1><div class="customer_right">
 	<div class="referencebox"><span>Reference #</span><span>0000011</span><span>Ship Via</span><span>FedEx- Federal EX</span></div>
-	<div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span>02/16/2003</span></div>
+	<div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span id="memodate">02/16/2003</span></div>
 	</div></div>
 	<div class="Credit_memo_img">
 		<div class="documen_main_box">
@@ -336,18 +336,23 @@
 		    <div class="items_text">Items</div>
 		    <div class="documentdiv1">
 		    <div class="Overview_text">Document Overview</div>
-		    <div class="Over_text_box">
-		     <div class="text5" style="border-left:none;"><h1 style=" height:24px;" class="texth1"></h1> <h2 style=" height:20px; background:none; border-bottom:none" class="texth2"></h2></div>
-			<div class="text5"><h1>Item</h1> <h2>It 78-343</h2></div>
-			<div class="text5"><h1>Descrption</h1> <h2>Soft Paper t...</h2></div>
-			<div class="text5"><h1>Reason</h1> <h2 style="background:#fff;">do not need</h2></div>
-			<div class="text5"><h1>COOOOO1</h1> <h2>5</h2></div>
-			<div class="text5"><h1>Returning</h1> <h2>3</h2></div>
-			<div class="text5"><h1>Quantity</h1> <h2 style="background:#fff;">3</h2></div>
-			<div class="text5"><h1>UOM</h1> <h2>Each</h2></div>
-			<div class="text5"><h1>Price</h1> <h2 style="background:#fff;">$14,00</h2></div>
-			<div class="text5"><h1>Total</h1> <h2>$14,00</h2></div>
-			<div class="text6" style="border-right:none;"><h1>Tax</h1> <h2 style="background:#fff;">Non</h2></div>
+		    <div class="Over_text_box" id="memo_details">
+		    <div style="width: 100%">
+			<div class="demo1">demo</div>
+			<div class="demo2">demo2</div>
+		    </div>
+		     <div style="width: 100%">
+			<div class="demo3">demo</div>
+			<div class="demo4">demo2</div>
+		    </div>
+		      <div style="width: 100%">
+			<div class="demo1">demo</div>
+			<div class="demo2">demo2</div>
+		    </div>
+		     <div style="width: 100%">
+			<div class="demo3">demo</div>
+			<div class="demo4">demo2</div>
+		    </div>
 			<div class="total_text">Total: $42,00</div>
 		    </div>
 		    </div>
@@ -485,6 +490,90 @@
   <div data-role="content">
 	<div id="main_box">
 	<div class="custo_text" id="in_c_id"><div class="Barnes_text"><h1>Customer ID</h1><span id="just_cid">10042</span></div><div class="invoice_text"><h1></h1></div></div>
+		<div class="custo_text1" id="in_c_name"><div class="Barnes_text" id="just_cname"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text_2" onclick="starBarScanning()"><img src="images/camera.png"> </div></div>
+			<div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a" id="weqss">
+				<ul id="invoice_just_re_html" style="list-style: none;">
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new"><select name="" class="selecttext"></select></div><div class="textinput_new"><input type="text" vlaue="3"/></div>
+	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
+	</div>
+	
+</div>
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong>
+	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
+	</div>
+	
+</div>
+	<div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong>1000078</strong><strong>5 items</strong>
+	<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext"></select></div><div class="selecttextbox"><select name="" class="selecttext"></select></div>
+	</div>
+	
+</div>
+				</ul>
+			    
+			    </div>
+			      <div class="plusbtn"><a href="#" onclick="addnewRow()"><img src="images/plus.png" width="24px;"></a></div>
+			    <div class="justret_button"><a href="#" onclick="justRe_cnf()"><img src="images/justret_button.png" width="100%"></a></div>
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 </div>
+	 <!-- /returns_creen End page   -->
+	 <div data-role="page" id="jsut_returns_creen_cnf">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#jsut_returns_creen">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
+  </div><!-- /header -->
+  <div data-role="content">
+	<div id="main_box">
+	<div class="custo_text" id="in_c_id"><div class="Barnes_text"><h1>Customer ID</h1><span id="just_cid_cnf">10042</span></div><div class="invoice_text"><h1></h1></div></div>
+		<div class="custo_text1" id="in_c_name"><div class="Barnes_text" id="just_cname_cnf"><h1>Customer name</h1>Barnes Plumbing Co</div><!--<div class="invoice_text_camera"><img src="images/camera.png">--> </div></div>
+			<div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
+			 <div class="customersbox">
+			  <div class="reportsmain">
+			    <div class="ui-grid-a" id="">
+				<ul id="just_retn_cfnlist" style="list-style: none;">
+	<li><div class="ui-block-a">
+	<div class="Createtop"><span>EA</span></div>
+	<div class="textinputtestext">Customer</div>
+	<div class="textinputtestext">Customer</div>
+	<div class="textinputtestext">Customer</div>
+	<div class="textinputtestext">Customer</div>
+	
+	</div>
+	
+	
+</div></li>
+	
+	
+				</ul>
+			    
+			    <div class="justret_button" ><h1>Are you sure want to return?</h1><a href="#" onclick="justRetuncnf_summit()"><div class="yes_text">Yes</div></a><a href="#jsut_returns_creen"><div class="Cancel_text">Cancel</div></a></div>
+			    </div>
+			    
+			      
+			    <!--<div class="justret_button"><a href="#" onclick="justRetuncnf_summit()"><img src="images/justret_button.png" width="100%"></a></div>-->
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 </div>
+	 <!-- /returns_creen End page   -->
+	 	 <!-- /In_ref_invoice End page   -->
+	  
+	 <div data-role="page" id="settingpage1">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+    <div class="Backbutton"><a href="#Create_returns">Back</a></div>
+    <h1 class="returenstext">RETURNS REPORTS</h1>
+    <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
+  </div><!-- /header -->
+  <div data-role="content">
+	<div id="main_box">
+	<div class="custo_text" id="in_c_id"><div class="Barnes_text"><h1>Customer ID</h1><span id="just_cid">10042</span></div><div class="invoice_text"><h1></h1></div></div>
 		<div class="custo_text1" id="in_c_name"><div class="Barnes_text" id="just_cname"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1> </h1></div></div>
 			<div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
 			 <div class="customersbox">
@@ -509,6 +598,7 @@
 				</ul>
 			    
 			    </div>
+			    
 			    <div class="justret_button"><a href="#" onclick="aa()"><img src="images/justret_button.png" width="100%"></a></div>
 			  </div>
 			 </div>
