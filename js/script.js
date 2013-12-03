@@ -1769,8 +1769,8 @@ function gotoSettingpage() {
 
 function starBarScanning(){
 //alert('ok')
-//alert(window.plugins.barcodeScanner)
- cordova.plugins.barcodeScanner.scan(
+alert(window.plugins.barcodeScanner)
+ window.plugins.barcodeScanner.scan(
       function (result) {
             //alert(result.text);
             if(result.text  !=''){
