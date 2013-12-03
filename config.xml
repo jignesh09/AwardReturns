@@ -7,8 +7,10 @@
     <author email="dev@callback.apache.org" href="http://cordova.io">
         Award Returns
     </author>
-    <access origin="*" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
+    
+    <access origin="*" />
+    
     
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
