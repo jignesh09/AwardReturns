@@ -8,6 +8,8 @@
         Award Returns
     </author>
     <access origin="*" />
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" />
+    
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
 </widget>

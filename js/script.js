@@ -96,6 +96,7 @@ onDeviceReady: function () {
 },
 	
 receivedEvent: function (id) {
+
 	local_login();
     console.log('dreay')
     $.mobile.defaultTransition = 'none';
@@ -221,7 +222,8 @@ function logoff(){
 
 var cus_name='';
 var cus_id='';
-
+var usr_name='';
+var user_pwd='';
 //---------------getcustomer ---------------------
 function getCustomer(){
     //$.mobile.changePage('#Customers')
@@ -229,6 +231,8 @@ function getCustomer(){
     
     var uname= window.localStorage.getItem("sale_repId");
     var pwd=window.localStorage.getItem("password");
+    usr_name=uname;
+    user_pwd=pwd;
     var uname1="'"+uname+"'";
     var pwd1="'"+pwd+"'";
     var Rem_me=$('#flip-1').val();
@@ -643,8 +647,7 @@ function onjustRetConfirm(b){
                 console.log(CSRFTOKEN);
                 var pdata='';
                 
-                
-                var auth = make_base_auth('demo','demo123');
+                              var auth = make_base_auth(usr_name,user_pwd);
                 var req1 = new XMLHttpRequest();
                 
                 
@@ -700,7 +703,271 @@ function onjustRetConfirm(b){
     }
 }
 
+var just_mat_num=[];
+var just_mat_Retq=[];
+var just_mat_Res=[];
+var just_mat_con=[];
+var just_mat_desc=[];
+
+function justRe_cnf(){
+just_mat_num=[];
+just_mat_Retq=[];
+just_mat_Res=[];
+just_mat_con=[];
+just_mat_desc=[];
+
+  $(".Mat_optn select").each(function() {
+	//alert($(this).val());
+	var data=$(this).val();
+	if (data.indexOf('s---t') !=-1) {
+		var data1=data.split('s---t')
+	       just_mat_num.push(data1[0]);
+	       just_mat_desc.push(data1[1]);
+	}
+	else{
+		just_mat_num.push($(this).val())
+		just_mat_desc.push('');
+	}
+	
+	
+  });
+  $(".Mat_text input").each(function() {
+	just_mat_Retq.push($(this).val())
+  });
+  $(".Mat_reson select").each(function() {
+	//alert($(this).val())
+	just_mat_Res.push($(this).val())
+	//alert(just_mat_Res.length)
+  });
+  $(".Mat_cond select").each(function() {
+	just_mat_con.push($(this).val())
+  });
+  var html='';
+  for (var i=0;i<just_mat_con.length;i++) {
+	html+='<li><div class="ui-block-a">'
+	html+='<div class="Createtop"><span>EA</span></div>'
+	html+='<div class="textinputtestext">'+just_mat_num[i]+'</div>'
+	html+='<div class="textinputtestext">'+just_mat_Retq[i]+' items</div>'
+	html+='<div class="textinputtestext">'+just_mat_Res[i]+'</div>'
+	html+='<div class="textinputtestext">'+just_mat_con[i]+'</div></div></li>'
+  }
+  
+  
+       $('#just_retn_cfnlist').html(html)
+	
+	$('#just_cid_cnf').html(cus_id);
+	$('#just_cname_cnf').html('<h1>Customer name</h1>'+cus_name);
+  $.mobile.changePage('#jsut_returns_creen_cnf');
+  //$('#jsut_returns_creen_cnf').html()
+}
+
+function justRetuncnf_summit(){
+
+  
+    var date1=new Date();
+    var date0=date1.toISOString()
+    var date2=date0.toString();
+    var date3=  date2.substring( 0, date2.length-5);
+     var date4=  date2.substring( 0, date2.length-14);
+//alert(date4)
+   $('#memodate').html(date4);
+	/*
+	var just_mat_num=[];
+var just_mat_Retq=[];
+var just_mat_Res=[];
+var just_mat_con=[];
+	*/
+	 var Rbody='<?xml version="1.0" encoding="UTF-8"?>'
+        Rbody+='<atom:entry '
+        Rbody+='xmlns:atom="http://www.w3.org/2005/Atom" '
+        Rbody+='xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" '
+        Rbody+='xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">'
+        Rbody+='<atom:content type="application/xml">'
+        Rbody+='<m:properties>'
+        Rbody+='<d:OrderId>0</d:OrderId>'
+        Rbody+='<d:DocType>RE</d:DocType>'
+        Rbody+='<d:SalesOrg>1000</d:SalesOrg>'
+        Rbody+='<d:DistrChan>10</d:DistrChan>'
+        Rbody+='<d:Division>10</d:Division>'
+        Rbody+='<d:DateType>1</d:DateType>'
+        Rbody+='<d:OrdReason>101</d:OrdReason>'
+        Rbody+='<d:PartnNumb>0000000011</d:PartnNumb>'
+        Rbody+='</m:properties>'
+        Rbody+='</atom:content>'
+        Rbody+='<atom:link '
+        Rbody+='rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/SOItems" '
+        Rbody+='type="application/atom+xml;type=feed" '
+        Rbody+='title="SALESORDER.SOHeader_SOItems">'
+        Rbody+='<m:inline>'
+        Rbody+='<atom:feed>'
+        //-----------------------------------------------
+	for(var i=0;i<just_mat_num.length;i++){
+        Rbody+='<atom:entry>'
+        Rbody+='<atom:content type="application/xml">'
+        Rbody+='<m:properties>'
+        Rbody+='<d:ItmNumber>000010</d:ItmNumber>'//fonund
+        Rbody+='<d:Material>'+just_mat_num[i]+'</d:Material>'//fonund
+        Rbody+='<d:Plant>1000</d:Plant>'
+        Rbody+='<d:StoreLoc>1000</d:StoreLoc>'
+        Rbody+='<d:TargetQty>'+just_mat_Retq[i]+'</d:TargetQty>'//fonund
+        Rbody+='<d:TargetQu>EA</d:TargetQu>'
+        Rbody+='<d:ShortText>'+just_mat_desc[i]+'</d:ShortText>'//fonund
+        Rbody+='<d:MatlGroup>50200000</d:MatlGroup>'
+        Rbody+='<d:CondStNo>011</d:CondStNo>'
+        Rbody+='<d:CondCount>01</d:CondCount>'
+        Rbody+='<d:CondType>PR00</d:CondType>'
+        Rbody+='<d:CondValue>35.000</d:CondValue>'
+        Rbody+='<d:Currency>USD</d:Currency>'
+      //  Rbody+='<d:ReqDate>2013-11-26T00:00:00</d:ReqDate>'
+    
+       //alert(date3);
+        Rbody+='<d:ReqDate>'+date3+'</d:ReqDate>'
+        Rbody+='<d:ReqQty>25.000</d:ReqQty>'
+        Rbody+='</m:properties>'
+        Rbody+='</atom:content>'
+        Rbody+='</atom:entry>'
+	
+	}
+        //-----------------------------------------------------------------------
+      
+        
+        //--------------------------------------------------------------
+        Rbody+='</atom:feed>'
+        Rbody+='</m:inline>'
+        Rbody+='</atom:link>'
+        Rbody+='</atom:entry>'
+        
+        console.log(Rbody)
+
+         $.mobile.showPageLoadingMsg();
+        var user= window.localStorage.getItem("sale_repId");
+        var pwd=window.localStorage.getItem("password");
+        var url = 'http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/JUST_RETURNS_MULTIPLE_SRV/SOHeaderCollection';
+        var req=new XMLHttpRequest();
+        req.open("GET", url,false);
+        
+        req.setRequestHeader('Authorization', make_base_auth(user,pwd));
+        req.setRequestHeader('x-csrf-token', "Fetch");
+        
+        req.onreadystatechange=function()
+        {
+            if(req.readyState == 4 && (req.status==200 || req.status == 500))
+            {
+                CSRFTOKEN = req.getResponseHeader('x-csrf-token');
+                console.log(CSRFTOKEN);
+                var pdata='';
+                  
+                
+                
+                var auth = make_base_auth(usr_name,user_pwd);
+                var req1 = new XMLHttpRequest();
+                
+                
+                
+                req1.open("POST","http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/JUST_RETURNS_MULTIPLE_SRV/SOHeaderCollection",true);
+                req1.setRequestHeader('Authorization', auth);
+                req1.setRequestHeader("content-type", "application/xml");
+                req1.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                req1.setRequestHeader("x-csrf-token", CSRFTOKEN);
+                
+                req1.onreadystatechange=function()
+                {
+                    
+                    if (req1.readyState==4 )
+                    {
+                        //alert(req1.responseText);
+                        $.mobile.hidePageLoadingMsg();
+                        
+                        console.log("-----------here now--------------------------------------------------------");
+                        console.log(req1.responseText);
+                        // var xml = request.responseText;
+                        //  var users = xml.getElementsByTagName("feed");
+                        // alert(users.length)
+                        console.log("-----------here now----------------------------------------------------------");
+                        $.mobile.changePage('#Credit_memo')
+                        
+                        gotoCReditMempage_jsut()
+                    }
+                    
+                }
+                req1.send(Rbody);
+            
+            }
+        }
+        req.send();
+        
+
+}
+
+var new_mat='';
+function addnewRow(){
+	var thml='';
+	  var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
+	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
+	
+	$('#invoice_just_re_html').append(thml).trigger('create');
+}
 function customerInvoReturns(){
+	
+	
+	
+	
+	
+	
+   var uname= window.localStorage.getItem("sale_repId");
+    var pwd=window.localStorage.getItem("password");
+    var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection";
+    
+    $.mobile.showPageLoadingMsg();
+    $.ajax({
+           url:url,
+           dataType: 'json',
+           success: function(data, status) {
+           $.mobile.hidePageLoadingMsg();
+           console.log(JSON.stringify(data))
+           var res=eval(data);
+           //alert('suc')
+	   var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var thml='';
+          var Mnum_option=''
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+	   var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc;
+              Mnum_option+= '<option value="'+opval+'" data-va="'+data1.MaterialDesc+'">'+data1.MaterialNum+'</option>'
+           }
+	   new_mat=Mnum_option;
+            thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name=""  class="selecttext">'+Mnum_option+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
+	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson" ><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
+	
+	$('#just_cid').html(cus_id);
+	$('#just_cname').html('<h1>Customer name</h1>'+cus_name);
+	$('#invoice_just_re_html').html(thml).trigger('create')
+	$.mobile.changePage('#jsut_returns_creen');
+           },
+           
+           beforeSend: function(xhrObj){
+           xhrObj.setRequestHeader('Authorization', make_base_auth(uname,pwd));
+           
+           },
+           error:function(error){
+           console.log(error);
+           $.mobile.hidePageLoadingMsg();
+           
+           navigator.notification.alert( 'some thing went wrong', alertDismissed,  'AwardReturns', 'ok');
+           
+           console.log(JSON.stringify(error))
+           }
+           });
+	
+	
+	
+	/*
+	
+	
+	
 	selectedInvoice=[];
 //	invoiceArray=[];
 //var itemcourntArray=[]
@@ -709,9 +976,10 @@ function customerInvoReturns(){
 	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
 	
 	 
-      for(var i=0;i<invoiceArray.length;i++){
+      for(var i=0;i<1;i++){
+	// for(var i=0;i<invoiceArray.length;i++){
 	
-	 thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><strong data-invoid="'+invoiceArray[i]+'" onclick="selectinvoice(this)">'+invoiceArray[i]+'</strong><strong>'+itemcourntArray[i]+' items</strong>'
+	 thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new"><select name="" class="selecttext"></select></div><div class="textinput_new"><input type="text" vlaue="3"/></div>'
 	thml+='<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
 	
 	
@@ -720,19 +988,10 @@ function customerInvoReturns(){
 	$('#just_cname').html('<h1>Customer name</h1>'+cus_name);
 	$('#invoice_just_re_html').html(thml).trigger('create')
 	
-	/*var cus_name='';
-id="just_cname"><h1>Customer name</h1>Barnes Plumbing Co
-    navigator.notification.confirm(
-                                   'Are you sure Return?', // message
-                                   onjustRetConfirm,            // callback to invoke with index of button pressed
-                                   'AwardReturns',           // title
-                                   ['Yes','No']         // buttonLabels
-                                   );
-                                   
-                                   */
       
-    $.mobile.changePage('#jsut_returns_creen');
+   // $.mobile.changePage('#jsut_returns_creen');
     //alert('ok1')
+    */
 }
 
 function customerInvoReturns11(){
@@ -807,6 +1066,7 @@ function gotoReturnconfrm() {
     QuantityArray=[];
     materialArray=[];
     itemNameArray=[];
+    
     $.mobile.showPageLoadingMsg();
     
     $.ajax({
@@ -1000,7 +1260,7 @@ function gotoCreditmemo() {
             var pdata='';
             
             
-            var auth = make_base_auth('demo','demo123');
+            var auth = make_base_auth(usr_name,user_pwd);
             var req1 = new XMLHttpRequest();
             
             
@@ -1375,16 +1635,73 @@ function searchRetunconfFiles(keyword) {
         
 	}
 }
+function gotoCReditMempage_jsut(){
 
+
+//alert(just_mat_Res.length);
+    var html='<div class="Overview_text">Document Overview</div>'
+        html+='<div class="text1">Bill to Customer Address</div>'
+        html+='<div class="text2"><h1>'+cus_id+'-'+cus_name+'</h1> <h2>'+caddress+'</h2></div>'
+        html+='<div class="text3">Ship to Address</div>'
+        html+='<div class="text4">'+caddress+'</div>'
+	$('#cus_ship_add').html(html).trigger('create');
+    var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
+    var thml1='';
+    thml1+='<div style="width: 100%"><div class="demo1">Item</div><div class="demo2">Description</div></div>'
+    for(var i=0;i<just_mat_Res.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">'+just_mat_num[i]+'</div><div class="demo4">'+just_mat_num[i]+'</div></div>'
+    }
+     thml1+='<div style="width: 100%"><div class="demo1">COOOOO1</div><div class="demo2">Reason</div></div>'
+      for(var i=0;i<just_mat_Res.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">5</div><div class="demo4">'+just_mat_Res[i]+'</div></div>'
+      }
+     thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
+     
+      for(var i=0;i<just_mat_Res.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">5</div><div class="demo4">'+just_mat_Retq[i]+'</div></div>'
+      }
+    
+     thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Price</div></div>'
+   for(var i=0;i<just_mat_Res.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">$14</div></div>'
+   }
+     thml1+='<div style="width: 100%"><div class="demo1">Total</div><div class="demo2">Tax</div></div>'
+      for(var i=0;i<just_mat_Res.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">$24</div><div class="demo4">Nan</div></div>'
+      }
+    
+    
+    $('#memo_details').html(thml1).trigger('create');
+
+	
+}
 function gotoCReditMempage(){
 /*
- *var cus_name='';
+
+var cus_name='';
 var cus_id='';
 var caddress='';
+var invoicid='';
+
+var noofItem=[];
+var R_Reason=[];
+var itemNumArray=[];
+var priceArray=[];
+var QuantityArray=[];
+var materialArray=[];
+var itemNameArray=[];
+var invoiceArray=[];
+var itemcourntArray=[];
  */
 
-
-//alert(caddress)
+ var date1=new Date();
+    var date0=date1.toISOString()
+    var date2=date0.toString();
+    var date3=  date2.substring( 0, date2.length-5);
+     var date4=  date2.substring( 0, date2.length-14);
+//alert(date4)
+   $('#memodate').html(date4);
+//alert(itemNumArray.length)
 
     var html='<div class="Overview_text">Document Overview</div>'
         html+='<div class="text1">Bill to Customer Address</div>'
@@ -1392,20 +1709,33 @@ var caddress='';
         html+='<div class="text3">Ship to Address</div>'
         html+='<div class="text4">'+caddress+'</div>'
 	$('#cus_ship_add').html(html).trigger('create');
+    var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
+    var thml1='';
+    thml1+='<div style="width: 100%"><div class="demo1">Item</div><div class="demo2">Description</div></div>'
+    for(var i=0;i<itemNameArray.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">'+itemNumArray[i]+'</div><div class="demo4">'+itemNameArray[i]+'</div></div>'
+    }
+     thml1+='<div style="width: 100%"><div class="demo1">COOOOO1</div><div class="demo2">Reason</div></div>'
+      for(var i=0;i<itemNameArray.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">1</div><div class="demo4">'+R_Reason[i]+'</div></div>'
+      }
+     thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
+     
+      for(var i=0;i<itemNameArray.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">'+QuantityArray[i]+'</div><div class="demo4">'+noofItem[i]+'</div></div>'
+      }
     
-    var thml1=''
-    thml1+='<div class="text5" style="border-left:none;"><h1 style=" height:24px;" class="texth1"></h1> <h2 style=" height:20px; background:none; border-bottom:none" class="texth2"></h2></div>'
-    thml1+='<div class="text5"><h1>Item</h1> <h2>It 78-343</h2></div>'
-    thml1+='<div class="text5"><h1>Descrption</h1> <h2>Soft Paper t...</h2></div>'
-    thml1+='<div class="text5"><h1>Reason</h1> <h2 style="background:#fff;">do not need</h2></div>'
-    thml1+='<div class="text5"><h1>COOOOO1</h1> <h2>5</h2></div>'
-    thml1+='<div class="text5"><h1>Returning</h1> <h2>3</h2></div>'
-    thml1+='<div class="text5"><h1>Quantity</h1> <h2 style="background:#fff;">3</h2></div>'
-    thml1+='<div class="text5"><h1>UOM</h1> <h2>Each</h2></div>'
-    thml1+='<div class="text5"><h1>Price</h1> <h2 style="background:#fff;">$14,00</h2></div>'
-    thml1+='<div class="text5"><h1>Total</h1> <h2>$14,00</h2></div>'
-    thml1+='<div class="text6" style="border-right:none;"><h1>Tax</h1> <h2 style="background:#fff;">Non</h2></div>'
-    thml1+='<div class="total_text">Total: $42,00</div>'
+     thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Price</div></div>'
+   for(var i=0;i<itemNameArray.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">'+priceArray[i]+'</div></div>'
+   }
+     thml1+='<div style="width: 100%"><div class="demo1">Total</div><div class="demo2">Tax</div></div>'
+      for(var i=0;i<itemNameArray.length;i++){
+    thml1+='<div style="width: 100%"><div class="demo3">$14</div><div class="demo4">Nan</div></div>'
+      }
+    
+    
+    $('#memo_details').html(thml1).trigger('create');
 
 }
 var selectedInvoice=[];
@@ -1430,4 +1760,37 @@ function gotoHome() {
 	//alert('ok');
 	$.mobile.changePage('home')
 	//code
+}
+
+function gotoSettingpage() {
+	$.mobile.changePage('#settingpage')
+	
+}
+
+function starBarScanning(){
+//alert('ok')
+//alert(window.plugins.barcodeScanner)
+ window.plugins.barcodeScanner.scan(
+      function (result) {
+            //alert(result.text);
+            if(result.text  !=''){
+            var thml='';
+           var new_mat1='<option>'+result.text+'</option>'
+	  var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
+	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
+	
+	$('#invoice_just_re_html').append(thml).trigger('create');
+      }
+       /*   alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+                */
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+   );
 }
