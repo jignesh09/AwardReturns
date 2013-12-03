@@ -1770,7 +1770,7 @@ function gotoSettingpage() {
 function starBarScanning(){
 //alert('ok')
 //alert(window.plugins.barcodeScanner)
- window.plugins.barcodeScanner.scan(
+ cordova.plugins.barcodeScanner.scan(
       function (result) {
             //alert(result.text);
             if(result.text  !=''){
