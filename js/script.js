@@ -100,10 +100,23 @@ receivedEvent: function (id) {
 	local_login();
     console.log('dreay')
     $.mobile.defaultTransition = 'none';
+    document.addEventListener("backbutton", onBackKeyDown, false);
+
+
 }
 };
 
-
+function onBackKeyDown() {
+    if ($.mobile.activePage[0].id=='homePage' ){
+           // navigator.app.exitApp();
+        }
+        else if($.mobile.activePage[0].id=='loign'){
+        navigator.app.exitApp();
+        }
+     else{
+          history.back();
+        }
+}
 function local_login() {
     var loc= window.localStorage.getItem("sale_repId_l");
     window.localStorage.getItem("password_l");
@@ -439,11 +452,13 @@ function invoiceDetail(ev){
            var mon=dt.getMonth();
            var det1 = dt.getDate();
            fuldate=det1+'/'+mon+'/'+yr;
+           //alert(data1.invoice_item)
+          //  alert(parseInt(data1.invoice_item))
 		   var sdata=data1.invoice_item+data1.item_name;
            html+='<li class="returnlist" add="'+sdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
-           html+='<strong>'+data1.invoice_item+'</strong><strong>'+data1.item_name+'</strong>'
-	   // html+='<strong>'+data1.invoice_item+'</strong><strong>'+parseInt(data1.quantity)+' items</strong>'
-           // html+='<div id="poor_quality_text"><div id="textinput"><input type="text" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>';
+           html+='<strong>'+Number(data1.invoice_item)+'</strong><strong>'+data1.item_name+'</strong>'
+	   // html+='<strong>'+data1.invoice_item+'</strong><strong>'+Number(data1.quantity)+' items</strong>'
+           // html+='<div id="poor_quality_text"><div id="textinput"><input type="Number" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>';
            html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext">'+ht1+'</select></div></div></div></li>';
            }
            // alert(cid);
@@ -762,7 +777,7 @@ just_mat_desc=[];
 }
 
 function justRetuncnf_summit(){
-
+$.mobile.showPageLoadingMsg();
   
     var date1=new Date();
     var date0=date1.toISOString()
@@ -790,8 +805,10 @@ var just_mat_con=[];
         Rbody+='<d:DistrChan>10</d:DistrChan>'
         Rbody+='<d:Division>10</d:Division>'
         Rbody+='<d:DateType>1</d:DateType>'
-        Rbody+='<d:OrdReason>101</d:OrdReason>'
-        Rbody+='<d:PartnNumb>0000000011</d:PartnNumb>'
+        for(var i=0;i<just_mat_num.length;i++){
+        Rbody+='<d:OrdReason>'+just_mat_Res[i]+'</d:OrdReason>'
+        }
+        Rbody+='<d:PartnNumb>'+cus_id+'</d:PartnNumb>'
         Rbody+='</m:properties>'
         Rbody+='</atom:content>'
         Rbody+='<atom:link '
@@ -822,7 +839,7 @@ var just_mat_con=[];
     
        //alert(date3);
         Rbody+='<d:ReqDate>'+date3+'</d:ReqDate>'
-        Rbody+='<d:ReqQty>25.000</d:ReqQty>'
+        Rbody+='<d:ReqQty>'+just_mat_Retq[i]+'</d:ReqQty>'
         Rbody+='</m:properties>'
         Rbody+='</atom:content>'
         Rbody+='</atom:entry>'
@@ -839,7 +856,7 @@ var just_mat_con=[];
         
         console.log(Rbody)
 
-         $.mobile.showPageLoadingMsg();
+         
         var user= window.localStorage.getItem("sale_repId");
         var pwd=window.localStorage.getItem("password");
         var url = 'http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/JUST_RETURNS_MULTIPLE_SRV/SOHeaderCollection';
@@ -875,18 +892,25 @@ var just_mat_con=[];
                     
                     if (req1.readyState==4 )
                     {
-                        //alert(req1.responseText);
+                       // alert(req1.responseText);
                         $.mobile.hidePageLoadingMsg();
                         
                         console.log("-----------here now--------------------------------------------------------");
                         console.log(req1.responseText);
-                        // var xml = request.responseText;
-                        //  var users = xml.getElementsByTagName("feed");
+                          xmlDoc = $.parseXML( req1.responseText ),
+                           $xml = $( xmlDoc ),
+                            $title = $xml.find( "OrderId" );
+                         $ref = $xml.find( "RefDoc" );
+                          // alert($ref.text())
+                           var oid=$title.text()
                         // alert(users.length)
                         console.log("-----------here now----------------------------------------------------------");
+                     if($title.text()  !=''){   
+                        $('#retunOrderid_memo').html('<h1 >Return Order</h1>'+$title.text()+'</div>')
                         $.mobile.changePage('#Credit_memo')
                         
                         gotoCReditMempage_jsut()
+                        }
                     }
                     
                 }
@@ -904,7 +928,7 @@ function addnewRow(){
 	var thml='';
 	  var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
 	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
+	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
 	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
 	
 	$('#invoice_just_re_html').append(thml).trigger('create');
@@ -939,7 +963,7 @@ function customerInvoReturns(){
               Mnum_option+= '<option value="'+opval+'" data-va="'+data1.MaterialDesc+'">'+data1.MaterialNum+'</option>'
            }
 	   new_mat=Mnum_option;
-            thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name=""  class="selecttext">'+Mnum_option+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
+            thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name=""  class="selecttext">'+Mnum_option+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
 	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson" ><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
 	
 	$('#just_cid').html(cus_id);
@@ -979,7 +1003,7 @@ function customerInvoReturns(){
       for(var i=0;i<1;i++){
 	// for(var i=0;i<invoiceArray.length;i++){
 	
-	 thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new"><select name="" class="selecttext"></select></div><div class="textinput_new"><input type="text" vlaue="3"/></div>'
+	 thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new"><select name="" class="selecttext"></select></div><div class="textinput_new"><input type="Number" vlaue="3"/></div>'
 	thml+='<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
 	
 	
@@ -1097,14 +1121,14 @@ function gotoReturnconfrm() {
 		   materialArray.push(data1.material)
 		   itemNameArray.push(data1.item_name)
 		   serdata=data1.material+data1.item_name;
-           html+='<li class="returnconfmlist" add="'+serdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+parseInt(data1.invoice_item)+'</span></div>'
+           html+='<li class="returnconfmlist" add="'+serdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+Number(data1.invoice_item)+'</span></div>'
            html+='<strong>'+data1.item_name+'</strong>';
         //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
-	    html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+parseInt(data1.quantity)+' items</h2></div>';
-           html+='<div class="poor_quality_text5"><div id="textinput"><input type="text" /></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
-           //  html+='<div class="poor_quality_text"><input type="text" vlaue="3"/><select><option>ok</option><option>ok</option></select></div></div>';
+	    html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
+           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" /></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
+           //  html+='<div class="poor_quality_text"><input type="Number" vlaue="3"/><select><option>ok</option><option>ok</option></select></div></div>';
            /*
-            *<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><div id="textinput"><input type="text" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>
+            *<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><div id="textinput"><input type="Number" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>
             *
             *
             */
@@ -1145,7 +1169,7 @@ function gotoCreditmemo() {
      $.mobile.showPageLoadingMsg();
 	noofItem=[];
 	R_Reason=[];
-	$('input[type=text]', '#invoice_detaila_return').each(function() {
+	$('input[type=Number]', '#invoice_detaila_return').each(function() {
                                                           //   alert($(this).val())
                                                           var val1=$(this).val();
                                                           noofItem.push(val1)
@@ -1174,7 +1198,11 @@ function gotoCreditmemo() {
      */
     //alert(itemNumArray[0])
     
-    
+      var date1=new Date();
+    var date0=date1.toISOString()
+    var date2=date0.toString();
+    var date3=  date2.substring( 0, date2.length-5);
+     var date4=  date2.substring( 0, date2.length-14);
     
     //http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/JUST_RETURNS_MULTIPLE_SRV/SOHeaderCollection
     var Rbody='<?xml version="1.0" encoding="UTF-8"?>'
@@ -1191,7 +1219,7 @@ function gotoCreditmemo() {
     Rbody+='<d:DistrChan>10</d:DistrChan>'
     Rbody+='<d:Division>10</d:Division>'
     Rbody+='<d:RefDoc>'+invoicid+'</d:RefDoc>'
-    Rbody+='<d:PartnNumb>0000000011</d:PartnNumb>'
+    Rbody+='<d:PartnNumb>'+cus_id+'</d:PartnNumb>'
     Rbody+='</m:properties>'
     Rbody+='</atom:content>'
     Rbody+='<atom:link '
@@ -1209,7 +1237,7 @@ function gotoCreditmemo() {
         Rbody+='<d:OrderId>'+invoicid+'</d:OrderId>'//found
         Rbody+='<d:ItemNumber>'+itemNumArray[i]+'</d:ItemNumber>'//found
         Rbody+='<d:TargetQty>'+QuantityArray[i]+'</d:TargetQty>'//found
-        Rbody+='<d:ReqDate>2013-11-27T00:00:00</d:ReqDate>'
+        Rbody+='<d:ReqDate>'+date3+'</d:ReqDate>'
         Rbody+='<d:ReqQty>'+noofItem[i]+'</d:ReqQty>'
         Rbody+='</m:properties>'
         Rbody+='</atom:content>'
@@ -1276,14 +1304,21 @@ function gotoCreditmemo() {
                 
                 if (req1.readyState==4 )
                 {
-                    //alert(req1.responseText);
+                   // alert(req1.responseText);
                      $.mobile.hidePageLoadingMsg();
                       
                     console.log("-----------here now--------------------------------------------------------");
                     console.log(req1.responseText);
-                   // var xml = request.responseText;
-                  //  var users = xml.getElementsByTagName("feed");
-                   // alert(users.length)
+                    xmlDoc = $.parseXML( req1.responseText ),
+                           $xml = $( xmlDoc ),
+                            $title = $xml.find( "OrderId" );
+                            $ref = $xml.find( "RefDoc" );
+                           //alert($ref.text())
+                           var oid=$title.text()
+                           var res = oid.substring(oid.length-10,oid.length);
+                          // alert(res);
+                            $('#retunOrderid_memo').html('<h1 >Return Order</h1>'+res+'</div>')
+                            $('#memo_refno').html($ref.text())
                     console.log("-----------here now----------------------------------------------------------");
                      $.mobile.changePage('#Credit_memo')
                     
@@ -1423,11 +1458,11 @@ function getRetrunOrderDetails(ev){
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            //alert(data1.item_count)
-           var i_num=parseInt(data1.ItemNumber);
+           var i_num=Number(data1.ItemNumber);
            html+='<li class="re_detail_li" add="'+data1.ItemName+'"><div class="ui-block-a"><div class="Createtop"><span>'+i_num+'</span></div>'
            //html+='<strong>Air Tubs</strong>';
            html+='<div class="Garfield_text"><h1>'+data1.ItemName+'</h1></div>';
-           html+='<div class="poor_quality_text"><span>'+parseInt(data1.ReturnQuantity)+'</span><h1>'+data1.ReturnReason+'</h1></div></div></li>';
+           html+='<div class="poor_quality_text"><span>'+Number(data1.ReturnQuantity)+'</span><h1>'+data1.ReturnReason+'</h1></div></div></li>';
            var ccid=data1.CustomerNumber
            }
            
@@ -1693,7 +1728,23 @@ var itemNameArray=[];
 var invoiceArray=[];
 var itemcourntArray=[];
  */
-
+ var tott=0;
+ var toalPriceArray=[];
+    for (var i=0;i<priceArray.length;i++) {
+	//code
+	//var a=parseInt(priceArray[i])
+	//var b=parseInt(noofItem[i]);
+	//tott=a*b;
+	tott=parseInt(priceArray[i])*parseInt(noofItem[i]);
+        toalPriceArray.push(tott)
+    }
+       var tott=0;
+        var total = 0;
+       $.each(toalPriceArray,function() {
+                   total += this;
+          });
+    //alert(total)
+    $('#g_total').html('Total: $'+total)
  var date1=new Date();
     var date0=date1.toISOString()
     var date2=date0.toString();
@@ -1731,7 +1782,7 @@ var itemcourntArray=[];
    }
      thml1+='<div style="width: 100%"><div class="demo1">Total</div><div class="demo2">Tax</div></div>'
       for(var i=0;i<itemNameArray.length;i++){
-    thml1+='<div style="width: 100%"><div class="demo3">$14</div><div class="demo4">Nan</div></div>'
+    thml1+='<div style="width: 100%"><div class="demo3">$'+toalPriceArray[i]+'</div><div class="demo4">Nan</div></div>'
       }
     
     
