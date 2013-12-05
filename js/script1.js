@@ -671,9 +671,9 @@ function justRetuncnf_summit(){
     Rbody+='<d:DistrChan>10</d:DistrChan>'
     Rbody+='<d:Division>10</d:Division>'
     Rbody+='<d:DateType>1</d:DateType>'
-   // for(var i=0;i<just_mat_num.length;i++){
-        Rbody+='<d:OrdReason>'+just_mat_Res[0]+'</d:OrdReason>'
-    //}
+    for(var i=0;i<just_mat_num.length;i++){
+        Rbody+='<d:OrdReason>'+just_mat_Res[i]+'</d:OrdReason>'
+    }
     Rbody+='<d:PartnNumb>'+cus_id+'</d:PartnNumb>'
     Rbody+='</m:properties>'
     Rbody+='</atom:content>'
@@ -778,7 +778,7 @@ function justRetuncnf_summit(){
                         gotoCReditMempage_jsut()
                     }
                     else{
-                        alert('something went wrong');
+                        alert('somethig went wrong');
                     }
                 }
                 
@@ -1708,45 +1708,35 @@ function gotoCReditMempage_jsut(){
                        
                        }
                        
-                       
-function starBarScanning(){
-//alert('ok')
-   var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-   scanner.scan(
-      function (result) {
-          if(result.text  !=''){
-            var thml='';
-                var new_mat1='<option>'+result.text+'</option>'
-                var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-              var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-              thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
-              thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
-              
-              $('#invoice_just_re_html').append(thml).trigger('create');
-           }
-      }, 
-      function (error) {
-          alert("Scanning failed: " + error);
-      }
-   );
-/*
- window.plugins.barcodeScanner.scan(
-      function (result) {
-            //alert(result.text);
-            if(result.text  !=''){
-            var thml='';
-           var new_mat1='<option>'+result.text+'</option>'
-	  var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
-	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
-	
-	$('#invoice_just_re_html').append(thml).trigger('create');
-      }
-      
-      }, 
-      function (error) {
-          alert("Scanning failed: " + error);
-      }
-   );*/
-}
+                       function starBarScanning(){
+                
+                       window.plugins.barcodeScanner.scan(
+                                                          function (result) {
+                                                          //alert(result.text);
+                                                          if(result.text  !=''){
+                                                     
+
+                                                           var index=materialBarcodeArray.indexOf(result.text.toString())
+
+                                                           var new_mat1='<option value="'+materialnum_desc[index]+'" data-va="'+materialDescArray[index]+'">'+materialnumArray[index]+'</option>'
+
+                                                             var thml='';
+                                                           // var new_mat1='<option>'+result.text+'</option>'
+                                                          var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+                                                          var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+                                                          thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
+                                                          thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
+                                                          
+                                                          $('#invoice_just_re_html').append(thml).trigger('create');
+                                                          }
+                                                          /*   alert("We got a barcode\n" +
+                                                           "Result: " + result.text + "\n" +
+                                                           "Format: " + result.format + "\n" +
+                                                           "Cancelled: " + result.cancelled);
+                                                           */
+                                                          }, 
+                                                          function (error) {
+                                                          alert("Scanning failed: " + error);
+                                                          }
+                                                          );
+                       }
