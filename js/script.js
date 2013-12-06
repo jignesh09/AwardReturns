@@ -1711,9 +1711,9 @@ function gotoCReditMempage_jsut(){
                        
 function starBarScanning(){
 alert('ok')
-   //var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-   alert(cordova.plugins.barcodeScanner)
-   cordova.plugins.barcodeScanner.scan(
+   var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+   alert(scanner)
+   scanner.scan(
       function (result) {
           if(result.text  !=''){
             var thml='';
