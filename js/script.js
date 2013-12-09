@@ -685,7 +685,7 @@ function justRetuncnf_summit(){
     Rbody+='<atom:feed>'
     //-----------------------------------------------
 	for(var i=0;i<just_mat_num.length;i++){
-       var j=i+1;
+          var j=i+1;
 	    var j1=j+'0';
 	   console.log(j1+'-----------')
         Rbody+='<atom:entry>'
@@ -711,6 +711,7 @@ function justRetuncnf_summit(){
         Rbody+='</atom:entry>'
         
 	}
+	//console.log(just_mat_price)
     //-----------------------------------------------------------------------
     
     
@@ -758,7 +759,10 @@ function justRetuncnf_summit(){
                 
                 if (req1.readyState==4 )
                 {
-                  // alert(req1.responseText);
+                   //alert(req1.responseText);
+		   if(req1.responseText=='CSRF token validation failed'){
+		    navigator.notification.alert('CSRF token error', alertDismissed, 'AwardReturns', 'ok' );
+		   }
                     $.mobile.hidePageLoadingMsg();
                     
                     console.log("-----------here now--------------------------------------------------------");
@@ -769,7 +773,7 @@ function justRetuncnf_summit(){
                     $ref = $xml.find( "RefDoc" );
                     // alert($ref.text())
                     var oid=$title.text()
-                    // alert(users.length)
+                   //  gotoCReditMempage_jsut()
                     console.log("-----------here now----------------------------------------------------------");
                     if($title.text()  !=''){
                         $('#retunOrderid_memo').html('<h1 >Return Order</h1>'+$title.text()+'</div>')
@@ -1006,13 +1010,8 @@ function gotoReturnconfrm() {
            html+='<strong>'+data1.item_name+'</strong>';
            //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
            html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
-           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" /></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
-           //  html+='<div class="poor_quality_text"><input type="Number" vlaue="3"/><select><option>ok</option><option>ok</option></select></div></div>';
-           /*
-            *<div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><div id="textinput"><input type="Number" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>
-            *
-            *
-            */
+           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
+         
            
            
            
@@ -1045,13 +1044,28 @@ function gotoReturnconfrm() {
     
 }
 
+function  checkqutity(ev){
+ 
+    var value=$(ev).val();
+    var ques=Number(QuantityArray[$(ev).data('line_ndex')])
+    if(value>ques){
+	alert('Your have entered wrong quantity')
+	$(ev).val('')
+    }
+    else{
+	//alert('less')
+    }
+    
+}
+
+
 function gotoCreditmemo() {
-	console.log(itemNumArray)
+	 
     $.mobile.showPageLoadingMsg();
 	noofItem=[];
 	R_Reason=[];
 	$('input[type=Number]', '#invoice_detaila_return').each(function() {
-                                                            //   alert($(this).val())
+                                                          
                                                             var val1=$(this).val();
                                                             if(val1==''){
                                                             var val2=0;
@@ -1063,6 +1077,11 @@ function gotoCreditmemo() {
                                                             
                                                             })
     //    alert(noofItem.length)
+    //alert(QuantityArray[0]);
+    //alert(noofItem[0])
+    
+    
+    
     
     if(noofItem.length==0){
         alert('please Enter no of item for return ')
@@ -1180,7 +1199,9 @@ function gotoCreditmemo() {
                     {
                         // alert(req1.responseText);
                         $.mobile.hidePageLoadingMsg();
-                        
+                         if(req1.responseText=='CSRF token validation failed'){
+		    navigator.notification.alert('CSRF token error', alertDismissed, 'AwardReturns', 'ok' );
+		   }
                         console.log("-----------here now--------------------------------------------------------");
                         console.log(req1.responseText);
                         xmlDoc = $.parseXML( req1.responseText ),
@@ -1579,16 +1600,16 @@ function gotoCReditMempage_jsut(){
         //alert(just_mat_price[i])
         thml1+='<div style="width: 100%"><div class="demo3">'+just_mat_num[i]+'</div><div class="demo4">'+just_mat_num[i]+'</div></div>'
     }
-    thml1+='<div style="width: 100%"><div class="demo1">COOOOO1</div><div class="demo2">Reason</div></div>'
+    thml1+='<div style="width: 100%"><div class="demo1">Returning</div><div class="demo2">Reason</div></div>'
     for(var i=0;i<just_mat_Res.length;i++){
-        thml1+='<div style="width: 100%"><div class="demo3">5</div><div class="demo4">'+just_mat_Res[i]+'</div></div>'
+        thml1+='<div style="width: 100%"><div class="demo3">'+just_mat_Retq[i]+'</div><div class="demo4">'+just_mat_Res[i]+'</div></div>'
     }
-    thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
+  /*  thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
     
     for(var i=0;i<just_mat_Res.length;i++){
         thml1+='<div style="width: 100%"><div class="demo3">5</div><div class="demo4">'+just_mat_Retq[i]+'</div></div>'
     }
-    
+    */
     thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Price</div></div>'
     for(var i=0;i<just_mat_Res.length;i++){
         thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">$'+just_mat_price[i]+'</div></div>'
@@ -1604,7 +1625,8 @@ function gotoCReditMempage_jsut(){
                        
                        
                        }
-                       function gotoCReditMempage(){
+     function gotoCReditMempage(){
+	
     /*
      
      var cus_name='';
@@ -1656,23 +1678,23 @@ function gotoCReditMempage_jsut(){
                        for(var i=0;i<itemNameArray.length;i++){
                        thml1+='<div style="width: 100%"><div class="demo3">'+itemNumArray[i]+'</div><div class="demo4">'+itemNameArray[i]+'</div></div>'
                        }
-                       thml1+='<div style="width: 100%"><div class="demo1">COOOOO1</div><div class="demo2">Reason</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Reason</div></div>'
                        for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">1</div><div class="demo4">'+R_Reason[i]+'</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo3">'+QuantityArray[i]+'</div><div class="demo4">'+R_Reason[i]+'</div></div>'
                        }
-                       thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Returning</div></div>'
                        
                        for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">'+QuantityArray[i]+'</div><div class="demo4">'+noofItem[i]+'</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">'+noofItem[i]+'</div></div>'
                        }
                        
-                       thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Price</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo1">Price</div><div class="demo2">Total</div></div>'
                        for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">'+priceArray[i]+'</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo3">'+priceArray[i]+'</div><div class="demo4">$'+toalPriceArray[i]+'</div></div>'
                        }
-                       thml1+='<div style="width: 100%"><div class="demo1">Total</div><div class="demo2">Tax</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo11">Tax</div></div>'
                        for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">$'+toalPriceArray[i]+'</div><div class="demo4">Nan</div></div>'
+                       thml1+='<div style="width: 100%"><div class="demo31">non</div></div>'
                        }
                        
                        

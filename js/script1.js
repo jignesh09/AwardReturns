@@ -671,9 +671,9 @@ function justRetuncnf_summit(){
     Rbody+='<d:DistrChan>10</d:DistrChan>'
     Rbody+='<d:Division>10</d:Division>'
     Rbody+='<d:DateType>1</d:DateType>'
-    for(var i=0;i<just_mat_num.length;i++){
-        Rbody+='<d:OrdReason>'+just_mat_Res[i]+'</d:OrdReason>'
-    }
+   // for(var i=0;i<just_mat_num.length;i++){
+        Rbody+='<d:OrdReason>'+just_mat_Res[0]+'</d:OrdReason>'
+    //}
     Rbody+='<d:PartnNumb>'+cus_id+'</d:PartnNumb>'
     Rbody+='</m:properties>'
     Rbody+='</atom:content>'
@@ -685,25 +685,25 @@ function justRetuncnf_summit(){
     Rbody+='<atom:feed>'
     //-----------------------------------------------
 	for(var i=0;i<just_mat_num.length;i++){
+       var j=i+1;
+	    var j1=j+'0';
+	   console.log(j1+'-----------')
         Rbody+='<atom:entry>'
         Rbody+='<atom:content type="application/xml">'
         Rbody+='<m:properties>'
-        Rbody+='<d:ItmNumber>000010</d:ItmNumber>'//fonund
-        Rbody+='<d:Material>'+just_mat_num[i]+'</d:Material>'//fonund
+        Rbody+='<d:ItmNumber>0000'+j1+'</d:ItmNumber>'
+        Rbody+='<d:Material>'+just_mat_num[i]+'</d:Material>'//found
         Rbody+='<d:Plant>1000</d:Plant>'
         Rbody+='<d:StoreLoc>1000</d:StoreLoc>'
-        Rbody+='<d:TargetQty>'+just_mat_Retq[i]+'</d:TargetQty>'//fonund
+        Rbody+='<d:TargetQty>'+just_mat_Retq[i]+'</d:TargetQty>'//found
         Rbody+='<d:TargetQu>EA</d:TargetQu>'
-        Rbody+='<d:ShortText>'+just_mat_desc[i]+'</d:ShortText>'//fonund
+        Rbody+='<d:ShortText>'+just_mat_desc[i]+'</d:ShortText>'//found
         Rbody+='<d:MatlGroup>50200000</d:MatlGroup>'
         Rbody+='<d:CondStNo>011</d:CondStNo>'
         Rbody+='<d:CondCount>01</d:CondCount>'
         Rbody+='<d:CondType>PR00</d:CondType>'
-        Rbody+='<d:CondValue>35.00</d:CondValue>'
+        Rbody+='<d:CondValue>'+just_mat_price[i]+'</d:CondValue>'
         Rbody+='<d:Currency>USD</d:Currency>'
-        //  Rbody+='<d:ReqDate>2013-11-26T00:00:00</d:ReqDate>'
-        
-        //alert(date3);
         Rbody+='<d:ReqDate>'+date3+'</d:ReqDate>'
         Rbody+='<d:ReqQty>'+just_mat_Retq[i]+'</d:ReqQty>'
         Rbody+='</m:properties>'
@@ -758,7 +758,7 @@ function justRetuncnf_summit(){
                 
                 if (req1.readyState==4 )
                 {
-                  //  alert(req1.responseText);
+                  // alert(req1.responseText);
                     $.mobile.hidePageLoadingMsg();
                     
                     console.log("-----------here now--------------------------------------------------------");
@@ -778,7 +778,7 @@ function justRetuncnf_summit(){
                         gotoCReditMempage_jsut()
                     }
                     else{
-                        alert('somethig went wrong');
+                        alert('something went wrong');
                     }
                 }
                 

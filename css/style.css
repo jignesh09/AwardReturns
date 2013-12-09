@@ -946,7 +946,10 @@ ui-grid-a>:nth-child(n){
 .invoice_text_camera{float: right; width: 25%; margin-top:-20% !important; height: 96px;}
 
 .demo1 {width:49.7%; float: left; text-align: center; border-bottom:solid 1px rgb(0, 0, 0); border-right:solid 1px rgb(0, 0, 0); family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.3em; padding:1% 0;}
+.demo11 {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); border-right:solid 1px rgb(0, 0, 0); family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.3em; padding:1% 0;}
 .demo2 {width:50%; float: left; text-align: center; border-bottom:solid 1px rgb(0, 0, 0); family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.3em; padding:1% 0;}
 
 .demo3 {width:49.7%; float: left; text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
+.demo31 {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
+.demo3_text {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
 .demo4 {width:50%; float: left; text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; background:#d4d1c9; padding:1% 0;}
