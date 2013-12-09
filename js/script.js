@@ -1274,7 +1274,13 @@ function getReports() {
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var str = data1.ReturnDate
-           var ress = str.slice(6,str.length-2);
+	        if(str ==null || str==''){
+              var mon=0
+               var mon1=0
+              var deate=0+'/'+0+'/'+0;
+             }
+           else{
+              var ress = str.slice(6,str.length-2);
            // alert(ress)
            var ress1=parseInt(ress)
            // alert(ress1)
@@ -1284,6 +1290,7 @@ function getReports() {
            var det1 = dt.getDate();
            var mon1=mon+1
            var deate=det1+'/'+mon1+'/'+yr;
+           }
            var c_name=data1.CustomerName;
            var c_re_order=data1.ReturnOrder;
            var c_invoice_no=data1.InvoiceNumber;
@@ -1730,7 +1737,7 @@ function gotoCReditMempage_jsut(){
                        
                        }
                        
-                        function starBarScanning(){
+                       function starBarScanning(){
    //alert('ok')
    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)
