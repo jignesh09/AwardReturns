@@ -14,6 +14,7 @@ var materialArray=[];
 var itemNameArray=[];
 var invoiceArray=[];
 var itemcourntArray=[];
+var tryit='false'
 //var base_url = "http://esurancexchange.com/healthgapdirect/webservice";
 
 // Check valid zipcode
@@ -130,11 +131,64 @@ function local_login() {
 }
 
 $( document ).ready(function() {
+    //createDatabase();
                     $.mobile.defaultPageTransition = "none"
                     $.mobile.defaultDialogTransition = 'none';
                     $.mobile.useFastClick = true;
                     $.mobile.touchOverflowEnabled = true;
+		    
+		    
+		    $("#justretuncnfid").on("click", function(){
+			if(tryit=='true'){
+			     gotoReturnconfrm_local()
+			}
+			else{
+			    gotoReturnconfrm()
+			}
+                      //console.log("Clicked");
+                         });
+		    
+		      $("#gotoCreditmemoid").on("click", function(){
+			if(tryit=='true'){
+			     gotoCreditmemo_local()
+			}
+			else{
+			    gotoCreditmemo()
+			}
+                      //console.log("Clicked");
+                         });
+		       $("#customerInvoReturnsid").on("click", function(){
+			if(tryit=='true'){
+			     customerInvoReturns_local()
+			}
+			else{
+			    customerInvoReturns()
+			}
+                      //console.log("Clicked");
+                         });
+		    
+		      $("#justRetuncnf_summitid").on("click", function(){
+			if(tryit=='true'){
+			     justRetuncnf_summit_local()
+			}
+			else{
+			    justRetuncnf_summit()
+			}
+                      //console.log("Clicked");
+                         });
                     });
+
+
+function gotoHomepage(){
+             if(tryit=='true'){
+			    $.mobile.changePage('#loign')
+			}
+			else{
+			   $.mobile.changePage('#homepage')
+			}
+    
+}
+
 
 function make_base_auth2(id) {
     var tok = id
@@ -263,8 +317,9 @@ function getCustomer(){
            console.log(JSON.stringify(data))
            var res=eval(data);
            // alert(res.d.results[0].__metadata.uri)
-           
+           window.localStorage.setItem('ldata',JSON.stringify(data))
            var html='';
+	   // insertValue('Customerlist','jsondata','"'+res+'"');
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var c_id=data1.cust_num.toString();
@@ -311,6 +366,9 @@ function getCustomer(){
 //------------------------------- getting customer invoice-----------------------------------------------------
 function CutomerInvoice(ev){
     //alert($(ev).data('c_id'))
+    console.log('ldata------------------------------------------------')
+    //console.log(window.localStorage.getItem('ldata'))
+    console.log('ldata------------------------------------------------')
     caddress=$(ev).data('adds');
     cus_name=$(ev).data('cusname');
     cus_id=$(ev).data('c_id');
@@ -321,11 +379,7 @@ function CutomerInvoice(ev){
     var pwd1="'"+pwd+"'";
     var id=$(ev).data('c_id');
     var id1="'"+id+"'";
-    
-    
     var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection?$filter=customer_num eq "+id1+" &$format=json"
-    
-    
     $.mobile.showPageLoadingMsg();
     $.ajax({
            url:url,
@@ -333,6 +387,7 @@ function CutomerInvoice(ev){
            success: function(data, status) {
            $.mobile.hidePageLoadingMsg();
            console.log(JSON.stringify(data))
+	    window.localStorage.setItem('invoice_detailsCollection',JSON.stringify(data))
            var res=eval(data);
            invoiceArray=[];
            itemcourntArray=[];
@@ -1274,13 +1329,16 @@ function getReports() {
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var str = data1.ReturnDate
-	        if(str ==null || str==''){
-              var mon=0
-               var mon1=0
-              var deate=0+'/'+0+'/'+0;
-             }
-           else{
-              var ress = str.slice(6,str.length-2);
+	   if(str==null || str==''){
+	     var yr=0
+           var mon=0
+           var det1 = 0
+           var mon1=0
+           var deate=det1+'/'+mon1+'/'+yr;
+	   }
+	   else{
+	   console.log( data1.ReturnDate)
+           var ress = str.slice(6,str.length-2);
            // alert(ress)
            var ress1=parseInt(ress)
            // alert(ress1)
@@ -1290,7 +1348,7 @@ function getReports() {
            var det1 = dt.getDate();
            var mon1=mon+1
            var deate=det1+'/'+mon1+'/'+yr;
-           }
+	   }
            var c_name=data1.CustomerName;
            var c_re_order=data1.ReturnOrder;
            var c_invoice_no=data1.InvoiceNumber;
@@ -1737,7 +1795,595 @@ function gotoCReditMempage_jsut(){
                        
                        }
                        
-                       function starBarScanning(){
+                      
+		       
+		       
+		       
+		       
+		       
+		       
+		       
+
+
+function customerInvoReturns2(){
+     tryit='true'
+    var res = cus_data;
+    var html='';
+    for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           var c_id=data1.cust_num.toString();
+           var adds=data1.street+','+data1.city+','+data1.country+','+data1.telephone;
+           var c_id2=c_id.toString();
+           var searcdata=data1.cust_name+c_id;
+           html+='<li class="Cc_list" style="none" add="'+searcdata+'"><div class="ui-block-a" ><a href="#" data-c_id='+c_id2+' data-cusname="'+data1.cust_name+'"  data-adds="'+adds+'" onclick="CutomerInvoice_local(this)"><span>'+data1.cust_num+'</span></a>'
+           html+='<strong>'+res.d.results[i].cust_name+'</strong>'
+           html+='<div class="Garfield_text">'+data1.street+'<br /> '+data1.city+', '+data1.country+'  '+data1.telephone+'</div>'
+           html+='</div></li>'
+           
+           
+           }
+
+           $('#dynamic_customer').html(html).trigger('create');
+           $.mobile.changePage('#Customers')
+}
+
+
+function CutomerInvoice_local(ev){
+     caddress=$(ev).data('adds');
+    cus_name=$(ev).data('cusname');
+    cus_id=$(ev).data('c_id');
+     var res = null
+     
+        switch (cus_id)
+	       {
+	       case '0000000092':
+		 res = cus_invoice
+		 break;
+	       case '0000000093':
+		 res = cus_invoice93
+		 break;
+	       case '0000000094':
+		 res = cus_invoice94
+		 break;
+	       case '0000000095':
+		 res = cus_invoice95
+		 break;
+	       case '0000000096':
+		 res = cus_invoice96
+		 break;
+	        case '0000000097':
+		 res = cus_invoice97
+		 break;
+	       case '0000000098':
+		  res = cus_invoice98
+		 break;
+		 case '0000000099':
+		  res = cus_invoice99
+		 break;
+	       }
+    
+     
+     
+     if(res.d.results.length>0){
+           var html='';
+           var c_idthml='Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+res.d.results[0].cust_id;
+           var c_namehtml='Customer name &nbsp;&nbsp;&nbsp;&nbsp;'+res.d.results[0].cust_name;
+           var str = res.d.results[0].invoice_date;
+           var ress = str.slice(6,str.length-2);
+           var ress1=parseInt(ress)
+           var dt=new Date(ress1);
+           var montheArray=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           //alert(data1.item_count)
+           
+           var str = res.d.results[i].invoice_date;
+           var ress = str.slice(6,str.length-2);
+           var ress1=parseInt(ress)
+           var dt=new Date(ress1);
+           var yr=dt.getFullYear();
+           var mon=dt.getMonth();
+           var a="/";
+           var dt_yr=montheArray[mon]+a+yr;
+           var det1 = dt.getDate();
+           // alert(dt_yr)
+           invoiceArray.push(data1.invoice_num);
+           itemcourntArray.push(data1.item_count);
+           html+='<div class="ui-block-a" ><div class="Createtop"><span>'+det1+'</span>'
+           html+='<h1>'+dt_yr+'</h1></div><strong>'+parseInt(data1.invoice_amt)+'</strong>'
+           html+='<div class="Garfield_text" data-invo_id="'+data1.invoice_num+'" data-cid="'+res.d.results[0].cust_id+'" data-cname="'+res.d.results[0].cust_name+'" data-icount="'+res.d.results[i].item_count+'" onclick="invoiceDetail_local(this)" ><h1>'+data1.invoice_num+'</h1><h2>'+data1.item_count+' items</h2></div></div>'
+           }
+           $('#invo_cusId').html(c_idthml).trigger('create');
+           $('#invo_cusName').html(c_namehtml).trigger('create');
+           $('#Cus_invo_details').html(html).trigger('create');
+           $.mobile.changePage('#Create_returns')
+           // alert('scu')
+           }//end if
+           else{
+           navigator.notification.alert( 'No Data Found',alertDismissed, 'AwardReturns','ok');
+           
+           }
+}
+
+function invoiceDetail_local(ev){
+  //  alert($(ev).data('icount'))
+    nitm=parseInt($(ev).data('icount'))
+    console.log($(ev).data('icount'))
+    var res=null
+    switch (parseInt($(ev).data('icount')))
+	       {
+	       case 2:
+		 res = cusno2
+		 break;
+	       case 3:
+		 res = cusno
+		 break;
+	       case 4:
+		 res = cusno4
+		 break;
+	       case 5:
+		 res = cusno5
+		 break;
+	       case 6:
+		 res = cusno6
+		 break;
+	        case '0000000097':
+		 res = cus_invoice97
+		 break;
+	       case '0000000098':
+		  res = cus_invoice98
+		 break;
+		 case '0000000099':
+		  res = cus_invoice99
+		 break;
+	       }
+    
+      var html='';
+           var fuldate='';
+           //alert(res.d.results.length)
+           var ht='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var ht1='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+     
+		   
+           var str = res.d.results[i].billing_date;
+           var ress = str.slice(6,str.length-2);
+           var ress1=parseInt(ress)
+           var dt=new Date(ress1);
+           var yr=dt.getFullYear();
+           var mon=dt.getMonth();
+           var det1 = dt.getDate();
+           var mon1=mon+1
+           fuldate=det1+'/'+mon1+'/'+yr;
+		   var sdata=data1.invoice_item+data1.item_name;
+           html+='<li class="returnlist" add="'+sdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
+           html+='<strong>'+Number(data1.invoice_item)+'</strong><strong>'+data1.item_name+'</strong>'
+           html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext">'+ht1+'</select></div></div></div></li>';
+           }
+           var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
+           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>'+fuldate+'</div>'
+           $('#invoice_detaila').html(html).trigger('create');
+           $('#in_c_id').html(html6)
+           $('#in_c_name').html(html1)
+           $.mobile.changePage('#returns_creen')
+    
+}
+var nitm=0
+function gotoReturnconfrm_local(){
+     itemNumArray=[];
+    priceArray=[];
+    QuantityArray=[];
+    materialArray=[];
+    itemNameArray=[];
+    var res=invoice_return
+     switch (nitm)
+	       {
+	       case 2:
+		 res = invoice_return2
+		 break;
+	       case 3:
+		 res = invoice_return
+		 break;
+	       case 4:
+		 res = invoice_return4
+		 break;
+	       case 5:
+		 res = invoice_return5
+		 break;
+	       case 6:
+		 res = invoice_return6
+		 break;
+	        case '0000000097':
+		 res = cus_invoice97
+		 break;
+	       case '0000000098':
+		  res = cus_invoice98
+		 break;
+		 case '0000000099':
+		  res = cus_invoice99
+		 break;
+	       }
+      var html='';
+           var fuldate='';
+           //alert(res.d.results.length)
+           var ht='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           var str = res.d.results[i].billing_date;
+           var ress = str.slice(6,str.length-2);
+           var ress1=parseInt(ress)
+           var dt=new Date(ress1);
+           var yr=dt.getFullYear();
+           var mon=dt.getMonth();
+           var det1 = dt.getDate();
+           fuldate=det1+'/'+mon+'/'+yr;
+		   itemNumArray.push(data1.invoice_item)
+		   priceArray.push(data1.price)
+		   QuantityArray.push(data1.quantity)
+		   materialArray.push(data1.material)
+		   itemNameArray.push(data1.item_name)
+		   serdata=data1.material+data1.item_name;
+           html+='<li class="returnconfmlist" add="'+serdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+Number(data1.invoice_item)+'</span></div>'
+           html+='<strong>'+data1.item_name+'</strong>';
+           //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
+           html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
+           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
+         
+           
+           
+           
+           }
+           //<div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+           //alert(cname);
+           var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
+           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>'+fuldate+'</div>'
+           $('#invoice_detaila_return').html(html).trigger('create');
+           //// alert('ok');
+           $('#in_c_id_retun').html(html6).trigger('create');
+           $('#in_c_name_retun').html(html1).trigger('create');
+           $.mobile.changePage('#Returns_confirmation_screen2')
+    
+}
+
+function gotoCreditmemo_local(){
+    	noofItem=[];
+	R_Reason=[];
+	$('input[type=Number]', '#invoice_detaila_return').each(function() {
+                                                          
+                                                            var val1=$(this).val();
+                                                            if(val1==''){
+                                                            var val2=0;
+                                                            }
+                                                            else{
+                                                            var val2=parseInt(val1)
+                                                            }
+                                                            noofItem.push(val2)
+                                                            
+                                                            })
+    //    alert(noofItem.length)
+    //alert(QuantityArray[0]);
+    //alert(noofItem[0])
+    
+    
+    
+    
+    if(noofItem.length==0){
+        alert('please Enter no of item for return ')
+    }
+    else{
+        $('select', '#invoice_detaila_return').each(function() {
+                                                    // alert($(this).val())
+                                                    //  var val1=$(this).val();
+                                                    R_Reason.push($(this).val())
+                                                    })
+        
+        
+        console.log(noofItem);
+        console.log(R_Reason)
+        var dt=new Date();
+        var date1=new Date();
+        var date0=date1.toISOString()
+        var date2=date0.toString();
+        var date3=  date2.substring( 0, date2.length-5);
+        var date4=  date2.substring( 0, date2.length-14);
+        //alert(date3)
+        //http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/JUST_RETURNS_MULTIPLE_SRV/SOHeaderCollection
+        var Rbody='<?xml version="1.0" encoding="UTF-8"?>'
+        Rbody+='<atom:entry '
+        Rbody+='xmlns:atom="http://www.w3.org/2005/Atom" '
+        Rbody+='xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" '
+        Rbody+='xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">'
+        Rbody+='<atom:content type="application/xml">'
+        Rbody+='<m:properties>'
+        Rbody+='<d:OrderId>'+invoicid+'</d:OrderId>'
+        Rbody+='<d:ItemNumber>000010</d:ItemNumber>'
+        Rbody+='<d:DocType>RE</d:DocType>'
+        Rbody+='<d:SalesOrg>1000</d:SalesOrg>'
+        Rbody+='<d:DistrChan>10</d:DistrChan>'
+        Rbody+='<d:Division>10</d:Division>'
+        Rbody+='<d:RefDoc>'+invoicid+'</d:RefDoc>'
+        Rbody+='<d:PartnNumb>'+cus_id+'</d:PartnNumb>'
+        Rbody+='</m:properties>'
+        Rbody+='</atom:content>'
+        Rbody+='<atom:link '
+        Rbody+='rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/SOItems" '
+        Rbody+='type="application/atom+xml;type=feed" '
+        Rbody+='title="SALESORDER.SOHeader_SOItems">'
+        Rbody+='<m:inline>'
+        Rbody+='<atom:feed>'
+        //---------------------------------------------
+        for(var i=0;i<itemNumArray.length;i++){
+            
+            Rbody+='<atom:entry>'
+            Rbody+='<atom:content type="application/xml">'
+            Rbody+='<m:properties>'
+            Rbody+='<d:OrderId>'+invoicid+'</d:OrderId>'//found
+            Rbody+='<d:ItemNumber>'+itemNumArray[i]+'</d:ItemNumber>'//found
+            Rbody+='<d:TargetQty>'+QuantityArray[i]+'</d:TargetQty>'//found
+            Rbody+='<d:ReqDate>'+date3+'</d:ReqDate>'
+            Rbody+='<d:ReqQty>'+noofItem[i]+'</d:ReqQty>'
+            Rbody+='</m:properties>'
+            Rbody+='</atom:content>'
+            Rbody+='</atom:entry>'
+            
+        }
+        //-----------------------end1-------------------------------
+        Rbody+='</atom:feed>'
+        Rbody+='</m:inline>'
+        Rbody+='</atom:link>'
+        Rbody+='</atom:entry>'
+	 $('#retunOrderid_memo').html('<h1 >Return Order</h1>0090000229</div>')
+                        $('#memo_refno').html('0090000229')
+                        console.log("-----------here now----------------------------------------------------------");
+                        $.mobile.changePage('#Credit_memo')
+                        
+                     gotoCReditMempage()
+    }
+}
+
+function customerInvoReturns_local(){
+
+        materialPriceArray=[];
+        materialnumArray=[];
+        materialDescArray=[];
+        materialBarcodeArray=[];
+        materialnum_desc=[];
+  
+    
+ 
+           var res=just_return
+           //alert('suc')
+           var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var thml='';
+           var Mnum_option=''
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc+'s---t'+data1.Price;
+           Mnum_option+= '<option value="'+opval+'" data-va="'+data1.MaterialDesc+'">'+data1.MaterialNum+'</option>'
+           materialnumArray.push(data1.MaterialNum);
+           materialDescArray.push(data1.MaterialDesc);
+           materialBarcodeArray.push(data1.Barcode.toString());
+           materialnum_desc.push(opval);
+           }
+           new_mat=Mnum_option;
+           thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name=""  class="selecttext">'+Mnum_option+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
+           thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson" ><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
+           
+           $('#just_cid').html(cus_id);
+           $('#just_cname').html('<h1>Customer name</h1>'+cus_name);
+           $('#invoice_just_re_html').html(thml).trigger('create')
+           $.mobile.changePage('#jsut_returns_creen');
+         
+	
+    
+}
+
+
+function justRetuncnf_summit_local(){
+    var date1=new Date();
+    var date0=date1.toISOString()
+    var date2=date0.toString();
+    var date3=  date2.substring( 0, date2.length-5);
+    var date4=  date2.substring( 0, date2.length-14);
+    $('#memodate').html(date4);
+    var Rbody='<?xml version="1.0" encoding="UTF-8"?>'
+    Rbody+='<atom:entry '
+    Rbody+='xmlns:atom="http://www.w3.org/2005/Atom" '
+    Rbody+='xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" '
+    Rbody+='xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">'
+    Rbody+='<atom:content type="application/xml">'
+    Rbody+='<m:properties>'
+    Rbody+='<d:OrderId>0</d:OrderId>'
+    Rbody+='<d:DocType>RE</d:DocType>'
+    Rbody+='<d:SalesOrg>1000</d:SalesOrg>'
+    Rbody+='<d:DistrChan>10</d:DistrChan>'
+    Rbody+='<d:Division>10</d:Division>'
+    Rbody+='<d:DateType>1</d:DateType>'
+    Rbody+='<d:OrdReason>'+just_mat_Res[0]+'</d:OrdReason>'
+    Rbody+='<d:PartnNumb>'+cus_id+'</d:PartnNumb>'
+    Rbody+='</m:properties>'
+    Rbody+='</atom:content>'
+    Rbody+='<atom:link '
+    Rbody+='rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/SOItems" '
+    Rbody+='type="application/atom+xml;type=feed" '
+    Rbody+='title="SALESORDER.SOHeader_SOItems">'
+    Rbody+='<m:inline>'
+    Rbody+='<atom:feed>'
+    //-----------------------------------------------
+	for(var i=0;i<just_mat_num.length;i++){
+          var j=i+1;
+	    var j1=j+'0';
+	   console.log(j1+'-----------')
+        Rbody+='<atom:entry>'
+        Rbody+='<atom:content type="application/xml">'
+        Rbody+='<m:properties>'
+        Rbody+='<d:ItmNumber>0000'+j1+'</d:ItmNumber>'
+        Rbody+='<d:Material>'+just_mat_num[i]+'</d:Material>'//found
+        Rbody+='<d:Plant>1000</d:Plant>'
+        Rbody+='<d:StoreLoc>1000</d:StoreLoc>'
+        Rbody+='<d:TargetQty>'+just_mat_Retq[i]+'</d:TargetQty>'//found
+        Rbody+='<d:TargetQu>EA</d:TargetQu>'
+        Rbody+='<d:ShortText>'+just_mat_desc[i]+'</d:ShortText>'//found
+        Rbody+='<d:MatlGroup>50200000</d:MatlGroup>'
+        Rbody+='<d:CondStNo>011</d:CondStNo>'
+        Rbody+='<d:CondCount>01</d:CondCount>'
+        Rbody+='<d:CondType>PR00</d:CondType>'
+        Rbody+='<d:CondValue>'+just_mat_price[i]+'</d:CondValue>'
+        Rbody+='<d:Currency>USD</d:Currency>'
+        Rbody+='<d:ReqDate>'+date3+'</d:ReqDate>'
+        Rbody+='<d:ReqQty>'+just_mat_Retq[i]+'</d:ReqQty>'
+        Rbody+='</m:properties>'
+        Rbody+='</atom:content>'
+        Rbody+='</atom:entry>'
+        
+	}
+    Rbody+='</atom:feed>'
+    Rbody+='</m:inline>'
+    Rbody+='</atom:link>'
+    Rbody+='</atom:entry>'
+	$.mobile.changePage('#Credit_memo')
+	
+	gotoCReditMempage_jsut()
+    
+}
+
+function trygetReports(){
+     var res=returnPeports
+           // alert(res.d.results[0].__metadata.uri)
+           var html='';
+           var montheArray=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           var str = data1.ReturnDate
+	   if(str==null || str==''){
+	     var yr=0
+           var mon=0
+           var det1 = 0
+           var mon1=0
+           var deate=det1+'/'+mon1+'/'+yr;
+	   }
+	   else{
+	   //console.log( data1.ReturnDate)
+           var ress = str.slice(6,str.length-2);
+           // alert(ress)
+           var ress1=parseInt(ress)
+           // alert(ress1)
+           var dt=new Date(ress1);
+           var yr=dt.getFullYear();
+           var mon=dt.getMonth();
+           var det1 = dt.getDate();
+           var mon1=mon+1
+           var deate=det1+'/'+mon1+'/'+yr;
+	   }
+           var c_name=data1.CustomerName;
+           var c_re_order=data1.ReturnOrder;
+           var c_invoice_no=data1.InvoiceNumber;
+           var c_date=data1.ReturnDate;
+           // alert(c_re_order)
+           //  var monthdt=
+           var serReport=c_invoice_no+c_name+c_re_order;
+           html+='<li class="repostlist" add="'+serReport+'"><div class="ui-block-a" data-rid='+c_re_order+' data-date1='+deate+' data-cname="'+c_name+'"      onclick="getRetrunOrderDetails_local(this);"><a href="#"><div class="Createtop1"><span style="width:100% !important;">'+det1+'</span><h1>'+montheArray[mon]+'/'+yr+'</h1></div></a>'
+           html+='<strong>'+c_name+'</strong>'
+           html+='<div class="poor_quality_text1"><div class="textinputtes1">'+c_invoice_no+'</div><div class="selecttextbox1">'+c_re_order+'</div></div></div></li>'
+           // html+='</div><div>';
+           
+           //textbox
+           
+           }
+           // alert('ok')
+           $('#Report_customer').html(html).trigger('create');
+           $.mobile.changePage('#ReportsPage')
+           //console.log(status)
+}
+
+function getRetrunOrderDetails_local(ev){
+     var res=returnReportsDeatils
+         var r_id=$(ev).data('rid');
+	var c_name=$(ev).data('cname');
+	var c_date=$(ev).data('date1');
+           
+           var html='';
+           
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           //alert(data1.item_count)
+           var i_num=Number(data1.ItemNumber);
+           html+='<li class="re_detail_li" add="'+data1.ItemName+'"><div class="ui-block-a"><div class="Createtop"><span>'+i_num+'</span></div>'
+           //html+='<strong>Air Tubs</strong>';
+           html+='<div class="Garfield_text"><h1>'+data1.ItemName+'</h1></div>';
+           html+='<div class="poor_quality_text"><span>'+Number(data1.ReturnQuantity)+'</span><h1>'+data1.ReturnReason+'</h1></div></div></li>';
+           var ccid=data1.CustomerNumber
+           }
+           
+           var c_idthml='<div class="Barnes_text"><h1>Customer ID</h1><span>'+ccid+'</span></div><div class="invoice_text"><h1>Return order #</h1>'+r_id+'</div>'
+           var c_namehtml='<div class="Barnes_text"><h1>Customer name</h1>'+c_name+'</div><div class="invoice_text"><h1>Invoice date </h1>'+c_date+'</div>';
+           /*  <div class="custo_text" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+            <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>*/
+           
+           $('#returnDetailHead').html(c_idthml).trigger('create');
+           $('#returnDetailHead1').html(c_namehtml).trigger('create');
+           $('#Return_Oid_detail').html(html).trigger('create');
+           $.mobile.changePage('#ReturnOrderDeatilpage')
+           // alert('scu')
+           
+}
+function trylogoff(){
+    $.mobile.changePage('#loign')
+}
+function gotohomepage(){
+    console.log(tryit)
+    if(tryit=='true'){
+			    $.mobile.changePage('#loign')
+			}
+			else{
+			   $.mobile.changePage('#homePage')
+			}
+    
+}
+function trytohome(){
+    console.log('okc')
+    tryit='true'
+     $.mobile.changePage('#tryhomePage')
+}
+var cid='0000000092'
+var cname='Ferguson Heating and Cooling'
+var just_return={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('AIRTUBS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"100.00","Barcode":"8906004863081","MaterialDesc":"Air tubs","MaterialNum":"AIRTUBS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('BABYSHOWER')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"","MaterialDesc":"Baby shower system","MaterialNum":"BABYSHOWER"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('BASIN%20SINKS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"80.00","Barcode":"8906004863234","MaterialDesc":"Basin sinks, glass","MaterialNum":"BASIN SINKS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('CABINETS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"120.00","Barcode":"8901764082406","MaterialDesc":"Cabinets for bathrooms","MaterialNum":"CABINETS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('CADDIES')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8901764082405","MaterialDesc":"Caddies for showers","MaterialNum":"CADDIES"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('COOLERS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"500.00","Barcode":"8901764082407","MaterialDesc":"Office water coolers","MaterialNum":"COOLERS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('FAUCETS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8901764082408","MaterialDesc":"Danze bathroom faucets","MaterialNum":"FAUCETS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('FOUNTAIN')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"8901764082409","MaterialDesc":"Wall-mounted drinking fountains","MaterialNum":"FOUNTAIN"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('KITCHENSINKS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"25.00","Barcode":"8901764082410","MaterialDesc":"Kitchen floor sinks","MaterialNum":"KITCHENSINKS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('MIRRORS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"8901764082411","MaterialDesc":"Mirrors","MaterialNum":"MIRRORS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500000')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"60.00","Barcode":"8901764082412","MaterialDesc":"Air tubs","MaterialNum":"P500000"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500001')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"8906033681051","MaterialDesc":"Baby shower system","MaterialNum":"P500001"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500002')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"120.00","Barcode":"8901764042706","MaterialDesc":"Basin sinks, glass","MaterialNum":"P500002"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500003')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"120.00","Barcode":"8901764082405","MaterialDesc":"Cabinets for bathrooms","MaterialNum":"P500003"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500004')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8906004863578","MaterialDesc":"Caddies for showers","MaterialNum":"P500004"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500005')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"500.00","Barcode":"8906004863578","MaterialDesc":"Office water coolers","MaterialNum":"P500005"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500006')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8906004863080","MaterialDesc":"Danze bathroom faucets","MaterialNum":"P500006"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500007')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"8906033682072","MaterialDesc":"Wall-mounted drinking fountains","MaterialNum":"P500007"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500008')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"25.00","Barcode":"8901764082405","MaterialDesc":"Kitchen floor sinks","MaterialNum":"P500008"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500009')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"890600486357","MaterialDesc":"Mirrors","MaterialNum":"P500009"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500010')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"40.00","Barcode":"8906004863081","MaterialDesc":"Access doors / panels index page","MaterialNum":"P500010"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500011')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8906004863082","MaterialDesc":"Pipes","MaterialNum":"P500011"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500012')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8906004863083","MaterialDesc":"ABS plastic fittings","MaterialNum":"P500012"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500013')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"250.00","Barcode":"8906004863084","MaterialDesc":"Cast iron effluent pumps","MaterialNum":"P500013"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500014')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"8906004863085","MaterialDesc":"Wall bar hand shower kits","MaterialNum":"P500014"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500015')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"60.00","Barcode":"8906004863086","MaterialDesc":"Hand showers for babies","MaterialNum":"P500015"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500016')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"200.00","Barcode":"8906004863087","MaterialDesc":"Steam Bathing","MaterialNum":"P500016"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500017')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"200.00","Barcode":"8906004863088","MaterialDesc":"Backup sump pumps","MaterialNum":"P500017"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500018')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"80.00","Barcode":"8906004863089","MaterialDesc":"Salmon electric towel warmer","MaterialNum":"P500018"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500019')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"250.00","Barcode":"8906004863088","MaterialDesc":"Large slipper tubs","MaterialNum":"P500019"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('P500020')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"10.00","Barcode":"8906004863089","MaterialDesc":"Water Heaters","MaterialNum":"P500020"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('PANELS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"40.00","Barcode":"8901764082413","MaterialDesc":"Access doors / panels index page","MaterialNum":"PANELS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('PIPES')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8901764082414","MaterialDesc":"Index of pipe & tubing","MaterialNum":"PIPES"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('PLASTICFITTINGS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"30.00","Barcode":"8901764082416","MaterialDesc":"ABS plastic fittings","MaterialNum":"PLASTICFITTINGS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('PUMPS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"250.00","Barcode":"8901764082417","MaterialDesc":"Cast iron effluent pumps","MaterialNum":"PUMPS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('SHOWER%20KITS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"150.00","Barcode":"8901764082418","MaterialDesc":"Wall bar hand shower kits","MaterialNum":"SHOWER KITS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('SHOWERS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"60.00","Barcode":"8901764082419","MaterialDesc":"Hand showers for babies","MaterialNum":"SHOWERS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('STEAMBATHING')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"200.00","Barcode":"8901764082420","MaterialDesc":"Steam Bathing","MaterialNum":"STEAMBATHING"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('SUMP%20PUMPS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"200.00","Barcode":"8901764082422","MaterialDesc":"Backup sump pumps","MaterialNum":"SUMP PUMPS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('TOWEL%20WARMER')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"80.00","Barcode":"8901764023423","MaterialDesc":"Salmon electric towel warmer","MaterialNum":"TOWEL WARMER"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('TUBS')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"250.00","Barcode":"","MaterialDesc":"Large slipper tubs","MaterialNum":"TUBS"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection('WATERHEATER')","type":"RET_MATERIAL_INFO_SRV.MATERIAL"},"Price":"10.00","Barcode":"8901764082425","MaterialDesc":"Water Heaters","MaterialNum":"WATERHEATER"}]}} 
+var invoice_return={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000229","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000010","quantity":"15.000","units":"EA","sold_to":"0000000092","material":"P500002","cost":"1650.00","billing_date":"/Date(1386633600000)/","net_value":"1650.00","sales_doc":"0000001128"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000229","item_name":"Water Heaters","invoice_num":"","price":"9.00","invoice_item":"000020","quantity":"25.000","units":"EA","sold_to":"0000000092","material":"P500020","cost":"225.00","billing_date":"/Date(1386633600000)/","net_value":"225.00","sales_doc":"0000001128"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000229","item_name":"Chardonnay","invoice_num":"","price":"30.00","invoice_item":"000030","quantity":"12.000","units":"EA","sold_to":"0000000092","material":"P500021","cost":"321.00","billing_date":"/Date(1386633600000)/","net_value":"360.00","sales_doc":"0000001128"}]}} 
+
+var invoice_return2={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000226","item_name":"Baby shower system","invoice_num":"","price":"140.00","invoice_item":"000010","quantity":"14.000","units":"EA","sold_to":"0000000092","material":"P500001","cost":"1960.00","billing_date":"/Date(1386028800000)/","net_value":"1960.00","sales_doc":"0000001117"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000226","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000020","quantity":"16.000","units":"EA","sold_to":"0000000092","material":"P500002","cost":"1760.00","billing_date":"/Date(1386028800000)/","net_value":"1760.00","sales_doc":"0000001117"}]}} 
+
+var invoice_return4={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000255","item_name":"Water Heaters","invoice_num":"","price":"9.00","invoice_item":"000010","quantity":"12.000","units":"EA","sold_to":"0000000093","material":"WATERHEATER","cost":"108.00","billing_date":"/Date(1386720000000)/","net_value":"108.00","sales_doc":"0000001166"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000255","item_name":"ABS plastic fittings","invoice_num":"","price":"28.00","invoice_item":"000020","quantity":"25.000","units":"EA","sold_to":"0000000093","material":"PLASTICFITTINGS","cost":"700.00","billing_date":"/Date(1386720000000)/","net_value":"700.00","sales_doc":"0000001166"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000255","item_name":"Salmon electric towel warmer","invoice_num":"","price":"75.00","invoice_item":"000030","quantity":"20.000","units":"EA","sold_to":"0000000093","material":"P500018","cost":"1500.00","billing_date":"/Date(1386720000000)/","net_value":"1500.00","sales_doc":"0000001166"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000255","item_name":"Cast iron effluent pumps","invoice_num":"","price":"250.00","invoice_item":"000040","quantity":"15.000","units":"EA","sold_to":"0000000093","material":"P500013","cost":"3450.00","billing_date":"/Date(1386720000000)/","net_value":"3750.00","sales_doc":"0000001166"}]}} 
+var invoice_return5={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000191","item_name":"Pipes","invoice_num":"","price":"30.00","invoice_item":"000010","quantity":"5.000","units":"EA","sold_to":"0000000093","material":"P500011","cost":"140.00","billing_date":"/Date(1378944000000)/","net_value":"150.00","sales_doc":"0000000986"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000191","item_name":"ABS plastic fittings","invoice_num":"","price":"30.00","invoice_item":"000020","quantity":"6.000","units":"EA","sold_to":"0000000093","material":"P500012","cost":"168.00","billing_date":"/Date(1378944000000)/","net_value":"180.00","sales_doc":"0000000986"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000191","item_name":"Cast iron effluent pumps","invoice_num":"","price":"250.00","invoice_item":"000030","quantity":"7.000","units":"EA","sold_to":"0000000093","material":"P500013","cost":"1610.00","billing_date":"/Date(1378944000000)/","net_value":"1750.00","sales_doc":"0000000986"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000191","item_name":"Wall bar hand shower kits","invoice_num":"","price":"145.00","invoice_item":"000040","quantity":"8.000","units":"EA","sold_to":"0000000093","material":"P500014","cost":"1160.00","billing_date":"/Date(1378944000000)/","net_value":"1160.00","sales_doc":"0000000986"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000191","item_name":"Hand showers for babies","invoice_num":"","price":"50.00","invoice_item":"000050","quantity":"8.000","units":"EA","sold_to":"0000000093","material":"P500015","cost":"400.00","billing_date":"/Date(1378944000000)/","net_value":"400.00","sales_doc":"0000000986"}]}} 
+var invoice_return6={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Baby shower system","invoice_num":"","price":"140.00","invoice_item":"000010","quantity":"5.000","units":"EA","sold_to":"0000000092","material":"P500001","cost":"700.00","billing_date":"/Date(1378944000000)/","net_value":"700.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000020","quantity":"10.000","units":"EA","sold_to":"0000000092","material":"P500002","cost":"1100.00","billing_date":"/Date(1378944000000)/","net_value":"1100.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Cabinets for bathrooms","invoice_num":"","price":"110.00","invoice_item":"000030","quantity":"15.000","units":"EA","sold_to":"0000000092","material":"P500003","cost":"1650.00","billing_date":"/Date(1378944000000)/","net_value":"1650.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Caddies for showers","invoice_num":"","price":"30.00","invoice_item":"000040","quantity":"20.000","units":"EA","sold_to":"0000000092","material":"P500004","cost":"600.00","billing_date":"/Date(1378944000000)/","net_value":"600.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Office water coolers","invoice_num":"","price":"500.00","invoice_item":"000050","quantity":"15.000","units":"EA","sold_to":"0000000092","material":"P500005","cost":"7500.00","billing_date":"/Date(1378944000000)/","net_value":"7500.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Danze bathroom faucets","invoice_num":"","price":"30.00","invoice_item":"000060","quantity":"12.000","units":"EA","sold_to":"0000000092","material":"P500006","cost":"336.00","billing_date":"/Date(1378944000000)/","net_value":"360.00","sales_doc":"0000000985"}]}} 
+var cusno={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000229","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000010","quantity":"15.000","units":"EA","sold_to":"0000000092","material":"P500002","cost":"1650.00","billing_date":"/Date(1386633600000)/","net_value":"1650.00","sales_doc":"0000001128"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000229","item_name":"Water Heaters","invoice_num":"","price":"9.00","invoice_item":"000020","quantity":"25.000","units":"EA","sold_to":"0000000092","material":"P500020","cost":"225.00","billing_date":"/Date(1386633600000)/","net_value":"225.00","sales_doc":"0000001128"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000229","item_name":"Chardonnay","invoice_num":"","price":"30.00","invoice_item":"000030","quantity":"12.000","units":"EA","sold_to":"0000000092","material":"P500021","cost":"321.00","billing_date":"/Date(1386633600000)/","net_value":"360.00","sales_doc":"0000001128"}]}}
+var cusno2={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000226","item_name":"Baby shower system","invoice_num":"","price":"140.00","invoice_item":"000010","quantity":"14.000","units":"EA","sold_to":"0000000092","material":"P500001","cost":"1960.00","billing_date":"/Date(1386028800000)/","net_value":"1960.00","sales_doc":"0000001117"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000226","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000020","quantity":"16.000","units":"EA","sold_to":"0000000092","material":"P500002","cost":"1760.00","billing_date":"/Date(1386028800000)/","net_value":"1760.00","sales_doc":"0000001117"}]}} 
+var cusno6={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Baby shower system","invoice_num":"","price":"140.00","invoice_item":"000010","quantity":"5.000","units":"EA","sold_to":"0000000092","material":"P500001","cost":"700.00","billing_date":"/Date(1378944000000)/","net_value":"700.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000020","quantity":"10.000","units":"EA","sold_to":"0000000092","material":"P500002","cost":"1100.00","billing_date":"/Date(1378944000000)/","net_value":"1100.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Cabinets for bathrooms","invoice_num":"","price":"110.00","invoice_item":"000030","quantity":"15.000","units":"EA","sold_to":"0000000092","material":"P500003","cost":"1650.00","billing_date":"/Date(1378944000000)/","net_value":"1650.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Caddies for showers","invoice_num":"","price":"30.00","invoice_item":"000040","quantity":"20.000","units":"EA","sold_to":"0000000092","material":"P500004","cost":"600.00","billing_date":"/Date(1378944000000)/","net_value":"600.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Office water coolers","invoice_num":"","price":"500.00","invoice_item":"000050","quantity":"15.000","units":"EA","sold_to":"0000000092","material":"P500005","cost":"7500.00","billing_date":"/Date(1378944000000)/","net_value":"7500.00","sales_doc":"0000000985"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000190","item_name":"Danze bathroom faucets","invoice_num":"","price":"30.00","invoice_item":"000060","quantity":"12.000","units":"EA","sold_to":"0000000092","material":"P500006","cost":"336.00","billing_date":"/Date(1378944000000)/","net_value":"360.00","sales_doc":"0000000985"}]}}
+var cusno4={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000233","item_name":"Water Heaters","invoice_num":"","price":"9.00","invoice_item":"000010","quantity":"12.000","units":"EA","sold_to":"0000000094","material":"WATERHEATER","cost":"108.00","billing_date":"/Date(1386633600000)/","net_value":"108.00","sales_doc":"0000001133"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000233","item_name":"Large slipper tubs","invoice_num":"","price":"245.00","invoice_item":"000020","quantity":"14.000","units":"EA","sold_to":"0000000094","material":"TUBS","cost":"3430.00","billing_date":"/Date(1386633600000)/","net_value":"3430.00","sales_doc":"0000001133"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000233","item_name":"Cast iron effluent pumps","invoice_num":"","price":"230.00","invoice_item":"000030","quantity":"22.000","units":"EA","sold_to":"0000000094","material":"PUMPS","cost":"5060.00","billing_date":"/Date(1386633600000)/","net_value":"5060.00","sales_doc":"0000001133"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000233","item_name":"ABS plastic fittings","invoice_num":"","price":"28.00","invoice_item":"000040","quantity":"25.000","units":"EA","sold_to":"0000000094","material":"PLASTICFITTINGS","cost":"700.00","billing_date":"/Date(1386633600000)/","net_value":"700.00","sales_doc":"0000001133"}]}} 
+var cusno5={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000256","item_name":"Salmon electric towel warmer","invoice_num":"","price":"75.00","invoice_item":"000010","quantity":"5.000","units":"EA","sold_to":"0000000094","material":"P500018","cost":"375.00","billing_date":"/Date(1386720000000)/","net_value":"375.00","sales_doc":"0000001167"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000256","item_name":"Baby shower system","invoice_num":"","price":"140.00","invoice_item":"000020","quantity":"12.000","units":"EA","sold_to":"0000000094","material":"P500001","cost":"1680.00","billing_date":"/Date(1386720000000)/","net_value":"1680.00","sales_doc":"0000001167"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000256","item_name":"Basin sinks, glass","invoice_num":"","price":"110.00","invoice_item":"000030","quantity":"15.000","units":"EA","sold_to":"0000000094","material":"P500002","cost":"1650.00","billing_date":"/Date(1386720000000)/","net_value":"1650.00","sales_doc":"0000001167"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000256","item_name":"Cabinets for bathrooms","invoice_num":"","price":"110.00","invoice_item":"000040","quantity":"17.000","units":"EA","sold_to":"0000000094","material":"P500003","cost":"1870.00","billing_date":"/Date(1386720000000)/","net_value":"1870.00","sales_doc":"0000001167"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection('')","type":"POD_INVOICE_ITEMS.pod_invoice_ite"},"invoice_number":"0090000256","item_name":"Office water coolers","invoice_num":"","price":"500.00","invoice_item":"000050","quantity":"22.000","units":"EA","sold_to":"0000000094","material":"P500005","cost":"11000.00","billing_date":"/Date(1386720000000)/","net_value":"11000.00","sales_doc":"0000001167"}]}} 
+
+var cus_data={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000092')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Ferguson Heating and Cooling","city":"Chicago","cust_num":"0000000092","street":"500 North Pulaski Road","telephone":"(773) 533-8000"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000093')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Don Johns Inc","city":"Chicago","cust_num":"0000000093","street":"1320 West Lake Street","telephone":"(312) 666-2210"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000094')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Naylor Pipe Co.","city":"Chicago","cust_num":"0000000094","street":"1230 East 92nd Street","telephone":"(773) 721-9400"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000095')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Panther Industries","city":"Chicago","cust_num":"0000000095","street":"2412 West Ogden Avenue","telephone":"(312) 733-1195"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000096')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Chicago Brass","city":"Chicago","cust_num":"0000000096","street":"220 West Kinzie Street","telephone":"(312) 245-0200"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000097')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Water Saver Faucet Co","city":"Chicago","cust_num":"0000000097","street":"701 West Erie Street","telephone":"(312) 666-5500"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000098')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Wagner & Sons","city":"Chicago","cust_num":"0000000098","street":"725 West 47th Street","telephone":"(773) 451-6767"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection('0000000099')","type":"RETURNS_CUSTOMERS.returns_custome"},"state":"IL","country":"US","password":"","sales_rep_id":"","cust_name":"Action Plumbing & Sewer Inc","city":"Chicago","cust_num":"0000000099","street":"1837 West 35th Street","telephone":"(773) 376-6666"}]}}
+var cus_invoice93={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000093')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000093","invoice_amt":"6058.00","cust_name":"Don Johns Inc","item_count":"   4","invoice_num":"0090000255"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000093')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000093","invoice_amt":"6058.00","cust_name":"Don Johns Inc","item_count":"   4","invoice_num":"0090000254"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000093')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000093","invoice_amt":"6905.00","cust_name":"Don Johns Inc","item_count":"   4","invoice_num":"0090000232"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000093')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000093","invoice_amt":"6110.00","cust_name":"Don Johns Inc","item_count":"   4","invoice_num":"0090000231"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000093')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000093","invoice_amt":"3880.00","cust_name":"Don Johns Inc","item_count":"   4","invoice_num":"0090000230"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000093')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1378944000000)/","cust_id":"0000000093","invoice_amt":"3640.00","cust_name":"Don Johns Inc","item_count":"   5","invoice_num":"0090000191"}]}} 
+var cus_invoice94={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000094')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000094","invoice_amt":"16575.00","cust_name":"Naylor Pipe Co.","item_count":"   5","invoice_num":"0090000257"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000094')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000094","invoice_amt":"16575.00","cust_name":"Naylor Pipe Co.","item_count":"   5","invoice_num":"0090000256"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000094')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000094","invoice_amt":"4030.00","cust_name":"Naylor Pipe Co.","item_count":"   3","invoice_num":"0090000235"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000094')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000094","invoice_amt":"9298.00","cust_name":"Naylor Pipe Co.","item_count":"   4","invoice_num":"0090000234"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000094')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000094","invoice_amt":"9298.00","cust_name":"Naylor Pipe Co.","item_count":"   4","invoice_num":"0090000233"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000094')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1380240000000)/","cust_id":"0000000094","invoice_amt":"790.00","cust_name":"Naylor Pipe Co.","item_count":"   2","invoice_num":"0090000215"}]}} 
+var cus_invoice95={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000095')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000095","invoice_amt":"7055.00","cust_name":"Panther Industries","item_count":"   5","invoice_num":"0090000259"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000095')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000095","invoice_amt":"7055.00","cust_name":"Panther Industries","item_count":"   5","invoice_num":"0090000258"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000095')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000095","invoice_amt":"7735.00","cust_name":"Panther Industries","item_count":"   4","invoice_num":"0090000239"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000095')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000095","invoice_amt":"4960.00","cust_name":"Panther Industries","item_count":"   3","invoice_num":"0090000238"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000095')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000095","invoice_amt":"4960.00","cust_name":"Panther Industries","item_count":"   3","invoice_num":"0090000237"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000095')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000095","invoice_amt":"6160.00","cust_name":"Panther Industries","item_count":"   4","invoice_num":"0090000236"}]}} 
+var cus_invoice96={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000096","invoice_amt":"13500.00","cust_name":"Chicago Brass","item_count":"   4","invoice_num":"0090000261"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000096","invoice_amt":"5083.00","cust_name":"Chicago Brass","item_count":"   4","invoice_num":"0090000260"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000096","invoice_amt":"8595.00","cust_name":"Chicago Brass","item_count":"   5","invoice_num":"0090000243"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000096","invoice_amt":"8595.00","cust_name":"Chicago Brass","item_count":"   5","invoice_num":"0090000242"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000096","invoice_amt":"5560.00","cust_name":"Chicago Brass","item_count":"   4","invoice_num":"0090000241"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000096","invoice_amt":"7735.00","cust_name":"Chicago Brass","item_count":"   4","invoice_num":"0090000240"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000096')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1378944000000)/","cust_id":"0000000096","invoice_amt":"3322.00","cust_name":"Chicago Brass","item_count":"   7","invoice_num":"0090000192"}]}} 
+var cus_invoice97={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000097","invoice_amt":"1995.00","cust_name":"Water Saver Faucet Co","item_count":"   4","invoice_num":"0090000263"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000097","invoice_amt":"1395.00","cust_name":"Water Saver Faucet Co","item_count":"   3","invoice_num":"0090000262"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000097","invoice_amt":"5354.00","cust_name":"Water Saver Faucet Co","item_count":"   5","invoice_num":"0090000247"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000097","invoice_amt":"6245.00","cust_name":"Water Saver Faucet Co","item_count":"   4","invoice_num":"0090000246"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000097","invoice_amt":"4370.00","cust_name":"Water Saver Faucet Co","item_count":"   3","invoice_num":"0090000245"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000097","invoice_amt":"4703.00","cust_name":"Water Saver Faucet Co","item_count":"   4","invoice_num":"0090000244"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000097')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1378944000000)/","cust_id":"0000000097","invoice_amt":"855.00","cust_name":"Water Saver Faucet Co","item_count":"   4","invoice_num":"0090000193"}]}} 
+var cus_invoice98={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000098')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000098","invoice_amt":"11407.00","cust_name":"Wagner & Sons","item_count":"   5","invoice_num":"0090000265"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000098')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000098","invoice_amt":"10657.00","cust_name":"Wagner & Sons","item_count":"   4","invoice_num":"0090000264"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000098')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000098","invoice_amt":"5410.00","cust_name":"Wagner & Sons","item_count":"   4","invoice_num":"0090000253"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000098')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000098","invoice_amt":"5397.00","cust_name":"Wagner & Sons","item_count":"   5","invoice_num":"0090000249"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000098')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000098","invoice_amt":"5354.00","cust_name":"Wagner & Sons","item_count":"   5","invoice_num":"0090000248"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000098')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1380240000000)/","cust_id":"0000000098","invoice_amt":"410.00","cust_name":"Wagner & Sons","item_count":"   2","invoice_num":"0090000216"}]}} 
+var cus_invoice99={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000099')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000099","invoice_amt":"3602.00","cust_name":"Action Plumbing & Sewer Inc","item_count":"   4","invoice_num":"0090000267"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000099')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386720000000)/","cust_id":"0000000099","invoice_amt":"4590.00","cust_name":"Action Plumbing & Sewer Inc","item_count":"   4","invoice_num":"0090000266"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000099')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000099","invoice_amt":"2125.00","cust_name":"Action Plumbing & Sewer Inc","item_count":"   4","invoice_num":"0090000252"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000099')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000099","invoice_amt":"2455.00","cust_name":"Action Plumbing & Sewer Inc","item_count":"   4","invoice_num":"0090000251"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000099')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000099","invoice_amt":"2480.00","cust_name":"Action Plumbing & Sewer Inc","item_count":"   4","invoice_num":"0090000250"}]}} 
+
+
+var cus_invoice={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000092","invoice_amt":"2235.00","cust_name":"Ferguson Heating and Cooling","item_count":" 3","invoice_num":"0090000229"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000092","invoice_amt":"2375.00","cust_name":"Ferguson Heating and Cooling","item_count":" 3","invoice_num":"0090000228"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386028800000)/","cust_id":"0000000092","invoice_amt":"3720.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000226"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1385683200000)/","cust_id":"0000000092","invoice_amt":"4080.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000225"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1383696000000)/","cust_id":"0000000092","invoice_amt":"1194.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000224"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1380499200000)/","cust_id":"0000000092","invoice_amt":"4300.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000218"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1378944000000)/","cust_id":"0000000092","invoice_amt":"11910.00","cust_name":"Ferguson Heating and Cooling","item_count":" 6","invoice_num":"0090000190"}]}}
+
+var returnPeports={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000120","ReturnDate":"/Date(1379980800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000121","ReturnDate":"/Date(1379980800000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000122","ReturnDate":"/Date(1379980800000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000123","ReturnDate":"/Date(1379980800000)/","CustomerName":"Panther Industries"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000124","ReturnDate":"/Date(1379980800000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000125","ReturnDate":"/Date(1379980800000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000126","ReturnDate":"/Date(1379980800000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000127","ReturnDate":"/Date(1379980800000)/","CustomerName":"Action Plumbing & Sewer Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000128","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000129","ReturnDate":"/Date(1380240000000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"","InvoiceNumber":"0090000190","ReturnOrder":"0060000130","ReturnDate":null,"CustomerName":""},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000131","ReturnDate":"/Date(1381104000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000196","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000199","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000200","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000201","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000202","ReturnDate":"/Date(1385683200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000203","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000204","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000205","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000207","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000208","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000209","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000216","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000217","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000218","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000221","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000229","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000230","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000232","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000233","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000234","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000235","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000243","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000244","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000245","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000250","ReturnDate":"/Date(1386028800000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000256","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000257","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000258","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000259","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000260","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000261","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000264","ReturnDate":"/Date(1386115200000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000266","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000267","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000268","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000269","ReturnDate":"/Date(1386115200000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000270","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000274","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000275","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000277","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000280","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000281","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000282","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000283","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000284","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000285","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000286","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000287","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000288","ReturnDate":"/Date(1386115200000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000289","ReturnDate":"/Date(1386115200000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000193","ReturnOrder":"0060000290","ReturnDate":"/Date(1378944000000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000193","ReturnOrder":"0060000291","ReturnDate":"/Date(1378944000000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000292","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000293","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000294","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000295","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000296","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000297","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000298","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000299","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000300","ReturnDate":"/Date(1386115200000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000301","ReturnDate":"/Date(1378944000000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000302","ReturnDate":"/Date(1378944000000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000303","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000304","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000305","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000306","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000307","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000308","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000309","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000310","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000311","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000312","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000313","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000218","ReturnOrder":"0060000314","ReturnDate":"/Date(1380240000000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000317","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000318","ReturnDate":"/Date(1386201600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000319","ReturnDate":"/Date(1386201600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000320","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000321","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000322","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000323","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000324","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000325","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000326","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000327","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000328","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000329","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000330","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000331","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000332","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000333","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000334","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000335","ReturnDate":"/Date(1386201600000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000336","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000337","ReturnDate":"/Date(1386201600000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000338","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000339","ReturnDate":"/Date(1386288000000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000340","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000192","ReturnOrder":"0060000341","ReturnDate":"/Date(1378944000000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000192","ReturnOrder":"0060000342","ReturnDate":"/Date(1378944000000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000343","ReturnDate":"/Date(1386288000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000344","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000345","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000346","ReturnDate":"/Date(1386288000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000347","ReturnDate":"/Date(1386288000000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000348","ReturnDate":"/Date(1386288000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000349","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000350","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000351","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000352","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000353","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000354","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000355","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000356","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000357","ReturnDate":"/Date(1386374400000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000359","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000360","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000361","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000362","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000363","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000364","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000365","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000366","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000367","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000368","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000369","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000370","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000371","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000372","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000373","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000374","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000375","ReturnDate":"/Date(1386374400000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000376","ReturnDate":"/Date(1386374400000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000377","ReturnDate":"/Date(1386374400000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000378","ReturnDate":"/Date(1386374400000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000379","ReturnDate":"/Date(1386374400000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000380","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000381","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000382","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000383","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000384","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000385","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000386","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000387","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000388","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000389","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000218","ReturnOrder":"0060000390","ReturnDate":"/Date(1380499200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000391","ReturnDate":"/Date(1386547200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000392","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000393","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000394","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000395","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000396","ReturnDate":"/Date(1386547200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000397","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000398","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000399","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000400","ReturnDate":"/Date(1386547200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000401","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000402","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000403","ReturnDate":"/Date(1386547200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000404","ReturnDate":"/Date(1378944000000)/","CustomerName":"Water Saver Faucet Co"}]}}
+var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_ITEMS_SRV/ReturnOrderItemCollection('60000122')","type":"RETURNORDERS_ITEMS_SRV.ReturnorderItems"},"ReturnReason":"001","ReturnordNumber":"60000122","ReturnQuantity":"20.000","ItemName":"P500001","ItemNumber":"000010","CustomerNumber":"0000000094","ReturnOrder":"","CustomerName":"Naylor Pipe Co.","InvoiceNumber":"","ReturnDate":"/Date(1379980800000)/"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_ITEMS_SRV/ReturnOrderItemCollection('60000122')","type":"RETURNORDERS_ITEMS_SRV.ReturnorderItems"},"ReturnReason":"001","ReturnordNumber":"60000122","ReturnQuantity":"15.000","ItemName":"P500002","ItemNumber":"000020","CustomerNumber":"0000000094","ReturnOrder":"","CustomerName":"Naylor Pipe Co.","InvoiceNumber":"","ReturnDate":"/Date(1379980800000)/"}]}}
+
+
+
+
+
+
+ function starBarScanning(){
    //alert('ok')
    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)

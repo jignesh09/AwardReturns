@@ -17,7 +17,7 @@
 
     </head>
     <body>
-     <script type="text/javascript">
+    <script type="text/javascript">
         app.initialize();
 		</script>
      
@@ -45,7 +45,7 @@
                                 </select>
                                 : Remember me</div>
                             <div class="login_img"><a href="#" onclick="Login()"><img src="images/login_img.png" width="100%"></a></div>
-                            <div class="tryout_img"><a href="#" onclick="customerInvoReturns2()"><img src="images/tryout_img.png" width="100%"></a></div>
+                            <div class="tryout_img"><a href="#" onclick="trytohome();" ><img src="images/tryout_img.png" width="100%"></a></div>
                             
                         </div>
                     </div>
@@ -54,6 +54,44 @@
             
         </div>
         <!-- / End loign page   -->
+	 <!-- / Start homePage page -->
+        <div data-role="page" id="tryhomePage">
+            <div data-role="header" data-position="fixed">
+                <div class="hedtoppart">
+                    <div class="wrapper">
+                    </div>
+                </div>
+            </div>
+            
+            <div data-role="content">
+                <div id="main_box">
+                    <div class="reportsbox1">
+                        <div class="reportsmain">
+                            <a href="#" onclick="trygetReports()"><div class="reportstextleft">
+                                <div class="reports_img"><img src="images/reports_img.png" width="40%"></div>
+                                <div class="reports_text">Reports</div>
+                            </div></a>
+                            <a href="#" onclick="customerInvoReturns2()"> <div class="reportstextright">
+                                <div class="reports_img"><img src="images/customers_img.png" width="40%"></div>
+                                <div class="reports_text">Customers</div>
+                            </div></a>
+                        </div>
+                        
+                        <div class="reportsmain">
+                            <div class="reportstextleft" onclick="">
+                                <div class="reports_img"><img src="images/settings_img.png" width="40%"></div>
+                                <div class="reports_text">Settings</div>
+                            </div>
+                            <div class="reportstextright" onclick="trylogoff()">
+                                <div class="reports_img"><img src="images/log_off_img.png" width="40%"></div>
+                                <div class="reports_text">log Off</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
         <!-- / Start homePage page -->
         <div data-role="page" id="homePage">
             <div data-role="header" data-position="fixed">
@@ -98,7 +136,7 @@
         
         <div data-role="page" id="Customers">
             <div data-role="header" data-position="fixed" class="hedtoppart">
-                <div class="Backbutton"><a href="#homePage">Back</a></div>
+                <div class="Backbutton"><a href="#" onclick="history.back();">Back</a></div>
                 <h1 class="returenstext">Customers</h1>
                 <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" id="cu_list_search" onkeyup="SearchCuList(this)"></div>
             </div><!-- /header -->
@@ -150,7 +188,7 @@
                                 
                                 
                             </div><!-- /grid-a -->
-                            <div class="justret_button" ><a href="#" onclick="customerInvoReturns()"><img src="images/justret_button.png" width="100%"></a></div>
+                            <div class="justret_button" ><a href="#" id="customerInvoReturnsid" onclick=""><img src="images/justret_button.png" width="100%"></a></div>
                         </div>
                         
                     </div>
@@ -227,7 +265,7 @@
                                 </ul>
                                 
                             </div>
-                            <div class="justret_button"><a href="#" onclick="gotoReturnconfrm()"><img src="images/Return_button.png" width="100%"></a></div>
+                            <div class="justret_button"><a href="#" id="justretuncnfid" onclick=""><img src="images/Return_button.png" width="100%"></a></div>
                         </div>
                     </div>
                 </div>
@@ -257,7 +295,7 @@
                                 </ul>
                                 <!--<div class="ui-block-a"><select><option>ok</option></select></div>-->
                             </div>
-                            <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#" onclick="gotoCreditmemo()"><div class="yes_text">Yes</div></a><a href="#returns_creen"><div class="Cancel_text">Cancel</div></a></div>
+                            <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#" id="gotoCreditmemoid" onclick=""><div class="yes_text">Yes</div></a><a href="#returns_creen"><div class="Cancel_text">Cancel</div></a></div>
                             
                         </div>
                         
@@ -305,7 +343,7 @@
                 <div class="Backbutton"><a href="#" onclick="history.back();">Back</a></div>
                 
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="Backbuttonhome"><a href="#homePage">Home</a></div>
+                <div class="Backbuttonhome"><a href="#" onclick="gotoHomepage()">Home</a></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
@@ -420,7 +458,7 @@
         
         <div data-role="page" id="ReportsPage">
             <div data-role="header" data-position="fixed" class="hedtoppart">
-                <div class="Backbutton"><a href="#homePage">Back</a></div>
+                <div class="Backbutton"><a href="#" onclick="history.back();">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
                 <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="serchReports(this)"></div>
             </div><!-- /header -->
@@ -470,7 +508,7 @@
                                 </ul>
                                 
                             </div>
-                            <div class="justret_button"><a href="#homePage"><img src="images/home.png" width="100%"></a></div>
+                            <div class="justret_button"><a href="#" onclick="gotohomepage();"><img src="images/home.png" width="100%"></a></div>
                             
                         </div>
                         
@@ -551,7 +589,7 @@
                         
                         </ul>
                         
-                        <div class="justret_button" ><h1>Are you sure want to return?</h1><a href="#" onclick="justRetuncnf_summit()"><div class="yes_text">Yes</div></a><a href="#jsut_returns_creen"><div class="Cancel_text">Cancel</div></a></div>
+                        <div class="justret_button" ><h1>Are you sure want to return?</h1><a href="#" id="justRetuncnf_summitid" onclick=""><div class="yes_text">Yes</div></a><a href="#jsut_returns_creen"><div class="Cancel_text">Cancel</div></a></div>
                     </div>
                     
                     
