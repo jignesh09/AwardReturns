@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.award.returns"
+        id        = "com.smart.returns"
         version   = "1.0.0">
 
-    <name>Award Returns</name>
+    <name>Smart Returns</name>
 
     <description>
-        Award Returns
+        Smart Returns
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
-        Award Returns
+        Smart Returns
     </author>
 
     <!--
