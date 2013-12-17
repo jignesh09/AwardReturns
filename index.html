@@ -21,7 +21,8 @@
         app.initialize();
 		</script>
      
-		   
+	
+	   
         <div data-role="page" id="loign">
             <div data-role="header" data-position="fixed" id="headpartmain">
                 <div class="hedtoppart">
@@ -235,7 +236,7 @@
         <div data-role="page" id="returns_creen">
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#Create_returns">Back</a></div>
-                <h1 class="returenstext">RETURNS REPORTS</h1>
+                <h1 class="returenstext">IN REF TO INVOICE</h1>
                 <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
@@ -278,7 +279,7 @@
         <div data-role="page" id="Returns_confirmation_screen2">
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#returns_creen">Back</a></div>
-                <h1 class="returenstext">RETURNS REPORTS</h1>
+                <h1 class="returenstext">IN REF TO INVOICE</h1>
                 <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="returnconform(this)"></div>
             </div><!-- /header -->
             
@@ -295,8 +296,8 @@
                                 </ul>
                                 <!--<div class="ui-block-a"><select><option>ok</option></select></div>-->
                             </div>
-                            <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#" id="gotoCreditmemoid" onclick=""><div class="yes_text">Yes</div></a><a href="#returns_creen"><div class="Cancel_text">Cancel</div></a></div>
-                            
+                         <!--   <div class="justret_button"><h1>Are you sure want to return?</h1><a href="#" id="gotoCreditmemoid" onclick=""><div class="yes_text">Yes</div></a><a href="#returns_creen"><div class="Cancel_text">Cancel</div></a></div>-->
+                            <div class="justret_button1" ><a href="#" id="" onclick="gotoConform()"><img src="images/review_button.png" width="100%"></a></div>
                         </div>
                         
                     </div>
@@ -305,6 +306,37 @@
         </div>
         <!-- /Returns_confirmation_screen2 End page   -->
         
+	
+	 <div data-role="page" id="Returns_confirmation_screen3">
+            <div data-role="header" data-position="fixed" class="hedtoppart">
+                <div class="Backbutton"><a href="#returns_creen">Back</a></div>
+                <h1 class="returenstext">RETURNS CONFIRMATION</h1>
+                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="returnconform(this)"></div>
+            </div><!-- /header -->
+            
+            <div data-role="content">
+                <div id="main_box">
+                    <div class="custo_text" id="in_c_id_retun_cnf"><div class="Barnes_text"><h1>Return Order</h1>124657</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+                    <div class="custo_text1" id="in_c_name_retun_cnf"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+                    <div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
+                    <div class="customersbox">
+                        <div class="reportsmain">
+                            <div class="ui-grid-a" id="">
+                                <ul id="confrm_listview" style="list-style: none;">
+                                    <div class="ui-block-a"><div class="Createtop"><span>10</span></div><strong>Air Tubs</strong><div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+                                </ul>
+                                <!--<div class="ui-block-a"><select><option>ok</option></select></div>-->
+                            </div>
+                           <div class="justret_button" id="Ret_pop_up" style="display: none;"><h1>Are you sure want to return?</h1><a href="#" id="gotoCreditmemoid" onclick=""><div class="yes_text">Yes</div></a><a href="#" onclick="hidePopup()"><div class="Cancel_text">Cancel</div></a></div>
+                            <div class="justret_button1" id="cnf_btn"><a href="#" id="" onclick="opencnfpopup()"><img src="images/Confirm_button.png" width="100%"></a></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Returns_confirmation_screen2 End page   -->
+	
         <!-- /Returns_confirmation_screen page start   -->
         
         <div data-role="page" id="Returns_confirmation_screen">
@@ -337,14 +369,111 @@
         <!-- /Credit_memo page start   -->
         
         <!-- /Credit_memo page start   -->
-        
-        <div data-role="page" id="Credit_memo">
+         <!-- /Credit_memo page start   -->
+	 
+	 <div data-role="page" id="Credit_memo">
+	 <div data-role="header" data-position="fixed" class="hedtoppart">
+                <div class="Backbutton"><a href="#" onclick="history.back();">Back</a></div>
+                
+                <h1 class="returenstext">CREDIT MEMO</h1>
+                <div class="Backbuttonhome"><a href="#" onclick="gotoHomepage()">Home</a></div>
+            </div>
+            <div data-role="content">
+                <div id="main_box">
+                    <div class="custo_text"><div class="Barnes_text" id="retunOrderid_memo"><h1 >Return Order</h1> 124657</div></div>
+                    <div class="custo_text1"><div class="Barnes_text"><h1>Credit Memo#</h1>100000007</div></div>
+                    <div class="return_qty"></div>
+                    <div class="customersbox">
+                        <div class="reportsmain">
+                            <div class="ui-grid-a">
+                                <div class="Credit_memo">
+                                    <div class="customer_credit"><h1>Customer Credit Memo</h1><div class="customer_right">
+                                        <div class="referencebox"><span>Reference #</span><span id="memo_refno">0000011</span><span>Ship Via</span><span>FedEx- Federal EX</span></div>
+                                        <div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span id="memodate">02/16/2003</span></div>
+                                    </div></div>
+                                    <div class="Credit_memo_img">
+                                        <div class="documen_main_box">
+                                            
+                                            <div class="document_text">Document Overview</div>
+                                            <div class="documentdiv" id="cus_ship_add">
+                                                <div class="Overview_text">Document Overview</div>
+                                                <div class="text1">Bill to Customer Address</div>
+                                                <div class="text2"><h1>COOOOO1-SAMPLE CUSTOMER</h1> <h2>78 Low Drive, Nowwheretown, Nj, 1933, United States</h2></div>
+                                                <div class="text3">Ship to Address</div>
+                                                <div class="text4">78 Low Drive, Nowwheretown, Nj, 1933, United States</div>
+                                            </div>
+		    
+		    <div class="items_text">Items</div>
+		    <div class="documentdiv1">
+		    <div class="Overview_text">Document Overview</div>
+		    <div id="memo_details">
+		    <div class="Over_text_box">
+		            <div class="memoheading">Item</div>
+			     <div class="memoheading_dec">Description</div>
+			      <div class="memoheading_dec">Reason</div>
+			       <div class="memoheading_dec">Returning</div>
+			        <div class="memoheading">Quantity</div>
+				 <div class="memoheading">UOM</div>
+				  <div class="memoheading">Price</div>
+				   <div class="memoheading">Total</div>
+				    <div class="memoheading_tax">Tax</div>
+				   
+			
+			
+		    </div>
+		       <div class="Over_text_box">
+		            <div class="memoheading_detail">Item</div>
+			     <div class="memoheading_dec_detail">Description</div>
+			      <div class="memoheading_dec_detail">Reason</div>
+			       <div class="memoheading_dec_detail">Returning</div>
+			        <div class="memoheading_detail">Quantity</div>
+				 <div class="memoheading_detail">UOM</div>
+				  <div class="memoheading_detail">Price</div>
+				   <div class="memoheading_detail">Total</div>
+				    <div class="memoheading_tax_detail">Tax</div>
+				   
+			
+			
+		         </div>
+		       </div>
+		    <div class="total_text" id="g_total1">Total: $42,00</div>
+		    </div>
+		    
+		    
+		  
+		  
+			 <div class="comments_box">
+                                                <div class="comments_textarea"><h1>Comments</h1><textarea name="" cols="" rows="" class="textareabox"></textarea></div>
+                                                <div class="comments_tselect"><select name="">
+                                                    <option value="Tax: SAMPLE TAX">Tax: SAMPLE TAX</option>
+                                                </select><span style="float:right; width:12%; padding-top:6%;">0%</span></div>
+                                                <div class="comments_box_right"><span>Total Tax: $0,00</span><span id="g_total">Total:$42,00</span></div>
+                                                
+                                            </div>
+
+		</div>
+		<!--<div style="margin:7px auto;width:80%; border:1px solid #6b6c6c;padding:2% 0; border-radius:8px; background:#e4e6e7;">smm</div>-->
+	</div>
+	</div>
+	
+</div>
+  <div class="justret_button"><a href="#"><img src="images/email_button.png" width="100%"></a></div>
+  <div class="justret_buttonright"><a href="#"><img src="images/done_button.png" width="100%"></a></div>
+			    
+			    </div>
+			    
+			  </div>
+			 </div>
+               </div> 
+	        </div>
+	 <!-- /Credit_memo End page   -->
+    <!--    <div data-role="page" id="Credit_memo">
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#" onclick="history.back();">Back</a></div>
                 
-                <h1 class="returenstext">RETURNS REPORTS</h1>
+                <h1 class="returenstext">CREDIT MEMO</h1>
                 <div class="Backbuttonhome"><a href="#" onclick="gotoHomepage()">Home</a></div>
-            </div><!-- /header -->
+            </div>
             <div data-role="content">
                 <div id="main_box">
                     <div class="custo_text"><div class="Barnes_text" id="retunOrderid_memo"><h1 >Return Order</h1> 124657</div></div>
@@ -405,7 +534,7 @@
                                             </div>
                                             
                                         </div>
-                                        <!--<div style="margin:7px auto;width:80%; border:1px solid #6b6c6c;padding:2% 0; border-radius:8px; background:#e4e6e7;">smm</div>-->
+                                       
                                     </div>
                                 </div>
                                 
@@ -418,7 +547,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- /Credit_memo End page   -->
         
         <!-- /Credit_memo page start   -->
@@ -468,7 +597,7 @@
                     <div class="customersbox">
                         <div class="return_qty"><h1>Invoice #</h1><h1 style="border-right:none;">Return Order #</h1></div>
                         <div class="reportsmain">
-                            <div class="ui-grid-a" id="ds">
+                            <div class="ui-grid-a" id="ds" style="height: 800px;overflow: scroll;">
                                 <ul id="Report_customer" style="list-style: none;"></ul>
                                 <!-- <div class="ui-block-a"><a href="#Create_returns"><span>11</span></a><strong>Norblom Plumbing</strong><div class="poor_quality_text1"><div class="textinputtes1">text</div><div class="selecttextbox1">box</div>
                                  </div></div>
@@ -589,11 +718,12 @@
                         
                         </ul>
                         
-                        <div class="justret_button" ><h1>Are you sure want to return?</h1><a href="#" id="justRetuncnf_summitid" onclick=""><div class="yes_text">Yes</div></a><a href="#jsut_returns_creen"><div class="Cancel_text">Cancel</div></a></div>
-                    </div>
+                        <div class="justret_button" id="just_return_popup" style="display: none;"><h1>Are you sure want to return?</h1><a href="#" id="justRetuncnf_summitid" onclick=""><div class="yes_text">Yes</div></a><a href="#" onclick="canceljustret()"><div class="Cancel_text">Cancel</div></a></div>
+                    <div class="justret_button1" id="just_returncnf_btn"><a href="#" onclick="showjustRetPopup()"><img src="images/justret_button.png" width="100%"></a></div>
+		    </div>
                     
                     
-                    <!--<div class="justret_button"><a href="#" onclick="justRetuncnf_summit()"><img src="images/justret_button.png" width="100%"></a></div>-->
+                    
                 </div>
             </div>
         </div> 

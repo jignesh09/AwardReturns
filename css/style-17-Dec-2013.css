@@ -215,25 +215,6 @@ background:url(../images/backtohome.png) no-repeat left 2px #9c8a9a; background-
 #jsut_returns_creen_cnf .justret_button {margin: 0 auto !important; width: 70% !important; margin-top: 6% !important;}
 #jsut_returns_creen_cnf .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:30px !important;}
 
-#Returns_confirmation_screen3 .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; }
-#Returns_confirmation_screen3 .invoice_text h1  {float:left; width:53% !important; padding:0; margin:0;}
-#Returns_confirmation_screen3 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1em !important; border-right: solid 1px #766463;}
-#Returns_confirmation_screen3 .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:37px !important;}
-#Returns_confirmation_screen3 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1em !important; padding:19px 0 15px 0; text-align:center;}
-#Returns_confirmation_screen3 .ui-block-a strong {float: left; width: 20%; font-family: 'helveticanmdcnhelveticanmdcn'; color: rgb(255, 255, 255);
-text-align: left; font-size: 1em !important; padding: 1em 0 .8em .6em !important;}
-#Returns_confirmation_screen3 .Garfield_text h1 {float:left; width:100%; font-size:.9em !important; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
-#Returns_confirmation_screen3 .Garfield_text h2 {float:left; width:100%; font-size:.8em !important; text-align:center; padding:2% 0 0 0; margin:0;}
-#Returns_confirmation_screen3 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.8em !important;}
-#Returns_confirmation_screen3 .poor_quality_text span {float: left; width: 30%; color: rgb(255, 255, 255); font-size: .8em !important; padding: 3px 10px 3px 0 !important; text-align: right; border: solid 1px rgb(255, 255, 255);}
-#Returns_confirmation_screen3 .poor_quality_text {float: left !important; width: 35% !important; margin-top: 1.3% !important;} 
-#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:5% 2% 1% 0 !important;}
-#Returns_confirmation_screen3 .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.5em !important; color:#fff; text-align:center; text-transform:uppercase;}
-#Returns_confirmation_screen3 .yes_text { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#8bc300; text-align:center;cursor:pointer;text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
-#Returns_confirmation_screen3 .yes_text:hover { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#f31600; cursor:pointer;text-transform:uppercase; text-align:center; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
-#Returns_confirmation_screen3 .Cancel_text { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#8bc300; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
-#Returns_confirmation_screen3 .Cancel_text:hover { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; color:#fff; background:#f31600; cursor:pointer; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
 
 
 #Returns_confirmation_screen2 .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
@@ -323,14 +304,6 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Create_returns .ui-block-a  strong { float:left; width:13% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:3.5% !important; font-size:1em !important;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:40% 70% !important;}
 #Create_returns .justret_button {margin: 0 auto; width:75% !important; padding-top: 3%;}
 
-#Returns_confirmation_screen3 .return_qty {float:right; width:70% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen3 .justret_button {margin:0 auto; width:90% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 140px !important;}
-
-#Returns_confirmation_screen3 .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .Barnes_text h1 {padding:0; margin:0; float:left; width:48% !important;}
-#Returns_confirmation_screen3 .invoice_text h1  {float:left; width:width:48% !important; padding:0; margin:0;}
-#Returns_confirmation_screen3 .invoice_text { float:left; width:90% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 /*Credit_memo Date=28-11-2013 start*/
 #Credit_memo .documen_main_box {margin:0 auto;width:98%; border:1px solid #6b6c6c; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:460px !important; margin-bottom: 2%;}
 #Credit_memo .tblcustmor_credit{ margin:5px !important; width:98%;}
@@ -392,7 +365,7 @@ right: 10px !important;}
 #loign .reports_text {float:left; font-size:1.8em !important; font-weight:normal; padding:2% 0 4% 10%; color:#fff; text-shadow:none !important; font-family: 'helveticanmdcnhelveticanmdcn';}
 #Create_returns .Garfield_text { float:right; width:38% !important; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 10px; background-size:7% 75%; padding-bottom:1%; margin-right:10%;}
 #Create_returns .Createtop {float: left; width: 8% !important; margin: 0 12% 1% 0;}
-#Create_returns .ui-block-a  strong { float:left; width:18%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:31% 75% !important; margin-top:2% !important;}
+#Create_returns .ui-block-a  strong { float:left; width:18%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:31% 75% !important; margin-top:4% !important;}
 #Create_returns .justret_button { margin:0 auto; width:65% !important; padding-top:3%;}
 .logo {float:left; width:100% !important; text-align:center; padding:2% 0 3% 0;}
 .logo img { float:left; width:65% !important; padding:0 0 0 20% !important;}
@@ -431,7 +404,7 @@ right: 10px !important;}
 .total_text { float:right; width:91%; text-align:right; padding:1% 1% 0 0; }
 #Credit_memo .document_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c;font-size:2em !important; padding:0 0 1% 1%;}
 #Credit_memo .items_text {float:left; width:80%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#6b6c6c; font-size:2em !important;
- padding:3% 0 1% 2% !important;}
+ padding:1% 0 1% 2% !important;}
 #Credit_memo .documen_main_box {margin:0 auto;width:98%; border:1px solid #6b6c6c; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:460px !important; margin-bottom: 2%;}
 #Credit_memo .tblcustmor_credit{ margin:5px !important; width:98%;}
 #Credit_memo .tblcustmor_credit th{border:1px solid #6b6c6c; vertical-align:middle;}
@@ -471,13 +444,13 @@ right: 10px !important;}
 #ReturnOrderDeatilpage .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
 #ReturnOrderDeatilpage .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
 #ReturnOrderDeatilpage .poor_quality_text h1 {padding:.5em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
-#ReturnOrderDeatilpage .Barnes_text {float:left;width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #ReturnOrderDeatilpage .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
-#returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:0.7em !important;  padding:2.0em 0 .8em .5em !important;}
+#returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:0.7em !important;  padding:1.3em 0 .8em .5em !important;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:0.9em !important; padding:19px 0 15px 0; text-align:center;}
 #returns_creen .justret_button {margin: 0 auto; width: 60% !important; margin-top: 5%;}
 
@@ -487,7 +460,7 @@ right: 10px !important;}
 #jsut_returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #jsut_returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
 #jsut_returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.5em !important; padding:19px 0 15px 0; text-align:center;}
-#jsut_returns_creen .justret_button {margin: 0 auto; width: 48% !important; margin-top: 5%;}
+#jsut_returns_creen .justret_button {margin: 0 auto; width: 60% !important; margin-top: 5%;}
 
 
 
@@ -497,19 +470,6 @@ right: 10px !important;}
 #jsut_returns_creen_cnf .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
 #jsut_returns_creen_cnf .Createtop  span { float:left; width:100%; color:#fff; text-align:right; font-size:1em !important; text-align:center;}
 #jsut_returns_creen_cnf .justret_button {margin: 0 auto; width: 60% !important; margin-top: 5%;}
-
-#Returns_confirmation_screen3 .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
-#Returns_confirmation_screen3 .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen3 .return_qty {float:right; width:75% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen3 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.8em !important; padding:1.3em 0 .8em .5em !important;}
-#Returns_confirmation_screen3 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
-#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
-#Returns_confirmation_screen3 .poor_quality_text h1 {padding:0.7em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
-#Returns_confirmation_screen3 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
-#Returns_confirmation_screen3 .justret_button {margin:0 auto; width:75% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 150px !important;}
-
 
 #Returns_confirmation_screen2 .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #Returns_confirmation_screen2 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
@@ -523,11 +483,7 @@ right: 10px !important;}
 #Returns_confirmation_screen2 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #Returns_confirmation_screen2 .justret_button {margin:0 auto; width:75% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 150px !important;}
 .Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
-background:url(../images/back_icon.png) no-repeat 10px 10px #9c8a9a !important; background-size:26% 54% !important; cursor:pointer; height:18px; width:77px !important;}
-
-.ui-header .ui-title {min-height: 1.1em !important; font-size: 16px !important; display: block !important; margin: .6em 20% .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important;}
-
-
+background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
 .Backbutton a { text-decoration:none !important; color:#fff !important;}
 .Backbuttonhome { float:right; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
 background:#9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
@@ -546,7 +502,7 @@ h1.returenstext {float: left; width:30% !important;}
 #Credit_memo .customer_right {float: right; width: 65% !important; margin-top: 9px;}
 #Credit_memo .referencebox span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; color:#231f20; text-align:center; background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Credit_memo .referencebox1 span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; color:#231f20; text-align:center; background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0 ;}
-#Credit_memo .customer_credit {float: left; width: 100%; background: rgb(203, 203, 203); height: 64px !important;}
+#Credit_memo .customer_credit {float: left; width: 100%; background: rgb(203, 203, 203); height: 45px !important;}
 #Create_returns .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px; height:538px !important;}
 .invoice_text_2 { float:right !important; width:25% !important; margin-top: -15% !important; height: 96px !important;}
 #Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.5em !important; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
@@ -554,15 +510,8 @@ h1.returenstext {float: left; width:30% !important;}
 .textinputtestext {float: left; width:22%; text-align:center; padding:1% 0 0 0 !important; margin-top:3% !important;}
 
 }
-@media all and (max-width: 480px){
-.Backbutton { float:left; width:12% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
-background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
-.ui-header .ui-title {min-height: 1.1em !important; font-size: 16px !important; display: block !important; margin: .6em 19% .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important;}
-.Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
-background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:26% 50% !important; cursor:pointer;}	
-}
 
-@media all and (max-width: 768px){
+@media all and (max-width: 1024px) and (min-width: 768px) {
 
 }
 
@@ -638,7 +587,7 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1
 #Create_returns .Createtop { float:left; width:5%; margin:0 12% 1% 0;}
 #Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center; border:solid 1px #fff; border-radius: 81px;}
 #Create_returns .Createtop  h1 {float:left; width:48px; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
-#Create_returns .ui-block-a  strong { float:left; width:10% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:14% 75%;}
+#Create_returns .ui-block-a  strong { float:left; width:18%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:14% 75%;}
 #Create_returns .Garfield_text { float:right; width:45%; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 10px; background-size:7% 75%; padding-bottom:1%; margin-right:10%;}
 #Create_returns .Garfield_text h1 {float:left; width:90%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #Create_returns .Garfield_text h2 {float:left; width:90%; text-align:center; padding:2% 0 0 0; margin:0;}
@@ -809,7 +758,7 @@ margin-right: 4%;
 #Returns_confirmation_screen2 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
 #Returns_confirmation_screen2 .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
 #Returns_confirmation_screen2 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
-#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 1% 1% 0;}
+#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
 #Returns_confirmation_screen2 .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #Returns_confirmation_screen2 .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
 #Returns_confirmation_screen2 .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
@@ -870,34 +819,7 @@ margin-right: 4%;
 #Returns_confirmation_screen .justret_button {margin:0 auto; width:30%; margin-top:4%; border-radius:8px;}
 #Returns_confirmation_screen .ui-shadow-inset {background:#a2a9bb !important;}
 /*Returns_confirmation_screen pages end*/
-#Returns_confirmation_screen3 .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
-#Returns_confirmation_screen3 .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
-#Returns_confirmation_screen3 .ui-content { padding:15px 15px 0 15px !important;}
-#Returns_confirmation_screen3 .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
-#Returns_confirmation_screen3 .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
-#Returns_confirmation_screen3 .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
-#Returns_confirmation_screen3 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
-#Returns_confirmation_screen3 .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
-#Returns_confirmation_screen3 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
-#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
-#Returns_confirmation_screen3 .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
-#Returns_confirmation_screen3 .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
-#Returns_confirmation_screen3 .poor_quality_text { float:left; width:36%;  margin-top:1.3%;}
-#Returns_confirmation_screen3 .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
-#Returns_confirmation_screen3 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
-#Returns_confirmation_screen3 .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen3 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.1em; border-right: solid 1px #766463;}
-#Returns_confirmation_screen3 .Barnes_text { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#Returns_confirmation_screen3 .invoice_text { float:left; width:45% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .invoice_text h1  {float:left; width:45%; padding:0; margin:0;}
-#Returns_confirmation_screen3 .justret_button {margin:0 auto; width:30%; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 124px;}
-#Returns_confirmation_screen3 .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
-#Returns_confirmation_screen3 .yes_text { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center;cursor:pointer;text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
-#Returns_confirmation_screen3 .yes_text:hover { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#f31600; cursor:pointer;text-transform:uppercase; text-align:center; border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
-#Returns_confirmation_screen3 .Cancel_text { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
-#Returns_confirmation_screen3 .Cancel_text:hover { float:right; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#f31600; cursor:pointer; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
-#Returns_confirmation_screen3 .ui-shadow-inset {background:#a2a9bb !important;}
+
 /*Credit_memo Date=28-11-2013 start*/
 #Credit_memo .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
 #Credit_memo .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
@@ -967,7 +889,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 /*Credit_memo Date=28-11-2013 end*/
 /*Credit_memo Date=28-11-2013 start*/
 .documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:111px;}
-.Overview_text { float:left; width:98% !important; background:#6b6c6c;padding:10px 0 10px 26px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em; color:#e4e6e7; }
+.Overview_text { float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em; color:#e4e6e7; }
 .text1 { float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
 .text2 { float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000; }
 .text2 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-bottom:solid 1px #000;}
@@ -991,7 +913,6 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #selecttextbox { float:right; width:50%;}
 .selecttextbox { float:right; width:50%;}
 #Returns_confirmation_screen2 .ui-btn-up-c { background:rgb(162, 169, 187) !important;}
-#Returns_confirmation_screen3 .ui-btn-up-c { background:rgb(162, 169, 187) !important;}
 #textinputtes {float: left; width: 50%;}
 .textinputtes {float: left; width: 50%;}
 #jsut_returns_creen .textinput_new .ui-shadow-inset {
@@ -1010,87 +931,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 
 .memoclass{ border: solid 1px #d1d3d4;}
 
-.memoheading{
-	text-align: center;
-	width: 10%;
-        float: left;
-         border-right: solid 1px rgb(0, 0, 0);
-	  border-bottom: solid 1px rgb(0, 0, 0);
-	   height: 25px;
-}
-.memoheading_dec{
-	text-align: center;
-width: 12%;
-float: left;
-border-right: solid 1px rgb(0, 0, 0);
-border-bottom: solid 1px rgb(0, 0, 0);
-height: 25px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
 
-.memoheading_dec1{
-	text-align: center;
-width: 22%;
-float: left;
-border-right: solid 1px rgb(0, 0, 0);
-border-bottom: solid 1px rgb(0, 0, 0);
-height: 25px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.memoheading_tax{text-align: center;
-width: 12.7%;
-float: left;
- border-bottom: solid 1px rgb(0, 0, 0);
-  height: 25px;
-/*border-right: solid 1px rgb(0, 0, 0);	*/
-}
-
-.memoheading_detail{
-	text-align: center;
-	width: 10%;
-        float: left;
-         border-right: solid 1px rgb(0, 0, 0);
-	  border-bottom: solid 1px rgb(0, 0, 0);
-	  background: #d4d1c9;
-	  height: 25px;
-}
-.memoheading_dec_detail{
-		text-align: center;
-width: 12%;
-float: left;
-border-right: solid 1px rgb(0, 0, 0);
-border-bottom: solid 1px rgb(0, 0, 0);
-height: 25px;
-background: #d4d1c9;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-
-.memoheading_dec_detail1{
-		text-align: center;
-width: 22%;
-float: left;
-border-right: solid 1px rgb(0, 0, 0);
-border-bottom: solid 1px rgb(0, 0, 0);
-height: 25px;
-background: #d4d1c9;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.memoheading_tax_detail{text-align: center;
-width: 12.7%;
-float: left;
- border-bottom: solid 1px rgb(0, 0, 0);
- background: #d4d1c9;
-  height: 25px;
-/*border-right: solid 1px rgb(0, 0, 0);	*/
-}
 
 ui-grid-a>:nth-child(n){
 	width:100% !important;
@@ -1112,9 +953,3 @@ ui-grid-a>:nth-child(n){
 .demo31 {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
 .demo3_text {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
 .demo4 {width:50%; float: left; text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; background:#d4d1c9; padding:1% 0;}
-
-#Returns_confirmation_screen2 .poor_quality_text5 { float:left; width:35%;}
-#Returns_confirmation_screen2 .justret_button1 {margin: 0 auto;width: 51% !important;padding-top: 3%;float: right;margin-right: 2% !important;}
-
-#Returns_confirmation_screen3 .justret_button1 {margin: 0 auto;width: 51% !important;padding-top: 3%;}
-#jsut_returns_creen_cnf .justret_button1 {margin: 0 auto;width: 51% !important;padding-top: 3%;}

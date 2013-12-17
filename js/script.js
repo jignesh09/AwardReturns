@@ -184,7 +184,7 @@ function gotoHomepage(){
 			    $.mobile.changePage('#loign')
 			}
 			else{
-			   $.mobile.changePage('#homepage')
+			   $.mobile.changePage('#homePage')
 			}
     
 }
@@ -326,7 +326,7 @@ function getCustomer(){
            var adds=data1.street+','+data1.city+','+data1.country+','+data1.telephone;
            var c_id2=c_id.toString();
            var searcdata=data1.cust_name+c_id;
-           html+='<li class="Cc_list" style="none" add="'+searcdata+'"><div class="ui-block-a" ><a href="#" data-c_id='+c_id2+' data-cusname="'+data1.cust_name+'"  data-adds="'+adds+'" onclick="CutomerInvoice(this)"><span>'+data1.cust_num+'</span></a>'
+           html+='<li class="Cc_list" data-c_id='+c_id2+' data-cusname="'+data1.cust_name+'"  data-adds="'+adds+'" onclick="CutomerInvoice(this)" style="none" add="'+searcdata+'"><div class="ui-block-a" ><a href="#" ><span>'+data1.cust_num+'</span></a>'
            html+='<strong>'+res.d.results[i].cust_name+'</strong>'
            html+='<div class="Garfield_text">'+data1.street+'<br /> '+data1.city+', '+data1.country+'  '+data1.telephone+'</div>'
            html+='</div></li>'
@@ -400,7 +400,7 @@ function CutomerInvoice(ev){
             */
            
            var html='';
-           var c_idthml='Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+res.d.results[0].cust_id;
+           var c_idthml='Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+res.d.results[0].cust_id;
            var c_namehtml='Customer name &nbsp;&nbsp;&nbsp;&nbsp;'+res.d.results[0].cust_name;
            var str = res.d.results[0].invoice_date;
            var ress = str.slice(6,str.length-2);
@@ -693,6 +693,9 @@ function justRe_cnf(){
 	
 	$('#just_cid_cnf').html(cus_id);
 	$('#just_cname_cnf').html('<h1>Customer name</h1>'+cus_name);
+	$('#Ret_pop_up').hide();
+  $('#cnf_btn').show();
+
     $.mobile.changePage('#jsut_returns_creen_cnf');
     //$('#jsut_returns_creen_cnf').html()
 }
@@ -1079,6 +1082,8 @@ function gotoReturnconfrm() {
            //// alert('ok');
            $('#in_c_id_retun').html(html6).trigger('create');
            $('#in_c_name_retun').html(html1).trigger('create');
+	    $('#in_c_id_retun_cnf').html(html6).trigger('create');
+           $('#in_c_name_retun_cnf').html(html1).trigger('create');
            $.mobile.changePage('#Returns_confirmation_screen2')
            //alert('ok');
            },
@@ -1099,6 +1104,16 @@ function gotoReturnconfrm() {
     
 }
 
+ function opencnfpopup(){
+  $('#Ret_pop_up').show();
+  $('#cnf_btn').hide();
+ }
+
+function hidePopup(){
+$('#Ret_pop_up').hide();
+  $('#cnf_btn').show();
+}
+
 function  checkqutity(ev){
  
     var value=$(ev).val();
@@ -1113,6 +1128,52 @@ function  checkqutity(ev){
     
 }
 
+function showjustRetPopup(){
+      $('#just_return_popup').show();
+      $('#just_returncnf_btn').hide();
+}
+function canceljustret(){
+     $('#just_return_popup').hide();
+      $('#just_returncnf_btn').show();
+}
+
+function gotoConform(){
+ $.mobile.showPageLoadingMsg();
+	noofItem=[];
+	R_Reason=[];
+	$('input[type=Number]', '#invoice_detaila_return').each(function() {
+                                                          
+                                                            var val1=$(this).val();
+                                                            if(val1==''){
+                                                            var val2=0;
+                                                            }
+                                                            else{
+                                                            var val2=parseInt(val1)
+                                                            }
+                                                            noofItem.push(val2)
+                                                            
+                                                            })
+    
+    if(noofItem.length==0){
+        alert('please Enter no of item for return ')
+    }
+    else{
+        $('select', '#invoice_detaila_return').each(function() {
+                                                    // alert($(this).val())
+                                                    //  var val1=$(this).val();
+                                                    R_Reason.push($(this).val())
+                                                    })
+	    }
+//
+ var html='';
+     for(var i=0;i<itemNumArray.length;i++){
+         html+='<li><div class="ui-block-a"><div class="Createtop"><span>'+Number(itemNumArray[i])+'</span></div><strong>'+itemNameArray[i]+'</strong><div class="Garfield_text"><h1>'+materialArray[i]+'</h1><h2>'+Number(QuantityArray[i])+' items</h2></div><div           class="poor_quality_text"><span>'+noofItem[i]+'</span><h1>'+R_Reason[i]+'</h1></div></div></li>'
+   }
+ $('#confrm_listview').html(html);
+ $('#Ret_pop_up').hide();
+  $('#cnf_btn').show();
+$.mobile.changePage('#Returns_confirmation_screen3')
+}
 
 function gotoCreditmemo() {
 	 
@@ -1660,6 +1721,35 @@ function gotoCReditMempage_jsut(){
 	$('#cus_ship_add').html(html).trigger('create');
     var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
     var thml1='';
+    
+      var thml1='';
+		       
+		        thml1+='<div class="Over_text_box">'
+		          thml1+='<div class="memoheading">Item</div>'
+			     thml1+='<div class="memoheading_dec">Description</div>'
+			      thml1+='<div class="memoheading_dec1">Reason</div>'
+			       thml1+='<div class="memoheading_dec">Returning</div>'
+			       
+				 thml1+='<div class="memoheading">UOM</div>'
+				  thml1+='<div class="memoheading">Price</div>'
+				   thml1+='<div class="memoheading">Total</div>'
+				    thml1+='<div class="memoheading_tax">Tax</div>'
+				      thml1+='</div>'
+			for(var i=0;i<just_mat_Res.length;i++){
+			     thml1+='<div class="memoheading_detail">'+just_mat_num[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail">'+just_mat_num[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail1">'+just_mat_Res[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail">'+just_mat_Retq[i]+'</div>'
+			     
+			      thml1+='<div class="memoheading_detail">Each</div>'
+			       thml1+='<div class="memoheading_detail">'+just_mat_price[i]+'</div>'
+			        thml1+='<div class="memoheading_detail">$'+toalPriceArray1[i]+'</div>'
+				thml1+='<div class="memoheading_tax_detail">Non</div>'
+				      thml1+='</div>'
+			}
+    
+    
+    /*
     thml1+='<div style="width: 100%"><div class="demo1">Item</div><div class="demo2">Description</div></div>'
     for(var i=0;i<just_mat_Res.length;i++){
         //alert(just_mat_price[i])
@@ -1669,12 +1759,12 @@ function gotoCReditMempage_jsut(){
     for(var i=0;i<just_mat_Res.length;i++){
         thml1+='<div style="width: 100%"><div class="demo3">'+just_mat_Retq[i]+'</div><div class="demo4">'+just_mat_Res[i]+'</div></div>'
     }
-  /*  thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
-    
-    for(var i=0;i<just_mat_Res.length;i++){
-        thml1+='<div style="width: 100%"><div class="demo3">5</div><div class="demo4">'+just_mat_Retq[i]+'</div></div>'
-    }
-    */
+          thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Returning</div></div>'
+     
+           for(var i=0;i<just_mat_Res.length;i++){
+             thml1+='<div style="width: 100%"><div class="demo3">5</div><div class="demo4">'+just_mat_Retq[i]+'</div></div>'
+           }
+       
     thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Price</div></div>'
     for(var i=0;i<just_mat_Res.length;i++){
         thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">$'+just_mat_price[i]+'</div></div>'
@@ -1683,10 +1773,12 @@ function gotoCReditMempage_jsut(){
     for(var i=0;i<just_mat_Res.length;i++){
         thml1+='<div style="width: 100%"><div class="demo3">$'+toalPriceArray1[i]+'</div><div class="demo4">Nan</div></div>'
     }
+    */
     var htm='Total: $'+total2;
     //alert(total2)
     $('#g_total').html(htm)
-                       $('#memo_details').html(thml1).trigger('create');
+    $('#g_total1').html(htm)
+         $('#memo_details').html(thml1).trigger('create');
                        
                        
                        }
@@ -1722,6 +1814,7 @@ function gotoCReditMempage_jsut(){
                               });
                        //alert(total)
                        $('#g_total').html('Total: $'+total)
+		       $('#g_total1').html('Total: $'+total)
                        var date1=new Date();
                        var date0=date1.toISOString()
                        var date2=date0.toString();
@@ -1739,7 +1832,35 @@ function gotoCReditMempage_jsut(){
                        $('#cus_ship_add').html(html).trigger('create');
                        var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
                        var thml1='';
-                       thml1+='<div style="width: 100%"><div class="demo1">Item</div><div class="demo2">Description</div></div>'
+		       
+		        thml1+='<div class="Over_text_box">'
+		          thml1+='<div class="memoheading">Item</div>'
+			     thml1+='<div class="memoheading_dec">Description</div>'
+			      thml1+='<div class="memoheading_dec">Reason</div>'
+			       thml1+='<div class="memoheading_dec">Returning</div>'
+			        thml1+='<div class="memoheading">Quantity</div>'
+				 thml1+='<div class="memoheading">UOM</div>'
+				  thml1+='<div class="memoheading">Price</div>'
+				   thml1+='<div class="memoheading">Total</div>'
+				    thml1+='<div class="memoheading_tax">Tax</div>'
+				      thml1+='</div>'
+			for(var i=0;i<itemNameArray.length;i++){
+			     thml1+='<div class="memoheading_detail">'+itemNumArray[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail">'+itemNameArray[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail">'+R_Reason[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail">'+noofItem[i]+'</div>'
+			      thml1+='<div class="memoheading_detail">'+QuantityArray[i]+'</div>'
+			      thml1+='<div class="memoheading_detail">Each</div>'
+			       thml1+='<div class="memoheading_detail">'+priceArray[i]+'</div>'
+			        thml1+='<div class="memoheading_detail">$'+toalPriceArray[i]+'</div>'
+				thml1+='<div class="memoheading_tax_detail">Non</div>'
+				      thml1+='</div>'
+			}
+			
+		   
+		       
+		       
+              /*        thml1+='<div style="width: 100%"><div class="demo1">Item</div><div class="demo2">Description</div></div>'
                        for(var i=0;i<itemNameArray.length;i++){
                        thml1+='<div style="width: 100%"><div class="demo3">'+itemNumArray[i]+'</div><div class="demo4">'+itemNameArray[i]+'</div></div>'
                        }
@@ -1762,7 +1883,7 @@ function gotoCReditMempage_jsut(){
                        thml1+='<div style="width: 100%"><div class="demo31">non</div></div>'
                        }
                        
-                       
+                       */
                        $('#memo_details').html(thml1).trigger('create');
                        
                        }
@@ -2041,12 +2162,16 @@ function gotoReturnconfrm_local(){
            var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>'+fuldate+'</div>'
            $('#invoice_detaila_return').html(html).trigger('create');
            //// alert('ok');
+	   
            $('#in_c_id_retun').html(html6).trigger('create');
            $('#in_c_name_retun').html(html1).trigger('create');
+	  $('#in_c_id_retun_cnf').html(html6).trigger('create');
+           $('#in_c_name_retun_cnf').html(html1).trigger('create');
            $.mobile.changePage('#Returns_confirmation_screen2')
     
 }
-
+var headhtml='';
+var headhtm1='';
 function gotoCreditmemo_local(){
     	noofItem=[];
 	R_Reason=[];
@@ -2405,7 +2530,7 @@ var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squ
 
 
 
-function starBarScanning(){
+ function starBarScanning(){
    //alert('ok')
    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)
