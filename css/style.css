@@ -67,16 +67,17 @@ ul.topinfocon li span{ float:left; padding:0 0 0 0; margin:0 5px 0 0;}
 ul.topinfocon li strong{ font-weight:bold;}
 ul.topinfocon li a{ text-decoration:none; color:#FFF !important; font-weight:normal !important;}
 .bannermain{ float:left; width:100%; }
-.Backbutton { float:left; width:10%; font-size:1.5em; text-align:center; padding:.4em 0 .4em 0; border:solid 1px #7f6270;
-background:url(../images/back_icon.png) no-repeat left 2px #9c8a9a; background-size:26% 90%; cursor:pointer;}
+.Backbutton { float:left; width:10%; font-size:1.5em; text-align:right; padding:.4em 1% .4em 0; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 5px #9c8a9a; background-size:30% 70%; cursor:pointer;}
 .Backbutton a { text-decoration:none; color:#fff;}
-.rightserchbox {float:left; width:15%;}
+
+.rightserchbox {float:right; width:10%; margin-right:1%;}
 h1.returenstext {float:left; width:14%;}
 .inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 6px !important; padding:3% 0 2% 12% !important; width:88% !important;}
 .ui-header .ui-title {min-height: 1.1em !important;
-font-size: 16px !important;
+font-size: 16px !important; width:70% !important; text-align:center !important;
 display: block !important;
-margin: .6em 18% .8em;
+margin: .6em 0 .8em;
 padding: 0 !important;
 text-overflow: ellipsis !important;
 white-space: nowrap !important; overflow:none !important;
@@ -101,11 +102,11 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-6% 1
 #Credit_memo .referencebox span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.6em !important; color:#231f20; text-align:center; background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Credit_memo .referencebox1 span {float:left; width:24%;font-family: 'helveticanltcnhelveticanltcn'; font-size:.7em !important; color:#231f20; text-align:center;
 background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
-#Credit_memo .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Credit_memo .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.6em !important; padding-bottom:1.5%;}
 #Credit_memo .Barnes_text h1 {padding: 0; margin: 0; float: left !important; width: 55% !important;}
 #Customers .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:10px !important; }
 .inputloignbox3 {color:#726065; font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 2px !important; padding:3% 0 2% 12% !important; width:88% !important;}
-.documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:180px !important;}
+.documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:200px !important;}
 .Overview_text { float:left; width:246px !important; background:#6b6c6c;padding:10px 0 10px 10px !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.5em !important; color:#e4e6e7; }
 .text1 { float:left !important; width:98% !important; padding:1% 0 1.5% 2% !important; margin-right:2%; text-align:left !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.2em !important;}
 .text2 { float:left; width:100% !important; text-align:left; background:#fff; border-left: none !important; border-right:none !important; }
@@ -116,7 +117,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 font-size:.9em !important;}
 #Credit_memo .justret_button {float:left; width:45% !important; margin:2% 0 0 4%; border-radius:8px; min-height:0px !important;}
 #Credit_memo .justret_buttonright {float:right; width:45% !important; margin:2% 4% 0 0; border-radius:8px; min-height:0px !important;}
-.documentdiv1 { margin:7% auto; margin-bottom:5% !important; width:98%; border:solid 1px #6b6c6c; height:345px !important;}
+.documentdiv1 { margin:7% auto; margin-bottom:5% !important; width:98%; border:solid 1px #6b6c6c; height:195px !important;}
 .Over_text_box {float:left; width:100%;}
 .text5 { float:left; width:255px !important; text-align:center; border-left: none !important;}
 .text5 h1 { padding:5% 0 5% 3% !important; margin:0; float:left; width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; 
@@ -142,8 +143,8 @@ h1.returenstext {float: left; width: 27% !important;}
 .Backbutton { float:left; width:10%; font-size:.9em !important; padding:.7em .5em .8em 2em !important; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat left 2px #9c8a9a; background-size:32% 87% !important; cursor:pointer;}
 .Backbutton a { text-decoration:none; color:#fff;}
-.Backbuttonhome { float:right !important; width:10% !important; font-size:.9em !important; margin-top:-10.4% !important; padding:.7em 1.5em .8em 1.5em !important; border:solid 1px #7f6270; background:#9c8a9a; background-size:32% 87% !important; cursor:pointer; margin-right:1px !important;}
-.Backbuttonhome a { text-decoration:none; color:#fff;}
+.Backbuttonhome { float:right !important; width:10% !important; font-size:.9em !important; margin-top:-11.5%  !important; padding:.7em 1.5em .8em 1.5em !important; border:solid 1px #7f6270; background:#9c8a9a; background-size:32% 87% !important; cursor:pointer; margin-right:1px !important;}
+.Backbuttonhome a { text-decoration:none; color:#fff !important;}
 .Backbutton1 { float:right; width:10%; font-size:.9em !important; padding:.7em .5em .8em 2em !important; border:solid 1px #7f6270;
 background:url(../images/backtohome.png) no-repeat left 2px #9c8a9a; background-size:32% 87% !important; cursor:pointer;}
 .Backbutton1 a { text-decoration:none; color:#fff;}
@@ -184,9 +185,9 @@ background:url(../images/backtohome.png) no-repeat left 2px #9c8a9a; background-
 #ReturnOrderDeatilpage .poor_quality_text span {float: left; width: 30% !important; color: rgb(255, 255, 255); font-size: .9em !important; padding: 3px 10px 2px 0 !important; text-align: right; border: solid 1px rgb(255, 255, 255);}
 #ReturnOrderDeatilpage .justret_button { margin:1% 22% 0 0 !important; width: 60% !important; float:right !important;}
 #returns_creen .Barnes_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:62% !important;}
+#returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:42% !important;}
 #returns_creen .invoice_text { float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#returns_creen .invoice_text h1  {float:left; width:62% !important; padding:0; margin:0;}
+#returns_creen .invoice_text h1  {float:left; width:42% !important; padding:0; margin:0;}
 #returns_creen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1em !important; border-right: solid 1px #766463;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1em !important; padding:19px 0 15px 0; text-align:center;}
 #returns_creen .ui-block-a  strong { font-size:11px !important;}
@@ -364,13 +365,80 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #jsut_returns_creen_cnf .invoice_text h1  {float:left; width:width:48% !important; padding:0; margin:0;}
 #jsut_returns_creen_cnf .invoice_text { float:left; width:90% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 
-
-
 /*Credit_memo Date=28-11-2013 end*/
+.Overview_text { float:left; width:96% !important; background:#6b6c6c;padding:10px 0 10px 26px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em; color:#e4e6e7; }
+.memoheading{
+	text-align: center;
+	width: 10%;
+        float: left;
+         border-right: solid 1px rgb(0, 0, 0);
+	  border-bottom: solid 1px rgb(0, 0, 0);
+	   height: 25px; font-size:.6em !important;
+}
+.memoheading_dec{
+	text-align: center;
+width: 12%;
+float: left;
+border-right: solid 1px rgb(0, 0, 0);
+border-bottom: solid 1px rgb(0, 0, 0);
+height: 25px;
+white-space: nowrap; font-size:.6em !important;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.memoheading_tax{text-align: center;
+width: 10.7% !important; font-size:.6em !important;
+float: left;
+ border-bottom: solid 1px rgb(0, 0, 0);
+  height: 25px;
+}
+
+.memoheading_detail{
+	text-align: center; font-size:.6em !important;
+	width: 10%;
+        float: left;
+         border-right: solid 1px rgb(0, 0, 0);
+	  border-bottom: solid 1px rgb(0, 0, 0);
+	  background: #d4d1c9;
+	  height: 25px;
+}
+.memoheading_dec_detail{
+text-align: center; font-size:.6em !important;
+width: 12%;
+float: left;
+border-right: solid 1px rgb(0, 0, 0);
+border-bottom: solid 1px rgb(0, 0, 0);
+height: 25px;
+background: #d4d1c9;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.memoheading_tax_detail{text-align: center;
+width: 10.7% !important; font-size:.6em !important;
+float: left;
+ border-bottom: solid 1px rgb(0, 0, 0);
+ background: #d4d1c9;
+  height: 25px;
+/*border-right: solid 1px rgb(0, 0, 0);	*/
+}
 
 }
 
 @media all and (max-width: 800px) and (min-width: 480px) {
+.ui-header .ui-title {min-height: 1.1em !important;
+font-size: 16px !important; width:66% !important; text-align:center !important;
+display: block !important;
+margin: .6em 0 .8em;
+padding: 0 !important;
+text-overflow: ellipsis !important;
+white-space: nowrap !important; overflow:none !important;
+outline: 0 !important;}
+
+	
+.Backbutton { float:left; width:8% !important; font-size:1em !important;  padding:1em 3% 1em 4% !important; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:26% 50% !important; cursor:pointer;}	
 .Createtop1 {float: left !important; width: 8% !important; margin: 0 12% 1% 0;}
 .Createtop1 span { float:left !important; width:100% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
 .Createtop1 h1 {float:left !important; width:48px !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center !important; font-size:.5em !important; padding:12% 0 0 0; margin:0;}
@@ -522,14 +590,10 @@ right: 10px !important;}
 #Returns_confirmation_screen2 .poor_quality_text h1 {padding:1.3em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
 #Returns_confirmation_screen2 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #Returns_confirmation_screen2 .justret_button {margin:0 auto; width:75% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 150px !important;}
-.Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
-background:url(../images/back_icon.png) no-repeat 10px 10px #9c8a9a !important; background-size:26% 54% !important; cursor:pointer; height:18px; width:77px !important;}
-
-.ui-header .ui-title {min-height: 1.1em !important; font-size: 16px !important; display: block !important; margin: .6em 20% .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important;}
 
 
 .Backbutton a { text-decoration:none !important; color:#fff !important;}
-.Backbuttonhome { float:right; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
+.Backbuttonhome { float:right; width:10% !important; font-size:1em !important;  padding:1em 0 .8em 0 !important; border:solid 1px #7f6270;
 background:#9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
 .Backbutton a { text-decoration:none !important; color:#fff !important;}
 .Backbutton1 { float:right; width:10%  !important; font-size:1em !important;  padding:1em 0 1em 6% !important; border:solid 1px #7f6270;
@@ -557,9 +621,8 @@ h1.returenstext {float: left; width:30% !important;}
 @media all and (max-width: 480px){
 .Backbutton { float:left; width:12% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}
-.ui-header .ui-title {min-height: 1.1em !important; font-size: 16px !important; display: block !important; margin: .6em 19% .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important;}
-.Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 0 1em 4% !important; border:solid 1px #7f6270;
-background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:26% 50% !important; cursor:pointer;}	
+/*.Backbutton { float:left; width:10% !important; font-size:1em !important;  padding:1em 3% 1em 4% !important; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:26% 50% !important; cursor:pointer;}*/	
 }
 
 @media all and (max-width: 768px){
@@ -632,8 +695,8 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1
 #Create_returns .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; margin-top:80px;}
 #Create_returns .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27;}
 #Create_returns .ui-content { padding:15px 15px 0 15px !important;}
-#Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:1%;}
-#Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
+#Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; border-top: solid 1px #fff; padding-top:1%;}
+#Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
 
 #Create_returns .Createtop { float:left; width:5%; margin:0 12% 1% 0;}
 #Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center; border:solid 1px #fff; border-radius: 81px;}
@@ -693,9 +756,9 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #ReturnOrderDeatilpage .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #ReturnOrderDeatilpage .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #ReturnOrderDeatilpage .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; /*font-size:1.5em; */ border-right: solid 1px #766463;}
-#ReturnOrderDeatilpage .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #ReturnOrderDeatilpage .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #ReturnOrderDeatilpage .invoice_text h1  {float:left; width:46%; padding:0; margin:0;}
 #ReturnOrderDeatilpage .ui-shadow-inset {background:#a2a9bb !important;}
 
@@ -703,7 +766,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
 #returns_creen .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27; margin-bottom:3%;}
 #returns_creen .ui-content { padding:15px 15px 0 15px !important;}
-#returns_creen .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:8%;}
+#returns_creen .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:3%;}
 #returns_creen .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
@@ -770,7 +833,7 @@ margin-right: 4%;
 
 
 
-#ReportsPage .return_qty {float:right; width:51% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:-8% !important;}
+#ReportsPage .return_qty {float:right; width:51% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:-6.5% !important;}
 
 #returns_creen .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
 
@@ -780,9 +843,9 @@ margin-right: 4%;
 #jsut_returns_creen_cnf .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
 #ReportsPage .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; text-align:center; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.2em; border-right: solid 1px #766463;}
 
-#returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #returns_creen .invoice_text h1  {float:left; width:40%; padding:0; margin:0;}
 #returns_creen .ui-shadow-inset {background:#a2a9bb !important;}
 /*returns_creen pages end*/
@@ -817,9 +880,9 @@ margin-right: 4%;
 #Returns_confirmation_screen2 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #Returns_confirmation_screen2 .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #Returns_confirmation_screen2 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.1em; border-right: solid 1px #766463;}
-#Returns_confirmation_screen2 .Barnes_text { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .Barnes_text { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Returns_confirmation_screen2 .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#Returns_confirmation_screen2 .invoice_text { float:left; width:45% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen2 .invoice_text { float:left; width:45% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Returns_confirmation_screen2 .invoice_text h1  {float:left; width:45%; padding:0; margin:0;}
 #Returns_confirmation_screen2 .justret_button {margin:0 auto; width:30%; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 124px;}
 #Returns_confirmation_screen2 .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
@@ -887,9 +950,9 @@ margin-right: 4%;
 #Returns_confirmation_screen3 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #Returns_confirmation_screen3 .return_qty {float:right; width:50% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #Returns_confirmation_screen3 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.1em; border-right: solid 1px #766463;}
-#Returns_confirmation_screen3 .Barnes_text { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen3 .Barnes_text { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Returns_confirmation_screen3 .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#Returns_confirmation_screen3 .invoice_text { float:left; width:45% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Returns_confirmation_screen3 .invoice_text { float:left; width:45% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Returns_confirmation_screen3 .invoice_text h1  {float:left; width:45%; padding:0; margin:0;}
 #Returns_confirmation_screen3 .justret_button {margin:0 auto; width:30%; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 124px;}
 #Returns_confirmation_screen3 .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
@@ -916,9 +979,9 @@ margin-right: 4%;
 #Credit_memo .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #Credit_memo .return_qty {float:right; width:25%;  margin-top:80px;}
 #Credit_memo .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.5em; border-right: solid 1px #766463;}
-#Credit_memo .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Credit_memo .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Credit_memo .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
-#Credit_memo .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
+#Credit_memo .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Credit_memo .invoice_text h1  {float:left; width:30%; padding:0; margin:0;}
 #Credit_memo .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
 #Credit_memo .yes_text { float:left; width:25%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center;cursor:pointer;  border-radius:5px; padding:2% 0 2% 0; margin:5% 0 0 6%;}
@@ -966,14 +1029,14 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Credit_memo .comments_box_right span { float:left; width:80%; text-align:right; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.1em; padding:2% 0 2% 0;}
 /*Credit_memo Date=28-11-2013 end*/
 /*Credit_memo Date=28-11-2013 start*/
-.documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:111px;}
-.Overview_text { float:left; width:98% !important; background:#6b6c6c;padding:10px 0 10px 26px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em; color:#e4e6e7; }
+.documentdiv { margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:124px;}
+.Overview_text { float:left; width:97.6% !important; background:#6b6c6c;padding:10px 0 10px 26px; font-family: 'helveticanltcnhelveticanltcn'; font-size:2em; color:#e4e6e7; }
 .text1 { float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em;}
 .text2 { float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000; }
 .text2 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-bottom:solid 1px #000;}
 .text2 h2 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
 .text3 { float:left; width:16%; padding:1.5% 0 1.5% 0; text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-right:solid 1px #000;}
-.text4 {float:left; width:40%; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
+.text4 {float:left; width:39%; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
 .documentdiv1 { margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #6b6c6c; height:150px;}
 .Over_text_box {float:left; width:100%;}
 .text5 { float:left; width:9%; text-align:center; border-left:solid 1px #000;}
@@ -1118,3 +1181,41 @@ ui-grid-a>:nth-child(n){
 
 #Returns_confirmation_screen3 .justret_button1 {margin: 0 auto;width: 51% !important;padding-top: 3%;}
 #jsut_returns_creen_cnf .justret_button1 {margin: 0 auto;width: 51% !important;padding-top: 3%;}
+
+@media (max-width: 360px){
+.Backbutton { float:left; width:15% !important; font-size:1em !important;  padding:1em 2% 1em 4% !important; border:solid 1px #7f6270;
+background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:26% 50% !important; cursor:pointer;}	
+.Backbutton a { text-decoration:none !important; color:#fff !important;}
+.ui-header .ui-title {min-height: 1.1em !important; float:left !important; width:63% !important; text-align:center !important; font-size: 16px !important; display: block !important; margin: .6em 0 .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important;}	
+#main_box {margin: 0 auto; width:100% !important; margin-top: 2%;}
+#Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:.9em !important; border-top: solid 1px #fff; padding-top:1%;}
+#Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:.9em !important; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
+#Create_returns .customersbox {margin-top: 30px !important;}
+
+#returns_creen .Barnes_text { float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
+#returns_creen .invoice_text { float:left; width:76%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .invoice_text h1  {float:left; width:40%; padding:0; margin:0;}
+.login_img {margin:0 auto; width:80% !important; padding-top:4%;}
+.tryout_img {margin:0 auto; width:80% !important; padding-top:1%;}
+
+
+}
+
+@media (max-width: 1024px){
+
+#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 2% 1% 0;}	
+#Credit_memo .textareabox {
+float: left;
+width: 100%;
+height: 45px;}
+/*#textinput { float:left; width:49%; margin-top:6%;}
+.selecttextbox { float:right; width:50%; margin-top:6%;}*/
+}
+
+.Backbutton a { text-decoration:none !important; color:#fff !important;}
+
+.Backbuttonhome { float:right; width:10%; text-align:center; margin-right:4px; border:solid 1px #7f6270; background:#9c8a9a; background-size:32% 87% !important; cursor:pointer; padding:9px 0 16px 0; color:#fff !important;}
+.Backbuttonhome a { text-decoration:none !important; color:#fff !important;}
+.Createtop1 h1 { text-decoration:none; color:#fff; font-weight:normal;}
+.Createtop1 h1 a { text-decoration:none; color:#fff;}
