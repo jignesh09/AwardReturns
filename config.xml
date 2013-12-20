@@ -76,7 +76,7 @@
     
     
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="0.6.0" />
-    
+    <gap:plugin name="com.phonegap.plugins.emailcomposer" />
     <!--
         Define access to external domains.
 
