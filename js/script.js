@@ -81,7 +81,6 @@ function createCookie(name,value,days) {
 
 
 
-
 var app = {
     // Application Constructor
 initialize: function () {
@@ -306,8 +305,8 @@ function getCustomer(){
     var Rem_me=$('#flip-1').val();
     
     var url2="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS/returns_customeCollection?$filter=sales_rep_id eq "+uname1+" and password eq "+pwd1+" &$format=json"
-    
-    
+    console.log()
+    var url2="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNS_CUSTOMERS_SRV/CustomersCollection?$filter=SalesRepId eq 'demo' and Password eq 'demo123' &$format=json";
     $.mobile.showPageLoadingMsg();
     $.ajax({
            url: url2,
@@ -317,18 +316,18 @@ function getCustomer(){
            console.log(JSON.stringify(data))
            var res=eval(data);
            // alert(res.d.results[0].__metadata.uri)
-           window.localStorage.setItem('ldata',JSON.stringify(data))
+          // window.localStorage.setItem('ldata',JSON.stringify(data))
            var html='';
 	   // insertValue('Customerlist','jsondata','"'+res+'"');
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
-           var c_id=data1.cust_num.toString();
-           var adds=data1.street+','+data1.city+','+data1.country+','+data1.telephone;
+           var c_id=data1.CustNum.toString();
+           var adds=data1.Street+','+data1.City+','+data1.Country+','+data1.Telephone;
            var c_id2=c_id.toString();
-           var searcdata=data1.cust_name+c_id;
-           html+='<li class="Cc_list" data-c_id='+c_id2+' data-cusname="'+data1.cust_name+'"  data-adds="'+adds+'" onclick="CutomerInvoice(this)" style="none" add="'+searcdata+'"><div class="ui-block-a" ><a href="#" ><span>'+data1.cust_num+'</span></a>'
-           html+='<strong>'+res.d.results[i].cust_name+'</strong>'
-           html+='<div class="Garfield_text">'+data1.street+'<br /> '+data1.city+', '+data1.country+'  '+data1.telephone+'</div>'
+           var searcdata=data1.CustName+c_id;
+           html+='<li class="Cc_list" data-c_id='+c_id2+' data-cusname="'+data1.CustName+'"  data-adds="'+adds+'" onclick="CutomerInvoice(this)" style="none" add="'+searcdata+'"><div class="ui-block-a" ><a href="#" ><span>'+data1.CustNum+'</span></a>'
+           html+='<strong>'+res.d.results[i].CustName+'</strong>'
+           html+='<div class="Garfield_text">'+data1.Street+'<br /> '+data1.City+', '+data1.Country+'  '+data1.Telephone+'</div>'
            html+='</div></li>'
            
            
@@ -361,7 +360,6 @@ function getCustomer(){
     
     
 }
-
 
 //------------------------------- getting customer invoice-----------------------------------------------------
 function CutomerInvoice(ev){
@@ -483,7 +481,7 @@ function invoiceDetail(ev){
     
     
     $.mobile.showPageLoadingMsg();
-    $.ajax({
+   $.ajax({
            url:url,
            dataType: 'json',
            success: function(data, status) {
@@ -520,11 +518,21 @@ function invoiceDetail(ev){
            }
            // alert(cid);
            //alert(cname);
-           var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
-           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>'+fuldate+'</div>'
+           //var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
+           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+fuldate+'</div>'
+	   
+	    var hm='<div class="customer_boderright">'
+			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1>Customer ID</h1><span>'+cid+'</span></div>'
+			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1 style=" width:38% !important;">Customer name</h1>'+cname+'</div>'
+			    hm+='</div>'
+			    hm+='<div class="customer_boderright1">'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Returns order #</h1>'+data1.invoice_number+'</div>'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Invoice Date </h1>'+fuldate+'</div></div>'
+			    hm+='</div>'
+	   
            $('#invoice_detaila').html(html).trigger('create');
-           $('#in_c_id').html(html6)
-           $('#in_c_name').html(html1)
+           $('#in_c_id').html(hm).trigger('create');
+          // $('#in_c_name').html(html1)
            $.mobile.changePage('#returns_creen')
            },
            
@@ -541,6 +549,7 @@ function invoiceDetail(ev){
            console.log(JSON.stringify(error))
            }
            });
+    
     
     
     
@@ -1056,8 +1065,9 @@ function gotoReturnconfrm() {
            var dt=new Date(ress1);
            var yr=dt.getFullYear();
            var mon=dt.getMonth();
+	   var mon1=mon+1;
            var det1 = dt.getDate();
-           fuldate=det1+'/'+mon+'/'+yr;
+           fuldate=det1+'/'+mon1+'/'+yr;
 		   itemNumArray.push(data1.invoice_item)
 		   priceArray.push(data1.price)
 		   QuantityArray.push(data1.quantity)
@@ -1070,14 +1080,11 @@ function gotoReturnconfrm() {
            html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
            html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
          
-           
-           
-           
            }
            //<div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
            //alert(cname);
            var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
-           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Date </h1>'+fuldate+'</div>'
+           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+fuldate+'</div>'
            $('#invoice_detaila_return').html(html).trigger('create');
            //// alert('ok');
            $('#in_c_id_retun').html(html6).trigger('create');
@@ -1489,7 +1496,8 @@ function getRetrunOrderDetails(ev){
            var i_num=Number(data1.ItemNumber);
            html+='<li class="re_detail_li" add="'+data1.ItemName+'"><div class="ui-block-a"><div class="Createtop"><span>'+i_num+'</span></div>'
            //html+='<strong>Air Tubs</strong>';
-           html+='<div class="Garfield_text"><h1>'+data1.ItemName+'</h1></div>';
+           html+='<div class="Garfield_text" style="border-right:none !important"><h1>'+data1.MaterialDesc+'</h1></div>';
+		  html+='<div class="Garfield_text"><h1>'+data1.ItemName+'</h1></div>';
            html+='<div class="poor_quality_text"><span>'+Number(data1.ReturnQuantity)+'</span><h1>'+data1.ReturnReason+'</h1></div></div></li>';
            var ccid=data1.CustomerNumber
            }
@@ -1498,8 +1506,17 @@ function getRetrunOrderDetails(ev){
            var c_namehtml='<div class="Barnes_text"><h1>Customer name</h1>'+c_name+'</div><div class="invoice_text"><h1>Invoice date </h1>'+c_date+'</div>';
            /*  <div class="custo_text" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
             <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>*/
-           
-           $('#returnDetailHead').html(c_idthml).trigger('create');
+        var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+c_date+'</div>'
+	   
+	    var hm='<div class="customer_boderright">'
+			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1>Customer ID</h1><span>'+ccid+'</span></div>'
+			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1 style=" width:38% !important;">Customer name</h1>'+c_name+'</div>'
+			    hm+='</div>'
+			    hm+='<div class="customer_boderright1">'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Returns order #</h1>'+r_id+'</div>'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Invoice Date </h1>'+c_date+'</div></div>'
+			    hm+='</div>'
+           $('#ret_list_head').html(hm).trigger('create');
            $('#returnDetailHead1').html(c_namehtml).trigger('create');
            $('#Return_Oid_detail').html(html).trigger('create');
            $.mobile.changePage('#ReturnOrderDeatilpage')
@@ -1738,13 +1755,13 @@ function gotoCReditMempage_jsut(){
 			for(var i=0;i<just_mat_Res.length;i++){
 			     thml1+='<div class="memoheading_detail">'+just_mat_num[i]+'</div>'
 			     thml1+='<div class="memoheading_dec_detail">'+just_mat_num[i]+'</div>'
-			     thml1+='<div class="memoheading_dec_detail1">'+just_mat_Res[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail1_Reasontext">'+just_mat_Res[i]+'</div>'
 			     thml1+='<div class="memoheading_dec_detail">'+just_mat_Retq[i]+'</div>'
 			     
 			      thml1+='<div class="memoheading_detail">Each</div>'
-			       thml1+='<div class="memoheading_detail">'+just_mat_price[i]+'</div>'
+			       thml1+='<div class="memoheading_detail_text1">'+just_mat_price[i]+'</div>'
 			        thml1+='<div class="memoheading_detail">$'+toalPriceArray1[i]+'</div>'
-				thml1+='<div class="memoheading_tax_detail">Non</div>'
+				thml1+='<div class="memoheading_tax_detail_text2">Non</div>'
 				      thml1+='</div>'
 			}
     
@@ -1847,12 +1864,12 @@ function gotoCReditMempage_jsut(){
 			for(var i=0;i<itemNameArray.length;i++){
 			     thml1+='<div class="memoheading_detail">'+itemNumArray[i]+'</div>'
 			     thml1+='<div class="memoheading_dec_detail">'+itemNameArray[i]+'</div>'
-			     thml1+='<div class="memoheading_dec_detail">'+R_Reason[i]+'</div>'
+			     thml1+='<div class="memoheading_dec_detail_text3">'+R_Reason[i]+'</div>'
 			     thml1+='<div class="memoheading_dec_detail">'+noofItem[i]+'</div>'
 			      thml1+='<div class="memoheading_detail">'+QuantityArray[i]+'</div>'
-			      thml1+='<div class="memoheading_detail">Each</div>'
+			      thml1+='<div class="memoheading_detail_text4">Each</div>'
 			       thml1+='<div class="memoheading_detail">'+priceArray[i]+'</div>'
-			        thml1+='<div class="memoheading_detail">$'+toalPriceArray[i]+'</div>'
+			        thml1+='<div class="memoheading_detail_text4">$'+toalPriceArray[i]+'</div>'
 				thml1+='<div class="memoheading_tax_detail">Non</div>'
 				      thml1+='</div>'
 			}
@@ -2527,7 +2544,11 @@ var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squ
 
 
 
-
+function sendMail(){
+var html='This is return demo';
+  
+ window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html,["harisankar.behera@php2india.com"],[],[],true,["", ""]);
+}
 
 
  function starBarScanning(){
