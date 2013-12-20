@@ -129,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- / End homePage page   -->
         
@@ -137,9 +137,9 @@
         
         <div data-role="page" id="Customers">
             <div data-role="header" data-position="fixed" class="hedtoppart">
-                <div class="Backbutton"><a href="javascript:void(0);" onclick="gobackfromCustomer();">Back</a></div>
+                <div class="Backbutton"><!--<a href="javascript:void(0);" onclick="gobackfromCustomer();"><img src="images/backbutton_omg.png" width="100%" height="55px;"></a>--><a href="javascript:void(0);" onclick="gobackfromCustomer();">Back</a></div>
                 <h1 class="returenstext">Customers</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" id="cu_list_search" onkeyup="SearchCuList(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" id="cu_list_search" onkeyup="SearchCuList(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
@@ -175,8 +175,9 @@
                 <!--  <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>-->
             </div><!-- /header -->
             <div data-role="content">
-                <div id="main_box">
-                    <div class="custo_text" id="invo_cusId">Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10042</div>
+              <div id="main_box">
+	
+                    <div class="custo_text" id="invo_cusId">Customer ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10042</div>
                     <div class="custo_text1" id="invo_cusName" >Customer name &nbsp;&nbsp;&nbsp;&nbsp;Barnes Plumbing Co</div>
                     <div class="customersbox">
                         <div class="reportsmain">
@@ -204,7 +205,7 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#Create_returns">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3">
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3">
                     </div>
             </div><!-- /header -->
             
@@ -237,12 +238,28 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#Create_returns">Back</a></div>
                 <h1 class="returenstext">IN REF TO INVOICE</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
-                    <div class="custo_text" id="in_c_id"><div class="Barnes_text"><h1>Customer ID</h1><span>10042</span></div><div class="invoice_text"><h1>Returns order #</h1>6000058</div></div>
-                    <div class="custo_text1" id="in_c_name"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Date </h1>7/16/2013</div></div>
+			 
+                    <div class="custo_text" id="in_c_id">
+				<div class="customer_boderright">
+				<div class="Barnes_text" style="width:100% !important;"><h1>Customer ID</h1><span>10042</span></div>
+				<div class="Barnes_text" style="width:100% !important;"><h1 style=" width:38% !important;">Customer name</h1>Barnes Plumbing Co</div>
+				</div>
+				<div class="customer_boderright1">
+				<div class="invoice_text" style="width:100% !important;"><h1>Returns order #</h1>6000058</div>
+				<div class="invoice_text" style="width:100% !important;"><h1>Date </h1>7/16/2013</div></div>
+				</div>
+				<div class="custo_text1" id="in_c_name">
+				<div class="invoice_text"></div>
+				<div class="invoice_text"></div>
+				</div>
+				</div>
+				
+                    
+				
                     <div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
                     <div class="customersbox">
                         <div class="reportsmain">
@@ -280,13 +297,20 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#returns_creen">Back</a></div>
                 <h1 class="returenstext">IN REF TO INVOICE</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="returnconform(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="returnconform(this)"></div>
             </div><!-- /header -->
             
             <div data-role="content">
                 <div id="main_box">
-                    <div class="custo_text" id="in_c_id_retun"><div class="Barnes_text"><h1>Return Order</h1>124657</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
-                    <div class="custo_text1" id="in_c_name_retun"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+			 
+			 
+                    <div class="custo_text" id="in_c_id_retun">
+				<div class="Barnes_text"><h1>Return Order</h1>124657</div>
+				<div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
+                    <div class="custo_text1" id="in_c_name_retun">
+				<div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div>
+				<div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+				
                     <div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
                     <div class="customersbox">
                         <div class="reportsmain">
@@ -311,7 +335,7 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#returns_creen">Back</a></div>
                 <h1 class="returenstext">RETURNS CONFIRMATION</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="returnconform(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="returnconform(this)"></div>
             </div><!-- /header -->
             
             <div data-role="content">
@@ -343,10 +367,11 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton">Back</div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
+			 
                     <div class="custo_text"><div class="Barnes_text"><h1>Customer ID</h1> 42</div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
                     <div class="custo_text1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
                     <div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
@@ -388,12 +413,12 @@
                             <div class="ui-grid-a">
                                 <div class="Credit_memo">
                                     <div class="customer_credit"><h1>Customer Credit Memo</h1><div class="customer_right">
-                                        <div class="referencebox"><span>Reference #</span><span id="memo_refno">0000011</span><span>Ship Via</span><span>FedEx- Federal EX</span></div>
-                                        <div class="referencebox1"><span>Credit Memo #</span><span>00000000011</span><span>Date</span><span id="memodate">02/16/2003</span></div>
+                                        <div class="referencebox"><span>Reference #</span><span id="memo_refno" style="background:#fff !important;">0000011</span><span>Ship Via</span><span style="background:#fff !important;">FedEx- Federal EX</span></div>
+                                        <div class="referencebox1"><span>Credit Memo #</span><span style="background:#fff !important;">00000000011</span><span>Date</span><span id="memodate" style="background:#fff !important;">02/16/2003</span></div>
                                     </div></div>
                                     <div class="Credit_memo_img">
+							 <div class="memo_top_bg"><img src="images/memo_top_bg.png" width="35%" height="20px;"></div>
                                         <div class="documen_main_box">
-                                            
                                             <div class="document_text">Document Overview</div>
                                             <div class="documentdiv" id="cus_ship_add">
                                                 <div class="Overview_text">Document Overview</div>
@@ -402,7 +427,7 @@
                                                 <div class="text3">Ship to Address</div>
                                                 <div class="text4">78 Low Drive, Nowwheretown, Nj, 1933, United States</div>
                                             </div>
-		    
+		    <div class="memo_top_bg1"><img src="images/memo_top_bg.png" width="35%" height="20px;"></div>
 		    <div class="items_text">Items</div>
 		    <div class="documentdiv1">
 		    <div class="Overview_text">Document Overview</div>
@@ -422,7 +447,7 @@
 			
 		    </div>
 		       <div class="Over_text_box">
-		            <div class="memoheading_detail">Item</div>
+		          <div class="memoheading_detail">Item</div>
 			     <div class="memoheading_dec_detail">Description</div>
 			      <div class="memoheading_dec_detail">Reason</div>
 			       <div class="memoheading_dec_detail">Returning</div>
@@ -431,9 +456,7 @@
 				  <div class="memoheading_detail">Price</div>
 				   <div class="memoheading_detail">Total</div>
 				    <div class="memoheading_tax_detail">Tax</div>
-				   
-			
-			
+				
 		         </div>
 		       </div>
 		    <div class="total_text" id="g_total1">Total: $42,00</div>
@@ -457,8 +480,8 @@
 	</div>
 	
 </div>
-  <div class="justret_button"><a href="#"><img src="images/email_button.png" width="100%"></a></div>
-  <div class="justret_buttonright"><a href="#"><img src="images/done_button.png" width="100%"></a></div>
+  <div class="justret_button"><a href="#" onclick="sendMail()"><img src="images/email_button.png" width="100%"></a></div>
+  <div class="justret_buttonright" ><a href="#homePage"><img src="images/done_button.png" width="100%"></a></div>
 			    
 			    </div>
 			    
@@ -589,7 +612,7 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#" onclick="backfromReport();">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="serchReports(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="serchReports(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
@@ -618,14 +641,16 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#ReportsPage">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" onkeyup="serchReDetails(this)" class="inputloignbox3">
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" onkeyup="serchReDetails(this)" class="inputloignbox3">
                     </div>
             </div><!-- /header -->
             
             <div data-role="content">
                 <div id="main_box">
+			    <div id="ret_list_head">
                     <div class="custo_text" id="returnDetailHead"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
                     <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>
+				</div>
                     <div class="return_qty"><h1>Return QTY</h1><h1 style="border-right:none;">Return Reason</h1></div>
                     <div class="customersbox">
                         <div class="reportsmain">
@@ -651,10 +676,11 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#Create_returns">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
+			 
                     <div class="custo_text" id="in_c_id"><div class="Barnes_text"><h1>Customer ID</h1><span id="just_cid">10042</span></div><div class="invoice_text"><h1></h1></div></div>
                     <div class="custo_text1" id="in_c_name"><div class="Barnes_text" id="just_cname"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text_2" onclick="starBarScanning()"><img src="images/camera.png"> </div></div>
                     <div class="return_qty"><h1>Reason</h1><h1 style="border-right:none;">Condition</h1></div>
@@ -681,7 +707,7 @@
                                 
                             </div>
                             <div class="plusbtn"><a href="#" onclick="addnewRow()"><img src="images/plus.png" width="24px;"></a></div>
-                            <div class="justret_button"><a href="#" onclick="justRe_cnf()"><img src="images/justret_button.png" width="100%"></a></div>
+                            <div class="justret_button"><a href="#" onclick="justRe_cnf()"><img src="images/review_button.png" width="100%"></a></div>
                         </div>
                     </div>
                 </div> 
@@ -692,7 +718,7 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#jsut_returns_creen">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">
@@ -719,7 +745,7 @@
                         </ul>
                         
                         <div class="justret_button" id="just_return_popup" style="display: none;"><h1>Are you sure want to return?</h1><a href="#" id="justRetuncnf_summitid" onclick=""><div class="yes_text">Yes</div></a><a href="#" onclick="canceljustret()"><div class="Cancel_text">Cancel</div></a></div>
-                    <div class="justret_button1" id="just_returncnf_btn"><a href="#" onclick="showjustRetPopup()"><img src="images/justret_button.png" width="100%"></a></div>
+                    <div class="justret_button1" id="just_returncnf_btn"><a href="#" onclick="showjustRetPopup()"><img src="images/Confirm_button.png" width="100%"></a></div>
 		    </div>
                     
                     
@@ -736,7 +762,7 @@
             <div data-role="header" data-position="fixed" class="hedtoppart">
                 <div class="Backbutton"><a href="#Create_returns">Back</a></div>
                 <h1 class="returenstext">RETURNS REPORTS</h1>
-                <div class="rightserchbox"><input name="" type="text" placeholder="" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
+                <div class="rightserchbox"><input name="" type="text" placeholder="Search All" class="inputloignbox3" onkeyup="Returnlistserch(this)"></div>
             </div><!-- /header -->
             <div data-role="content">
                 <div id="main_box">

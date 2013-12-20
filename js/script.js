@@ -2535,36 +2535,24 @@ var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squ
    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)
    scanner.scan(
-      function (result) {
-        if(result.text  !=''){
-        
-        
-        var index=materialBarcodeArray.indexOf(result.text.toString())
-        if (index !=-1) {
-        var opid= 'opid_'+$(".Mat_optn select").length;
-        var thml='';
-        var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-        var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-        thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" id="'+opid+'" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
-        thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
-        
-        $('#invoice_just_re_html').append(thml).trigger('create');
-        
-        
-        var opid1=$(".Mat_optn select").length-1;
-        var opid2='opid_'+opid1;
-        document.getElementById(opid2).selectedIndex = index;
-        $('#'+opid2).selectmenu("refresh");
-        }
-        else{
-        navigator.notification.alert('no matching data found')
-        }
-        
-        }
-        }, 
-        function (error) {
-        alert("Scanning failed: " + error);
-        }
+       function (result) {
+							    
+                                if(result.text  !=''){
+								   
+                                        var index=0;
+                                        var val=parseInt(result.text)
+                                        var new_mat1='<option value="'+materialnum_desc[index]+'" data-va="'+materialDescArray[index]+'">'+materialnumArray[index]+'</option>'
+                                        var thml='';
+                                        var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+                                        var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+                                        thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="Number" value="'+val+'"/></div>'
+                                        thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
+                                        $('#invoice_just_re_html').append(thml).trigger('create');
+                                }                                            
+                        }, 
+                        function (error) {
+                                alert("Scanning failed: " + error);
+                        }
    );
 /*
  window.plugins.barcodeScanner.scan(
