@@ -1085,12 +1085,17 @@ function gotoReturnconfrm() {
            //alert(cname);
            var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
            var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+fuldate+'</div>'
+	   var html7='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer ID</h1><span>'+cid+'</span></div>'
+	       html7+='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer name</h1>'+cname+'</div>';
+	       
+	    var html8='<div class="Barnes_textts" style="width:100% !important;"><h1>Returns order #</h1>'+data1.invoice_number+'</div>'
+	       html8 +='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice Date </h1>'+fuldate+'</div></div>';
            $('#invoice_detaila_return').html(html).trigger('create');
            //// alert('ok');
-           $('#in_c_id_retun').html(html6).trigger('create');
-           $('#in_c_name_retun').html(html1).trigger('create');
-	    $('#in_c_id_retun_cnf').html(html6).trigger('create');
-           $('#in_c_name_retun_cnf').html(html1).trigger('create');
+           $('#cusname_id').html(html7).trigger('create');
+           $('#Reorder_date').html(html8).trigger('create');
+	    $('#cusname_id_cnf').html(html7).trigger('create');
+           $('#Reorder_date_cnf').html(html8).trigger('create');
            $.mobile.changePage('#Returns_confirmation_screen2')
            //alert('ok');
            },
@@ -1505,7 +1510,7 @@ function getRetrunOrderDetails(ev){
            var c_idthml='<div class="Barnes_text"><h1>Customer ID</h1><span>'+ccid+'</span></div><div class="invoice_text"><h1>Return order #</h1>'+r_id+'</div>'
            var c_namehtml='<div class="Barnes_text"><h1>Customer name</h1>'+c_name+'</div><div class="invoice_text"><h1>Invoice date </h1>'+c_date+'</div>';
            /*  <div class="custo_text" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
-            <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>*/
+            <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Date </h1>8/25/2013</div></div>*/
         var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+c_date+'</div>'
 	   
 	    var hm='<div class="customer_boderright">'
@@ -1514,7 +1519,7 @@ function getRetrunOrderDetails(ev){
 			    hm+='</div>'
 			    hm+='<div class="customer_boderright1">'
 			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Returns order #</h1>'+r_id+'</div>'
-			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Invoice Date </h1>'+c_date+'</div></div>'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Date </h1>'+c_date+'</div></div>'
 			    hm+='</div>'
            $('#ret_list_head').html(hm).trigger('create');
            $('#returnDetailHead1').html(c_namehtml).trigger('create');
@@ -2490,7 +2495,16 @@ function trytohome(){
     tryit='true'
      $.mobile.changePage('#tryhomePage')
 }
+
+function changePageonclik(page){
+$.mobile.changePage('#'+page)
+
+}
+
 function gobackfromCustomer(){
+
+           console.log('home')
+	   
                         if(tryit=='true'){
 			    $.mobile.changePage('#tryhomePage')
 			}
@@ -2504,7 +2518,7 @@ function backfromReport(){
 			    $.mobile.changePage('#tryhomePage')
 			}
 			else{
-			   $.mobile.changePage('#Customers')
+			   $.mobile.changePage('#homePage')
 			}
 
 }
@@ -2552,47 +2566,54 @@ var html='This is return demo';
 
 
  function starBarScanning(){
-   //alert('ok')
-   var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+                
+                        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)
    scanner.scan(
-       function (result) {
+                                                          function (result) {
 							    
-                                if(result.text  !=''){
+                                                               if(result.text  !=''){
 								   
-                                        var index=0;
-                                        var val=parseInt(result.text)
-                                        var new_mat1='<option value="'+materialnum_desc[index]+'" data-va="'+materialDescArray[index]+'">'+materialnumArray[index]+'</option>'
-                                        var thml='';
-                                        var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-                                        var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-                                        thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="Number" value="'+val+'"/></div>'
-                                        thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
-                                        $('#invoice_just_re_html').append(thml).trigger('create');
-                                }                                            
-                        }, 
-                        function (error) {
-                                alert("Scanning failed: " + error);
-                        }
-   );
-/*
- window.plugins.barcodeScanner.scan(
-      function (result) {
-            //alert(result.text);
-            if(result.text  !=''){
-            var thml='';
-           var new_mat1='<option>'+result.text+'</option>'
-	  var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="text" vlaue="3"/></div>'
-	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
-	
-	$('#invoice_just_re_html').append(thml).trigger('create');
-      }
-      
-      }, 
-      function (error) {
-          alert("Scanning failed: " + error);
-      }
-   );*/
-}
+                                                                   var index=materialBarcodeArray.indexOf(result.text.toString())
+								   if(index !=-1){
+                                                                   var new_mat1='<option value="'+materialnum_desc[index]+'" data-va="'+materialDescArray[index]+'">'+materialnumArray[index]+'</option>'
+                                                                   var thml='';
+                                                                   var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+                                                                   var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+                                                                         thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
+                                                                         thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
+                                                                      $('#invoice_just_re_html').append(thml).trigger('create');
+								   }
+								   else{
+								    alert('No matching data found')
+								   }
+                                                               }                                            
+                                                          }, 
+                                                          function (error) {
+                                                          alert("Scanning failed: " + error);
+                                                          }
+                                                     );
+                       }
+							  
+				
+	   
+	   
+	   
+	   
+	   function invoiceScanning(){
+	   
+	      var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+   //alert(scanner)
+   scanner.scan(
+                                                          function (result) {
+							    
+                                                               if(result.text  !=''){
+								   
+                                                                 //itemNumArray
+                                                               }                                            
+                                                          }, 
+                                                          function (error) {
+                                                          alert("Scanning failed: " + error);
+                                                          }
+                                                     );
+	   }
