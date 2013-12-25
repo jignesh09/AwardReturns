@@ -20,9 +20,6 @@ var tryit='false'
 // Check valid zipcode
 
 
-
-
-
 function check_zipcodvalid() {
     if (!($('#vZipCode').val())) {
         $('#getQuotePopMsg').html('Please Enter Your Zip Code');
@@ -76,10 +73,33 @@ function createCookie(name,value,days) {
 }
 
 
+function Login123(){
+alert('ok')
+  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
 
+function gotFS(fileSystem) {
 
+   fileSystem.root.getDirectory("datasankar", {create: true}, gotDir);
+}
 
+function gotDir(dirEntry) {
 
+    dirEntry.getFile("lock.html", {create: true, exclusive: true}, gotFile);
+}
+
+function gotFile(fileEntry) {
+   // alert(fileEntry.fullPath)
+    fil_path=fileEntry.fullPath;
+    alert(fil_path)
+    // Do something with fileEntry here
+}
+
+function fail() {
+    alert('fail');
+}
+
+var fil_path='';
 
 var app = {
     // Application Constructor
@@ -97,7 +117,8 @@ onDeviceReady: function () {
 	
 receivedEvent: function (id) {
     //alert('ok')
-    
+   
+          //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 	local_login();
     console.log('dreay')
     $.mobile.defaultTransition = 'none';
@@ -2559,15 +2580,58 @@ var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squ
 
 
 function sendMail(){
-var html='This is return demo';
+var html='';
+/*
+var html='<!DOCTYPE html>' 
+html+='<html>' 
+	html+='<head>' 
+	html+='<title>My Page</title>' 
+	html+='<meta name="viewport" content="width=device-width, initial-scale=1">' 
+	html+='<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />'
+	html+='<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>'
+	html+='<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>'
+html+='</head>' 
+html+='<body>' 
+
+html+='<div data-role="page">'
+
+html+='<div data-role="header" style="background-color:#b0c4de; !important;">'
+		html+='<h1>My Title</h1>'
+	html+='</div>'
+
+	html+='<div data-role="content">'
+	html+='<div style="float:left; width:100%; background:#ccc; height:250px;">'
+	html+='<p>Hello world</p>'
+	html+='</div>'
+	html+='</div><!-- /content -->'
+
+html+='</div><!-- /page -->'
+
+html+='</body>'
+html+='</html>'
+*/
+/* 
+html+='<div style="margin:0 auto; width:80%;">'
+html+='<div style="float:left; width:100%; background:#000; color:#fff; padding:5px 5px; height:250px;">Hello world</div>'
+html+='</div>'
+*/
+
+
+
+
+
+ html+='<div style="color:green;">this is </div>'
+
   
- window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html,["harisankar.behera@php2india.com"],[],[],true,["", ""]);
+  var fil_path1=fil_path;
+  //alert(fil_path1)
+ window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html,["harisankar.behera@php2india.com"],[],[],true,[fil_path1]);
 }
 
 
  function starBarScanning(){
                 
-                        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+                       var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)
    scanner.scan(
                                                           function (result) {
@@ -2575,14 +2639,35 @@ var html='This is return demo';
                                                                if(result.text  !=''){
 								   
                                                                    var index=materialBarcodeArray.indexOf(result.text.toString())
+								   //var index=materialBarcodeArray.indexOf('8901764082425')
+								    var li_size=$('#invoice_just_re_html li').length;
+								    var test_size=1;
 								   if(index !=-1){
                                                                    var new_mat1='<option value="'+materialnum_desc[index]+'" data-va="'+materialDescArray[index]+'">'+materialnumArray[index]+'</option>'
-                                                                   var thml='';
-                                                                   var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-                                                                   var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
-                                                                         thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
-                                                                         thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
-                                                                      $('#invoice_just_re_html').append(thml).trigger('create');
+								    var check=0
+								  $(".Mat_text input").each(function() {
+                                                                                var data=$(this).data('val');
+                                                                                      if(data==materialDescArray[index]){
+								                             var vale=parseInt($(this).val());
+											         vale=vale+1;
+											         $(this).val(vale)
+												 check=1; 
+											     }
+											     else{
+											       if(li_size==test_size && check==0){
+											    
+											        var thml='';
+                                                                                                var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+                                                                                                var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+                                                                                                      thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="Number" data-val="'+materialDescArray[index]+'" value="1"/></div>'
+                                                                                                      thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
+                                                                                                      $('#invoice_just_re_html').append(thml).trigger('create');
+											       }
+											     }
+											     test_size++;
+								                      });
+								 
+                                                                  
 								   }
 								   else{
 								    alert('No matching data found')
@@ -2600,20 +2685,40 @@ var html='This is return demo';
 	   
 	   
 	   
-	   function invoiceScanning(){
-	   
-	      var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+    function invoiceScanning(){
+	   console.log(itemNumArray);
+	    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    //alert(scanner)
    scanner.scan(
-                                                          function (result) {
-							    
+                                                 function (result) {
                                                                if(result.text  !=''){
-								   
-                                                                 //itemNumArray
+								    var index=itemNumArray.indexOf(result.text.toString());
+	                                                            if(index !=-1){
+	                                                                var inputindex=0;
+	                                                                var maxnumber=Number(QuantityArray[index])
+	                                                                 $('input[type=Number]', '#invoice_detaila_return').each(function() {
+                                                                                    if(inputindex==index){
+							      
+							                            var input_val=$(this).val();
+							                                if(maxnumber>input_val){
+							                                      input_val++;
+							                                      $(this).val(input_val);
+							                                      }
+							                                 else{
+							                                    alert('Your have scaned maximum number of time')
+							                                  }
+							                           }
+                                                           
+                                                                            inputindex++ 
+                                                                         })
+    
+	                                                          }
+                                                                 
                                                                }                                            
                                                           }, 
                                                           function (error) {
                                                           alert("Scanning failed: " + error);
                                                           }
                                                      );
+						     
 	   }
