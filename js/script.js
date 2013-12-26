@@ -72,15 +72,18 @@ function createCookie(name,value,days) {
     document.cookie = name+"="+value+expires+"; path=/";
 }
 
-
+var fullPath = "";
+var fileSystems = "";
 function Login123(){
-alert('ok')
+	//alert('ok')
   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 
 function gotFS(fileSystem) {
-
-   fileSystem.root.getDirectory("datasankar", {create: true}, gotDir);
+	fileSystems = fileSystem;
+	fullPath = fileSystem.root.fullPath;
+	
+   //fileSystem.root.getDirectory("readme.txt", {create: true}, gotDir);
 }
 
 function gotDir(dirEntry) {
@@ -118,7 +121,7 @@ onDeviceReady: function () {
 receivedEvent: function (id) {
     //alert('ok')
    
-          //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 	local_login();
     console.log('dreay')
     $.mobile.defaultTransition = 'none';
@@ -1169,22 +1172,26 @@ function canceljustret(){
      $('#just_return_popup').hide();
       $('#just_returncnf_btn').show();
 }
-
+var checkingArray=[];
+var noofItemretrun=[];
 function gotoConform(){
  $.mobile.showPageLoadingMsg();
 	noofItem=[];
+	checkingArray=[];
 	R_Reason=[];
+	var checkingindex=0;
 	$('input[type=Number]', '#invoice_detaila_return').each(function() {
                                                           
                                                             var val1=$(this).val();
-                                                            if(val1==''){
+                                                            if(val1=='' || val1=='0'){
                                                             var val2=0;
                                                             }
                                                             else{
                                                             var val2=parseInt(val1)
+							    checkingArray.push(checkingindex)
                                                             }
                                                             noofItem.push(val2)
-                                                            
+                                                            checkingindex++
                                                             })
     
     if(noofItem.length==0){
@@ -1199,7 +1206,8 @@ function gotoConform(){
 	    }
 //
  var html='';
-     for(var i=0;i<itemNumArray.length;i++){
+     for(var j=0;j<checkingArray.length;j++){
+        var i=checkingArray[j]
          html+='<li><div class="ui-block-a"><div class="Createtop"><span>'+Number(itemNumArray[i])+'</span></div><strong>'+itemNameArray[i]+'</strong><div class="Garfield_text"><h1>'+materialArray[i]+'</h1><h2>'+Number(QuantityArray[i])+' items</h2></div><div           class="poor_quality_text"><span>'+noofItem[i]+'</span><h1>'+R_Reason[i]+'</h1></div></div></li>'
    }
  $('#confrm_listview').html(html);
@@ -1208,22 +1216,27 @@ function gotoConform(){
 $.mobile.changePage('#Returns_confirmation_screen3')
 }
 
+var reftext='';
+var cheArray=[];
 function gotoCreditmemo() {
 	 
     $.mobile.showPageLoadingMsg();
 	noofItem=[];
 	R_Reason=[];
+	cheArray=[];
+	var chk=0;
 	$('input[type=Number]', '#invoice_detaila_return').each(function() {
                                                           
                                                             var val1=$(this).val();
-                                                            if(val1==''){
+                                                            if(val1=='' || val1=='0'){
                                                             var val2=0;
                                                             }
                                                             else{
                                                             var val2=parseInt(val1)
+							    cheArray.push(chk)
                                                             }
                                                             noofItem.push(val2)
-                                                            
+                                                            chk++;
                                                             })
     //    alert(noofItem.length)
     //alert(QuantityArray[0]);
@@ -1363,6 +1376,7 @@ function gotoCreditmemo() {
                         // alert(res);
                         $('#retunOrderid_memo').html('<h1 >Return Order</h1>'+res+'</div>')
                         $('#memo_refno').html($ref.text())
+			reftext=$ref.text();
                         console.log("-----------here now----------------------------------------------------------");
                         $.mobile.changePage('#Credit_memo')
                         
@@ -1742,7 +1756,8 @@ function searchRetunconfFiles(keyword) {
 	}
 }
 function gotoCReditMempage_jsut(){
-    
+reftext=000011
+    email_htm='';
     var tott=0;
     var toalPriceArray1=[];
     for (var i=0;i<just_mat_price.length;i++) {
@@ -1756,15 +1771,15 @@ function gotoCReditMempage_jsut(){
            });
    //alert(total2)
     //alert(just_mat_Res.length);
-    var html='<div class="Overview_text">Document Overview</div>'
-    html+='<div class="text1">Bill to Customer Address</div>'
-    html+='<div class="text2"><h1>'+cus_id+'-'+cus_name+'</h1> <h2>'+caddress+'</h2></div>'
-    html+='<div class="text3">Ship to Address</div>'
-    html+='<div class="text4">'+caddress+'</div>'
-	$('#cus_ship_add').html(html).trigger('create');
+    var html4='<div class="Overview_text">Document Overview</div>'
+    html4+='<div class="text1">Bill to Customer Address</div>'
+    html4+='<div class="text2"><h1>'+cus_id+'-'+cus_name+'</h1> <h2>'+caddress+'</h2></div>'
+    html4+='<div class="text3">Ship to Address</div>'
+    html4+='<div class="text4">'+caddress+'</div>'
+	$('#cus_ship_add').html(html4).trigger('create');
     var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
     var thml1='';
-    
+   // alert(total)
       var thml1='';
 		       
 		        thml1+='<div class="Over_text_box">'
@@ -1790,6 +1805,84 @@ function gotoCReditMempage_jsut(){
 				thml1+='<div class="memoheading_tax_detail_text2">Non</div>'
 				      thml1+='</div>'
 			}
+    
+    //-------------------------------------------------------------------------------------------
+    
+    var html=''
+		html+='<div style="margin-top: 30px !important;">'
+                html+='<div style="float:left; width:100%; margin-bottom:8%;">'
+                html+='<div class="ui-grid-a">'
+                html+='<div style="float:left; width:92%; background:#fff; margin:2% 4% 0 4%;">'
+                html+='<div style="float:left; width:98%; background:#cbcbcb; border: 1px solid #b5b7b7;margin-right: 10% !important;border-radius: 8px;margin-left: 1%; height:90px;"><h1 style="padding:2%; margin:0; float:left; width:40%; color:#231f20; font-size:1.8em; font-weight:bold;">Customer Credit Memo</h1><div style="float:right; width:45%; margin-top:9px;">'
+               html+='<div style="float:left; width:100%;"><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Reference #</span><span  style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;"id="memo_refno">'+reftext+'</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Ship Via</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">FedEx- Federal EX</span></div>'
+        html+='<div class="referencebox1"><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Credit Memo #</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">00000000011</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Date</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;" id="memodate111">2013-12-26</span></div></div></div>'
+                                    html+='<div style="float:left; width:100%;">'
+                                    html+='<div style="margin:0 auto;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;">'
+                                            
+                                             html+='<div style="float:left; width:80%;  color:#6b6c6c; font-size:1.5em; padding:0 0 1% 1%;">Document Overview</div>'
+                                            html+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:124px;" id="cus_ship_add">'
+                                          html+='<div style="float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-size:2em; color:#e4e6e7;">Document Overview</div>'
+                                                html+='<div style="float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; color:#231f20; font-size:1.5em;">Bill to Customer Address</div>'
+                                          html+='<div style="float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000;"><h1 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-size:1em; border-bottom:solid 1px #000;">'+cus_id+'-'+cus_name+'</h1> <h2 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-size:1em;">'+caddress+'</h2></div>'
+                                                html+='<div style="float:left; width:16%; padding:1.5% 0 1.5% 0; text-align:center;  color:#231f20; font-size:1.5em; border-right:solid 1px #000;">Ship to Address</div>'
+                                                html+='<div style="float:left; width:39%; padding:2% 0 1.4% 8px; background:#fff; text-align:left;  font-size:1em;">'+caddress+'</div></div>'
+                                            
+		    
+		    html+='<div style="float:left; width:80%; color:#6b6c6c; font-size:1.5em; padding:1% 0 1% 1%;">Items</div>'
+		    html+='<div style="margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #b5b7b7; height:150px;">'
+		     html+='<div style="float:left; width:97.6%; background:#6b6c6c;padding:10px 0 10px 26px;  font-size:2em; color:#e4e6e7;">Document Overview</div>'
+		     html+='<div id="memo_details">'
+		     html+='<div style="float:left; width:100%;">'
+		             html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Item</div>'
+			      html+='<div style="text-align: center;width: 17%; font-weight:bold;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Description</div>'
+			       html+='<div style="text-align: center;width: 17%; font-weight:bold;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Reason</div>'
+			        html+='<div style="text-align: center;width: 15%; font-weight:bold;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Returning</div>'
+			        
+				  html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">UOM</div>'
+				   html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Price</div>'
+				    html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Total</div>'
+				     html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Tax</div>'
+				   
+			
+			
+		     html+='</div>'
+		     for(var i=0;i<just_mat_Res.length;i++){
+		    
+		        html+='<div style="float:left; width:100%;">'
+		            html+=' <div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">'+just_mat_num[i]+'</div>'
+			      html+='<div style="text-align: center; font-size:.6em !important;width: 17%;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;background: #d4d1c9;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+just_mat_num[i]+'</div>'
+			       html+='<div style="text-align: center; font-size:.6em !important;width: 17%;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;background: #d4d1c9;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+just_mat_Res[i]+'</div>'
+			        html+='<div style="text-align: center; font-size:.6em !important;width: 15%;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;background: #d4d1c9;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+just_mat_Retq[i]+'</div>'
+			     
+				  html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">Each</div>'
+				   html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">'+just_mat_price[i]+'</div>'
+				    html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">$'+toalPriceArray1[i]+'</div>'
+				     html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">non</div>'
+				  html+='</div>'   
+			}
+			
+		        
+		       html+=' </div>'
+		     html+='<div class="total_text" id="g_total1">Total: $'+total2+'</div>'
+		     html+='</div>'
+		    
+		    
+		  
+		  
+		html+='</div>'
+	
+	html+='</div>'
+	html+='</div>'
+	
+   html+='</div>'
+			    
+   html+='</div>'	    
+			    
+  html+='</div>'
+  //alert('adsf')
+			
+		email_html=html;
+    //------------------------------------------------------------------------------------
     
     
     /*
@@ -1825,8 +1918,10 @@ function gotoCReditMempage_jsut(){
                        
                        
                        }
+		       
+	var email_html='';
      function gotoCReditMempage(){
-	
+	email_html='';
     /*
      
      var cus_name='';
@@ -1867,12 +1962,12 @@ function gotoCReditMempage_jsut(){
                        $('#memodate').html(date4);
                        //alert(itemNumArray.length)
                        
-                       var html='<div class="Overview_text">Document Overview</div>'
-                       html+='<div class="text1">Bill to Customer Address</div>'
-                       html+='<div class="text2"><h1>'+cus_id+'-'+cus_name+'</h1> <h2>'+caddress+'</h2></div>'
-                       html+='<div class="text3">Ship to Address</div>'
-                       html+='<div class="text4">'+caddress+'</div>'
-                       $('#cus_ship_add').html(html).trigger('create');
+                       var html3='<div class="Overview_text">Document Overview</div>'
+                       html3+='<div class="text1">Bill to Customer Address</div>'
+                       html3+='<div class="text2"><h1>'+cus_id+'-'+cus_name+'</h1> <h2>'+caddress+'</h2></div>'
+                       html3+='<div class="text3">Ship to Address</div>'
+                       html3+='<div class="text4">'+caddress+'</div>'
+                       $('#cus_ship_add').html(html3).trigger('create');
                        var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
                        var thml1='';
 		       
@@ -1887,7 +1982,8 @@ function gotoCReditMempage_jsut(){
 				   thml1+='<div class="memoheading">Total</div>'
 				    thml1+='<div class="memoheading_tax">Tax</div>'
 				      thml1+='</div>'
-			for(var i=0;i<itemNameArray.length;i++){
+			for(var j=0;j<cheArray.length;j++){
+			   var i=cheArray[j]
 			     thml1+='<div class="memoheading_detail">'+itemNumArray[i]+'</div>'
 			     thml1+='<div class="memoheading_dec_detail">'+itemNameArray[i]+'</div>'
 			     thml1+='<div class="memoheading_dec_detail_text3">'+R_Reason[i]+'</div>'
@@ -1900,33 +1996,84 @@ function gotoCReditMempage_jsut(){
 				      thml1+='</div>'
 			}
 			
-		   
+		//--------------------------------------------------------
+		var html=''
+		html+='<div style="margin-top: 30px !important;">'
+                html+='<div style="float:left; width:100%; margin-bottom:8%;">'
+                html+='<div class="ui-grid-a">'
+                html+='<div style="float:left; width:92%; background:#fff; margin:2% 4% 0 4%;">'
+                html+='<div style="float:left; width:100%; background:#cbcbcb; height:90px;"><h1 style="padding:2%; margin:0; float:left; width:40%; color:#231f20; font-size:1.8em; font-weight:bold;">Customer Credit Memo</h1><div style="float:right; width:45%; margin-top:9px;">'
+               html+='<div style="float:left; width:100%;"><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Reference #</span><span  style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;"id="memo_refno">'+reftext+'</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Ship Via</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">FedEx- Federal EX</span></div>'
+        html+='<div class="referencebox1"><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Credit Memo #</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">00000000011</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Date</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;" id="memodate111">'+date4+'</span></div></div></div>'
+                                    html+='<div style="float:left; width:100%;">'
+                                    html+='<div style="margin:0 auto;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;">'
+                                            
+                                             html+='<div style="float:left; width:80%;  color:#6b6c6c; font-size:1.5em; padding:0 0 1% 1%;">Document Overview</div>'
+                                            html+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:124px;" id="cus_ship_add">'
+                                          html+='<div style="float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-size:2em; color:#e4e6e7;">Document Overview</div>'
+                                                html+='<div style="float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; color:#231f20; font-size:1.5em;">Bill to Customer Address</div>'
+                                          html+='<div style="float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000;"><h1 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-size:1em; border-bottom:solid 1px #000;">'+cus_id+'-'+cus_name+'</h1> <h2 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-size:1em;">'+caddress+'</h2></div>'
+                                                html+='<div style="float:left; width:16%; padding:1.5% 0 1.5% 0; text-align:center;  color:#231f20; font-size:1.5em; border-right:solid 1px #000;">Ship to Address</div>'
+                                                html+='<div style="float:left; width:39%; padding:2% 0 1.4% 8px; background:#fff; text-align:left;  font-size:1em;">'+caddress+'</div></div>'
+                                            
+		    
+		    html+='<div style="float:left; width:80%; color:#6b6c6c; font-size:1.5em; padding:1% 0 1% 1%;">Items</div>'
+		    html+='<div style="margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #b5b7b7; height:150px;">'
+		     html+='<div style="float:left; width:97.6%; background:#6b6c6c;padding:10px 0 10px 26px;  font-size:2em; color:#e4e6e7;">Document Overview</div>'
+		     html+='<div id="memo_details">'
+		     html+='<div style="float:left; width:100%;">'
+		             html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Item</div>'
+			      html+='<div style="text-align: center;width: 12%; font-weight:bold;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Description</div>'
+			       html+='<div style="text-align: center;width: 12%; font-weight:bold;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Reason</div>'
+			        html+='<div style="text-align: center;width: 12%; font-weight:bold;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Returning</div>'
+			         html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Quantity</div>'
+				  html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">UOM</div>'
+				   html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Price</div>'
+				    html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Total</div>'
+				     html+='<div style="font-weight:bold;text-align: center;width: 10%;float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;">Tax</div>'
+				   
+			
+			
+		     html+='</div>'
+		     for(var j=0;j<cheArray.length;j++){
+			   var i=cheArray[j]
+		    
+		        html+='<div style="float:left; width:100%;">'
+		            html+=' <div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">'+itemNumArray[i]+'</div>'
+			      html+='<div style="text-align: center; font-size:.6em !important;width: 12%;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;background: #d4d1c9;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+itemNameArray[i]+'</div>'
+			       html+='<div style="text-align: center; font-size:.6em !important;width: 12%;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;background: #d4d1c9;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+R_Reason[i]+'</div>'
+			        html+='<div style="text-align: center; font-size:.6em !important;width: 12%;float: left;border-right: solid 1px rgb(0, 0, 0);border-bottom: solid 1px rgb(0, 0, 0);height: 25px;background: #d4d1c9;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+noofItem[i]+'</div>'
+			         html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">'+QuantityArray[i]+'</div>'
+				  html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">Each</div>'
+				   html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">'+priceArray[i]+'</div>'
+				    html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">$'+toalPriceArray[i]+'</div>'
+				     html+='<div style="text-align: center; font-size:.6em !important;width: 10%;float: left; border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0);background: #d4d1c9;height: 25px;">non</div>'
+				  html+='</div>'   
+			}
+			
+		        
+		       html+=' </div>'
+		     html+='<div class="total_text" id="g_total1">Total: $'+total+'</div>'
+		     html+='</div>'
+		    
+		    
+		  
+		  
+		html+='</div>'
+	
+	html+='</div>'
+	html+='</div>'
+	
+   html+='</div>'
+			    
+   html+='</div>'	    
+			    
+  html+='</div>'
+			
+		email_html=html;
+		//--------------------------------------------------------------
 		       
-		       
-              /*        thml1+='<div style="width: 100%"><div class="demo1">Item</div><div class="demo2">Description</div></div>'
-                       for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">'+itemNumArray[i]+'</div><div class="demo4">'+itemNameArray[i]+'</div></div>'
-                       }
-                       thml1+='<div style="width: 100%"><div class="demo1">Quantity</div><div class="demo2">Reason</div></div>'
-                       for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">'+QuantityArray[i]+'</div><div class="demo4">'+R_Reason[i]+'</div></div>'
-                       }
-                       thml1+='<div style="width: 100%"><div class="demo1">UOM</div><div class="demo2">Returning</div></div>'
-                       
-                       for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">Each</div><div class="demo4">'+noofItem[i]+'</div></div>'
-                       }
-                       
-                       thml1+='<div style="width: 100%"><div class="demo1">Price</div><div class="demo2">Total</div></div>'
-                       for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo3">'+priceArray[i]+'</div><div class="demo4">$'+toalPriceArray[i]+'</div></div>'
-                       }
-                       thml1+='<div style="width: 100%"><div class="demo11">Tax</div></div>'
-                       for(var i=0;i<itemNameArray.length;i++){
-                       thml1+='<div style="width: 100%"><div class="demo31">non</div></div>'
-                       }
-                       
-                       */
+	
                        $('#memo_details').html(thml1).trigger('create');
                        
                        }
@@ -2477,24 +2624,35 @@ function getRetrunOrderDetails_local(ev){
            
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
-           //alert(data1.item_count)
-           var i_num=Number(data1.ItemNumber);
+          //alert(data1.item_count)
+            var i_num=Number(data1.ItemNumber);
            html+='<li class="re_detail_li" add="'+data1.ItemName+'"><div class="ui-block-a"><div class="Createtop"><span>'+i_num+'</span></div>'
            //html+='<strong>Air Tubs</strong>';
-           html+='<div class="Garfield_text"><h1>'+data1.ItemName+'</h1></div>';
+           html+='<div class="Garfield_text" style="border-right:none !important"><h1>'+data1.MaterialDesc+'</h1></div>';
+		  html+='<div class="Garfield_text"><h1>'+data1.ItemName+'</h1></div>';
            html+='<div class="poor_quality_text"><span>'+Number(data1.ReturnQuantity)+'</span><h1>'+data1.ReturnReason+'</h1></div></div></li>';
            var ccid=data1.CustomerNumber
            }
            
-           var c_idthml='<div class="Barnes_text"><h1>Customer ID</h1><span>'+ccid+'</span></div><div class="invoice_text"><h1>Return order #</h1>'+r_id+'</div>'
+         var c_idthml='<div class="Barnes_text"><h1>Customer ID</h1><span>'+ccid+'</span></div><div class="invoice_text"><h1>Return order #</h1>'+r_id+'</div>'
            var c_namehtml='<div class="Barnes_text"><h1>Customer name</h1>'+c_name+'</div><div class="invoice_text"><h1>Invoice date </h1>'+c_date+'</div>';
            /*  <div class="custo_text" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer ID</h1><span>42</span></div><div class="invoice_text"><h1>Invoice #</h1> 90000090</div></div>
-            <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Invoice date </h1>8/25/2013</div></div>*/
-           
-           $('#returnDetailHead').html(c_idthml).trigger('create');
+            <div class="custo_text1" id="returnDetailHead1"><div class="Barnes_text"><h1>Customer name</h1>Barnes Plumbing Co</div><div class="invoice_text"><h1>Date </h1>8/25/2013</div></div>*/
+        var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+c_date+'</div>'
+	   
+	    var hm='<div class="customer_boderright">'
+			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1>Customer ID</h1><span>'+ccid+'</span></div>'
+			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1 style=" width:38% !important;">Customer name</h1>'+c_name+'</div>'
+			    hm+='</div>'
+			    hm+='<div class="customer_boderright1">'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Returns order #</h1>'+r_id+'</div>'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Date </h1>'+c_date+'</div></div>'
+			    hm+='</div>'
+           $('#ret_list_head').html(hm).trigger('create');
            $('#returnDetailHead1').html(c_namehtml).trigger('create');
            $('#Return_Oid_detail').html(html).trigger('create');
            $.mobile.changePage('#ReturnOrderDeatilpage')
+           // alert('scu')
            // alert('scu')
            
 }
@@ -2575,7 +2733,11 @@ var cus_invoice99={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemob
 var cus_invoice={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000092","invoice_amt":"2235.00","cust_name":"Ferguson Heating and Cooling","item_count":" 3","invoice_num":"0090000229"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386633600000)/","cust_id":"0000000092","invoice_amt":"2375.00","cust_name":"Ferguson Heating and Cooling","item_count":" 3","invoice_num":"0090000228"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1386028800000)/","cust_id":"0000000092","invoice_amt":"3720.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000226"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1385683200000)/","cust_id":"0000000092","invoice_amt":"4080.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000225"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1383696000000)/","cust_id":"0000000092","invoice_amt":"1194.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000224"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1380499200000)/","cust_id":"0000000092","invoice_amt":"4300.00","cust_name":"Ferguson Heating and Cooling","item_count":" 2","invoice_num":"0090000218"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/INVOICE_DETAILS/invoice_detailsCollection('0000000092')","type":"INVOICE_DETAILS.invoice_details"},"customer_num":"","invoice_date":"/Date(1378944000000)/","cust_id":"0000000092","invoice_amt":"11910.00","cust_name":"Ferguson Heating and Cooling","item_count":" 6","invoice_num":"0090000190"}]}}
 
 var returnPeports={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000120","ReturnDate":"/Date(1379980800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000121","ReturnDate":"/Date(1379980800000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000122","ReturnDate":"/Date(1379980800000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000123","ReturnDate":"/Date(1379980800000)/","CustomerName":"Panther Industries"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000124","ReturnDate":"/Date(1379980800000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000125","ReturnDate":"/Date(1379980800000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000126","ReturnDate":"/Date(1379980800000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000127","ReturnDate":"/Date(1379980800000)/","CustomerName":"Action Plumbing & Sewer Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000128","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000129","ReturnDate":"/Date(1380240000000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"","InvoiceNumber":"0090000190","ReturnOrder":"0060000130","ReturnDate":null,"CustomerName":""},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000131","ReturnDate":"/Date(1381104000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000196","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000199","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000200","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000201","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000202","ReturnDate":"/Date(1385683200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000203","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000204","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000205","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000207","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000208","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000209","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000216","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000217","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000218","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000221","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000229","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000230","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000232","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000233","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000234","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000235","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000243","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000244","ReturnDate":"/Date(1386028800000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000225","ReturnOrder":"0060000245","ReturnDate":"/Date(1383696000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000250","ReturnDate":"/Date(1386028800000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000256","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000257","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000258","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000259","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000260","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000261","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000264","ReturnDate":"/Date(1386115200000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000266","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000267","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000268","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000269","ReturnDate":"/Date(1386115200000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000270","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000274","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000275","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000277","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000280","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000281","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000282","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000283","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000284","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000285","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000286","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000287","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000288","ReturnDate":"/Date(1386115200000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000289","ReturnDate":"/Date(1386115200000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000193","ReturnOrder":"0060000290","ReturnDate":"/Date(1378944000000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000193","ReturnOrder":"0060000291","ReturnDate":"/Date(1378944000000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000292","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000293","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000294","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000295","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000296","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000297","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000298","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000299","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000300","ReturnDate":"/Date(1386115200000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000301","ReturnDate":"/Date(1378944000000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000302","ReturnDate":"/Date(1378944000000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000303","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000304","ReturnDate":"/Date(1386115200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000305","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000306","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000307","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000308","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000309","ReturnDate":"/Date(1386115200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000310","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000311","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000312","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000313","ReturnDate":"/Date(1386115200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000218","ReturnOrder":"0060000314","ReturnDate":"/Date(1380240000000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000317","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000318","ReturnDate":"/Date(1386201600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000319","ReturnDate":"/Date(1386201600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000320","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000321","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000322","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000323","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000324","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000325","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000326","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000327","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000328","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000329","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000330","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000331","ReturnDate":"/Date(1386201600000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000332","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000333","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000334","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000335","ReturnDate":"/Date(1386201600000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000336","ReturnDate":"/Date(1386201600000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000337","ReturnDate":"/Date(1386201600000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000338","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000339","ReturnDate":"/Date(1386288000000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000340","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000192","ReturnOrder":"0060000341","ReturnDate":"/Date(1378944000000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000192","ReturnOrder":"0060000342","ReturnDate":"/Date(1378944000000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000343","ReturnDate":"/Date(1386288000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000344","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000191","ReturnOrder":"0060000345","ReturnDate":"/Date(1378944000000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000346","ReturnDate":"/Date(1386288000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000347","ReturnDate":"/Date(1386288000000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000348","ReturnDate":"/Date(1386288000000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000349","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000350","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000351","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000352","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000353","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000354","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000355","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000356","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000357","ReturnDate":"/Date(1386374400000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000359","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000360","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000361","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000362","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000363","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000364","ReturnDate":"/Date(1386374400000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000365","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000366","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000367","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000368","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000369","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000370","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000371","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000372","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000373","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000374","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000375","ReturnDate":"/Date(1386374400000)/","CustomerName":"Don Johns Inc"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000376","ReturnDate":"/Date(1386374400000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000377","ReturnDate":"/Date(1386374400000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000378","ReturnDate":"/Date(1386374400000)/","CustomerName":"Water Saver Faucet Co"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000379","ReturnDate":"/Date(1386374400000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000380","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000381","ReturnDate":"/Date(1386374400000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000382","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000383","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000384","ReturnDate":"/Date(1386374400000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000385","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000386","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000387","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000226","ReturnOrder":"0060000388","ReturnDate":"/Date(1385683200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000389","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000218","ReturnOrder":"0060000390","ReturnDate":"/Date(1380499200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000391","ReturnDate":"/Date(1386547200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000392","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000393","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000394","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000395","ReturnDate":"/Date(1386547200000)/","CustomerName":"Chicago Brass"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000396","ReturnDate":"/Date(1386547200000)/","CustomerName":"Wagner & Sons"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000216","ReturnOrder":"0060000397","ReturnDate":"/Date(1380153600000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000398","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000399","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000400","ReturnDate":"/Date(1386547200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000401","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000402","ReturnDate":"/Date(1386547200000)/","CustomerName":"Ferguson Heating and Cooling"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"","ReturnOrder":"0060000403","ReturnDate":"/Date(1386547200000)/","CustomerName":"Naylor Pipe Co."},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_INFO_SRV/ReturnOrderCollection('DEMO')","type":"RETURNORDERS_INFO_SRV.Returnorder"},"Password":"","SalesRepId":"DEMO","InvoiceNumber":"0090000215","ReturnOrder":"0060000404","ReturnDate":"/Date(1378944000000)/","CustomerName":"Water Saver Faucet Co"}]}}
-var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_ITEMS_SRV/ReturnOrderItemCollection('60000122')","type":"RETURNORDERS_ITEMS_SRV.ReturnorderItems"},"ReturnReason":"001","ReturnordNumber":"60000122","ReturnQuantity":"20.000","ItemName":"P500001","ItemNumber":"000010","CustomerNumber":"0000000094","ReturnOrder":"","CustomerName":"Naylor Pipe Co.","InvoiceNumber":"","ReturnDate":"/Date(1379980800000)/"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_ITEMS_SRV/ReturnOrderItemCollection('60000122')","type":"RETURNORDERS_ITEMS_SRV.ReturnorderItems"},"ReturnReason":"001","ReturnordNumber":"60000122","ReturnQuantity":"15.000","ItemName":"P500002","ItemNumber":"000020","CustomerNumber":"0000000094","ReturnOrder":"","CustomerName":"Naylor Pipe Co.","InvoiceNumber":"","ReturnDate":"/Date(1379980800000)/"}]}}
+var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_ITEMS_SRV/ReturnOrderItemCollection('60000203')","type":"RETURNORDERS_ITEMS_SRV.ReturnorderItems"},"ReturnordNumber":"60000203","CustomerNumber":"0000000092","CustomerName":"Ferguson Heating and Cooling","ReturnDate":"/Date(1385683200000)/","InvoiceNumber":"","ReturnOrder":"","ItemNumber":"000010","ItemName":"PIPES","ReturnQuantity":"20.00000","ReturnReason":"Poor quality","MaterialDesc":"Index of pipe & tubing"},{"__metadata":{"uri":"http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RETURNORDERS_ITEMS_SRV/ReturnOrderItemCollection('60000203')","type":"RETURNORDERS_ITEMS_SRV.ReturnorderItems"},"ReturnordNumber":"60000203","CustomerNumber":"0000000092","CustomerName":"Ferguson Heating and Cooling","ReturnDate":"/Date(1385683200000)/","InvoiceNumber":"","ReturnOrder":"","ItemNumber":"000020","ItemName":"P500001","ReturnQuantity":"25.00000","ReturnReason":"Poor quality","MaterialDesc":"Baby shower system"}]}} 
+
+
+
+
 
 
 
@@ -2616,17 +2778,57 @@ html+='<div style="float:left; width:100%; background:#000; color:#fff; padding:
 html+='</div>'
 */
 
-
-
-
-
- html+='<div style="color:green;">this is </div>'
-
-  
-  var fil_path1=fil_path;
-  //alert(fil_path1)
- window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html,["harisankar.behera@php2india.com"],[],[],true,[fil_path1]);
+fileSystems.root.getFile("new.html", {create: true, exclusive: false}, gotFileEntry, fail);
+function gotFileEntry(fileEntry){
+	fileEntry.createWriter(gotFileWriter, fail);
 }
+
+function gotFileWriter(writer) {
+        writer.onwriteend = function(evt) {
+            console.log("contents of file now 'some sample text'");
+            writer.truncate(11);  
+            writer.onwriteend = function(evt) {
+                console.log("contents of file now 'some sample'");
+                writer.seek(0);
+                  
+                    html+=email_html
+	
+	
+                writer.write(html);
+                writer.onwriteend = function(evt){
+               var html1='Retrun Order Memo'
+  
+					var fil_path1="new.html";
+					console.log(fil_path1)
+					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],true,[''+fil_path1+''],[]);
+                    console.log("contents of file now 'some different text'");
+                }
+            };
+        };
+        writer.write("some sample text");
+    }
+
+
+
+
+ 
+}
+var html2='';
+ html2+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:200px !important;">'
+ html2+='<div style="float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-family: "helveticanltcnhelveticanltcn"; font-size:2em; color:#e4e6e7;">Document Overview</div>'
+    html2+='<div style="float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; font-family: "helveticanltcnhelveticanltcn"; color:#231f20; font-size:1.5em;">Bill to Customer Address</div>'
+    html2+='<div style="float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000;"><h1 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-family: "helveticanltcnhelveticanltcn"; font-size:1em; border-bottom:solid 1px #000;">wwwww</h1> <h2 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-family: "helveticanltcnhelveticanltcn"; font-size:1em;">wwwwwwxds</h2></div>'
+    html2+='<div style="float:left; width:16%; padding:1.5% 0 1.5% 0; text-align:center; font-family: "helveticanltcnhelveticanltcn"; color:#231f20; font-size:1.5em; border-right:solid 1px #000;">Ship to Address</div>'
+    html2+='<div style="float:left; width:40%; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: "helveticanltcnhelveticanltcn"; font-size:1em;">wwwww</div>'
+	html2+='</div>'
+function win(writer) {
+    // fast forwards file pointer to end of file
+    writer.seek(writer.length); 
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
 
 
  function starBarScanning(){

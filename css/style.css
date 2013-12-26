@@ -664,25 +664,20 @@ background:url(../images/back_icon.png) no-repeat 8px 10px #9c8a9a !important; b
 .Barnes_textts {float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 .Barnes_textts h1 {padding:0; margin:0; float:left; width:56%;}
 #ReportsPage .return_qty {float: right; width: 54% !important;
-background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top:-9.9% !important;}
+background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -8.1% !important;}
 
-.Createtop1 h1 {float:left !important; width:50px !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center !important; font-size:.6em !important; padding:12% 0 0 0; margin:0 0 0 -24% !important;}
-#ReportsPage .ui-block-a strong { float:left; width:36%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em; border-right:solid 2px #442c27; padding-top:.3em; margin-top:1.5em !important;}
-#ReportsPage .return_qty {float: right !important; width: 77% !important; background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -8%;}	.selecttextbox1 {float: right !important; width: 50% !important; text-align: center !important; font-size: .7em !important; padding:9% 0 0 0 !important;}
+
 }
 
 
 @media (min-width: 1024px) { 
 .Barnes_textts { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.7em; padding-bottom:1.5%;}
 .Barnes_textts h1 { float:left; width:50%; padding:0; margin:0;}
-
 #Create_returns .Createtop  h1 {float:left; width:70px !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
 #Returns_confirmation_screen2 .return_qty {float:right; width:38% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #Returns_confirmation_screen2 .justret_button1 {margin: 0 auto;width:36% !important; padding-top: 3%;float: right;margin-right: 2% !important;}
-
 .memo_top_bg {float: left; width: 100%; margin:-10px 0 0 7px !important;}
 .memo_top_bg1 {float: left; width: 100%; margin:-9px 0 0 6px;}
-
 .text3 { float:left; width:16%; padding:1.5% 0 5.7% 0 !important; text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-right:solid 1px #000;}
 .text4 {float:left; width:39.4% !important; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
 .documentdiv {margin: 35px auto; width: 98%; border: solid 1px rgb(107, 108, 108); height:140px !important;}
@@ -705,6 +700,32 @@ min-height:598px !important; margin-bottom: 2%;}
 .camera_img {float: right; width: 12%; margin-top: -12%;}
 .Barnes_textts { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.6em !important; padding-bottom:1.5%;}
  
+.Createtop1 {float: left; width: 8%; margin: 0 5% 1% 0 !important;}
+.selecttextbox1 {float: right; width: 50%; text-align: center; padding:0 !important;}
+#ReportsPage .ui-block-a strong { float:left; width:36%; color:#fff; text-align:left; font-size:1em !important; border-right:solid 2px #442c27; padding:.5em 0 !important;} 
+.poor_quality_text1 {float: right; width:50% !important; padding:3% 0 0 0 !important;}
+#ReturnOrderDeatilpage .Garfield_text { float:left; width:21% !important; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
+#ReturnOrderDeatilpage .poor_quality_text {
+float: left; width: 36% !important; margin-top: 1.3%;}
+#Create_returns .ui-block-a  strong { float:left; width:10% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left 5px !important; background-size:25% 58% !important;}
+#ReportsPage .ui-block-a strong { float:left; width:33% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em; border-right:solid 2px #442c27; padding-top:.3em;}
+#ReturnOrderDeatilpage .Barnes_text { float:left; width:50%;  font-family: 'helveticanltcnhelveticanltcn'; font-size:1.4em !important; padding-bottom:1.5%;}
+#ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.4em !important; padding-bottom:1.5%; color:#fff;}
+#ReturnOrderDeatilpage .justret_button {float: right; width: 30% !important; margin-right: 36% !important; margin-top: 3%;}
+#Returns_confirmation_screen3 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 1em !important;}
+#Returns_confirmation_screen3 .Cancel_text { float:right; width:30% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.3em; color:#fff; background:#8bc300; text-align:center; text-transform:uppercase; border-radius:5px; padding:2% 0 2% 0; margin:5% 6% 0 0;}
+#jsut_returns_creen .Barnes_text {float: left; width: 66%;
+font-family: 'helveticanltcnhelveticanltcn'; font-size: .8em !important; padding-bottom: 1.5%;}
+#jsut_returns_creen .return_qty {float: right; width: 48% !important;
+background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: 80px;}
+#jsut_returns_creen .poor_quality_text {float: right !important; width: 51% !important;}
+#jsut_returns_creen_cnf .return_qty {float: right; width: 46% !important; background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: 80px;}
+#jsut_returns_creen_cnf .justret_button1 {margin: 0 auto; width:30% !important; padding-top: 3%;}
+
+#jsut_returns_creen_cnf .justret_button {
+margin: 0 auto; width: 30%; background: rgb(119, 78, 79); margin-top: 4%; border-radius: 8px; min-height: 149px !important;} 
+ 
+ 
 }
 
 @media (min-width: 768px) {
@@ -714,14 +735,7 @@ min-height:598px !important; margin-bottom: 2%;}
 border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #ReportsPage .return_qty {float: right; width: 54% !important;
 background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top:-6.6% !important;}
-#ReportsPage .ui-block-a span { float:left; width:9% !important; border-radius: 66px;font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1.3em; padding:16px 0 16px 0 !important; margin-right:6%; text-align:center; border:solid 1px #fff;}
-.Createtop1 h1 {float:left !important; width:50px !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center !important; font-size:.6em !important; padding:12% 0 0 0; margin:0 0 0 7% !important;}
-#Create_returns .Createtop  span { float:left !important; width:70% !important; text-align:center !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.3em; padding:20px 13px 14px 9px !important; border:solid 1px #fff; border-radius: 81px;}
-#Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.6em !important; padding:12% 0 0 10% !important; margin:0;}
-.poor_quality_text4 {float: right; width: 52% !important; margin-top: 1% !important;}
-#returns_creen .ui-block-a  strong { float:left; width:18% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:0.7em !important;  padding:1.0em 0 .8em .5em !important; margin-top:1.0em !important;}
-#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 2% 1% 0 !important;}
-.Backbuttonhome { float:right; width:14% !important; font-size:1em !important;  padding:1em 0 .8em 0 !important; border:solid 1px #7f6270; height:19px;}
+
 
 } 
 
@@ -860,7 +874,6 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #In_ref_invoice .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; padding-bottom:1.5%;}
 #In_ref_invoice .invoice_text h1  {float:left; width:30%; padding:0; margin:0;}
 #In_ref_invoice .ui-shadow-inset {background:#a2a9bb !important;}
-
 /*In_ref_invoice pages end*/
 
 #ReturnOrderDeatilpage .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
@@ -879,7 +892,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #ReturnOrderDeatilpage .justret_button {float:right; width:47%; margin-right:27%; margin-top: 3%;}
 #ReturnOrderDeatilpage .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
 #ReturnOrderDeatilpage .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
-#ReturnOrderDeatilpage .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
+#ReturnOrderDeatilpage .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1em;} 
 #ReturnOrderDeatilpage .return_qty {float:right; width:37%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #ReturnOrderDeatilpage .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; /*font-size:1.5em; */ border-right: solid 1px #766463;}
 #ReturnOrderDeatilpage .Barnes_text { float:left; width:50%;  font-family: 'helveticanltcnhelveticanltcn'; font-size:1.4em; padding-bottom:1.5%;}
@@ -897,7 +910,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
 #returns_creen .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
-#returns_creen .ui-block-a  strong { float:left; width:14%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.3em;  padding:1em 0 .8em 4em; border-left:solid 1px #322827;}
+#returns_creen .ui-block-a  strong { float:left; width:14%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.4em;  padding:1em 0 .8em 4em; border-left:solid 1px #322827;}
 #returns_creen .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
 #returns_creen .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #returns_creen .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
@@ -906,6 +919,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
 #returns_creen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #returns_creen .return_qty {float:right; width:37%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+
 
 #jsut_returns_creen .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
 #jsut_returns_creen .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27; margin-bottom:3%;}
@@ -920,11 +934,16 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #jsut_returns_creen .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #jsut_returns_creen .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
 #jsut_returns_creen .justret_button { margin:0 auto; width:30%; margin-top:5%;}
-#jsut_returns_creen .plusbtn { float: right; margin-right: 4%;}
+
+#jsut_returns_creen .plusbtn { float: right;
+margin-right: 4%;
+}
 #jsut_returns_creen .poor_quality_text { float:left; width:44%; }
 #jsut_returns_creen .poor_quality_text span { /*float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;*/}
 #jsut_returns_creen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #jsut_returns_creen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
+
+
 
 #jsut_returns_creen_cnf .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
 #jsut_returns_creen_cnf .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27; margin-bottom:3%;}
@@ -989,7 +1008,7 @@ margin-right: 4%;
 #Returns_confirmation_screen2 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.3em; padding:19px 0 15px 0; text-align:center;}
 #Returns_confirmation_screen2 .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
 #Returns_confirmation_screen2 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em;  padding:1em 0 .8em 2.2em;}
-#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 1% 1% 0;}
+#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 1% 1% 0; font-size:1.2em;}
 #Returns_confirmation_screen2 .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #Returns_confirmation_screen2 .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
 #Returns_confirmation_screen2 .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
@@ -1229,7 +1248,7 @@ background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; 
 }
 
 @media (max-width: 1024px){
-#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 2% 1% 0;}	
+#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 2% 1% 0; font-size:1.2em;}	
 #Credit_memo .textareabox {float: left; width: 100%; height: 45px;}
 }
 .Backbutton a { text-decoration:none !important; color:#fff !important;}
@@ -1252,15 +1271,56 @@ overflow: hidden; text-overflow: ellipsis;}
 
 .memoheading_detail_text4{text-align: center; background:#fff !important; width: 10%; float: left; border-right: solid 1px rgb(0, 0, 0);
 border-bottom: solid 1px rgb(0, 0, 0); background: #d4d1c9; height: 25px;}
-#ret_list_head {float:left; width:100%; /*border-top: solid 1px #fff; border-bottom: solid 1px #fff;*/ padding:2% 0;}
+#ret_list_head {float:left; width:100%; border-top: solid 1px #fff; border-bottom: solid 1px #fff; padding:2% 0;}
 .memo_top_bg { float:left; width:100%;}
-.rightserchbox {float:right; width:10%; margin-right:1%;}
+.rightserchbox {float:right; width:18%; margin-right:1%;}
 .camera_img {float:right; width:12%;}
 
 @media (min-width: 600px) { 
 .Backbutton  {float:left; width:100px !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100% 100%; height:55px;}
 .camera_img {float: left; width: 12%; margin: -3%;}
-.Barnes_textts {float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.6em !important; padding-bottom:1.5%;}
+.Barnes_textts {float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
 .Barnes_textts h1 {padding:0; margin:0; float:left; width:52%;}
 }
+@media (min-width: 600px) and (max-width: 1024px){
+	
+#jsut_returns_creen_cnf .justret_button1 {
+margin: 0 auto;
+width: 27% !important;
+padding-top: 3%;
+}
+ .memoheading_dec_detail1_Reasontext {
+text-align: center;
+font-size: 0.9em !important;
+background: #fff !important;
+width: 22%;
+float: left;
+border-right: solid 1px rgb(0, 0, 0);
+border-bottom: solid 1px rgb(0, 0, 0);
+height: 25px;
+background: #d4d1c9;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+#jsut_returns_creen_cnf .Createtop span {
+float: left;
+width: 100%;
+color: #fff;
+text-align: right;
+font-size: 1.3em;
+padding: 11px 0 15px 0;
+text-align: center;
+}
 
+text-align: center;
+background: #fff !important;
+width: 10%;
+float: left;
+font-size: .6em !important;
+border-right: solid 1px rgb(0, 0, 0);
+border-bottom: solid 1px rgb(0, 0, 0);
+background: #d4d1c9;
+height: 25px;
+}
+}
