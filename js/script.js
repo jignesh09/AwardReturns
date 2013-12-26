@@ -2798,8 +2798,9 @@ function gotFileWriter(writer) {
                 writer.onwriteend = function(evt){
                var html1='Retrun Order Memo'
   
-					var fil_path1="new.html";
-					console.log(fil_path1)
+					var fil_path1=fullPath+"/new.html";
+					//console.log(fil_path1).
+               fil_path1 = fil_path1.replace("file://");
 					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],true,[''+fil_path1+''],[]);
                     console.log("contents of file now 'some different text'");
                 }
