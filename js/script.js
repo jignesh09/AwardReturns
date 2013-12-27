@@ -149,6 +149,7 @@ function local_login() {
 		//code
     }
     else{
+         customerInvoReturns11()
         $.mobile.changePage('#homePage')
     }
 }
@@ -267,7 +268,7 @@ function Login(){
            }
            window.localStorage.setItem("sale_repId",uname);
            window.localStorage.setItem("password",pwd);
-           // getHeader();
+            customerInvoReturns11();
            }
            
            else{
@@ -556,7 +557,7 @@ function invoiceDetail(ev){
 	   
            $('#invoice_detaila').html(html).trigger('create');
            $('#in_c_id').html(hm).trigger('create');
-          // $('#in_c_name').html(html1)
+           $('#in_c_name').html('');
            $.mobile.changePage('#returns_creen')
            },
            
@@ -906,7 +907,13 @@ var materialBarcodeArray=[];
 var materialnum_desc=[];
 var materialPriceArray=[];
 function customerInvoReturns(){
-	
+/* itemNumArray=[];
+    priceArray=[];
+    QuantityArray=[];
+    materialArray=[];
+    itemNameArray=[];
+    */
+
         materialPriceArray=[];
         materialnumArray=[];
         materialDescArray=[];
@@ -994,18 +1001,25 @@ function customerInvoReturns(){
      */
 }
 
-function customerInvoReturns11(){
-	//alert('ok')
-	//$.mobile.changePage("#In_ref_invoice");
-	
-	var uname= window.localStorage.getItem("sale_repId");
+
+
+function customerInvoReturns(){
+/* itemNumArray=[];
+    priceArray=[];
+    QuantityArray=[];
+    materialArray=[];
+    itemNameArray=[];
+    */
+
+        materialPriceArray=[];
+        materialnumArray=[];
+        materialDescArray=[];
+        materialBarcodeArray=[];
+        materialnum_desc=[];
+    var uname= window.localStorage.getItem("sale_repId");
     var pwd=window.localStorage.getItem("password");
-    /* var uname1="'"+uname+"'";
-     var pwd1="'"+pwd+"'";
-     var id=$(ev).data('invo_id');
-     var id1="'"+id+"'";
-     */
-    var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/POD_INVOICE_ITEMS/pod_invoice_iteCollection&$format=json"
+    var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection";
+    
     $.mobile.showPageLoadingMsg();
     $.ajax({
            url:url,
@@ -1014,14 +1028,28 @@ function customerInvoReturns11(){
            $.mobile.hidePageLoadingMsg();
            console.log(JSON.stringify(data))
            var res=eval(data);
-           alert('suc')
-           var html='';
-           //alert(res.d.results.length)
+           //alert('suc')
+           var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var thml='';
+           var Mnum_option=''
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
-           
+           var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc+'s---t'+data1.Price;
+           Mnum_option+= '<option value="'+opval+'" data-va="'+data1.MaterialDesc+'">'+data1.MaterialNum+'</option>'
+           materialnumArray.push(data1.MaterialNum);
+           materialDescArray.push(data1.MaterialDesc);
+           materialBarcodeArray.push(data1.Barcode.toString());
+           materialnum_desc.push(opval);
            }
+           new_mat=Mnum_option;
+           thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name=""  class="selecttext">'+Mnum_option+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
+           thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson" ><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
            
+           $('#just_cid').html(cus_id);
+           $('#just_cname').html('<h1>Customer name</h1>'+cus_name);
+           $('#invoice_just_re_html').html(thml).trigger('create')
+           $.mobile.changePage('#jsut_returns_creen');
            },
            
            beforeSend: function(xhrObj){
@@ -1037,6 +1065,89 @@ function customerInvoReturns11(){
            console.log(JSON.stringify(error))
            }
            });
+	
+	
+	
+	/*
+     
+     
+     
+     selectedInvoice=[];
+     //	invoiceArray=[];
+     //var itemcourntArray=[]
+     var thml='';
+     var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+     var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+     
+	 
+     for(var i=0;i<1;i++){
+     // for(var i=0;i<invoiceArray.length;i++){
+     
+	 thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new"><select name="" class="selecttext"></select></div><div class="textinput_new"><input type="Number" vlaue="3"/></div>'
+     thml+='<div class="poor_quality_text"><div class="textinputtes"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox"><select name=""        class="selecttext">'+option2+'</select></div></div></div></li>'
+     
+     
+     }
+     $('#just_cid').html(cus_id);
+     $('#just_cname').html('<h1>Customer name</h1>'+cus_name);
+     $('#invoice_just_re_html').html(thml).trigger('create')
+     
+     
+     // $.mobile.changePage('#jsut_returns_creen');
+     //alert('ok1')
+     */
+}
+
+
+function customerInvoReturns11(){
+	 materialPriceArray=[];
+        materialnumArray=[];
+        materialDescArray=[];
+        materialBarcodeArray=[];
+        materialnum_desc=[];
+    var uname= window.localStorage.getItem("sale_repId");
+    var pwd=window.localStorage.getItem("password");
+    var url="http://devvm.squeezemobility.com:8000/sap/opu/odata/SQUEEZE/RET_MATERIAL_INFO_SRV/MaterialCollection";
+    
+    $.mobile.showPageLoadingMsg();
+    $.ajax({
+           url:url,
+           dataType: 'json',
+           success: function(data, status) {
+           $.mobile.hidePageLoadingMsg();
+           console.log(JSON.stringify(data))
+           var res=eval(data);
+           //alert('suc')
+           var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var thml='';
+           var Mnum_option=''
+           for(var i=0;i<res.d.results.length;i++){
+           var data1=res.d.results[i]
+           var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc+'s---t'+data1.Price;
+           Mnum_option+= '<option value="'+opval+'" data-va="'+data1.MaterialDesc+'">'+data1.MaterialNum+'</option>'
+           materialnumArray.push(data1.MaterialNum);
+           materialDescArray.push(data1.MaterialDesc);
+           materialBarcodeArray.push(data1.Barcode.toString());
+           materialnum_desc.push(opval);
+           }
+         
+           },
+           
+           beforeSend: function(xhrObj){
+           xhrObj.setRequestHeader('Authorization', make_base_auth(uname,pwd));
+           
+           },
+           error:function(error){
+           console.log(error);
+           $.mobile.hidePageLoadingMsg();
+           
+           navigator.notification.alert( 'some thing went wrong', alertDismissed,  'AwardReturns', 'ok');
+           
+           console.log(JSON.stringify(error))
+           }
+           });
+	
     
 	
 }
@@ -1434,7 +1545,7 @@ function getReports() {
            // alert(res.d.results[0].__metadata.uri)
            var html='';
            var montheArray=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-           for(var i=0;i<res.d.results.length;i++){
+           for(var i=20;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var str = data1.ReturnDate
 	   if(str==null || str==''){
@@ -1820,7 +1931,7 @@ reftext=000011
                                     html+='<div style="margin:0 auto;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;">'
                                             
                                              html+='<div style="float:left; width:80%;  color:#6b6c6c; font-size:1.5em; padding:0 0 1% 1%;">Document Overview</div>'
-                                            html+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:124px;" id="cus_ship_add">'
+                                            html+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:132px;" id="cus_ship_add">'
                                           html+='<div style="float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-size:2em; color:#e4e6e7;">Document Overview</div>'
                                                 html+='<div style="float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; color:#231f20; font-size:1.5em;">Bill to Customer Address</div>'
                                           html+='<div style="float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000;"><h1 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-size:1em; border-bottom:solid 1px #000;">'+cus_id+'-'+cus_name+'</h1> <h2 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-size:1em;">'+caddress+'</h2></div>'
@@ -1863,7 +1974,7 @@ reftext=000011
 			
 		        
 		       html+=' </div>'
-		     html+='<div class="total_text" id="g_total1">Total: $'+total2+'</div>'
+		     html+='<div id="g_total1" style="float: right;margin-right: 3%">Total: $'+total2+'</div>'
 		     html+='</div>'
 		    
 		    
@@ -1917,28 +2028,14 @@ reftext=000011
          $('#memo_details').html(thml1).trigger('create');
                        
                        
-                       }
+  }
+		       
+//----------------------------------------------		       
 		       
 	var email_html='';
      function gotoCReditMempage(){
 	email_html='';
-    /*
-     
-     var cus_name='';
-     var cus_id='';
-     var caddress='';
-     var invoicid='';
-     
-     var noofItem=[];
-     var R_Reason=[];
-     var itemNumArray=[];
-     var priceArray=[];
-     var QuantityArray=[];
-     var materialArray=[];
-     var itemNameArray=[];
-     var invoiceArray=[];
-     var itemcourntArray=[];
-     */
+   
                        var tott=0;
                        var toalPriceArray=[];
                        for (var i=0;i<priceArray.length;i++) {
@@ -2002,14 +2099,14 @@ reftext=000011
                 html+='<div style="float:left; width:100%; margin-bottom:8%;">'
                 html+='<div class="ui-grid-a">'
                 html+='<div style="float:left; width:92%; background:#fff; margin:2% 4% 0 4%;">'
-                html+='<div style="float:left; width:100%; background:#cbcbcb; height:90px;"><h1 style="padding:2%; margin:0; float:left; width:40%; color:#231f20; font-size:1.8em; font-weight:bold;">Customer Credit Memo</h1><div style="float:right; width:45%; margin-top:9px;">'
+                html+='<div style="float:left; width:98%; margin-left: 1%; background:#cbcbcb; height:90px;"><h1 style="padding:2%; margin:0; float:left; width:40%; color:#231f20; font-size:1.8em; font-weight:bold;">Customer Credit Memo</h1><div style="float:right; width:45%; margin-top:9px;">'
                html+='<div style="float:left; width:100%;"><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Reference #</span><span  style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;"id="memo_refno">'+reftext+'</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Ship Via</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">FedEx- Federal EX</span></div>'
         html+='<div class="referencebox1"><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Credit Memo #</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">00000000011</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Date</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;" id="memodate111">'+date4+'</span></div></div></div>'
                                     html+='<div style="float:left; width:100%;">'
                                     html+='<div style="margin:0 auto;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;">'
                                             
                                              html+='<div style="float:left; width:80%;  color:#6b6c6c; font-size:1.5em; padding:0 0 1% 1%;">Document Overview</div>'
-                                            html+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:124px;" id="cus_ship_add">'
+                                            html+='<div style="margin:35px auto; width:98%; border:solid 1px #6b6c6c; height:132px;" id="cus_ship_add">'
                                           html+='<div style="float:left; width:98%; background:#6b6c6c;padding:10px 0 10px 26px; font-size:2em; color:#e4e6e7;">Document Overview</div>'
                                                 html+='<div style="float:left; width:16%; padding:1% 0 1.5% 0; margin-right:2%; text-align:right; color:#231f20; font-size:1.5em;">Bill to Customer Address</div>'
                                           html+='<div style="float:left; width:25%; text-align:left; background:#fff; border-left:solid 1px #000; border-right:solid 1px #000;"><h1 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%; font-size:1em; border-bottom:solid 1px #000;">'+cus_id+'-'+cus_name+'</h1> <h2 style="padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-size:1em;">'+caddress+'</h2></div>'
@@ -2053,7 +2150,7 @@ reftext=000011
 			
 		        
 		       html+=' </div>'
-		     html+='<div class="total_text" id="g_total1">Total: $'+total+'</div>'
+		     html+='<div class="total_text" style="float: right;margin-right: 3%;">Total: $'+total+'</div>'
 		     html+='</div>'
 		    
 		    
@@ -2800,7 +2897,8 @@ function gotFileWriter(writer) {
   
 					var fil_path1=fullPath+"/new.html";
 					//console.log(fil_path1).
-               fil_path1 = fil_path1.replace("file://","");
+                                        fil_path1 = fil_path1.replace("file://","");
+					console.log(fil_path1)
 					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],true,[''+fil_path1+''],[]);
                     console.log("contents of file now 'some different text'");
                 }
@@ -2895,8 +2993,13 @@ var fail = function(evt) {
    scanner.scan(
                                                  function (result) {
                                                                if(result.text  !=''){
-								    var index=itemNumArray.indexOf(result.text.toString());
-	                                                            if(index !=-1){
+								 
+								    
+								    var  index1=materialBarcodeArray.indexOf(result.text.toString())
+								   var  index1=materialBarcodeArray.indexOf('8901764082425')
+							
+	                                                            if(index1 !=-1 ){
+								        var index=itemNameArray.indexOf(materialDescArray[index1]);
 	                                                                var inputindex=0;
 	                                                                var maxnumber=Number(QuantityArray[index])
 	                                                                 $('input[type=Number]', '#invoice_detaila_return').each(function() {
