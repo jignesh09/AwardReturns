@@ -2367,7 +2367,7 @@ function invoiceDetail_local(ev){
            fuldate=det1+'/'+mon1+'/'+yr;
 		   var sdata=data1.invoice_item+data1.item_name;
            html+='<li class="returnlist" add="'+sdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
-           html+='<strong>'+Number(data1.invoice_item)+'</strong><strong>'+data1.item_name+'</strong>'
+           html+='<strong>'+Number(data1.invoice_item)+'</strong><strong class="inv_ret_title">'+data1.item_name+'</strong>'
            html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext">'+ht1+'</select></div></div></div></li>';
            }
            var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+local_invono+'</div>'
@@ -2996,7 +2996,7 @@ var fail = function(evt) {
 								 
 								    
 								    var  index1=materialBarcodeArray.indexOf(result.text.toString())
-								   var  index1=materialBarcodeArray.indexOf('8901764082425')
+								   //var  index1=materialBarcodeArray.indexOf('8901764082425')
 							
 	                                                            if(index1 !=-1 ){
 								        var index=itemNameArray.indexOf(materialDescArray[index1]);
