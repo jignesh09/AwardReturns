@@ -536,7 +536,7 @@ function invoiceDetail(ev){
            //  alert(parseInt(data1.invoice_item))
 		   var sdata=data1.invoice_item+data1.item_name;
            html+='<li class="returnlist" add="'+sdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+data1.units+'</span></div>'
-           html+='<strong>'+Number(data1.invoice_item)+'</strong><strong>'+data1.item_name+'</strong>'
+           html+='<strong>'+Number(data1.invoice_item)+'</strong><strong class="inv_ret_title">'+data1.item_name+'</strong>'
            // html+='<strong>'+data1.invoice_item+'</strong><strong>'+Number(data1.quantity)+' items</strong>'
            // html+='<div id="poor_quality_text"><div id="textinput"><input type="Number" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>';
            html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext">'+ht1+'</select></div></div></div></li>';
