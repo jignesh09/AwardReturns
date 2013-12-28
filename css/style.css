@@ -73,11 +73,11 @@ ul.topinfocon li a{ text-decoration:none; color:#FFF !important; font-weight:nor
 background:url(../images/back_icon.png) no-repeat 10px 5px #9c8a9a; background-size:30% 70%; cursor:pointer;}
 .Backbutton a { text-decoration:none; color:#fff;}*/
 
-.rightserchbox {float:right; width:12%; margin-right:1%;}
+.rightserchbox {float:right; width:26%; margin-right:1%;}
 h1.returenstext {float:left; width:14%;}
 .inputloignbox3 {font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 6px !important; padding:3% 0 2% 18% !important; width:88% !important; color:#000 !important; }
 .ui-header .ui-title {min-height: 1.1em ; text-transform:uppercase !important;
-font-size: 16px !important; width:63%; text-align:center !important;
+font-size: 16px !important; width:60%; text-align:center !important;
 display: block !important;
 margin: .6em 0 .8em;
 padding: 0 !important;
@@ -435,7 +435,7 @@ text-overflow: ellipsis;}
 .memo_top_bg {float: left; width: 100%; margin:-10px 0 0 4px;}
 .memo_top_bg1 {float: left; width: 100%; margin:-9px 0 0 4px;}
 .ui-header .ui-title {min-height: 1.1em !important; text-transform:uppercase !important;
-font-size: 16px !important; width:57% !important; text-align:center !important;
+font-size: 16px !important; width:52% !important; text-align:center !important;
 display: block !important;
 margin: .6em 0 .8em;
 padding: 0 !important;
@@ -450,7 +450,7 @@ background:url(../images/back_icon.png) no-repeat 5px 10px #9c8a9a !important; b
 .Createtop1 {float: left !important; width: 8% !important; }
 .Createtop1 span { float:left !important; width:100% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
 .Createtop1 h1 {float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center !important; font-size:.5em !important; padding:12% 0 0 0; margin:0;}
-.rightserchbox {float: right; width: 18% !important; margin-right: 1%;}
+.rightserchbox {float: right; width: 26% !important; margin-right: 1%;}
 	
 .ui-btn-inner {font-size: 11px !important; padding:.9em 20px !important; min-width: .75em; display: block; position: relative; text-overflow: ellipsis;
 overflow: hidden; white-space: nowrap;zoom: 1;}
@@ -458,7 +458,7 @@ overflow: hidden; white-space: nowrap;zoom: 1;}
 right: 10px !important;}	
 #main_box {margin: 0 auto; width: 100% !important; margin-top: 2%;}
 #Customers .ui-block-a span { float:left; width:28% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
-.poor_quality_text4 { float:right; width:47% !important; margin-top:1% !important;}
+.poor_quality_text4 { float:right; width:50% !important; margin-top:1% !important;}
 .poor_quality_text5 { float:right; width:40% !important; margin-top:1% !important;}
 #ReportsPage .ui-block-a span { float:left; width:19% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff;  font-size:1em !important; padding:5px 0 5px 0; margin-right:6%; text-align:center; border:solid 1px #fff;}
 #loign .loigninput {margin:0 auto; width:85% !important; padding-bottom:.2em;}
@@ -549,16 +549,16 @@ right: 10px !important;}
 #ReturnOrderDeatilpage .Barnes_text {float:left;width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
 #ReturnOrderDeatilpage .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
-#returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
+#returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
 #returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width:37%;}
-#returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:0.7em !important;  padding:1.0em 0 .8em .5em !important; margin-top:1.0em !important;}
+#returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.0em !important;  padding:1em 0 1em 0em !important;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:0.9em !important; padding:19px 0 15px 0; text-align:center;}
 #returns_creen .justret_button {margin: 0 auto; width:50% !important; margin-top: 5%;}
 
 
-#jsut_returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#jsut_returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#jsut_returns_creen .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
+#jsut_returns_creen .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
 #jsut_returns_creen .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #jsut_returns_creen .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
 #jsut_returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.5em !important; padding:19px 0 15px 0; text-align:center;}
@@ -566,20 +566,20 @@ right: 10px !important;}
 #Returns_confirmation_screen3 .justret_button1 {margin: 0 auto; width:48% !important; padding-top: 3%;}
 
 
-#jsut_returns_creen_cnf .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#jsut_returns_creen_cnf .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#jsut_returns_creen_cnf .Barnes_text { float:left; width:55%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
+#jsut_returns_creen_cnf .invoice_text { float:left; width:42%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
 #jsut_returns_creen_cnf .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 36% !important;}
 #jsut_returns_creen_cnf .ui-block-a  strong { float:left; width:20% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1em !important;  padding:1.3em 0 .8em .5em !important;}
 #jsut_returns_creen_cnf .Createtop  span { float:left; width:100%; color:#fff; text-align:right; font-size:1em !important; text-align:center;}
 #jsut_returns_creen_cnf .justret_button {margin: 0 auto; width: 60% !important; margin-top: 5%;}
 
-#Returns_confirmation_screen3 .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
-#Returns_confirmation_screen3 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.5em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen3 .Barnes_text { float:left; width:50%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
+#Returns_confirmation_screen3 .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em !important; padding-bottom:1.5%;}
 #Returns_confirmation_screen3 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #Returns_confirmation_screen3 .return_qty {float:right; width:49% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen3 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:.8em !important; padding:.7em 0 .8em .5em !important;}
+#Returns_confirmation_screen3 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.1em !important; padding:1.0em 0 0em .5em !important;}
 #Returns_confirmation_screen3 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
-#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
+#Returns_confirmation_screen3 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 0% 1% 0 !important;}
 #Returns_confirmation_screen3 .poor_quality_text h1 {padding:0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
 #Returns_confirmation_screen3 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #Returns_confirmation_screen3 .justret_button {margin:0 auto; width:75% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 150px !important;}
@@ -591,9 +591,9 @@ right: 10px !important;}
 #Returns_confirmation_screen2 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #Returns_confirmation_screen2 .return_qty {float:right; width:43% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #Returns_confirmation_screen2 .return_qty {float:right; width:43% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen2 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.3em !important; padding:1.3em 0 .8em .5em !important;}
+#Returns_confirmation_screen2 .ui-block-a  strong { float:left; width:20%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; font-size:1.1em !important; padding:1.0em 0 .8em .5em !important;}
 #Returns_confirmation_screen2 .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:.9em !important; padding:19px 0 15px 0; text-align:center;}
-#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 3% 1% 0 !important;}
+#Returns_confirmation_screen2 .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 0% 1% 0 !important;}
 #Returns_confirmation_screen2 .poor_quality_text h1 {padding:1.3em 0 0 0 !important; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:.9em !important;} 
 #Returns_confirmation_screen2 .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 43% !important;}
 #Returns_confirmation_screen2 .justret_button {margin:0 auto; width:75% !important; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 150px !important;}
@@ -642,7 +642,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #ReturnOrderDeatilpage .Barnes_text h1 {padding:0; margin:0; float:left; width:30%; }
 #ReturnOrderDeatilpage .invoice_text { float:left; width:45%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; padding-bottom:1.5%; color:#fff;}
 #ReturnOrderDeatilpage .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:1.5% 0% 1% 0 !important;}
-.rightserchbox {float:right; width:20%; margin-right:1%;}	
+.rightserchbox {float:right; width:26%; margin-right:1%;}	
 /*.Backbutton { float:left; width:12% !important; font-size:1em !important;  padding:1em 2% 1em 2% !important; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:35% 58% !important; cursor:pointer;}*/
 .memoheading_tax{text-align: center;
@@ -742,7 +742,7 @@ background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top:-6.3% !impor
 
 @media (min-width: 800px) { 
 .ui-header .ui-title {min-height: 1.1em !important; text-transform:uppercase !important;
-font-size: 1.3 !important; width:68% !important; text-align:center !important; display: block !important;
+font-size: 1.3 !important; width:60% !important; text-align:center !important; display: block !important;
 margin: .6em 0 .8em; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow:none !important; outline: 0 !important;}
 .memo_top_bg {float: left; width: 100%; margin:-10px 0 0 6px;}
 .memo_top_bg1 {float: left; width: 100%; margin:0px 0 0 8px}
@@ -781,7 +781,9 @@ width: 12.9% !important; background:#fff !important; float: left; border-bottom:
 }
 
 .ui-mobile .ui-page {background:url(../images/body_bg.png) no-repeat center top !important; background-size:100% 100% !important;}
-#main_box {margin:0 auto; width:80%; margin-top:80px;}
+#main_box {margin:0 auto; width:80%;}
+#ReportsPage #main_box {margin:0 auto; width:80%; margin-top:80px;}
+
 .reportsbox {margin:0 auto; width:75%;}
 .reportsbox1 {margin:0 auto; width:52%; padding-top:4%;}
 .reportsmain {float:left; width:100%; margin-bottom:8%;}
@@ -839,8 +841,8 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1
 
 #Create_returns .Createtop { float:left; width:5%; margin:0 0% 0% 0; text-align: center;}
 #Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:10px 0 10px 0; text-align:center; border:solid 1px #fff; border-radius: 81px;}
-#Create_returns .Createtop  h1 {float:left; width:48px; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
-#Create_returns .ui-block-a  strong { float:left; width:10% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:14% 75%;margin-left: 10px;}
+#Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0 !important; margin:0;}
+#Create_returns .ui-block-a  strong { float:left; width:10% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:14% 75%;margin-left: 30px;}
 #Create_returns .Garfield_text { float:right; width:45%; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 10px; background-size:7% 75%; padding-bottom:1%; margin-right:10%;}
 #Create_returns .Garfield_text h1 {float:left; width:90%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #Create_returns .Garfield_text h2 {float:left; width:90%; text-align:center; padding:2% 0 0 0; margin:0;}
@@ -890,7 +892,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #ReturnOrderDeatilpage .Garfield_text h1 {float:left; width:100%; text-align:center;  padding:10% 0 2% 0; margin:0;}
 #ReturnOrderDeatilpage .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
 #ReturnOrderDeatilpage .justret_button {float:right; width:47%; margin-right:27%; margin-top: 3%;}
-#ReturnOrderDeatilpage .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
+#ReturnOrderDeatilpage .poor_quality_text { float:left; width:50%;  margin-top:1.3%;}
 #ReturnOrderDeatilpage .poor_quality_text span { float:left; width:40%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;margin-left: 10px;}
 #ReturnOrderDeatilpage .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:1em;} 
 #ReturnOrderDeatilpage .return_qty {float:right; width:37%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
@@ -910,7 +912,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #returns_creen .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
 #returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
 #returns_creen .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
-#returns_creen .ui-block-a  strong { float:left; width:10%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.4em;  padding:1em 0 .8em 0em; border-left:solid 1px #322827;}
+#returns_creen .ui-block-a  strong { float:left; width:10%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.0em;  padding:1em 0 1em 0em !important; border-left:solid 1px #322827;}
 #returns_creen .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
 #returns_creen .Garfield_text h1 {float:left; width:100%; text-align:center; border-bottom:solid 2px #442c27; padding:2% 0 2% 0; margin:0;}
 #returns_creen .Garfield_text h2 {float:left; width:100%; text-align:center; padding:2% 0 0 0; margin:0;}
@@ -928,7 +930,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #jsut_returns_creen .ui-content { padding:15px 15px 0 15px !important;}
 #jsut_returns_creen .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:4%;}
 #jsut_returns_creen .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
-#jsut_returns_creen .Createtop { float:left; width:7%; margin:0 2% 1% 0;}
+#jsut_returns_creen .Createtop { float:left; width:7%; margin:0 0% 1% 0;}
 #jsut_returns_creen .Createtop  span { float:left; width:100%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
 #jsut_returns_creen .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
 #jsut_returns_creen .ui-block-a  strong { float:left; width:14%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.3em;  padding:1em 0 .8em 4em;}
@@ -940,7 +942,7 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 #jsut_returns_creen .plusbtn { float: right;
 margin-right: 4%;
 }
-#jsut_returns_creen .poor_quality_text { float:left; width:44%; }
+#jsut_returns_creen .poor_quality_text { float:left; width:50%; }
 #jsut_returns_creen .poor_quality_text span { /*float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;*/}
 #jsut_returns_creen .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
 #jsut_returns_creen .return_qty {float:right; width:25%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
@@ -948,11 +950,11 @@ margin-right: 4%;
 
 
 #jsut_returns_creen_cnf .customersbox { float:left; width:100%; background:url(../images/customers_bg.png) repeat center bottom; height: auto;}
-#jsut_returns_creen_cnf .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 3%; border-bottom:solid 2px #442c27; margin-bottom:3%;}
+#jsut_returns_creen_cnf .ui-block-a { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; text-align:right; padding:2% 0 0 0%; border-bottom:solid 2px #442c27; margin-bottom:3%;}
 #jsut_returns_creen_cnf .ui-content { padding:15px 15px 0 15px !important;}
 #jsut_returns_creen_cnf .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-top: solid 1px #fff; padding-top:4%;}
 #jsut_returns_creen_cnf .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.8em; border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
-#jsut_returns_creen_cnf .Createtop { float:left; width:7%; margin:1.3% 2% 1% 0;}
+#jsut_returns_creen_cnf .Createtop { float:left; width:7%; margin:1.3% 0% 1% 0;}
 #jsut_returns_creen_cnf .Createtop  span { float:left; width:100%; color:#fff; text-align:right; font-size:1.9em; padding:11px 0 15px 0; text-align:center;}
 #jsut_returns_creen_cnf .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
 #jsut_returns_creen_cnf .ui-block-a  strong { float:left; width:14%; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:center; font-size:1.3em;  padding:1em 0 .8em 4em;}
@@ -1016,8 +1018,8 @@ margin-right: 4%;
 #Returns_confirmation_screen2 .poor_quality_text { float:left; width:30%;  margin-top:1.3%;}
 #Returns_confirmation_screen2 .poor_quality_text span { float:left; width:30%; color:#fff;  font-size:1.3em; padding:5px 10px 5px 0; text-align:right; border:solid 1px #fff;}
 #Returns_confirmation_screen2 .poor_quality_text h1 {padding:0; margin:0; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em;} 
-#Returns_confirmation_screen2 .return_qty {float:right; width:41%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
-#Returns_confirmation_screen2 .return_qty h1 {padding:2% 0 2% 9%; margin:2% 0 2% 0; float:left; width:40%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.1em; border-right: solid 1px #766463;}
+#Returns_confirmation_screen2 .return_qty {float:right; width:41%; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;text-align: center;}
+#Returns_confirmation_screen2 .return_qty h1 {padding:2% 0 2% 0%; margin:2% 0 2% 0; float:left; width:48%; font-family: 'helveticanltcnhelveticanltcn'; color:#6e5f5d; font-size:1.4em; border-right: solid 1px #766463;}
 #Returns_confirmation_screen2 .Barnes_text { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
 #Returns_confirmation_screen2 .Barnes_text h1 {padding:0; margin:0; float:left; width:30%;}
 #Returns_confirmation_screen2 .invoice_text { float:left; width:45% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.8em; padding-bottom:1.5%;}
@@ -1032,7 +1034,7 @@ margin-right: 4%;
 
 
 #textinput { float:left; width:49%;}
-.textinput_new { float:left; width:14%;}
+.textinput_new { float:left; width:12%;}
 
 #jsut_returns_creen_cnf .justret_button {margin:0 auto; width:30%; background:#774e4f; margin-top:4%; border-radius:8px; min-height: 124px;}
 #jsut_returns_creen_cnf .justret_button h1 {padding:4% 0 0 0; margin:0; float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; font-size:1.9em; color:#fff; text-align:center; text-transform:uppercase;}
@@ -1194,7 +1196,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #textinputtes {float: left; width: 50%;}
 .textinputtes {float: left; width: 50%;}
 #jsut_returns_creen .textinput_new .ui-shadow-inset {background: #fff !important;}
-.textinputtes_new {float: left; width:25%;}
+.textinputtes_new {float: left; width:30%;}
 .textinputtestext {float: left; width:22%; text-align:center; padding:3% 0 0 0; border-left: solid 1px #352a27;}
 .poor_quality_text1 { float:right; width:54%;}
 .selecttextbox1 { float:left; width:48%;text-align: center; padding:5% 0;}
@@ -1275,7 +1277,7 @@ overflow: hidden; text-overflow: ellipsis;}
 border-bottom: solid 1px rgb(0, 0, 0); background: #d4d1c9; height: 25px;}
 #ret_list_head {float:left; width:100%; border-top: solid 1px #fff; border-bottom: solid 1px #fff; padding:2% 0;}
 .memo_top_bg { float:left; width:100%;}
-.rightserchbox {float:right; width:20%; margin-right:1%;}
+.rightserchbox {float:right; width:26%; margin-right:1%;}
 .camera_img {float:right; width:12%;}
 
 @media (min-width: 600px) { 
@@ -1288,7 +1290,7 @@ border-bottom: solid 1px rgb(0, 0, 0); background: #d4d1c9; height: 25px;}
 	
 #jsut_returns_creen_cnf .justret_button1 {
 margin: 0 auto;
-width: 27% !important;
+width: 37% !important;
 padding-top: 3%;
 }
  .memoheading_dec_detail1_Reasontext {

@@ -716,10 +716,10 @@ function justRe_cnf(){
     for (var i=0;i<just_mat_con.length;i++) {
         html+='<li><div class="ui-block-a">'
         html+='<div class="Createtop"><span>EA</span></div>'
-        html+='<div class="textinputtestext">'+just_mat_num[i]+'</div>'
-        html+='<div class="textinputtestext">'+just_mat_Retq[i]+' items</div>'
-        html+='<div class="textinputtestext">'+just_mat_Res[i]+'</div>'
-        html+='<div class="textinputtestext">'+just_mat_con[i]+'</div></div></li>'
+        html+='<div class="textinputtestext" style="width: 23% !important;">'+just_mat_num[i]+'</div>'
+        html+='<div class="textinputtestext" style="width: 20% !important;">'+just_mat_Retq[i]+' items</div>'
+        html+='<div class="textinputtestext" style="width: 24% !important;">'+just_mat_Res[i]+'</div>'
+        html+='<div class="textinputtestext" style="width: 24% !important;">'+just_mat_con[i]+'</div></div></li>'
     }
     
     
