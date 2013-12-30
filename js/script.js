@@ -551,7 +551,7 @@ function invoiceDetail(ev){
 			    hm+='<div class="Barnes_text" style="width:100% !important;"><h1 style=" width:38% !important;">Customer name</h1>'+cname+'</div>'
 			    hm+='</div>'
 			    hm+='<div class="customer_boderright1">'
-			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Returns order #</h1>'+data1.invoice_number+'</div>'
+			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
 			    hm+='<div class="invoice_text" style="width:100% !important;"><h1>Invoice Date </h1>'+fuldate+'</div></div>'
 			    hm+='</div>'
 	   
@@ -1223,7 +1223,7 @@ function gotoReturnconfrm() {
 	   var html7='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer ID</h1><span>'+cid+'</span></div>'
 	       html7+='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer name</h1>'+cname+'</div>';
 	       
-	    var html8='<div class="Barnes_textts" style="width:100% !important;"><h1>Returns order #</h1>'+data1.invoice_number+'</div>'
+	    var html8='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
 	       html8 +='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice Date </h1>'+fuldate+'</div></div>';
            $('#invoice_detaila_return').html(html).trigger('create');
            //// alert('ok');
@@ -2898,7 +2898,8 @@ function gotFileWriter(writer) {
 					var fil_path1=fullPath+"/new.html";
 					//console.log(fil_path1).
                                         fil_path1 = fil_path1.replace("file://","");
-					console.log(fil_path1)
+													 alert(fil_path1);
+					alert(window.plugins.emailComposer);
 					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],true,[''+fil_path1+''],[]);
                     console.log("contents of file now 'some different text'");
                 }

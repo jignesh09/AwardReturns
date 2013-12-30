@@ -467,7 +467,7 @@ right: 10px !important;}
 #loign .tryout_img {margin:0 auto; width:75% !important; padding-top:1%;}
 #loign .reports_text {float:left; font-size:1.8em !important; font-weight:normal; padding:2% 0 4% 10%; color:#fff; text-shadow:none !important; font-family: 'helveticanmdcnhelveticanmdcn';}
 #Create_returns .Garfield_text { float:right; width:38% !important; text-align:center; border-left:solid 2px #442c27;  background:url(../images/vector_smart.png) no-repeat right 10px; background-size:7% 75%; padding-bottom:1%; margin-right:10%;}
-#Create_returns .Createtop {float: left; width: 8% !important; margin: 0 12% 1% 0;}
+#Create_returns .Createtop {float: left; width: 8% !important; margin: 0 0% 1% 0;}
 #Create_returns .ui-block-a  strong { float:left; width:18%;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:31% 75% !important; margin-top:2% !important;}
 #Create_returns .justret_button { margin:0 auto; width:50% !important; padding-top:3%;}
 .logo {float:left; width:100% !important; text-align:center; padding:2% 0 3% 0;}
@@ -839,7 +839,7 @@ div.ui-slider-switch { float:left !important; width:5em !important; margin:-1% 1
 #Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; border-top: solid 1px #fff; padding-top:1%;}
 #Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1.2em; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
 
-#Create_returns .Createtop { float:left; width:5%; margin:0 0% 0% 0; text-align: center;}
+#Create_returns .Createtop { float:left; width:8%; margin:0 0% 0% 0; text-align: center;}
 #Create_returns .Createtop  span { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:right; font-size:1.3em; padding:10px 0 10px 0; text-align:center; border:solid 1px #fff; border-radius: 81px;}
 #Create_returns .Createtop  h1 {float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0 !important; margin:0;}
 #Create_returns .ui-block-a  strong { float:left; width:10% !important;font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:left; margin-top:1.5%; font-size:1.3em;  padding:.3em 0 .8em 2.2em; background:url(../images/returns_s.png) no-repeat left top; background-size:14% 75%;margin-left: 30px;}
