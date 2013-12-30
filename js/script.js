@@ -1577,7 +1577,7 @@ function getReports() {
            var serReport=c_invoice_no+c_name+c_re_order;
            html+='<li class="repostlist" add="'+serReport+'"><div class="ui-block-a" data-rid='+c_re_order+' data-date1='+deate+' data-cname="'+c_name+'"      onclick="getRetrunOrderDetails(this);"><a href="#"><div class="Createtop1"><span style="width:100% !important;">'+det1+'</span><h1>'+montheArray[mon]+'/'+yr+'</h1></div></a>'
            html+='<strong>'+c_name+'</strong>'
-           html+='<div class="poor_quality_text1"><div class="textinputtes1">'+c_invoice_no+'</div><div class="selecttextbox1">'+c_re_order+'</div></div></div></li>'
+           html+='<div class="poor_quality_text1"><div class="textinputtes1">'+c_re_order+'</div><div class="selecttextbox1">'+c_invoice_no+'</div></div></div></li>'
            // html+='</div><div>';
            
            //textbox
@@ -2699,7 +2699,7 @@ function trygetReports(){
            var serReport=c_invoice_no+c_name+c_re_order;
            html+='<li class="repostlist" add="'+serReport+'"><div class="ui-block-a" data-rid='+c_re_order+' data-date1='+deate+' data-cname="'+c_name+'"      onclick="getRetrunOrderDetails_local(this);"><a href="#"><div class="Createtop1"><span style="width:100% !important;">'+det1+'</span><h1>'+montheArray[mon]+'/'+yr+'</h1></div></a>'
            html+='<strong>'+c_name+'</strong>'
-           html+='<div class="poor_quality_text1"><div class="textinputtes1">'+c_invoice_no+'</div><div class="selecttextbox1">'+c_re_order+'</div></div></div></li>'
+           html+='<div class="poor_quality_text1"><div class="textinputtes1">'+c_re_order+'</div><div class="selecttextbox1">'+c_invoice_no+'</div></div></div></li>'
            // html+='</div><div>';
            
            //textbox
