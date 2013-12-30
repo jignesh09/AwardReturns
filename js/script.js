@@ -2898,9 +2898,9 @@ function gotFileWriter(writer) {
 					var fil_path1=fullPath+"/new.html";
 					//console.log(fil_path1).
                                         fil_path1 = fil_path1.replace("file://","");
-													 alert(fil_path1);
-					alert(window.plugins.emailComposer);
-					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],true,[''+fil_path1+''],[]);
+													 //alert(fil_path1);
+					//alert(window.plugins.emailComposer);
+					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],false,[''+fil_path1+''],[]);
                     console.log("contents of file now 'some different text'");
                 }
             };
