@@ -2900,6 +2900,7 @@ function gotFileWriter(writer) {
                                         fil_path1 = fil_path1.replace("file://","");
 													 //alert(fil_path1);
 					//alert(window.plugins.emailComposer);
+					//alert("Email Composer should Work");
 					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],false,[''+fil_path1+''],[]);
                     console.log("contents of file now 'some different text'");
                 }
