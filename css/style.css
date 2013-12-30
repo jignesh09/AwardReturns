@@ -432,8 +432,8 @@ text-overflow: ellipsis;}
 }
 
 @media all and (max-width: 800px) and (min-width: 480px) {
-.memo_top_bg {float: left; width: 100%; margin:-10px 0 0 4px;}
-.memo_top_bg1 {float: left; width: 100%; margin:-9px 0 0 4px;}
+.memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
+.memo_top_bg1 {width: 100%; margin:0 0% 0% 1% !important;}
 .ui-header .ui-title {min-height: 1.1em !important; text-transform:uppercase !important;
 font-size: 16px !important; width:52% !important; text-align:center !important;
 display: block !important;
@@ -634,8 +634,8 @@ border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
 .Backbutton  {float:left; width:100px !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100% 100%; height:43px !important;}
 .inputloignbox3 {color:#726065; font-size:.8em !important; background:url(../images/search_icon.png) no-repeat left 3px !important; padding:3.9% 0 2.9% 25% !important; width:88% !important;}
 
-.memo_top_bg {float: left; width: 100%; margin:-10px 0 0 3px;}
-.memo_top_bg1 {float: left; width: 100%; margin:-9px 0 0 3px;}
+.memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
+.memo_top_bg1 {width: 100%; margin:0 0% 0% 1% !important;}
 #Credit_memo .customer_credit {float: left; width: 100%; background: rgb(203, 203, 203); margin-bottom:5%; height:52px !important;}
 #ReturnOrderDeatilpage .Barnes_text h1 {padding: 0; margin: 0; float: left; width: 38% !important;}
 #ReturnOrderDeatilpage .Barnes_text { float:left; width:50%;  font-family: 'helveticanltcnhelveticanltcn'; font-size:1em !important; padding-bottom:1.5%;}
@@ -676,8 +676,8 @@ background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -7.6% !impo
 #Create_returns .Createtop  h1 {float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
 #Returns_confirmation_screen2 .return_qty {float:right; width:38% !important; background:#3d201f; border-radius: 8px 8px 0 0; margin-top:80px;}
 #Returns_confirmation_screen2 .justret_button1 {margin: 0 auto;width:36% !important; padding-top: 3%;float: right;margin-right: 2% !important;}
-.memo_top_bg {float: left; width: 100%; margin:-10px 0 0 7px !important;}
-.memo_top_bg1 {float: left; width: 100%; margin:-9px 0 0 6px;}
+.memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
+.memo_top_bg1 {width: 100%; margin:0 0% 0% 1% !important;}
 .text3 { float:left; width:16%; padding:1.5% 0 5.7% 0 !important; text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-right:solid 1px #000;}
 .text4 {float:left; width:39.4% !important; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
 .documentdiv {margin: 35px auto; width: 98%; border: solid 1px rgb(107, 108, 108); height:140px !important;}
@@ -744,8 +744,8 @@ background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top:-6.3% !impor
 .ui-header .ui-title {min-height: 1.1em !important; text-transform:uppercase !important;
 font-size: 1.3 !important; width:60% !important; text-align:center !important; display: block !important;
 margin: .6em 0 .8em; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow:none !important; outline: 0 !important;}
-.memo_top_bg {float: left; width: 100%; margin:-10px 0 0 6px;}
-.memo_top_bg1 {float: left; width: 100%; margin:0px 0 0 8px}
+.memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
+.memo_top_bg1 {width: 100%; margin:0 0% 0% 1% !important;}
 #Credit_memo .customer_credit {float: left; width: 100%; background: rgb(203, 203, 203); margin-bottom:5% !important; height:71px !important;}
 #ReturnOrderDeatilpage .Barnes_text h1 {padding:0; margin:0; float:left; width:38% !important; }
 #ReturnOrderDeatilpage .Garfield_text { float:left; width:25%; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 0% 1% 0 !important;}
@@ -1141,7 +1141,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 #Credit_memo .justret_buttonright {float:right; width:30%; margin:2% 4% 0 0; border-radius:8px; min-height:0px !important;}
 
 
-#Credit_memo .documen_main_box {margin:0 auto;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;}
+#Credit_memo .documen_main_box {margin:-13px 0% 0% 1% !important;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;}
 #Credit_memo .tblcustmor_credit{ margin:10px; width:98%;}
 #Credit_memo .tblcustmor_credit th{border:1px solid #6b6c6c; vertical-align:middle;}
 #Credit_memo .tblcustmor_credit td{ border:1px solid #6b6c6c; border-left: 0; border-top: 0; vertical-align:middle;}
@@ -1175,7 +1175,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .text2 h2 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
 .text3 { float:left; width:16%; padding:1.5% 0 1.5% 0; text-align:center; font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-right:solid 1px #000;}
 .text4 {float:left; width:39%; padding:2% 0 1.4% 8px; background:#fff; text-align:left; font-family: 'helveticanltcnhelveticanltcn'; font-size:1em;}
-.documentdiv1 { margin:7% auto; margin-bottom: 0; width:98%; border:solid 1px #b5b7b7; height:150px;}
+.documentdiv1 { margin:-13px 0% 0% 1% !important; margin-bottom: 0; width:98%; border:solid 1px #b5b7b7; height:150px;}
 .Over_text_box {float:left; width:100%;}
 .text5 { float:left; width:9%; text-align:center; border-left:solid 1px #000;}
 .text5 h1 { padding:2% 0 2% 3%; margin:0; float:left; width:97%;  font-family: 'helveticanmdcnhelveticanmdcn'; color:#231f20; font-size:1.5em; border-bottom:solid 1px #000;}
@@ -1230,7 +1230,7 @@ ui-grid-a>:nth-child(n){width:100% !important;}
 .demo31 {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
 .demo3_text {width:100%;  text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; border-right:solid 1px rgb(0, 0, 0); background:#d4d1c9; padding:1% 0;}
 .demo4 {width:50%; float: left; text-align: center; border-bottom:solid 1px rgb(0, 0, 0); font-family: 'helveticanltcnhelveticanltcn'; font-size:1em; background:#d4d1c9; padding:1% 0;}
-#Returns_confirmation_screen2 .poor_quality_text5 { float:left; width:36%;}
+#Returns_confirmation_screen2 .poor_quality_text5 { float:left; width:36%;margin-left: 5px;}
 #Returns_confirmation_screen2 .justret_button1 {margin: 0 auto;width:39%; padding-top: 3%;float: right;margin-right: 2% !important;}
 #Returns_confirmation_screen3 .justret_button1 {margin: 0 auto;width:30%; padding-top: 3%;}
 #jsut_returns_creen_cnf .justret_button1 {margin: 0 auto;width:30%; padding-top: 3%;}
@@ -1276,7 +1276,7 @@ overflow: hidden; text-overflow: ellipsis;}
 .memoheading_detail_text4{text-align: center; background:#fff !important; width: 10%; float: left; border-right: solid 1px rgb(0, 0, 0);
 border-bottom: solid 1px rgb(0, 0, 0); background: #d4d1c9; height: 25px;}
 #ret_list_head {float:left; width:100%; border-top: solid 1px #fff; border-bottom: solid 1px #fff; padding:2% 0;}
-.memo_top_bg { float:left; width:100%;}
+.memo_top_bg { width:100%;}
 .rightserchbox {float:right; width:26%; margin-right:1%;}
 .camera_img {float:right; width:12%;}
 

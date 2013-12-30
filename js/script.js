@@ -204,6 +204,7 @@ $( document ).ready(function() {
 
 
 function gotoHomepage(){
+
              if(tryit=='true'){
 			    $.mobile.changePage('#loign')
 			}
@@ -2065,7 +2066,7 @@ reftext=000011
                        html3+='<div class="text3">Ship to Address</div>'
                        html3+='<div class="text4">'+caddress+'</div>'
                        $('#cus_ship_add').html(html3).trigger('create');
-                       var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
+                       //var total=parseInt(priceArray[0])*parseInt(noofItem[0]);
                        var thml1='';
 		       
 		        thml1+='<div class="Over_text_box">'
@@ -2168,6 +2169,7 @@ reftext=000011
   html+='</div>'
 			
 		email_html=html;
+		
 		//--------------------------------------------------------------
 		       
 	
