@@ -2839,7 +2839,8 @@ var returnReportsDeatils={"d":{"results":[{"__metadata":{"uri":"http://devvm.squ
 
 
 
-
+var currentfileEntry;
+var currentfilename = "";
 function sendMail(){
 var html='';
 /*
@@ -2879,13 +2880,14 @@ html+='</div>'
 
 var d = new Date();
 var n = d.getTime();
-
-fileSystems.root.getFile("new_"+n+".html", {create: true, exclusive: false}, gotFileEntry, fail);
+currentfilename = "";
+currentfilename = "new_"+n+".html";
+fileSystems.root.getFile(currentfilename, {create: true, exclusive: false}, gotFileEntry, fail);
 function gotFileEntry(fileEntry){
 	 currentfileEntry = fileEntry;
 	fileEntry.createWriter(gotFileWriter, fail);
 }
-var currentfileEntry;
+
 function gotFileWriter(writer) {
         writer.onwriteend = function(evt) {
             console.log("contents of file now 'some sample text'");
@@ -2901,7 +2903,7 @@ function gotFileWriter(writer) {
                 writer.onwriteend = function(evt){
                var html1='Retrun Order Memo'
   
-					var fil_path1=fullPath+"/new.html";
+					var fil_path1=fullPath+"/"+currentfilename+"";
 					
 					fil_path1 = fil_path1.replace("file://","");
 					window.plugins.emailComposer.showEmailComposerWithCallback(function(){
