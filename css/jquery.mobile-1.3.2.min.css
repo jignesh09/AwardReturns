@@ -2234,7 +2234,7 @@ transform:translateX(0) scale(1)
 	padding: 0
 }
 .ui-fixed-hidden {
-	position: absolute
+	
 }
 .ui-page-header-fullscreen .ui-fixed-hidden, .ui-page-footer-fullscreen .ui-fixed-hidden {
 	left: -9999px

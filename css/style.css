@@ -56,6 +56,8 @@ time, mark, audio, video {
 
 }
 
+
+
 body{ font-family: 'helveticanltcnhelveticanltcn'; font-size:0.875em;}
 .wrapper{ width:98%; margin:0 auto;}
 #headpartmain{ float:left; width:100%;}
@@ -67,7 +69,7 @@ ul.topinfocon li span{ float:left; padding:0 0 0 0; margin:0 5px 0 0;}
 ul.topinfocon li strong{ font-weight:bold;}
 ul.topinfocon li a{ text-decoration:none; color:#FFF !important; font-weight:normal !important;}
 .bannermain{ float:left; width:100%; }
-.Backbutton  { float:left; width:112px; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100% 100%; height:42px;}
+.Backbutton  { float:left; width:26% !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100px 55px !important; height:53px !important;}
 
 /*.Backbutton { float:left; width:10%; font-size:1.5em; text-align:right; padding:.4em 1% .4em 0; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat 10px 5px #9c8a9a; background-size:30% 70%; cursor:pointer;}
@@ -77,7 +79,7 @@ background:url(../images/back_icon.png) no-repeat 10px 5px #9c8a9a; background-s
 h1.returenstext {float:left; width:14%;}
 .inputloignbox3 {font-size:1em !important; background:url(../images/search_icon.png) no-repeat left 6px !important; padding:3% 0 2% 18% !important; width:88% !important; color:#000 !important; }
 .ui-header .ui-title {min-height: 1.1em ; text-transform:uppercase !important;
-font-size: 16px !important; width:60%; text-align:center !important;
+font-size: 16px !important; width:47%; text-align:center !important;
 display: block !important;
 margin: .6em 0 .8em;
 padding: 0 !important;
@@ -435,7 +437,7 @@ text-overflow: ellipsis;}
 .memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
 .memo_top_bg1 {width: 100%; margin:0 0% 0% 1% !important;}
 .ui-header .ui-title {min-height: 1.1em !important; text-transform:uppercase !important;
-font-size: 16px !important; width:52% !important; text-align:center !important;
+font-size: 16px !important; width:47% !important; text-align:center !important;
 display: block !important;
 margin: .6em 0 .8em;
 padding: 0 !important;
@@ -631,7 +633,7 @@ h1.returenstext {float: left; width:30% !important;}
 #ReturnOrderDeatilpage .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1em !important; border-top: solid 1px #fff; padding-top:1%;}
 #ReturnOrderDeatilpage .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1em !important; 
 border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
-.Backbutton  {float:left; width:100px !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100% 100%; height:43px !important;}
+.Backbutton  { float:left; width:26% !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100px 55px !important; height:53px !important;}
 .inputloignbox3 {color:#726065; font-size:.8em !important; background:url(../images/search_icon.png) no-repeat left 3px !important; padding:3.9% 0 2.9% 25% !important; width:88% !important;}
 
 .memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
@@ -669,8 +671,61 @@ background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -7.6% !impo
 
 }
 
+@media (min-width: 800px) {
+#Create_returns .Createtop span {
+float: left;
+width: 100%;
+font-family: 'helveticanltcnhelveticanltcn';
+color: #fff;
+text-align: right;
+font-size: 1.3em;
+padding: 25px 0 25px 0 !important;
+text-align: center;
+border: solid 1px #fff;
+border-radius: 81px;
+}
 
-@media (min-width: 1024px) { 
+#ReportsPage .ui-block-a span {
+float: left;
+width: 9% !important;
+border-radius: 66px;
+font-family: 'helveticanltcnhelveticanltcn';
+color: #fff;
+font-size: 1.3em;
+padding: 26px 0 25px 0 !important;
+margin-right: 6%;
+text-align: center;
+border: solid 1px #fff;
+}
+}
+
+@media (min-width: 1024px) {
+#Create_returns .Createtop span {
+float: left;
+width: 100%;
+font-family: 'helveticanltcnhelveticanltcn';
+color: #fff;
+text-align: right;
+font-size: 1.3em;
+padding: 25px 0 25px 0 !important;
+text-align: center;
+border: solid 1px #fff;
+border-radius: 81px;
+}
+
+#ReportsPage .ui-block-a span {
+float: left;
+width: 9% !important;
+border-radius: 66px;
+font-family: 'helveticanltcnhelveticanltcn';
+color: #fff;
+font-size: 1.3em;
+padding: 26px 0 25px 0 !important;
+margin-right: 6%;
+text-align: center;
+border: solid 1px #fff;
+}
+
 .Barnes_textts { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.7em; padding-bottom:1.5%;}
 .Barnes_textts h1 { float:left; width:50%; padding:0; margin:0;}
 #Create_returns .Createtop  h1 {float:left; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center; font-size:.7em; padding:12% 0 0 0; margin:0;}
@@ -729,7 +784,7 @@ margin: 0 auto; width: 30%; background: rgb(119, 78, 79); margin-top: 4%; border
 }
 
 @media (min-width: 768px) {
-.Backbutton  {float:left; width:100px !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100% 100%; height:47px !important;}
+.Backbutton  { float:left; width:26% !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100px 55px !important; height:53px !important;}
 #ReturnOrderDeatilpage .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1em !important; border-top: solid 1px #fff; padding-top:1%;}
 #ReturnOrderDeatilpage .custo_text1 { float:left; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:1em !important; 
 border-bottom: solid 1px #fff; padding:2% 0 1% 0;}
@@ -742,7 +797,7 @@ background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top:-6.3% !impor
 
 @media (min-width: 800px) { 
 .ui-header .ui-title {min-height: 1.1em !important; text-transform:uppercase !important;
-font-size: 1.3 !important; width:60% !important; text-align:center !important; display: block !important;
+font-size: 1.3 !important; width:47% !important; text-align:center !important; display: block !important;
 margin: .6em 0 .8em; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow:none !important; outline: 0 !important;}
 .memo_top_bg {width: 100%; margin:0 0% 0% 1% !important;}
 .memo_top_bg1 {width: 100%; margin:0 0% 0% 1% !important;}
@@ -1238,7 +1293,7 @@ ui-grid-a>:nth-child(n){width:100% !important;}
 /*.Backbutton { float:left; width:15% !important; font-size:1em !important;  padding:1em 2% 1em 4% !important; border:solid 1px #7f6270;
 background:url(../images/back_icon.png) no-repeat left 10px #9c8a9a !important; background-size:26% 50% !important; cursor:pointer;}	
 .Backbutton a { text-decoration:none !important; color:#fff !important;}
-*/.ui-header .ui-title {min-height: 1.1em !important; float:left !important; width:56% !important; text-align:center !important; font-size: 16px !important; display: block !important; margin: .6em 0 .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important; text-transform:uppercase !important;}	
+*/.ui-header .ui-title {min-height: 1.1em !important; float:left !important; width:47% !important; text-align:center !important; font-size: 16px !important; display: block !important; margin: .6em 0 .8em !important; padding: 0 !important; text-overflow: ellipsis !important; white-space: nowrap !important; overflow: none !important; outline: 0 !important; text-transform:uppercase !important;}	
 #main_box {margin: 0 auto; width:100% !important; margin-top: 2%;}
 #Create_returns .custo_text { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:.9em !important; border-top: solid 1px #fff; padding-top:1%;}
 #Create_returns .custo_text1 { margin:0 auto; width:100%; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; font-size:.9em !important; border-bottom: solid 1px #fff; padding:1% 0 1% 0;}
@@ -1281,7 +1336,7 @@ border-bottom: solid 1px rgb(0, 0, 0); background: #d4d1c9; height: 25px;}
 .camera_img {float:right; width:12%;}
 
 @media (min-width: 600px) { 
-.Backbutton  {float:left; width:100px !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100% 100%; height:55px;}
+.Backbutton  { float:left; width:26% !important; background:url(../images/backbutton_omg.png) no-repeat left top; background-size: 100px 55px !important; height:53px !important;}
 .camera_img {float: left; width: 12%; margin: -3%;}
 .Barnes_textts {float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:0.8em !important; padding-bottom:1.5%;}
 .Barnes_textts h1 {padding:0; margin:0; float:left; width:40%;}

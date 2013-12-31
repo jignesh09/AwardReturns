@@ -2877,11 +2877,15 @@ html+='<div style="float:left; width:100%; background:#000; color:#fff; padding:
 html+='</div>'
 */
 
-fileSystems.root.getFile("new.html", {create: true, exclusive: false}, gotFileEntry, fail);
+var d = new Date();
+var n = d.getTime();
+
+fileSystems.root.getFile("new_"+n+".html", {create: true, exclusive: false}, gotFileEntry, fail);
 function gotFileEntry(fileEntry){
+	 currentfileEntry = fileEntry;
 	fileEntry.createWriter(gotFileWriter, fail);
 }
-
+var currentfileEntry;
 function gotFileWriter(writer) {
         writer.onwriteend = function(evt) {
             console.log("contents of file now 'some sample text'");
@@ -2898,12 +2902,11 @@ function gotFileWriter(writer) {
                var html1='Retrun Order Memo'
   
 					var fil_path1=fullPath+"/new.html";
-					//console.log(fil_path1).
-                                        fil_path1 = fil_path1.replace("file://","");
-													 //alert(fil_path1);
-					//alert(window.plugins.emailComposer);
-					//alert("Email Composer should Work");
-					window.plugins.emailComposer.showEmailComposerWithCallback(null,"Return Menmo",html1,[],[],[],false,[''+fil_path1+''],[]);
+					
+					fil_path1 = fil_path1.replace("file://","");
+					window.plugins.emailComposer.showEmailComposerWithCallback(function(){
+						  currentfileEntry.remove(success, fail);
+					},"Return Memo",html1,[],[],[],false,[''+fil_path1+''],[]);
                     console.log("contents of file now 'some different text'");
                 }
             };
