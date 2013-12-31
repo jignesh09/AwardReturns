@@ -1876,7 +1876,12 @@ function gotoCReditMempage_jsut(){
         tott=parseInt(just_mat_price[i])*parseInt(just_mat_Retq[i]);
         toalPriceArray1.push(tott)
     }
-   
+   var date1=new Date();
+	 var date0=date1.toISOString()
+	 var date2=date0.toString();
+	 var date3=  date2.substring( 0, date2.length-5);
+	 var date4=  date2.substring( 0, date2.length-14);
+							  
     var total2 = 0;
     $.each(toalPriceArray1,function() {
            total2 += this;
@@ -1927,7 +1932,7 @@ function gotoCReditMempage_jsut(){
                 html+='<div style="float:left; width:92%; background:#fff; margin:2% 4% 0 4%;">'
                 html+='<div style="float:left; width:98%; background:#cbcbcb; border: 1px solid #b5b7b7;margin-right: 10% !important;border-radius: 8px;margin-left: 1%; height:90px;"><h1 style="padding:2%; margin:0; float:left; width:40%; color:#231f20; font-size:1.8em; font-weight:bold;">Customer Credit Memo</h1><div style="float:right; width:45%; margin-top:9px;">'
                html+='<div style="float:left; width:100%;"><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Reference #</span><span  style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;"id="memo_refno">'+reftext+'</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Ship Via</span><span style="float:left; width:24%; font-size:1em; color:#231f20; text-align:center;background:#e4e6e7; border-bottom:solid 1px #d1d3d4; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">FedEx- Federal EX</span></div>'
-        html+='<div class="referencebox1"><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Credit Memo #</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">00000000011</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Date</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;" id="memodate111">2013-12-26</span></div></div></div>'
+        html+='<div class="referencebox1"><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Credit Memo #</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">00000000011</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;">Date</span><span style="float:left; width:24%; font-size:.7em !important; color:#231f20; text-align:center;background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;" id="memodate111">'+date4+'</span></div></div></div>'
                                     html+='<div style="float:left; width:100%;">'
                                     html+='<div style="margin:0 auto;width:98%; border:1px solid #b5b7b7; padding:2% 0;border-radius:8px; background:#e4e6e7; min-height:540px; margin-bottom: 2%;">'
                                             
