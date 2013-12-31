@@ -1476,8 +1476,8 @@ function gotoCreditmemo() {
                          if(req1.responseText=='CSRF token validation failed'){
 		    navigator.notification.alert('CSRF token error', alertDismissed, 'AwardReturns', 'ok' );
 		   }
-                        console.log("-----------here now--------------------------------------------------------");
-                        console.log(req1.responseText);
+                        //console.log("-----------here now--------------------------------------------------------");
+                        //console.log(req1.responseText);
                         xmlDoc = $.parseXML( req1.responseText ),
                         $xml = $( xmlDoc ),
                         $title = $xml.find( "OrderId" );
@@ -1868,7 +1868,7 @@ function searchRetunconfFiles(keyword) {
 	}
 }
 function gotoCReditMempage_jsut(){
-reftext=000011
+	 //reftext=000011
     email_htm='';
     var tott=0;
     var toalPriceArray1=[];
