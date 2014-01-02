@@ -682,18 +682,21 @@ function justRe_cnf(){
     $(".Mat_optn select").each(function() {
                                //alert($(this).val());
                                var data=$(this).val();
-                               if (data.indexOf('s---t') !=-1) {
-                               var data1=data.split('s---t')
-                               just_mat_num.push(data1[0]);
-                               just_mat_desc.push(data1[1]);
-                               just_mat_price.push(data1[2]);
+										 
+										 if($(this).val() != ''){
+										 
+												if (data.indexOf('s---t') !=-1) {
+												var data1=data.split('s---t')
+												just_mat_num.push(data1[0]);
+												just_mat_desc.push(data1[1]);
+												just_mat_price.push(data1[2]);
+												}
+												else{
+												just_mat_num.push($(this).val())
+												just_mat_desc.push('');
+												just_mat_price.push('');
+												}
                                }
-                               else{
-                               just_mat_num.push($(this).val())
-                               just_mat_desc.push('');
-                               just_mat_price.push('');
-                               }
-                               
                                
                                });
     $(".Mat_text input").each(function() {
@@ -711,10 +714,18 @@ function justRe_cnf(){
                                 //alert(just_mat_Res.length)
                                 });
     $(".Mat_cond select").each(function() {
-                               just_mat_con.push($(this).val())
-                               });
+		  
+				just_mat_con.push($(this).val())
+		  
+                               
+    });
+	 
+	 if(just_mat_num.length <= 0){
+		  alert("Please select at least one material!");
+		  return false;
+	 }
     var html='';
-    for (var i=0;i<just_mat_con.length;i++) {
+    for (var i=0;i<just_mat_num.length;i++) {
         html+='<li><div class="ui-block-a">'
         html+='<div class="Createtop"><span>EA</span></div>'
         html+='<div class="textinputtestext" style="width: 23% !important;">'+just_mat_num[i]+'</div>'
