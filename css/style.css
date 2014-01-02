@@ -300,8 +300,9 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .Createtop1 {float: left !important; width: 8% !important; }
 .Createtop1 span { float:left !important; width:100% !important; font-family: 'helveticanmdcnhelveticanmdcn'; color:#fff; text-align:right; font-size:1.9em; padding:19px 0 15px 0; text-align:center;}
 .Createtop1 h1 {float:left !important; width:100% !important; font-family: 'helveticanltcnhelveticanltcn'; color:#fff; text-align:center !important; font-size:.3em !important; padding:12% 0 0 0; margin:0;}
-#ReportsPage .return_qty {float: right !important; width: 77% !important; background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -8%;}	.selecttextbox1 {float: right !important; width: 50% !important; text-align: center !important; font-size: .7em !important; padding: 4% 0 0 0 !important;}
-.textinputtes1 {float: right !important; width: 50% !important; text-align:center !important; font-size: .7em !important; padding:4% 0 0 0 !important;}
+#ReportsPage .return_qty {float: right !important; width: 77% !important; background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -8%;}
+.selecttextbox1 {float: left !important; width: 48% !important; text-align: center !important; font-size: .7em !important; padding: 4% 0 0 0 !important;}
+.textinputtes1 {float: right !important; width: 48% !important; text-align:center !important; font-size: .7em !important; padding:4% 0 0 0 !important;}
 #ReportsPage .return_qty {float: right; width: 51%; background: rgb(61, 32, 31); border-radius: 8px 8px 0 0; margin-top: -13% !important;}	
 	
 	
@@ -756,7 +757,7 @@ min-height:598px !important; margin-bottom: 2%;}
 .Barnes_textts { float:left; width:50% !important; font-family: 'helveticanltcnhelveticanltcn'; font-size:.6em !important; padding-bottom:1.5%;}
  
 .Createtop1 {float: left; width: 8%; margin: 0 5% 1% 0 !important;}
-.selecttextbox1 {float: right; width: 50%; text-align: center; padding:0 !important;}
+.selecttextbox1 {float: left; width: 48%; text-align: center; padding:0 !important;}
 #ReportsPage .ui-block-a strong { float:left; width:36%; color:#fff; text-align:left; font-size:1em !important; border-right:solid 2px #442c27; padding:.5em 0 !important;} 
 .poor_quality_text1 {float: right; width:54% !important; padding:3% 0 0 0 !important;}
 #ReturnOrderDeatilpage .Garfield_text { float:left; width:21% !important; text-align:center; border-left:solid 2px #442c27; border-right:solid 2px #442c27; padding-bottom:1%; margin:0 5% 1% 0;}
@@ -1255,7 +1256,7 @@ background:#e4e6e7; border-right:solid 1px #d1d3d4; padding:2% 0 1.7% 0;}
 .textinputtestext {float: left; width:22%; text-align:center; padding:3% 0 0 0; border-left: solid 1px #352a27;}
 .poor_quality_text1 { float:right; width:54%;}
 .selecttextbox1 { float:left; width:48%;text-align: center; padding:5% 0;}
-.textinputtes1{float: left; width: 48%;text-align: center;}
+.textinputtes1{float: right; width: 48%;text-align: center;}
 .dyanamicl{border:solid 1px #fff;}
 .memoclass{ border: solid 1px #d1d3d4;}
 .memoheading{ font-weight:bold; text-align: center; width: 10%; float: left;border-right: solid 1px rgb(0, 0, 0); border-bottom: solid 1px rgb(0, 0, 0); height: 25px;}
