@@ -938,7 +938,7 @@ function customerInvoReturns(){
            var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
            var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            var thml='';
-           var Mnum_option=''
+           var Mnum_option='<option value="" data-va=""></option>';
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc+'s---t'+data1.Price;
@@ -1035,7 +1035,7 @@ function customerInvoReturns(){
            var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
            var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            var thml='';
-           var Mnum_option=''
+           var Mnum_option='<option value="" data-va=""></option>';
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc+'s---t'+data1.Price;
@@ -2600,7 +2600,7 @@ function customerInvoReturns_local(){
            var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
            var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            var thml='';
-           var Mnum_option=''
+           var Mnum_option='<option value="" data-va=""></option>';
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            var opval=data1.MaterialNum+'s---t'+data1.MaterialDesc+'s---t'+data1.Price;
