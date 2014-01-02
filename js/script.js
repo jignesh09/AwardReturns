@@ -894,8 +894,8 @@ function justRetuncnf_summit(){
 var new_mat='';
 function addnewRow(){
 	var thml='';
-    var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-	var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+    var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+	var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
 	thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat+'</select></div><div class="textinput_new Mat_text"><input type="Number" vlaue="3"/></div>'
 	thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
 	
@@ -935,8 +935,8 @@ function customerInvoReturns(){
            console.log(JSON.stringify(data))
            var res=eval(data);
            //alert('suc')
-           var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-           var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            var thml='';
            var Mnum_option=''
            for(var i=0;i<res.d.results.length;i++){
@@ -982,8 +982,8 @@ function customerInvoReturns(){
      //	invoiceArray=[];
      //var itemcourntArray=[]
      var thml='';
-     var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-     var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+     var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+     var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
      
 	 
      for(var i=0;i<1;i++){
@@ -1032,8 +1032,8 @@ function customerInvoReturns(){
            console.log(JSON.stringify(data))
            var res=eval(data);
            //alert('suc')
-           var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-           var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            var thml='';
            var Mnum_option=''
            for(var i=0;i<res.d.results.length;i++){
@@ -1079,8 +1079,8 @@ function customerInvoReturns(){
      //	invoiceArray=[];
      //var itemcourntArray=[]
      var thml='';
-     var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-     var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+     var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+     var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
      
 	 
      for(var i=0;i<1;i++){
@@ -1236,7 +1236,7 @@ function gotoReturnconfrm() {
 										  html+='<strong>'+data1.item_name+'</strong>';
 										  //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
 										  html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
-										  html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
+										  html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" placeholder="'+Number(data1.quantity)+'" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
 									 }
 						  }
 						  //<div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
@@ -1287,7 +1287,8 @@ $('#Ret_pop_up').hide();
 function  checkqutity(ev){
  
     var value=$(ev).val();
-    var ques=Number(QuantityArray[$(ev).data('line_ndex')])
+    //var ques=Number(QuantityArray[$(ev).data('line_ndex')])
+	 var ques=$(ev).attr('placeholder');
     if(value>ques){
 	alert('Your have entered wrong quantity')
 	$(ev).val('')
@@ -2466,7 +2467,7 @@ function gotoReturnconfrm_local(){
            html+='<strong>'+data1.item_name+'</strong>';
            //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
            html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
-           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
+           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" placeholder="'+Number(data1.quantity)+'" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
          
            
            
@@ -2596,8 +2597,8 @@ function customerInvoReturns_local(){
  
            var res=just_return
            //alert('suc')
-           var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-           var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            var thml='';
            var Mnum_option=''
            for(var i=0;i<res.d.results.length;i++){
@@ -2994,8 +2995,8 @@ var fail = function(evt) {
 											       if(li_size==test_size && check==0){
 											    
 											        var thml='';
-                                                                                                var option1='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-                                                                                                var option2='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+                                                                                                var option1='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+                                                                                                var option2='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
                                                                                                       thml+='<li><div class="ui-block-a"><div class="Createtop"><span>EA</span></div><div class="textinputtes_new Mat_optn"><select name="" class="selecttext">'+new_mat1+'</select></div><div class="textinput_new Mat_text"><input type="Number" data-val="'+materialDescArray[index]+'" value="1"/></div>'
                                                                                                       thml+='<div class="poor_quality_text"><div class="textinputtes Mat_reson"><select name="" class="selecttext">'+option1+'</select></div><div class="selecttextbox Mat_cond"><select name=""  class="selecttext">'+option2+'</select></div></div></div></li>'
                                                                                                       $('#invoice_just_re_html').append(thml).trigger('create');
