@@ -518,8 +518,8 @@ function invoiceDetail(ev){
            var html='';
            var fuldate='';
            //alert(res.d.results.length)
-           var ht='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-           var ht1='<option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
+           var ht='<option></option><option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+           var ht1='<option></option><option>GOODS IN DAMAGED CONDITION</option><option>GOODS RETURNED WITH LOSS IN WEIGHT</option><option>RETURNED WRONG ITEM</option>'
            for(var i=0;i<res.d.results.length;i++){
            var data1=res.d.results[i]
            //  alert(data1.billing_date)
@@ -540,7 +540,7 @@ function invoiceDetail(ev){
            html+='<strong>'+Number(data1.invoice_item)+'</strong><strong class="inv_ret_title">'+data1.item_name+'</strong>'
            // html+='<strong>'+data1.invoice_item+'</strong><strong>'+Number(data1.quantity)+' items</strong>'
            // html+='<div id="poor_quality_text"><div id="textinput"><input type="Number" vlaue="3"/></div><div id="selecttextbox"><select name="" class="selecttext"></select></div></div></div>';
-           html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext">'+ht1+'</select></div></div></div></li>';
+           html+='<div class="poor_quality_text4"><div id="textinput"><select name="" class="selecttext" id="reason_item_inv_ret_'+Number(data1.invoice_item)+'">'+ht+'</select></div><div class="selecttextbox"><select name="" class="selecttext" id="condition_item_inv_ret_'+Number(data1.invoice_item)+'">'+ht1+'</select></div></div></div></li>';
            }
            // alert(cid);
            //alert(cname);
@@ -866,10 +866,12 @@ function justRetuncnf_summit(){
                     $ref = $xml.find( "RefDoc" );
                     // alert($ref.text())
                     var oid=$title.text()
+						  reftext=$ref.text();
                    //  gotoCReditMempage_jsut()
                     console.log("-----------here now----------------------------------------------------------");
                     if($title.text()  !=''){
                         $('#retunOrderid_memo').html('<h1 >Return Order</h1>'+$title.text()+'</div>')
+								$('#memo_refno').html('&nbsp;');
                         $.mobile.changePage('#Credit_memo')
                         
                         gotoCReditMempage_jsut()
@@ -1185,55 +1187,75 @@ function gotoReturnconfrm() {
            url:url,
            dataType: 'json',
            success: function(data, status) {
-           $.mobile.hidePageLoadingMsg();
-           console.log(JSON.stringify(data))
-           var res=eval(data);
-           
-           var html='';
-           var fuldate='';
-           //alert(res.d.results.length)
-           var ht='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
-           for(var i=0;i<res.d.results.length;i++){
-           var data1=res.d.results[i]
-           var str = res.d.results[i].billing_date;
-           var ress = str.slice(6,str.length-2);
-           var ress1=parseInt(ress)
-           var dt=new Date(ress1);
-           var yr=dt.getFullYear();
-           var mon=dt.getMonth();
-	   var mon1=mon+1;
-           var det1 = dt.getDate();
-           fuldate=det1+'/'+mon1+'/'+yr;
-		   itemNumArray.push(data1.invoice_item)
-		   priceArray.push(data1.price)
-		   QuantityArray.push(data1.quantity)
-		   materialArray.push(data1.material)
-		   itemNameArray.push(data1.item_name)
-		   serdata=data1.material+data1.item_name;
-           html+='<li class="returnconfmlist" add="'+serdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+Number(data1.invoice_item)+'</span></div>'
-           html+='<strong>'+data1.item_name+'</strong>';
-           //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
-           html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
-           html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
-         
-           }
-           //<div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
-           //alert(cname);
-           var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
-           var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+fuldate+'</div>'
-	   var html7='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer ID</h1><span>'+cid+'</span></div>'
-	       html7+='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer name</h1>'+cname+'</div>';
-	       
-	    var html8='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
-	       html8 +='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice Date </h1>'+fuldate+'</div></div>';
-           $('#invoice_detaila_return').html(html).trigger('create');
-           //// alert('ok');
-           $('#cusname_id').html(html7).trigger('create');
-           $('#Reorder_date').html(html8).trigger('create');
-	    $('#cusname_id_cnf').html(html7).trigger('create');
-           $('#Reorder_date_cnf').html(html8).trigger('create');
-           $.mobile.changePage('#Returns_confirmation_screen2')
-           //alert('ok');
+						  $.mobile.hidePageLoadingMsg();
+						  console.log(JSON.stringify(data))
+						  var res=eval(data);
+						  
+						  var html='';
+						  var fuldate='';
+						  //alert(res.d.results.length)
+						  var ht='<option>DAMAGED IN TRANSIT</option><option>MATERIAL RUINED</option><option>POOR QUALITY</option><option>WRONG MATERIAL</option>'
+						  for(var i=0;i<res.d.results.length;i++){
+									 //reason_item_inv_ret_
+									 var data1=res.d.results[i];
+									 var return_selectedval = $('#reason_item_inv_ret_'+Number(data1.invoice_item)+'').val();
+									 if(return_selectedval != ''){
+										  var sel1 = "";
+										  var sel2 = "";
+										  var sel3 = "";
+										  var sel4 = "";
+										  if(return_selectedval == 'DAMAGED IN TRANSIT'){
+												sel1 = 'selected="selected"';
+										  }
+										  if(return_selectedval == 'MATERIAL RUINED'){
+												sel2 = 'selected="selected"';
+										  }
+										  if(return_selectedval == 'POOR QUALITY'){
+												sel3 = 'selected="selected"';
+										  }
+										  if(return_selectedval == 'WRONG MATERIAL'){
+												sel4 = 'selected="selected"';
+										  }
+										  ht='<option '+sel1+'>DAMAGED IN TRANSIT</option><option '+sel2+'>MATERIAL RUINED</option><option '+sel3+'>POOR QUALITY</option><option '+sel4+'>WRONG MATERIAL</option>'
+										  var str = res.d.results[i].billing_date;
+										  var ress = str.slice(6,str.length-2);
+										  var ress1=parseInt(ress)
+										  var dt=new Date(ress1);
+										  var yr=dt.getFullYear();
+										  var mon=dt.getMonth();
+										  var mon1=mon+1;
+										  var det1 = dt.getDate();
+										  fuldate=det1+'/'+mon1+'/'+yr;
+										  itemNumArray.push(data1.invoice_item)
+										  priceArray.push(data1.price)
+										  QuantityArray.push(data1.quantity)
+										  materialArray.push(data1.material)
+										  itemNameArray.push(data1.item_name)
+										  serdata=data1.material+data1.item_name;
+										  html+='<li class="returnconfmlist" add="'+serdata+'"> <div class="ui-block-a"><div class="Createtop"><span>'+Number(data1.invoice_item)+'</span></div>'
+										  html+='<strong>'+data1.item_name+'</strong>';
+										  //   html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+data1.item_name+'</h2></div>';
+										  html+='<div class="Garfield_text"><h1>'+data1.material+'</h1><h2>'+Number(data1.quantity)+' items</h2></div>';
+										  html+='<div class="poor_quality_text5"><div id="textinput"><input type="Number" data-line_ndex='+i+' onkeyup="checkqutity(this)"/></div><div id="selecttextbox"><select name="" class="selecttext">'+ht+'</select></div></div></div>';
+									 }
+						  }
+						  //<div class="Garfield_text"><h1>P500020</h1><h2>6 items</h2></div><div class="poor_quality_text"><span>3</span><h1>Poor Quality</h1></div></div>
+						  //alert(cname);
+						  var html6='<div class="Barnes_text"><h1>Customer ID</h1>'+cid+'</div><div class="invoice_text"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
+						  var html1='<div class="Barnes_text"><h1>Customer name</h1>'+cname+'</div><div class="invoice_text"><h1>Invoice Date </h1>'+fuldate+'</div>'
+					var html7='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer ID</h1><span>'+cid+'</span></div>'
+						 html7+='<div class="Barnes_textts" style="width:100% !important;"><h1>Customer name</h1>'+cname+'</div>';
+						 
+					 var html8='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice #</h1>'+data1.invoice_number+'</div>'
+						 html8 +='<div class="Barnes_textts" style="width:100% !important;"><h1>Invoice Date </h1>'+fuldate+'</div></div>';
+						  $('#invoice_detaila_return').html(html).trigger('create');
+						  //// alert('ok');
+						  $('#cusname_id').html(html7).trigger('create');
+						  $('#Reorder_date').html(html8).trigger('create');
+					 $('#cusname_id_cnf').html(html7).trigger('create');
+						  $('#Reorder_date_cnf').html(html8).trigger('create');
+						  $.mobile.changePage('#Returns_confirmation_screen2')
+						  //alert('ok');
            },
            
            beforeSend: function(xhrObj){
