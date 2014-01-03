@@ -741,6 +741,9 @@ function justRe_cnf(){
 	$('#just_cname_cnf').html('<h1>Customer name</h1>'+cus_name);
 	$('#Ret_pop_up').hide();
   $('#cnf_btn').show();
+  $('#just_return_popup').hide();
+  $('#just_returncnf_btn').show();
+  
 
     $.mobile.changePage('#jsut_returns_creen_cnf');
     //$('#jsut_returns_creen_cnf').html()
